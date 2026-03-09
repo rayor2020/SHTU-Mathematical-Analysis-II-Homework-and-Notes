@@ -1,0 +1,130 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\newtheorem*{thm}{Thm}
+\newtheorem*{define}{Def}
+\newtheorem{lemma}{引理}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{example}{Eg}
+\newtheorem*{rmk}{Rmk}
+\newtheorem*{prop}{Prop}
+\newtheorem*{pf}{Pf}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 一键加粗文本和数学符号
+\newcommand{\allbold}[1]{%
+    \textbf{\boldmath  #1}%
+}
+
+% 标题信息
+\title{\textbf{Mathematical Analysis II Notes}}
+\author{袁子强}
+\date{2026 年 3 月 3 日 - 5 月 10 日}
+
+\begin{document}
+
+\maketitle
+
+% \tableofcontents
+
+\newpage
+
+\setcounter{section}{7} % 从第 8 章开始编号
+
+% 8
+\include{chapters/08/Linear Algebra and Analytic Geometry.tex}
+\subsection{向量与坐标系}
+\subsubsection{向量的定义与向量的加法和数乘}
+\subsubsection{向量的共线和共面}
+\subsubsection{向量的点乘和叉乘}
+\subsubsection{向量的坐标表示}
+\subsubsection{空间坐标系}
+\include{chapters/08/02.tex}
+\include{chapters/08/03.tex}
+\subsection{坐标变换和其他常用坐标系}
+\subsubsection{坐标变换}
+\subsubsection{其他常用坐标系}
+
+\newpage
+\include{chapters/CH09.tex}
+
+\newpage
+\include{chapters/CH10.tex}
+
+\newpage
+\include{chapters/CH11.tex}
+
+\newpage
+\include{chapters/CH12.tex}
+
+\newpage
+\include{chapters/CH13.tex}
+
+% 在此处记录课堂笔记内容
+
+\begin{define}[定义标题]
+    定义内容...
+\end{define}
+
+\begin{thm}[定理标题]
+    定理内容...
+\end{thm}
+
+\begin{proof}
+    证明过程...
+\end{proof}
+
+\begin{example}[例题标题]
+    例题内容...
+\end{example}
+
+\begin{rmk}
+    备注说明...
+\end{rmk}
+
+\subsection{重要公式}
+
+\begin{equation}
+    重要公式...
+\end{equation}
+
+\subsection{课后总结}
+
+% 记录本课重点和难点
+
+\newpage
+\section{第 X+1 章：[章节标题]}
+
+% 继续记录后续章节...
+
+\end{document}
