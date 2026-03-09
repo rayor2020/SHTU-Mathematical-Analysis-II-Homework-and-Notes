@@ -1,2 +1,29 @@
-# SHTU-Mathematical-Analysis-II-Homework-and-Notes
+# 上海科技大学《数学分析 II》个人笔记及作业解答
+
+我（芮和）自己的《数学分析 II》课程笔记及作业解答。作业未经授课老师或 TA 批阅，仅供参考，不得抄袭。<br/>
 My (Ray-Or) own notes for and solutions to the Mathematical Analysis II course assignments. Homeworks ungraded by the instructor and TAs, for reference only. Do not copy.
+
+## 课程信息
+
+- **课程代码**：GEMA1010
+- **课程名称**：数学分析 II / Mathematical Analysis II
+- **教授**：姚成建 教授
+- **板书语言**：英文
+
+## 仓库内容
+
+本仓库包含 `.tex` 源文件及编译后的 PDF 输出文件。每个文档都包含了原始作业题目以及我的个人解答供您参考。您可以选择自行编译 `.tex` 文件，也可直接阅读已提供的 PDF 文件。
+
+- **根目录**：作业内容（教材《数学分析讲义（第二册）》中国科技大学版的书后题及补充题目，题目描述使用英文）
+- **Notes/**：个人学习笔记。未严格按照章节拆分，而是根据笔记量和编译压力进行了一定调整，目录结构不代表笔记的大纲结构。
+- **Homeworks/**：个人作业解答。
+
+## 免责声明
+
+请注意以下事项：
+
+1. 当您修读此课程时，课堂板书与作业内容可能与我提供的内容有所不同。
+2. 这些解答未经授课教师或助教批阅，仅供参考。
+3. 严禁抄袭。因抄袭导致的任何学术诚信问题将由您自行承担责任。
+4. 我的 LaTeX 水平有限，请勿将这些文档用作 LaTeX 学习材料。
+5. 我的笔记中可能存在若干错误，所有内容仅供参考，请以实际情况为准.
