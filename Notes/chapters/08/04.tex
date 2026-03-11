@@ -1,0 +1,40 @@
+\subsection{坐标变换和其他常用坐标系}
+\subsubsection{坐标变换}
+\subsubsection[其他常用坐标系]{Other Coordinate System}
+
+\begin{enumerate}
+    \item \raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/08/ocs1}} $(r,\theta,\varphi)\begin{cases}
+                  \substack{r\in[0,+\infty) \\
+                  \theta\in[0,\pi]          \\
+                  \varphi\in[0,2\pi)}
+              \end{cases}\leadsto (x,y,z)^T=\left(r\sin\theta\cos\varphi,r\sin\theta\sin\varphi,r\cos\theta \right)$
+
+          \allbold{1:1 on the ``open point''}
+
+          \emph{$x^2+y^2=r^2\sin^2\theta\quad z=r\cos\theta$}
+
+          \allbold{$\begin{cases}
+                      r=\sqrt{x^2+y^2+z^2}                   \\
+                      \theta=\arctan\frac{\sqrt{x^2+y^2}}{2} \\
+                      \varphi=\arctan\frac{y}{x}
+                  \end{cases}$}
+
+          \begin{itemize}
+              \item $r=r_0$ \raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/08/ocs2}}
+              \item $\theta=\theta_0$ \raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/08/ocs3}}
+              \item $\varphi=\varphi_0$ \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/08/ocs4}}
+          \end{itemize}
+          Curvilinear coordinate system
+    \item Cylindrical coordinate $(r,\theta,z)$
+          $$\begin{cases}
+                  x=r\cos\theta \\
+                  y=r\sin\theta \\
+                  z=z
+              \end{cases}
+              \iff
+              \begin{cases}
+                  r=\sqrt{x^2+y^2}          \\
+                  \theta=\arctan\frac{y}{x} \\
+                  z=z
+              \end{cases}$$
+\end{enumerate}

@@ -8,7 +8,8 @@ My (Ray-Or) own notes for and solutions to the Mathematical Analysis II course a
 - **课程代码**：GEMA1010
 - **课程名称**：数学分析 II / Mathematical Analysis II
 - **教授**：姚成建 教授
-- **板书语言**：英文
+
+**板书语言**：英文
 
 ## 仓库内容
 
@@ -23,7 +24,7 @@ My (Ray-Or) own notes for and solutions to the Mathematical Analysis II course a
 请注意以下事项：
 
 1. 当您修读此课程时，课堂板书与作业内容可能与我提供的内容有所不同。
-2. 这些解答未经授课教师或助教批阅，仅供参考。
+2. 作业解答未经授课教师或助教批阅，仅供参考。
 3. 严禁抄袭。因抄袭导致的任何学术诚信问题将由您自行承担责任。
 4. 我的 LaTeX 水平有限，请勿将这些文档用作 LaTeX 学习材料。
 5. 我的笔记中可能存在若干错误，所有内容仅供参考，请以实际情况为准.
