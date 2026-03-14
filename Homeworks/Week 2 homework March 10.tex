@@ -1,0 +1,472 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\newtheorem*{pf}{Proof}
+\newtheorem*{sol}{Solution}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.5}
+
+% 标题信息
+\title{Mathematical Analysis II Week 2\\Homework (March 10)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 8.3}
+
+3. 求下列旋转曲面的方程，并指出它们的名称。
+
+(2) 曲线 $\begin{cases}
+        y = \sin x\ (0 \leqslant x \leqslant \pi), \\
+        z = 0
+    \end{cases}$ 绕 $x$ 轴旋转一周；
+
+\begin{sol}
+    用 $\sqrt{y^2 + z^2}$ 代替 $y$，得到曲面方程
+    $$\sqrt{y^2 + z^2} = \sin x \quad (0 \leqslant x \leqslant \pi)$$
+    这是旋转正弦柱面。
+\end{sol}
+
+(3) 曲线 $\begin{cases}
+        4x^2 + 9y^2 = 36, \\
+        z = 0
+    \end{cases}$ 绕 $y$ 轴旋转一周；
+
+\begin{sol}
+    用 $x^2 + z^2$ 代替 $x^2$，得到曲面方程
+    $$4x^2 + 9y^2 + 4z^2 = 36$$
+    这是一个椭球。
+\end{sol}
+
+4. 求 $Oyz$ 平面上的直线 $y - 2z + 1 = 0$ 绕 $Oyz$ 平面上的直线 $y = z$ 旋转所得旋转曲面的方程。
+
+\begin{sol}
+    令 $y = z$ 为 $u$ 轴，$y = -z$ 为 $v$ 轴，则坐标变换公式为
+    $$y = \frac{u - v}{\sqrt{2}}, \quad z = \frac{u + v}{\sqrt{2}}$$
+
+    将直线 $y - 2z + 1 = 0$ 用新坐标表示，得
+    $$\frac{u - v}{\sqrt{2}} - 2 \cdot \frac{u + v}{\sqrt{2}} + 1 = 0$$
+    整理得 $u + 3v = \sqrt{2}$。
+
+    将其绕 $u$ 轴旋转，用 $\sqrt{x^2 + v^2}$ 代替 $v$，得到曲面方程
+    $$u + 3\sqrt{x^2 + v^2} = \sqrt{2}$$
+
+    将 $\substack{u = \frac{y + z}{\sqrt{2}} \\ v = \frac{z - y}{\sqrt{2}}}$ 回代，得
+    $$\frac{y + z}{\sqrt{2}} + 3\sqrt{x^2 + \frac{(z - y)^2}{2}} = \sqrt{2}$$
+
+    整理得
+    $$9x^2 + 4y^2 + 4z^2 - 10yz + 2y + 2z - 2 = 0$$
+\end{sol}
+
+5. 求直线 $L: \dfrac{x - 1}{1} = \dfrac{y}{1} = \dfrac{z - 1}{-1}$ 在平面 $\pi: x - y + 2z - 1 = 0$ 上的投影直线 $L_0$ 的方程，并求 $L_0$ 绕 $y$ 轴旋转一周所成曲面的方程。
+
+\begin{sol}
+    $L$ 与 $\pi$ 的交点 $P(2,1,0)$。
+
+    $\pi$ 的法向量 $\overrightarrow{n}=(1,-1,2)$。
+
+    任取 $L$ 上一点 $M(1,0,1)$，作 $\pi$ 的垂线 $\dfrac{x-1}{1}=\dfrac{y}{-1}=\dfrac{z-1}{2}$，交 $\pi$ 于 $\left(\dfrac{2}{3},\dfrac{1}{3},\dfrac{1}{3}\right)$。
+
+    所以 $L_0$ 的方向向量为 $\left(\dfrac{4}{3},\dfrac{2}{3},-\dfrac{1}{3}\right)$，即 $(4,2,-1)$。
+
+    所以 $L_0$ 的方程：$\dfrac{x-2}{4}=\dfrac{y-1}{2}=-z$，即 $\begin{cases}
+            x=2y, \\
+            z=\dfrac{1-y}{2}.
+        \end{cases}$
+
+    将 $L_0$ 绕 $y$ 轴旋转：$x^2+z^2=(2y)^2+\left(\dfrac{1-y}{2}\right)^2=4y^2+\dfrac{1-2y+y^2}{4}$。
+
+    即 $4x^2-17y^2+4z^2+2y-1=0$。
+\end{sol}
+
+8. 一动点 $P(x, y, z)$ 到原点的距离等于它到平面 $z = 4$ 的距离，试求此动点 $P$ 的轨迹，并判定它是什么曲面。
+
+\begin{sol}
+    若 $z \geqslant 4$，则点 $P$ 到平面 $z = 4$ 的距离为 $z - 4$，到原点的距离为 $\sqrt{x^2 + y^2 + z^2} \geqslant z > z - 4$，舍去。
+
+    因此 $z < 4$，即点 $P$ 到平面 $z = 4$ 的距离为 $4 - z$。
+
+    由题意得 $4 - z = \sqrt{x^2 + y^2 + z^2}$。
+
+    两边平方并整理得 $16 - 8z = x^2 + y^2$。
+
+    即 $x^2 + y^2 + 8z - 16 = 0$。
+
+    这是一个旋转抛物面。
+\end{sol}
+
+9. 建立通过两曲面 $x^2 + y^2 + 4z^2 = 1$ 和 $x^2 = y^2 + z^2$ 的交线，而母线平行于 $z$ 轴的柱面方程。
+
+\begin{sol}
+    由已知条件得
+    $$\begin{cases}
+            x^2 + y^2 + 4z^2 = 1, \\
+            x^2 = y^2 + z^2 \implies z^2 = x^2 - y^2.
+        \end{cases}$$
+
+    将 $z^2 = x^2 - y^2$ 代入第一式，得
+    $$x^2 + y^2 + 4(x^2 - y^2) = 1$$
+
+    整理得
+    $$5x^2 - 3y^2 - 1 = 0$$
+
+    这是一个双曲柱面。
+\end{sol}
+
+11. 建立单叶双曲面 $\dfrac{x^2}{16} + \dfrac{y^2}{4} - \dfrac{z^2}{5} = 1$ 与平面 $x - 2z + 3 = 0$ 的交线在 $xy$ 平面上的投影的曲线方程。
+
+\begin{sol}
+    $xy$ 平面的方程为 $z = 0$，记为 $\pi$。
+
+    由平面方程 $x - 2z + 3 = 0$，解得
+    $$z = \frac{x + 3}{2}$$
+
+    将其代入单叶双曲面方程 $\dfrac{x^2}{16} + \dfrac{y^2}{4} - \dfrac{z^2}{5} = 1$，得
+    $$\frac{x^2}{16} + \frac{y^2}{4} - \frac{1}{5}\left(\frac{x + 3}{2}\right)^2 = 1$$
+
+    整理得
+    $$\frac{x^2}{16} + \frac{y^2}{4} - \frac{x^2 + 6x + 9}{20} = 1$$
+
+    化简后得到投影曲线方程为
+    $$\begin{cases}
+            x^2 - 24x + 20y^2 - 116 = 0 \\
+            z = 0
+        \end{cases}$$
+\end{sol}
+
+\section*{Section 8.4}
+
+3. 通过坐标旋转，化简方程 $5x^2 - 3y^2 + 3z^2 + 8yz - 5 = 0$，并指出它是什么曲面。
+
+\begin{sol}
+    设 $yOz$ 平面绕 $x$ 轴旋转 $\theta$ 角，坐标变换公式为
+    $$x = x', \quad y = y'\cos\theta - z'\sin\theta, \quad z = y'\sin\theta + z'\cos\theta$$
+
+    考虑二次型 $Q(y,z) = -3y^2 + 3z^2 + 8yz$，其中 $A = -3$，$B = 3$，$2C = 8$。
+
+    由旋转角公式得
+    $$\cot 2\theta = \frac{A - B}{2C} = -\frac{3}{4} = \frac{\cos 2\theta}{\sin 2\theta}$$
+
+    由此可得
+    $$\frac{9}{16} = \frac{\cos^2 2\theta}{1 - \cos^2 2\theta}$$
+
+    解得 $\cos 2\theta = -\dfrac{3}{5}$（经检验舍去正值）。
+
+    因此
+    $$\cos\theta = \sqrt{\frac{1 + \cos 2\theta}{2}} = \frac{1}{\sqrt{5}}, \quad \sin\theta = \sqrt{\frac{1 - \cos 2\theta}{2}} = \frac{2}{\sqrt{5}}$$
+
+    代入坐标变换公式得
+    $$y = \frac{y' - 2z'}{\sqrt{5}}, \quad z = \frac{2y' + z'}{\sqrt{5}}$$
+
+    代入原方程计算得 $Q(y,z) = 5y'^2 - 5z'^2$。
+
+    因此原方程化为
+    $$x'^2 + y'^2 - z'^2 - 1 = 0$$
+
+    这是一个单叶双曲面。
+\end{sol}
+
+4. 将下列方程按要求做相应的变换：
+
+(1) $x^2 - y^2 = 25$ 转换成柱面坐标系方程和球面坐标系方程；
+
+\begin{sol}
+    柱面坐标系下，$x = r\cos\theta$，$y = r\sin\theta$，代入原方程得
+    $$r^2\cos^2\theta - r^2\sin^2\theta = 25$$
+
+    球面坐标系下，$x = r\sin\theta\cos\varphi$，$y = r\sin\theta\sin\varphi$，代入原方程得
+    $$r^2\sin^2\theta\cos^2\varphi - r^2\sin^2\theta\sin^2\varphi = 25$$
+\end{sol}
+
+(3) $2x^2 + 2y^2 - 4z^2 = 0$ 转换成球面坐标系方程；
+
+\begin{sol}
+    在球面坐标系下，
+    $$x = r\sin\theta\cos\varphi, \quad y = r\sin\theta\sin\varphi, \quad z = r\cos\theta$$
+
+    代入原方程得
+    $$2r^2\sin^2\theta\cos^2\varphi + 2r^2\sin^2\theta\sin^2\varphi - 4r^2\cos^2\theta = 0$$
+\end{sol}
+
+(5) $r^2 + 2z^2 = 4$ 转换成球面坐标系方程；
+
+\begin{sol}
+    在球面坐标系下，$z = r\cos\theta$，代入原方程得
+    $$r^2 + 2r^2\cos^2\theta = 4$$
+\end{sol}
+
+(7) $x + y = 4$ 转换成柱面坐标系方程；
+
+\begin{sol}
+    在柱面坐标系下，$x = r\cos\theta$，$y = r\sin\theta$，代入原方程得
+    $$r\cos\theta + r\sin\theta = 4$$
+\end{sol}
+
+(9) $r = 2\sin\theta$ 转换成直角坐标系方程；
+
+\begin{sol}
+    将原方程两边同乘以 $r$，得
+    $$r^2 = 2r\sin\theta$$
+
+    由 $r^2 = x^2 + y^2$，$r\sin\theta = y$，代入得
+    $$x^2 + y^2 = 2y$$
+
+    整理得
+    $$x^2 + (y - 1)^2 = 1$$
+\end{sol}
+
+(11) $\rho\sin\phi = 1$ 转换成直角坐标系方程。
+
+\begin{sol}
+    将原方程两边平方，得
+    $$\rho^2\sin^2\phi = 1$$
+
+    由 $\rho^2\sin^2\phi = x^2 + y^2$，代入得
+    $$x^2 + y^2 = 1$$
+\end{sol}
+
+6. 将 $Ozx$ 平面上双曲线 $2x^2 - z^2 = 2$ 绕 $z$ 轴旋转一周，写出所生成的曲面在柱面坐标系中的方程。
+
+\begin{sol}
+    绕 $z$ 轴旋转时，用 $x^2 + y^2 = r^2$ 代替 $x^2$，得到旋转曲面方程
+    $$2r^2 - z^2 = 2$$
+\end{sol}
+
+9. 求抛物球面 $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} + \dfrac{z^2}{c^2} = 1$ 的一个参数方程表示。
+
+\begin{sol}
+    使用广义球面坐标系，令
+    $$\begin{cases}
+            x = a\sin\theta\cos\varphi, \\
+            y = b\sin\theta\sin\varphi, \\
+            z = c\cos\theta,
+        \end{cases}$$
+    其中 $\theta \in [0, \pi]$，$\varphi \in [0, 2\pi)$。
+\end{sol}
+
+11. 分别求单叶双曲面 $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} - \dfrac{z^2}{c^2} = 1$ 和双叶双曲面 $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} - \dfrac{z^2}{c^2} = -1$ 的一个参数方程表示。
+
+\begin{sol}
+    \begin{enumerate}
+        \item 对于单叶双曲面，整理得
+              $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 + \frac{z^2}{c^2} = \cosh^2\theta$$
+              则 $\dfrac{z}{c} = \sinh\theta$。
+
+              继续变形为
+              $$\frac{x^2}{a^2\cosh^2\theta} + \frac{y^2}{b^2\cosh^2\theta} = 1$$
+
+              设 $\cos\varphi = \dfrac{x}{a\cosh\theta}$，$\sin\varphi = \dfrac{y}{b\cosh\theta}$，得到参数方程
+              $$\begin{cases}
+                      x = a\cosh\theta\cos\varphi, \\
+                      y = b\cosh\theta\sin\varphi, \\
+                      z = c\sinh\theta,
+                  \end{cases}$$
+              其中 $\varphi \in [0, 2\pi)$。
+
+        \item 对于双叶双曲面，整理得
+              $$\sinh^2\theta = \frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z^2}{c^2} - 1 = \cosh^2\theta - 1$$
+
+              得到
+              $$\frac{x^2}{a^2\sinh^2\theta} + \frac{y^2}{b^2\sinh^2\theta} = 1 = \cos^2\varphi + \sin^2\varphi$$
+
+              因此参数方程为
+              $$\begin{cases}
+                      x = a\sinh\theta\cos\varphi, \\
+                      y = b\sinh\theta\sin\varphi, \\
+                      z = c\cosh\theta,
+                  \end{cases}$$
+              其中 $\varphi \in [0, 2\pi)$。
+    \end{enumerate}
+\end{sol}
+
+\section*{第八章综合习题}
+
+1. 设 $O$ 为一定点，$A,B,C$ 为不共线的三点. 证明: 点 $M$ 位于平面 $ABC$ 上的充分必要条件是存在实数 $k_1,k_2,k_3$ 使得
+$$\overrightarrow{OM} = k_1\overrightarrow{OA} + k_2\overrightarrow{OB} + k_3\overrightarrow{OC}, \quad \text{且} \ k_1 + k_2 + k_3 = 1.$$
+
+\begin{pf}
+    \begin{itemize}
+        \item $\mathbf{(\implies)}$ 因为点 $M$ 位于平面 $ABC$ 上，则存在实数 $a, b$，使得 $\overrightarrow{AM} = a\overrightarrow{AB} + b\overrightarrow{AC}$。
+
+              因此
+              $$\begin{aligned}
+                      \overrightarrow{OM} & = \overrightarrow{OA} + \overrightarrow{AM}                                                                         \\
+                                          & = \overrightarrow{OA} + a\overrightarrow{AB} + b\overrightarrow{AC}                                                 \\
+                                          & = \overrightarrow{OA} + a(\overrightarrow{OB} - \overrightarrow{OA}) + b(\overrightarrow{OC} - \overrightarrow{OA}) \\
+                                          & = a\overrightarrow{OB} + b\overrightarrow{OC} + (1 - a - b)\overrightarrow{OA}
+                  \end{aligned}$$
+
+              令 $k_1 = 1 - a - b$，$k_2 = a$，$k_3 = b$，即得证。
+
+        \item $\mathbf{(\impliedby)}$ 由 $\overrightarrow{OM} = k_1\overrightarrow{OA} + k_2\overrightarrow{OB} + k_3\overrightarrow{OC}$，且 $k_1 + k_2 + k_3 = 1$，得
+              $$\begin{aligned}
+                      \overrightarrow{OM} & = (1 - k_2 - k_3)\overrightarrow{OA} + k_2\overrightarrow{OB} + k_3\overrightarrow{OC}                                  \\
+                                          & = \overrightarrow{OA} + k_2(\overrightarrow{OB} - \overrightarrow{OA}) + k_3(\overrightarrow{OC} - \overrightarrow{OA}) \\
+                                          & = \overrightarrow{OA} + k_2\overrightarrow{AB} + k_3\overrightarrow{AC}
+                  \end{aligned}$$
+
+              因此 $\overrightarrow{AM} = \overrightarrow{OM} - \overrightarrow{OA} = k_2\overrightarrow{AB} + k_3\overrightarrow{AC}$。
+
+              所以点 $M$ 在平面 $ABC$ 上，即得证。
+    \end{itemize}
+    Q.E.D.
+\end{pf}
+
+5. 设向量 $\boldsymbol{a},\boldsymbol{b}$ 的夹角为 $60^\circ$，且 $|\boldsymbol{a}|=1,|\boldsymbol{b}|=2$，试求 $|\boldsymbol{a} \times \boldsymbol{b}|^2$ 和 $|(\boldsymbol{a}+\boldsymbol{b}) \times (\boldsymbol{a}-\boldsymbol{b})|$.
+
+\begin{sol}
+    $|\boldsymbol{a} \times \boldsymbol{b}| = |\boldsymbol{a}||\boldsymbol{b}|\sin 60^\circ = \sqrt{3}$
+
+    计算
+    $$\begin{aligned}
+            |(\boldsymbol{a}+\boldsymbol{b}) \times (\boldsymbol{a}-\boldsymbol{b})|
+             & = |\boldsymbol{a} \times \boldsymbol{a} - \boldsymbol{a} \times \boldsymbol{b} + \boldsymbol{b} \times \boldsymbol{a} - \boldsymbol{b} \times \boldsymbol{b}| \\
+             & = |-\boldsymbol{a} \times \boldsymbol{b} - \boldsymbol{a} \times \boldsymbol{b}|                                                                              \\
+             & = 2|\boldsymbol{a} \times \boldsymbol{b}|                                                                                                                     \\
+             & = 2\sqrt{3}
+        \end{aligned}$$
+\end{sol}
+
+8. 求准线为 $\begin{cases} y^2 + z^2 = 1, \\ x = 1, \end{cases}$ 顶点坐标为 $(2,1,1)$ 的锥面的一般方程.
+
+\begin{sol}
+    设 $M(x_0, y_0, z_0)$ 为锥面上任意一点，将其与顶点 $P(2, 1, 1)$ 相连，得到方向向量 $(x_0 - 2, y_0 - 1, z_0 - 1)$。
+
+    则直线 $PM$ 的参数方程为
+    $$\begin{cases}
+            x = 2 + t(x_0 - 2), \\
+            y = 1 + t(y_0 - 1), \\
+            z = 1 + t(z_0 - 1).
+        \end{cases}$$
+
+    令 $x = 1$，解得 $t = \dfrac{1}{2 - x_0}$。
+
+    代入 $y, z$ 的表达式得
+    $$\begin{cases}
+            y = 1 + \dfrac{y_0 - 1}{2 - x_0} = \dfrac{1 - x_0 + y_0}{2 - x_0}, \\[1em]
+            z = 1 + \dfrac{z_0 - 1}{2 - x_0} = \dfrac{1 - x_0 + z_0}{2 - x_0}.
+        \end{cases}$$
+
+    将上述结果代入准线方程 $y^2 + z^2 = 1$，得
+    $$\left(\frac{1 - x_0 + y_0}{2 - x_0}\right)^2 + \left(\frac{1 - x_0 + z_0}{2 - x_0}\right)^2 = 1$$
+
+    整理得
+    $$2x_0^2 + y_0^2 + z_0^2 - 2x_0y_0 - 2x_0z_0 - 4x_0 + 2y_0 + 2z_0 + 2 = 4 - 4x_0 + x_0^2$$
+
+    即
+    $$x_0^2 + y_0^2 + z_0^2 - 2x_0y_0 - 2x_0z_0 + 2y_0 + 2z_0 - 2 = 0$$
+\end{sol}
+
+9. 求直线 $x-1 = y = z$ 绕 $x = y = 1$ 旋转所得旋转面的参数方程和一般方程.
+
+\begin{sol}
+    取对称轴$L_0$: x=y=1上的一点$(1,1,z_0)$，则母线L上垂线交$L_0$于$(1,1,z_0)$的点为$(z_0+1,z_0,z_0)$,距离的平方为$d^2=2z_0^2-2z_0+1$
+
+    所以$(x-1)^2+(y-1)^2=2z^2-2z+1$
+
+    整理得一般方程$x^2+y^2-2z^2-2x-2y+2z+1=0$
+
+    每个水平截面为一个圆心(1,1,z)，半径为$\sqrt{2z^2-2z+1}$的圆
+
+    得到参数方程$\begin{cases}
+            x=\sqrt{2z^2-2z+1}\cos\theta+1 \\
+            y=\sqrt{2z^2-2z+1}\sin\theta+1 \\
+            z=z
+        \end{cases}$
+
+    其中$\theta\in[0,2\pi)$
+\end{sol}
+
+11. 将坐标系 $[O;\boldsymbol{e}_1,\boldsymbol{e}_2,\boldsymbol{e}_3]$ 绕 $\boldsymbol{e}_1$ 逆时针旋转角度 $\alpha$ 后得到新坐标系 $[O,\tilde{\boldsymbol{e}}_1,\tilde{\boldsymbol{e}}_2,\tilde{\boldsymbol{e}}_3]$，再将坐标系 $[O,\tilde{\boldsymbol{e}}_1,\tilde{\boldsymbol{e}}_2,\tilde{\boldsymbol{e}}_3]$ 绕 $\boldsymbol{e}_2$ 逆时针旋转角度 $\beta$ 后得到的新坐标系为 $[O,\hat{\boldsymbol{e}}_1,\hat{\boldsymbol{e}}_2,\hat{\boldsymbol{e}}_3]$. 求 $[O;\boldsymbol{e}_1,\boldsymbol{e}_2,\boldsymbol{e}_3]$ 与 $[O,\hat{\boldsymbol{e}}_1,\hat{\boldsymbol{e}}_2,\hat{\boldsymbol{e}}_3]$ 之间的坐标变换公式.
+
+\begin{sol}
+    第一次旋转（绕 $\boldsymbol{e}_1$ 旋转 $\alpha$ 角）：
+    $$\begin{cases}
+            \tilde{\boldsymbol{e}}_1 = \boldsymbol{e}_1,                                        \\
+            \tilde{\boldsymbol{e}}_2 = \boldsymbol{e}_2\cos\alpha + \boldsymbol{e}_3\sin\alpha, \\
+            \tilde{\boldsymbol{e}}_3 = \boldsymbol{e}_3\cos\alpha - \boldsymbol{e}_2\sin\alpha.
+        \end{cases}$$
+
+    第二次旋转（绕 $\tilde{\boldsymbol{e}}_2$ 旋转 $\beta$ 角）：
+    $$\begin{cases}
+            \hat{\boldsymbol{e}}_1 = \tilde{\boldsymbol{e}}_1\cos\beta - \tilde{\boldsymbol{e}}_3\sin\beta
+            = \boldsymbol{e}_1\cos\beta - \boldsymbol{e}_3\cos\alpha\sin\beta + \boldsymbol{e}_2\sin\alpha\sin\beta, \\
+            \hat{\boldsymbol{e}}_2 = \tilde{\boldsymbol{e}}_2
+            = \boldsymbol{e}_2\cos\alpha + \boldsymbol{e}_3\sin\alpha,                                               \\
+            \hat{\boldsymbol{e}}_3 = \tilde{\boldsymbol{e}}_3\cos\beta + \tilde{\boldsymbol{e}}_1\sin\beta
+            = \boldsymbol{e}_3\cos\alpha\cos\beta - \boldsymbol{e}_2\sin\alpha\cos\beta + \boldsymbol{e}_1\sin\beta.
+        \end{cases}$$
+
+    因此，坐标变换公式为
+    $$\begin{cases}
+            \hat{x} = x\cos\beta + y\sin\alpha\sin\beta - z\cos\alpha\sin\beta, \\
+            \hat{y} = y\cos\alpha + z\sin\alpha,                                \\
+            \hat{z} = x\sin\beta - y\sin\alpha\cos\beta + z\cos\alpha\cos\beta.
+        \end{cases}$$
+\end{sol}
+
+12. 已知椭球面的三个半轴长分别为 $a,b,c$，三条对称轴方程分别为
+$$3 - x = \frac{y}{2} = \frac{z}{2}, \quad \frac{x}{2} = 3 - y = \frac{z}{2}, \quad \frac{x}{2} = \frac{y}{2} = 3 - z,$$
+求椭球面的一般方程.
+
+\begin{sol}
+    三条对称轴的交点即为椭球面的中心，联立解得交点为 $(2, 2, 2)$，记为 $O'$。
+
+    作坐标平移变换，令 $X = x - 2$，$Y = y - 2$，$Z = z - 2$。
+
+    三条对称轴的方向向量分别为 $(-1, 2, 2)$，$(2, -1, 2)$，$(2, 2, -1)$，其模长均为 $3$。
+
+    构造正交矩阵
+    $$P = \frac{1}{3}\begin{pmatrix}
+            -1 & 2  & 2  \\
+            2  & -1 & 2  \\
+            2  & 2  & -1
+        \end{pmatrix} = P^T$$
+
+    作旋转变换 $[X', Y', Z'] = P^T[X, Y, Z] = P[X, Y, Z]$，即
+    $$\begin{cases}
+            X' = \dfrac{-X + 2Y + 2Z}{3} = \dfrac{-x + 2y + 2z - 6}{3}, \\[1em]
+            Y' = \dfrac{2X - Y + 2Z}{3} = \dfrac{2x - y + 2z - 6}{3},   \\[1em]
+            Z' = \dfrac{2X + 2Y - Z}{3} = \dfrac{2x + 2y - z - 6}{3}.
+        \end{cases}$$
+
+    在新坐标系下，椭球面方程为
+    $$\frac{X'^2}{a^2} + \frac{Y'^2}{b^2} + \frac{Z'^2}{c^2} = 1$$
+
+    代入 $X', Y', Z'$ 的表达式，整理得
+    $$\frac{(-x + 2y + 2z - 6)^2}{a^2} + \frac{(2x - y + 2z - 6)^2}{b^2} + \frac{(2x + 2y - z - 6)^2}{c^2} = 9$$
+\end{sol}
+
+\end{document}
