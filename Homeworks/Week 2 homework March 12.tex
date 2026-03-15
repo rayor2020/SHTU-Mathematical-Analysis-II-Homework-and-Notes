@@ -1,0 +1,201 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\newtheorem*{pf}{Proof}
+\newtheorem*{sol}{Solution}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{CourseName HomeworkName}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 9.1}
+
+3. 证明满足 $y > ax + b$ 的所有点 $(x,y)$ 是一个开集. 在坐标轴上画出它的范围，并求它的边界点应满足的关系.
+
+\begin{pf}
+    记该点集为 $E$. 任取一点 $P_0(x_0, y_0)$ 满足 $y_0 > ax_0 + b$, 则点 $P_0$ 到直线 $ax - y + b = 0$ 的距离为
+    $$
+        d = \frac{|ax_0 - y_0 + b|}{\sqrt{a^2 + 1}}.
+    $$
+    由于 $y_0 > ax_0 + b$, 故
+    $$
+        d = \frac{-ax_0 + y_0 - b}{\sqrt{a^2 + 1}} > 0.
+    $$
+
+    取 $r = \dfrac{d}{2}$, 则 $0 < r < d$. 对任意 $M \in B(P_0, r)$, 由三角不等式可知，$M$ 到直线的距离不小于 $M$ 到 $P_0$ 的距离与 $P_0$ 到直线垂足的距离之差，即
+    $$
+        \text{dist}(M, L) \geq d - r = d - \frac{d}{2} = \frac{d}{2} > 0.
+    $$
+    因此 $M \in E$, 即 $B(P_0, r) \subseteq E$. 故 $E$ 是一个开集.
+
+    由上述证明可知，当 $y > ax + b$ 时，该点为内点；同理可证，当 $y < ax + b$ 时，该点为外点. 因此边界点只可能在直线 $y = ax + b$ 上.
+
+    记直线为 $L$, 则对任意 $P(x, y) \in L$, 有 $y = ax + b$. 对任意 $r > 0$, 点 $(x, y + r)$ 为内点，点 $(x, y - r)$ 为外点，即 $P$ 是边界点.
+
+    综上所述，边界点满足的关系为 $y = ax + b$.
+
+    Q.E.D.
+\end{pf}
+
+4. 设 $\lim M_n = M_0$, $\lim M_n' = M_0'$. 求证：$\lim \rho(M_n, M_n') = \rho(M_0, M_0')$.
+
+\begin{pf}
+    由三角不等式可知
+    $$
+        |\rho(M_n, M_n') - \rho(M_0, M_0')| \leq \rho(M_n, M_0) + \rho(M_n', M_0').
+    $$
+
+    对任意 $\varepsilon > 0$, 由于 $\lim\limits_{n \to \infty} M_n = M_0$ 且 $\lim\limits_{n \to \infty} M_n' = M_0'$, 故存在正整数 $N$, 使得当 $n > N$ 时，有
+    $$
+        \rho(M_n, M_0) < \frac{\varepsilon}{2}, \quad \rho(M_n', M_0') < \frac{\varepsilon}{2}.
+    $$
+    因此
+    $$
+        \rho(M_n, M_0) + \rho(M_n', M_0') < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+    $$
+    从而
+    $$
+        |\rho(M_n, M_n') - \rho(M_0, M_0')| < \varepsilon.
+    $$
+
+    由极限的定义即得 $\lim\limits_{n \to \infty} \rho(M_n, M_n') = \rho(M_0, M_0')$.
+
+    Q.E.D.
+\end{pf}
+
+5. 证明，平面上收敛的点列必然是有界的.
+
+\begin{pf}
+    设点列 $\{P_n\}$ 收敛于 $P_0$, 则对任意 $\varepsilon > 0$, 存在正整数 $N$, 使得当 $n > N$ 时，有
+    $$
+        d(P_n, P_0) < \varepsilon.
+    $$
+
+    取 $\varepsilon = 1$, 则存在正整数 $N$, 当 $n > N$ 时，$d(P_n, P_0) < 1$.
+
+    对于 $n \leq N$ 的有限项，记 $M_1 = \max\limits_{1 \leq n \leq N} d(P_n, P_0)$, 显然 $M_1$ 为有限值.
+
+    令 $M = \max\{M_1, 1\}$, 则对任意正整数 $n$, 均有
+    $$
+        d(P_n, P_0) < M.
+    $$
+    因此点列 $\{P_n\}$ 是有界的.
+
+    Q.E.D.
+\end{pf}
+
+6. 证明集合 $E = \{(x,y) :\ y = \sin \frac{1}{x},\ 0 < x \leqslant \frac{2}{\pi}\} \cup \{(0,y) :\ 0 \leqslant y \leqslant 1\}$ 是连通的但不是道路连通的.
+
+\begin{pf}
+    记 $E_1 = \{(x,y) :\ y = \sin \frac{1}{x},\ 0 < x \leqslant \frac{2}{\pi}\}$, $E_2 = \{(0,y) :\ 0 \leqslant y \leqslant 1\}$.
+
+    $E_1$ 是连续映射 $f(x) = \sin \frac{1}{x}$ 在区间 $(0, \frac{2}{\pi}]$ 上的图像，由于定义域是区间且映射连续，故 $E_1$ 是连通的；$E_2$ 是闭线段，显然也是连通的.
+
+    下证 $E_2$ 中的点都是 $E_1$ 的聚点. 任取 $P_0(0, y_0) \in E_2$, 则其邻域为
+    $$
+        B(P_0, \varepsilon) = \{(x, y) \mid \sqrt{x^2 + (y - y_0)^2} < \varepsilon\}.
+    $$
+    令 $x_n = \dfrac{1}{2n\pi + \arcsin y_0}$, 则 $\lim\limits_{n \to \infty} x_n = 0^+$, 且
+    $$
+        \lim_{n \to \infty} (x_n, \sin \frac{1}{x_n}) = (0, y_0).
+    $$
+    因此 $E_2$ 中的点都是 $E_1$ 的聚点，从而 $E = E_1 \cup E_2$ 是连通的.
+
+    下面用反证法证明 $E$ 不是道路连通的. 假设 $E$ 道路连通.
+
+    取 $P_0(\frac{2}{\pi}, 1) \in E_1$, $Q_0(0, 0) \in E_2$, 则存在连续映射 $\gamma: [0, 1] \to E$, $\gamma(t) = (x(t), y(t))$, 使得 $\gamma(0) = P_0$, $\gamma(1) = Q_0$.
+
+    对任意 $t \in [0, 1]$, 要么 $x(t) > 0$ 且 $y(t) = \sin \frac{1}{x(t)}$（即 $\gamma(t) \in E_1$），要么 $x(t) = 0$ 且 $0 \leq y(t) \leq 1$（即 $\gamma(t) \in E_2$）.
+
+    令 $T = \{t \in [0, 1] \mid x(t) = 0\}$. 由于 $x(1) = 0$ 且 $x(0) = \frac{2}{\pi} > 0$, 故 $T \subset (0, 1]$. 记 $t_1 = \inf T$, 则 $t_1 \in [0, 1)$ 且 $x(t_1) = 0$. 令 $y_1 = y(t_1)$. 由下确界的定义可知，对任意 $t \in [0, t_1)$, 有 $x(t) > 0$ 且 $y(t) = \sin \frac{1}{x(t)}$.
+
+    由于 $\lim\limits_{t \to t_1^-} x(t) = 0^+$, 故 $\lim\limits_{t \to t_1^-} \frac{1}{x(t)} = +\infty$, 此时 $y(t) = \sin \frac{1}{x(t)}$ 在 $[0, 1]$ 内无限震荡.
+
+    另一方面，由 $\gamma$ 的连续性，取 $\varepsilon = 0.1$, 存在 $\delta > 0$, 使得当 $t \in (t_1 - \delta, t_1 + \delta) \cap [0, 1]$ 时，$|y(t) - y_1| < 0.1$, 即
+    $$
+        y(t) \in (y_1 - 0.1, y_1 + 0.1).
+    $$
+    但 $(y_1 - 0.1, y_1 + 0.1)$ 是长度仅为 $0.2$ 的区间，不可能同时包含 $0$ 和 $1$，这与 $y(t)$ 在 $[0, 1]$ 内无限震荡矛盾.
+
+    因此假设不成立，$E$ 不是道路连通的.
+
+    Q.E.D.
+\end{pf}
+
+\section*{2.} Prove that any nonempty open set $E \subset \mathbb{R}$ is the union of countably many disjoint open intervals.
+
+\begin{pf}
+    $\forall x\in E$，取$a=inf\{t\in\mathbb{R}|(a,t)\subset E\},b=sup\{t\in\mathbb{R}|(x,t)\subset E\}$为上下确界。则(a,b)$\in$E,令为$I_x$。这是包含x的极大开区间。
+
+    若两个极大开区间重叠但不相等，则它们的并依然是E的子集，与“极大”矛盾。所以每个极大开区间要么相等要么不相交。
+
+    又因为$\forall x\in E,\exists (a,b) s.t. x\in(a,b)\subseteq E$，E=$\bigcup_{x\in E}I_x$。为每组相等的$I_x$选出一个代表有理数，可知$I_x$的数量小于有理数的数量。又因为有理数可数，则这些不相交的开区间可数。
+
+    Q.E.D.
+\end{pf}
+
+\section*{3.} Prove that nonempty $E \subset \mathbb{R}$ is connected if and only if it is an interval.
+
+\begin{pf}
+    \textbf{必要性：} 假设 $E$ 是连通的但不是区间，则存在 $x < z < y$, 其中 $x, y \in E$ 但 $z \notin E$.
+
+    取开集 $A = (-\infty, z)$, $B = (z, +\infty)$, 则有
+    $$
+        A \cap E \neq \emptyset, \quad B \cap E \neq \emptyset, \quad A \cap B = \emptyset, \quad E \subset A \cup B.
+    $$
+    这说明 $E$ 不连通，与已知条件矛盾. 因此 $E$ 必为区间.
+
+    \textbf{充分性：} 假设区间 $E$ 不连通，则存在开集 $A, B$ 使得
+    $$
+        E \subset A \cup B, \quad A \cap B = \emptyset, \quad A \cap E \neq \emptyset, \quad B \cap E \neq \emptyset.
+    $$
+    取 $x \in A \cap E$, $y \in B \cap E$, 不妨设 $x < y$.
+
+    令 $z = \sup\{t \mid t \in [x, y] \cap A\}$. 由于 $[x, y] \subset E$ (因为 $E$ 是区间), 故 $z \in E$.
+
+    因为 $A, B$ 均为开集，若 $z \in A$, 则存在 $z$ 的邻域包含于 $A$, 与 $z$ 为上确界矛盾；若 $z \in B$, 同理可得矛盾. 因此 $z \notin A$ 且 $z \notin B$, 即 $z \notin A \cup B$, 这与 $E \subset A \cup B$ 矛盾.
+
+    因此假设不成立，$E$ 必连通.
+
+    综上所述，$E$ 连通当且仅当 $E$ 是区间.
+
+    Q.E.D.
+\end{pf}
+
+\end{document}
