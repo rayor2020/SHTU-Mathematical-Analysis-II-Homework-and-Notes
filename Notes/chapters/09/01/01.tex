@@ -198,3 +198,39 @@ $\partial B(M,r)=\left\{P\in\mathbb{R}^n\mid\boxed{d(P,M)=r}\right\}=S(M,r)\left
                   $\implies r\left(t_0\right)\in\overline{A}\subseteq B^C$, contradiction.
         \end{enumerate}}
 \end{pf}
+
+\begin{rmk}
+    Open set is connected iff it is path-connected.
+
+    \allbold{(Pick any $P\in X$, define
+        $$U=\left\{Q\in X\mid Q\text{ and }P\text{ can be connected by a path in }X\right\},$$
+        prove $U=X$)}
+
+    \begin{center}
+        \includegraphics[height=3cm]{chapters/09/01/0103}
+    \end{center}
+\end{rmk}
+
+\begin{define}[Single Curve]
+    If a curve: $\gamma:\,[\alpha,\beta]\to\mathbb{R}^2$ satisifies $\gamma\left(t_1\right)\neq\gamma\left(t_2\right)$ for any $\alpha\leq t_1<t_2\leq\beta$, then $\gamma$ is called a single curve. \emph{(Not self- intersection)}\raisebox{-1\height}{\includegraphics[height=2cm]{chapters/09/01/0104}}
+\end{define}
+
+\begin{define}[Loop / Closed Curve]
+    If the curve $\gamma:\,[\alpha,\beta]\to\mathbb{R}^2$ has the same starting and ending point, i.e. $\gamma(\alpha)=\gamma(\beta)$, then $\gamma$ is called a loop, or a closed curve.\raisebox{-1\height}{\includegraphics[height=1cm]{chapters/09/01/0105}}
+\end{define}
+
+\begin{thm}[Jordan Curve Theorem]
+    Any simple closed curve $\gamma$ on $\mathbb{R}^2$ divides $\mathbb{R}^2$ into two open connected sets, one is bounded called the interior part of $\gamma$, and the other which is unbounded called the exterior part of $\gamma$.\raisebox{-1\height}{\includegraphics[height=2cm]{chapters/09/01/0106}}
+\end{thm}
+
+环面：\raisebox{-0.5\height}{\includegraphics[height=5cm]{chapters/09/01/0107}}
+
+If the \emph{interior point} of any single closed curve in $D$ (connected open set) is contained in $D$, then $D$ is called \textbf{simply-connected}. Otherwise, it is called multi-connected.
+
+\begin{rmk}
+    Topological definition (depends on the crucial notion homotopy 同伦)
+
+    For $\mathbb{R}^2$, any loop is \emph{null-homotopic 零伦}, i.e. it is homotopic to a trivial loop.
+
+    \emph{$\Pi_1(x)$ 基本群}
+\end{rmk}
