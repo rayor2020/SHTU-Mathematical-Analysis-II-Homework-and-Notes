@@ -57,3 +57,28 @@ Similarly, we can define $\lim_{\substack{x\to\infty\\y\to\infty}}f(x,y),\,\lim_
 \begin{prop}[Heine Principle]
     Suppose $M_0$ is an accumulation point of $D$, then $\lim_{M\to M_0}f(M)=a$ iff for any point sequence $\left\{M_n\right\}\subseteq D\setminus\left\{M_0\right\}$, such that $M_n\to M_0\,(n\to+\infty)$, we have $f\left(M_n\right)\to a\,(n\to+\infty)$
 \end{prop}
+
+$\lim_{M\to M_0}f(M)$ exists $\iff\lim_{\delta\to 0}\sup_{B^-\left(M_0,\delta\right)}\left|f(M)-f\left(M'\right)\right|=0\iff$ In particular, $\lim_{\delta\to 0}\sup_{\partial B\left(M_0,\delta\right)}\left|f(M)-f\left(M'\right)\right|=0$
+
+\begin{example}
+    $f(x,y)=\begin{cases}
+            \frac{xy}{x^2+y^2} & (x,y)\neq(0,0) \\
+            0                  & (x,y)=(0,0)
+        \end{cases}$\quad\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/09/01/0301}}
+
+    \begin{enumerate}
+        \item Along the ray $y=kx$, $f(x,kx)=\frac{k}{1+k^2}\to\frac{k}{1+k^2}\,(x\to 0)$
+
+              $\implies$ The limits are different along different rays
+
+              $\implies\lim_{(x,y)\to(0,0)}f(x,y)$ does not exist
+              \item\begin{align*}
+                  \begin{cases}
+                      x=r\cos\theta \\
+                      y=r\sin\theta
+                  \end{cases} & \implies f(\delta\cos\theta,\delta\sin\theta)=\cos\theta\sin\theta                                    \\
+                                   & \implies\lim_{\delta\to 0}\sup_{M,M'\in\partial B(0,\delta)}\left|f(M)-f\left(M'\right)\right|=1 \\
+                                   & \implies\lim_{(x,y)\to 0}f(x,y)\text{ does not exist}
+              \end{align*}
+    \end{enumerate}
+\end{example}

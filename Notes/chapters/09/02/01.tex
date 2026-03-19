@@ -1,0 +1,47 @@
+\subsection{多变量函数的微分}
+\subsubsection[多变量函数的偏微商]{Differentiation}
+
+$\int^a_b\,df=\int_{\partial[a,b]}f$
+
+$$\begin{aligned}
+        \frac{\partial f}{\partial x}\left(x_0,y_0\right)=\lim_{x\to x_0}\frac{f\left(x,y_0\right)-f\left(x_0,y_0\right)}{x-x_0} \\
+        \frac{\partial f}{\partial y}\left(x_0,y_0\right)=\lim_{y\to y_0}\frac{f\left(x_0,y\right)-f\left(x_0,y_0\right)}{y-y_0}
+    \end{aligned}\quad\text{(assume domain is open set)}$$are called the first order partial derivatives of $f$ at $(x_0,y_0)$.
+
+If $\frac{\partial f}{\partial x}(x,y)$ exists, for any $(x,y)\in D$, then the function $\frac{\partial f}{\partial x}$ is called the first order partial derivative (function), also denoted by $f_x',f_y'$
+
+Similarly, we can define
+\begin{align*}
+    \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right)=\frac{\partial^2f}{\partial x^2}=f_{xx}''\quad\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right)=\frac{\partial^2f}{\partial y^2}=f_{yy}'' \\
+    \underset{\text{\allbold{mixed 2nd-order partial derivatives}}}{\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)=\frac{\partial^2f}{\partial y\partial x}=f_{xy}''\overset{\text{\emph{not necessarily}}}{\neq}\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)=\frac{\partial^2f}{\partial x\partial y}=f_{yx}''}
+\end{align*}
+
+\paragraph{Geometric Meaning of Second-order Partial Derivatives}
+
+\begin{align*}
+    \left.\frac{\partial^2f}{\partial x^2}\right|_{\left(x_0,y_0\right)} & =\left.\frac{d}{dx}\right|_{x=x_0}\frac{\partial f}{\partial x}\left(x,y_0\right)=\left.\frac{d}{dx}\right|_{x=x_0}\left.\frac{d}{dt}\right|_{t=x}f\left(t,y_0\right)                                   \\
+                                                                         & =\lim_{\Delta x\to 0}\frac{\frac{\partial f}{\partial x}\left(x_0+\Delta x,y_0\right)-\frac{\partial f}{\partial x}\left(x_0,y_0\right)}{\Delta x}                                                      \\
+                                                                         & =\lim_{\Delta x\to 0}\frac{1}{\Delta x}\lim_{\Delta t\to 0}\frac{f\left(x_0+\Delta x+\Delta t,y_0\right)-f\left(x_0+\Delta x,y_0\right)-f\left(x_0+\Delta t,y_0\right)+f\left(x_0,y_0\right)}{\Delta t} \\
+                                                                         & =\underset{\substack{\downarrow                                                                                                                                                                         \\\text{\allbold{The second order ordinary derivative of the function $f\left(x,y_0\right)$ at $x_0$}}}}{\lim_{\Delta x\to 0}\lim_{\Delta t\to 0}\frac{f\left(x_0+\Delta x+\Delta t,y_0\right)-f\left(x_0+\Delta x,y_0\right)-f\left(x_0+\Delta t,y_0\right)+f\left(x_0,y_0\right)}{\Delta x\Delta t}}
+\end{align*}
+
+\begin{align*}
+    \left.\frac{\partial^2f}{\partial y\partial x}\right|_{\left(x_0,y_0\right)}              & =\lim_{\Delta y\to 0}\frac{\frac{\partial f}{\partial x}\left(x_0,y_0+\Delta y\right)-\frac{\partial f}{\partial x}\left(x_0,y_0\right)}{\Delta y} \\
+                                                                                              & =\lim_{\Delta y\to 0}\lim_{\Delta x\to 0}\underset{\substack{\downarrow                                                                            \\\frac{\mathrm{II}(\Delta x,\Delta y)}{\Delta x\Delta y}}}{\frac{f\left(x_0+\Delta x,y_0+\Delta y\right)-f\left(x_0,y_0+\Delta y\right)-f\left(x_0+\Delta x,y_0\right)+f\left(x_0,y_0\right)}{\Delta x\Delta y}}\\
+    \boldsymbol{\left.\frac{\partial^2f}{\partial x\partial y}\right|_{\left(x_0,y_0\right)}} & \boldsymbol{=\lim_{\Delta x\to 0}\lim_{\Delta y\to 0}\frac{\mathrm{II}(\Delta x,\Delta y)}{\Delta x\Delta y}}
+\end{align*}
+
+\begin{thm}
+    If $\frac{\partial^2f}{\partial x\partial y},\frac{\partial^2f}{\partial y\partial x}$ exist in an open neighborhood of $(x_0,y_0)$ and are both continuous at $\left(x_0,y_0\right)$, then $\left.\frac{\partial^2f}{\partial y\partial x}\right|_{\left(x_0,y_0\right)}=\left.\frac{\partial^2f}{\partial x\partial y}\right|_{\left(x_0,y_0\right)}$
+    \begin{pf}
+        \begin{align*}
+                                                                           & f(x_0+h,y_0+k)-f(x_0,y_0+k)-f(x_0+h,y_0)+f(x_0,y_0)                                                                              \\
+            =                                                              & \phi(h)-\phi(0)\text{ where }\substack{\phi(h)=f(x_0+h,y_0+k)-f(x_0+h,y_0)                                                       \\\phi(0)=f(x_0,y_0+k)-f(x_0,y_0)}\\
+            \overset{\exists\theta\in(0,1)}{\underset{\text{L.M.V.T.}}{=}} & \phi'(\theta h)h=\left(\frac{\partial f}{\partial x}(x_0+\theta h,y_0+k)-\frac{\partial f}{\partial x}(x_0+\theta h,y_0)\right)h \\
+            \overset{\exists\eta\in(0,1)}{\underset{\text{L.M.V.T.}}{=}}   & \left.\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)\right|_{(x_0+\theta h,y_0+\eta k)}kh
+        \end{align*}
+
+        Similarly, $\mathrm{II}(h,k)=\frac{\partial^2 f}{\partial x\partial y}(x_0+\theta h,y_0+\eta k)hk=\frac{\partial^2 f}{\partial y\partial x}(x_0+\theta h,y_0+\eta k)hk$\\
+        $\overset{\text{\allbold{Take limit $h,k\to 0$}}}{\implies}\boldsymbol{\left.\frac{\partial^2 f}{\partial x\partial y}\right|_{(x_0,y_0)}=\left.\frac{\partial^2 f}{\partial y\partial x}\right|_{(x_0,y_0)}}$
+    \end{pf}
+\end{thm}
