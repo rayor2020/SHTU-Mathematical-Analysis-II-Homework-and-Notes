@@ -46,3 +46,115 @@ Similarly, we can define
     \end{pf}
 \end{thm}
 
+\begin{thm}
+    If $f_{yx}''=\frac{\partial^2f}{\partial x\partial y}=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)$ and $\frac{\partial^2f}{\partial y\partial x}$ are both \emph{continuous} at $M_0=(x_0,y_0)$, then
+    $$
+        \frac{\partial^2f}{\partial x\partial y}(x_0,y_0)=\frac{\partial^2f}{\partial y\partial x}(x_0,y_0)
+    $$
+\end{thm}
+\begin{example}
+    \boxed{$$f(x)=x^2\sin\frac{1}{x}\quad f'(x)=2x\sin\frac{1}{x}-\cos\frac{1}{x}\quad\lim_{x\to0}\frac{f(x)-f(0)}{x}=0$$}
+
+    $$
+        f(x,y)=\begin{cases}
+            \frac{xy}{x^2+y^2}(x^2-y^2) & (x,y)\neq(0,0) \\
+            0                           & (x,y)
+        \end{cases}
+    $$
+    \begin{enumerate}[label=\emph{(\arabic*)}]
+        \item $f$ is continuous on $\mathbb{R}^2$
+        \item \begin{align*}
+                  \frac{\partial f}{\partial x}(x,y) & =\frac{y(x^2-y^2)+2x^2y}{x^2+y^2}-\frac{2x^2y(x^2-y^2)}{(x^2+y^2)^2},\ (x,y)\neq(0,0) \\
+                                                     & =y\frac{(3x^2-y^2)(x^2+y^2)-2x^2(x^2-y^2)}{(x^2+y^2)^2}                               \\
+                                                     & =y\frac{x^4+4x^2y^2-y^4}{(x^2+y^2)^2}
+              \end{align*}
+              $\frac{\partial f}{\partial x}(0,0)=0$ since $\lim_{x\to0}\left(\frac{\partial f}{\partial x}(x,0)\right)=\lim_{x\to 0}\frac{d}{dx}(f(x,0))=\lim_{x\to0}\frac{d}{dx}(0)=0$, then using Darboux's Thm for one-variable function.
+
+              $\frac{\partial f}{\partial x}(0,0)=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x}=\lim_{x\to 0}\frac{0-0}{x}=0$ (direct computation by definition)
+
+              Similarly,
+              $$
+                  \frac{\partial f}{\partial y}(x,y)=\begin{cases}
+                      -x\cdot\frac{y^4+4x^2y^2-x^4}{(x^2+y^2)^2} & (x,y)\neq(0,0) \\
+                      0                                          & (x,y)=(0,0)
+                  \end{cases}
+              $$
+              In conclusion, \emph{$\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ are both continuous on $\mathbb{R}^2$}
+        \item $\frac{\partial^2 f}{\partial x^2},\frac{\partial^2 f}{\partial x\partial y},\frac{\partial^2 f}{\partial y\partial x},\frac{\partial^2 f}{\partial y^2}$
+
+              \begin{align*}
+                  \frac{\partial^2f}{\partial x^2}(x,y) & =y\cdot\frac{(4x^3+8xy^2)(x^2+y^2)^2-4x(x^2+y^2)(x^4+4x^2y^2-y^4)}{(x^2+y^2)^4} \\
+                                                        & =4xy\cdot\frac{(x^2+2y^2)(x^2+y^2)-(x^4+4x^2y^2-y^4)}{(x^2+y^2)^3}              \\
+                                                        & =4xy\cdot\frac{3y^4-x^2y^2}{(x^2+y^2)^3}                                        \\
+                                                        & =4xy^3\cdot\frac{3y^2-x^2}{(x^2+y^2)^3},\ (x,y)\neq(0,0)
+              \end{align*}
+              $$
+                  \frac{\partial^2f}{\partial x^2}(0,0)=\begin{cases}
+                      \lim_{x\to0}\frac{\frac{\partial f}{\partial x}(x,0)-\frac{\partial f}{\partial x}(0,0)}{x-0}=0 \\
+                      =0\quad\text{by computing }\lim_{x\to0}\frac{\partial^2f}{\partial x^2}(x,0)
+                  \end{cases}
+              $$
+
+              $\dfrac{\partial^2f}{\partial y^2}\dots$ (ommited)
+
+              \begin{align*}
+                  \frac{\partial^2f}{\partial x\partial y}(x,y) & =-\frac{\partial}{\partial x}\left(\frac{x(y^4+4x^2y^2-x^4)}{(x^2+y^2)^2}\right)                             \\
+                                                                & =-\left(\frac{(y^4+4x^2y^2-x^4)+(8xy^2-4x^3)x}{(x^2+y^2)^2}-\frac{4x^2(y^4+4x^2y^2-x^4)}{(x^2+y^2)^3}\right) \\
+                                                                & =-\frac{(y^4+12x^2y^2-5x^4)(x^2+y^2)-4x^2(y^4+4x^2y^2-x^4)}{(x^2+y^2)^3}                                     \\
+                                                                & =-\frac{y^6+9y^4x^2-9y^2x^4-x^6}{(x^2+y^2)^3},\ (x,y)\neq(0,0)
+              \end{align*}
+
+              $\dfrac{\partial^2f}{\partial y\partial x}=\dots=\frac{\partial^2f}{\partial x\partial y},\ (x,y)\neq(0,0)$\\
+              \emph{$=$ rational function of $x,y$ with nonzero denominator around $(x,y)\neq(0,0)$}
+
+              \emph{Therefore $\frac{\partial^2f}{\partial y\partial x}$ is continuous at $(x,y)\neq(0,0)$}
+
+              \emph{$\implies\frac{\partial^2f}{\partial y\partial x}(x,y)=\frac{\partial^2f}{\partial x\partial y}(x,y)$ for $(x,y)\neq(0,0)$}
+
+              \begin{align*}
+                  \frac{\partial^2 f}{\partial y\partial x}(0,0) & =\lim_{y\to 0}\frac{\frac{\partial f}{\partial x}(0,y)-\frac{\partial f}{\partial x}(0,0)}{y}                                    \\
+                                                                 & =\lim_{y\to 0}\frac{-y^4}{(y^2)^2}=-1                                                                                            \\
+                  \frac{\partial^2 f}{\partial x\partial y}(0,0) & =\lim_{x\to 0}\frac{\frac{\partial f}{\partial y}(x,0)-\frac{\partial f}{\partial y}(0,0)}{x}=\lim_{x\to 0}\frac{x^4}{(x^2)^2}=1
+              \end{align*}
+
+              In conclusion, $\frac{\partial^2 f}{\partial x^2},\frac{\partial^2 f}{\partial x\partial y},\frac{\partial^2 f}{\partial y\partial x},\frac{\partial^2 f}{\partial y^2}$ are all bounded, are all discontinuous at $(0,0)$.
+
+              $f$ is ``smooth'' on $\mathbb{R}^2\setminus\{(0,0)\}$.
+
+              Furthermore, $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ are locally Lipschitz continuous, i.e. $\left|\frac{\partial f}{\partial x}(M_1)-\frac{\partial f}{\partial x}(M_2)\right|\leq Cd(M+1,M_2)$ for some $C>0,\,M_1,M_2\in B(0,1)$.
+    \end{enumerate}
+\end{example}
+
+\begin{rmk}
+    \begin{align*}
+        \mathrm{II}(h,k) & =(f(h,k)-f(h,0))-(f(0,k)-f(0,0))                                                                   \\
+                         & =\left.(f(x,k)-f(x,0))\right|_0^h                                                                  \\
+                         & =\left(\frac{\partial f}{\partial x}(\theta h,k)-\frac{\partial f}{\partial x}(\theta h,0)\right)h \\
+                         & =\left(\frac{\partial f}{\partial y}(h,\eta k)-\frac{\partial f}{\partial y}(0,\eta k)\right)h
+    \end{align*}
+    \includegraphics[width=\columnwidth]{chapters/09/02/0101}
+\end{rmk}
+
+\begin{example}
+    $f(x,y)=F(x)+G(y)$ where $F\in C^1$, $G$ is arbitrary.
+    \begin{itemize}
+        \item $\frac{\partial f}{\partial x}(x,y)=F'(x)\implies\boxed{\frac{\partial^2 f}{\partial y\partial x}(x,y)\equiv0}$
+        \item $\frac{\partial f}{\partial y}$ does not necessarily exists, let alone $\frac{\partial^2f}{\partial x\partial y}$
+        \item \allbold{If $F,G\in C^1$, $\frac{\partial^2 f}{\partial x\partial y}\equiv\frac{\partial^2f}{\partial y\partial x}\equiv0$, but $\frac{\partial^2f}{\partial x^2},\frac{\partial^2f}{\partial y^2}$ does not necessarily exists.}
+    \end{itemize}
+\end{example}
+In contrast, look at
+\begin{example}
+    Assume $\frac{\partial^2f}{\partial x^2}\equiv0$, $\frac{\partial^2f}{\partial y^2}\equiv0$.
+    \begin{itemize}
+        \item $\frac{\partial^2f}{\partial x^2}\equiv0\implies f$ is a linear function of $x$ on $\{(t,y)\mid t\in\mathbb{R}\}\implies f(x,y)=G(y)+A(y)x$, where $A,G$ are arbitrary.
+        \item $\frac{\partial^2f}{\partial y^2}\equiv0\implies$\begin{itemize}
+                  \item \allbold{$G(y)=a+by$ where $a,b$ are constant.}
+                  \item \allbold{$A(y)=c+dy$ where $c,d$ are constant.}
+              \end{itemize}
+              $a+by+(c+dy)x=a+by+cx+dxy,\ a,b,c,d\in\mathbb{R}$ Solution.
+    \end{itemize}
+    \begin{rmk}
+        $\Delta f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}=0\implies f$ has some good property.
+    \end{rmk}
+\end{example}
