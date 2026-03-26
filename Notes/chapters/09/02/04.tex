@@ -4,6 +4,20 @@
 
 Suppose $f$ is differentiable at $x\in U$, $g$ is differentiable at $y=f(x)$, then $g\circ f$ is differentiable at $x$, and $d(g\circ f)|_x=dg|_{y=f(x)}\underset{\substack{\uparrow\\\textbf{composition of linear maps}}}{\circ}df|_x$
 
-\begin{pf}
+\begin{center}
+    \includegraphics[width=0.5\columnwidth]{chapters/09/02/0401}
+\end{center}
 
+\begin{pf}
+    $\begin{cases}
+            f(x+\Delta x)-f(x)=df|_x(\Delta x)+\circ(|\Delta x|) \\
+            g(y+\Delta y)-g(y)=dg|_y(\Delta y)+\circ(|\Delta y|)
+        \end{cases}$ At the particular point $y=f(x)$
+
+    \begin{align*}
+        (g\circ f)(x+\Delta x)-(g\circ f)(x) & = g(f(x+\Delta x))-g(f(x))                                               \\
+                                             & =dg|_{y=f(x)}(f(x+\Delta x)-f(x))+\circ(|\Delta x|)                      \\
+                                             & =dg_{y=f(x)}(df|_x(\Delta x)+\circ(|\Delta x|))+\circ(|\Delta x|)        \\
+                                             & =dg_{y=f(x)}\circ df|_x(\Delta x)+\circ(|\Delta x|)\text{, }\Delta x\to0
+    \end{align*}
 \end{pf}
