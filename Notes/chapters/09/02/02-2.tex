@@ -1,0 +1,100 @@
+$$f:\,D(\subseteq\mathbb{R}^n)\to\mathbb{R}$$
+
+differentiable at $x$ iff $f(x+\Delta x)=f(x)+df|_x(\Delta x)+\circ(|\Delta x|)$, $\Delta x\to 0$
+
+\begin{example}
+    $r=\sqrt{x^2+y^2}=d(P,0)$, $P=(x,y)^T$
+
+    $\left|r(M_1)-r(M_2)\right|=|d(M_1,0)-d(M_2,0)|\leq d(M_1,M_2)\implies r$ is Lipschitz continuous.
+
+    But $\operatorname{Graph}(r)=\{(x,y,\sqrt{x^2+y^2})\mid(x,y)\in\mathbb{R}^2\}=$\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/09/02/0201}}
+
+    Why it is not differentiable at $(0,0)$?
+
+    $\rightarrow$ Suppose it is: then $\sqrt{x^2+y^2}=ax+by+\circ(\sqrt{x^2+y^2})$, $(x,y)\to (0,0)$ (for some $a,b\in\mathbb{R}$)
+    \begin{enumerate}
+        \item Along the positive $x$ axis:
+
+              $x=ax+\circ(|x|)$, $x\to 0\implies a=1\implies$ Contradiction.
+        \item Along the negative $x$ axis:
+
+              $-x=ax+\circ(|x|)$, $x\to 0\implies a=-1$
+    \end{enumerate}
+    \emph{$\frac{\partial r}{\partial x}=\frac{x}{r},\frac{\partial r}{\partial y}=\frac{y}{r}$ are continuous on $\mathbb{R}^2\setminus\{(0,0)\}\implies r$ is differentiable on $\mathbb{R}^2\setminus\{(0,0)\}$.}
+\end{example}
+
+\begin{prop}[Criteria for differentiability]
+    Suppose $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ $\underset{\text{\emph{exist in an open neighborhood and continuous at $(x_0,y_0)$}}}{\text{are continuous in an \emph{open neighborhood}}}$ of $(x_0,y_0)$, then $f$ is differentiable at $(x_0,y_0)$.
+    \begin{rmk}
+        The converse is obviously wrong.
+    \end{rmk}
+    \begin{pf}
+        \begin{align*}
+            f(x_0+h,y_0+k) & =f(x_0,y_0)=\overbrace{f(x_0+h,y_0+k)-f(x_0+h,y_0)}-\overbrace{f(x_0+h,y_0)-f(x_0,y_0)}                                                                                                                                        \\
+                           & \overset{\text{LMVT}}{=}\frac{\partial f}{\partial y}(x_0+h,y+0+\eta k)k+\frac{\partial f}{\partial x}(x_0+\theta h,y_0)h                                                                                                      \\
+                           & =(\frac{\partial f}{\partial x}(x_0,y_0)h+\frac{\partial f}{\partial y}(x_0,y_0)k)                                                                                                                                             \\
+                           & \quad+\underbrace{(\frac{\partial f}{\partial x}(x_0+\theta h,y_0)-\frac{\partial f}{\partial x}(x_0,y_0))h+(\frac{\partial f}{\partial y}(x_0+h,y_0+\eta k)-\frac{\partial f}{\partial y}(x_0,y_0))k}_{\operatorname{I}(h,k)}
+        \end{align*}
+        $$\left|\frac{\operatorname{I}(h,k)}{\sqrt{h^2+k^2}}\right|\leq\left|\frac{\partial f}{\partial x}(x_0+\theta h,y_0)-\frac{\partial f}{\partial x}(x_0,y_0)\right|+\left|\frac{\partial f}{\partial y}(x_0+h,y_0+\eta k)-\frac{\partial f}{\partial y}(x_0,y_0)\right|$$
+
+        $\to0$, $(h,k)\to(0,0)$ by the continuity of $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ in the neighborhood of $(x_0,y_0)$
+    \end{pf}
+\end{prop}
+
+\begin{prop}
+    Suppose $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ are locally bounded near $(x_0,y_0)$, then $f$ is continuous at $(x_0,y_0)$.
+    \begin{pf}
+        $$\left|f(x_0+h,y_0+k)-f(x_0,y_0)\right|\leq C(|h|+|k|)$$
+
+        where $C=\sup_{B((x_0,y_0),\delta)}\left\{\left|\frac{\partial f}{\partial x}\right|+\left|\frac{\partial f}{\partial y}\right|\right\}$
+
+        $\implies f(x_0+h,y_0+k)\to f(x_0,y_0)$, $h,k\to0$ \emph{(Actually, $f$ is locally Lipschitz.)}
+    \end{pf}
+\end{prop}
+
+Recall\begin{itemize}
+    \item $\frac{\partial}{\partial x}(\lambda f+\mu g)=\lambda\frac{\partial f}{\partial x}+\mu\frac{\partial g}{\partial x}$, $\lambda,\mu$ are constant
+    \item $\frac{\partial}{\partial x}(fg)=\frac{\partial f}{\partial x}g+f\frac{\partial g}{\partial x}$
+    \item $\frac{\partial}{\partial x}\left(\frac{f}{g}\right)=\frac{\frac{\partial f}{\partial x}g-f\frac{\partial g}{\partial x}}{g^2}$
+\end{itemize}
+$\rightarrow$ Composition$$\begin{aligned}
+        f:\,\mathbb{R}^2 & \to\mathbb{R}  \\
+        (x,y)            & \mapsto f(x,y)
+    \end{aligned},\,\begin{aligned}
+        g:\,\mathbb{R}^2 & \to\mathbb{R}^2 \\
+        (u,v)            & \mapsto(x,y)
+    \end{aligned},\,f\circ g(u,v)=f(x(u,v),y(u,v))$$
+
+$\implies\begin{cases}
+        (f\circ g)'(x)=f'(g(x))g'(x) \\
+        \text{单变量正确，多变量不能直接推广}
+    \end{cases}$
+
+\begin{prop}
+    Suppose $f$ and $g$ are both differentiable at $x\in D$, then\begin{enumerate}
+        \item $\forall\lambda,\mu\in\mathbb{R}$, $\lambda f+\mu g$ is differentiable at $x$, $d(\lambda f+\mu g)|_x=\lambda df|_x+\mu dg|_x$
+        \item $fg$ is differentiable at $x$, $d(fg)|_x=df|_xg(x)+f(x)dg|_x$, $d(\frac{f}{g})|_x=\frac{df|_xg(x)-f(x)dg|_x}{g^2(x)}$
+    \end{enumerate}
+    \begin{pf}
+        $f(x+\Delta x)=f(x)+df|_x(\Delta x)+\circ(|\Delta x|)$, $\Delta x\to0$
+
+        $g(x+\Delta x)=g(x)+dg|_x(\Delta x)+\circ(|\Delta x|)$, $\Delta x\to0$
+
+        $\implies(\lambda f+\mu g)(x+\Delta x)=(\lambda x+\mu g)(x)+\lambda\cdot df|_x(\Delta x)+\mu\cdot dg|_x(\Delta x)+\circ(|\Delta x|)$, $\Delta x\to0$
+        \begin{align*}
+            (fg)(x+\Delta x)-(fg)(x) & =(f(x+\Delta x)-f(x))g(x+\Delta x)+f(x)(g(x+\Delta x)-g(x))        \\
+                                     & =(df|_x(\Delta x)+\circ(|\Delta x|))(g(x)+(g(x+\Delta x)-g(x)))    \\
+                                     & \quad+f(x)(dg|_x(\Delta x)+\circ(|\Delta x|))\text{, }\Delta x\to0 \\
+                                     & =df|_x(\Delta x)g(x)+f(x)dg|_x(\Delta x)+R(x,\Delta x)
+        \end{align*}
+
+        $R(x,\Delta x)=df|_x(\Delta x)(g(x+\Delta x)-g(x))+\circ(|\Delta x|)g(x)+f(x)\circ(|\Delta x|)$
+
+        $\implies\left|\frac{R(x,\Delta x)}{|\Delta x|}\right|\leq\underset{\substack{\downarrow\\\text{bounded}}}{\frac{\left|df|_x(\Delta x)\right|}{|\Delta x|}}\underset{\substack{\to0\\\text{(by the continuity of $f$ at $x$)}}}{|g(x+\Delta x)-g(x)|}+|g(x)|\frac{\circ(|\Delta x|)}{|\Delta x|}+|f(x)|\frac{\circ(|\Delta x|)}{|\Delta x|}\to0$ as $\Delta x\to0$
+
+        \boxed{\substack{$$df|_x(\Delta x)=\frac{\partial f}{\partial x_1}\Delta x_1+\dots+\frac{\partial f}{\partial x_n}\Delta x_n$$\\$$\left|df|_x(\Delta x)\right|\leq|\Delta x|\cdot\sum_{i=1}^n\left|\frac{\partial f}{\partial x_i}\right|$$}}
+
+        Consequently, $d(fg)|_x=df|_xg(x)+f(x)dg|_x$
+    \end{pf}
+\end{prop}
+
