@@ -21,7 +21,7 @@
 % 定理环境定义
 \newtheorem*{thm}{Thm}
 \newtheorem*{define}{Def}
-\newtheorem{lemma}{引理}
+% \newtheorem{lemma}{引理}
 \newtheorem*{corollary}{Corollary}
 \newtheorem*{example}{Eg}
 \newtheorem*{rmk}{Rmk}
@@ -31,6 +31,9 @@
 % 图形支持
 \usepackage{graphicx}
 \usepackage{tikz}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
 
 % 超链接支持
 \usepackage{hyperref}
@@ -91,16 +94,16 @@
 \include{chapters/09/02/02-2}
 \include{chapters/09/02/03}
 \include{chapters/09/02/04}
+\include{chapters/09/02/05}
+
+% 10
+\include{chapters/09/03/01}
 
 
 
 
 
 
-\subsubsection{向量值函数的微商和微分}
-
-\subsection{隐函数定理和逆映射定理}
-\subsubsection{隐函数的存在性和微商}
 \subsubsection{从微分的角度看隐函数定理}
 \subsubsection{逆映射的微商}
 

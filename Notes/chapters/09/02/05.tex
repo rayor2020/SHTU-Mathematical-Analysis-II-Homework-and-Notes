@@ -1,0 +1,151 @@
+\subsubsection{向量值函数的微商和微分}
+
+\begin{align*}
+    x               & \mapsto y=f(x)                                                       \\
+    (x_1,\dots,x_n) & \mapsto(y_1,\dots,y_m)=(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n))
+\end{align*}
+$f$ is differentiable at $x$. $\Delta y=df|_x(\Delta x)+\circ(|\Delta x|)\implies f_1,\dots,f_m$ are all differentiable at $x$. I.e.
+$$
+    \begin{pmatrix}
+        \Delta y_1 \\
+        \vdots     \\
+        \Delta y_m
+    \end{pmatrix}=\underset{\substack{J_x(f)\\\textbf{Jacobi matrix of $f$ at $x$,}\\\textbf{it is the matrix of the linear map $df|_x$}\\\textbf{under the standard \emph{basis}}\\\textbf{(for both domain and range)}}}{\left.\begin{pmatrix}
+            \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+                                              &        &                                   \\
+            \frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n}
+        \end{pmatrix}\right|_x}\begin{pmatrix}
+        \Delta x_1 \\
+        \vdots     \\
+        \Delta x_n
+    \end{pmatrix}+\circ(|\Delta x|)\text{, }\Delta x\to0
+$$
+
+$$
+    \substack{x\mapsto y=f(x)\\y\mapsto z=g(y)}\leadsto x\mapsto z=g\circ f(x)=g(f(x))
+$$
+
+Chain Rule for diffential $d(g\circ f)|_x=dg|_{y=f(x)}\circ df|_x$
+
+Under the Cartesian coordinates,
+$$
+    \left.\begin{matrix}
+        (x_1,\dots,x_n) & (y_1,\dots,y_m)                                                                            & (z_1,\dots,z_k)                                                                            \\
+                        & \begin{cases}\substack{y_1=f_1(x_1,\dots,x_n) \\\vdots\\y_m=f_m(x_1,\dots,x_n)}\end{cases} & \begin{cases}\substack{z_1=g_1(y_1,\dots,y_m) \\\vdots\\z_k=g_k(y_1,\dots,y_m)}\end{cases}
+    \end{matrix}\right|\leadsto\begin{cases}
+        \substack{\underset{\rightarrow\substack{\frac{\partial z_1}{\partial x_1}=\frac{\partial z_1}{\partial y_1}\frac{\partial y_1}{\partial x_1}+\dots+\frac{\partial z_1}{\partial y_m}\frac{\partial y_m}{\partial x_1}}}{z_1=g_1(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n))} \\\vdots\\z_k=g_k(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n))}
+    \end{cases}
+$$
+
+At $y=f(x)$,
+
+\begin{align*}
+    \begin{pmatrix}
+        \Delta z_1 \\
+        \vdots     \\
+        \Delta z_k
+    \end{pmatrix} & =\left.\begin{pmatrix}
+                               \frac{\partial g_1}{\partial y_1} & \cdots & \frac{\partial g_1}{\partial y_m} \\
+                               \vdots                            &        &                                   \\
+                               \frac{\partial g_k}{\partial y_1} & \cdots & \frac{\partial g_k}{\partial y_m}
+                           \end{pmatrix}\right|_{y=f(x)}\begin{pmatrix}
+                                                            \Delta y_1 \\
+                                                            \vdots     \\
+                                                            \Delta y_m
+                                                        \end{pmatrix}+\circ(|\Delta y|)                                                                                    \\
+                    & =\left.\underset{J_{y=f(x)}(g)}{\begin{pmatrix}
+                                                              \frac{\partial g_1}{\partial y_1} & \cdots & \frac{\partial g_1}{\partial y_m} \\
+                                                              \vdots                            &        &                                   \\
+                                                              \frac{\partial g_k}{\partial y_1} & \cdots & \frac{\partial g_k}{\partial y_m}
+                                                          \end{pmatrix}}\right|_{y=f(x)}\left.\underset{J_{x}(f)}{\begin{pmatrix}
+                                                                                                                      \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+                                                                                                                      \vdots                            &        &                                   \\
+                                                                                                                      \frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n}
+                                                                                                                  \end{pmatrix}}\right|_{x}\begin{pmatrix}
+                                                                                                                                           \Delta x_1 \\
+                                                                                                                                           \vdots     \\
+                                                                                                                                           \Delta x_n
+                                                                                                                                       \end{pmatrix}+\circ(|\Delta x|) \\
+                    & =\left.\underset{J_x(g\circ f)}{\begin{pmatrix}
+                                                              \frac{\partial g_1}{\partial x_1} & \cdots & \frac{\partial g_1}{\partial x_n} \\
+                                                              \vdots                            &        &                                   \\
+                                                              \frac{\partial g_k}{\partial x_1} & \cdots & \frac{\partial g_k}{\partial x_n}
+                                                          \end{pmatrix}}\right|_x\begin{pmatrix}
+                                                                                 \Delta x_1 \\
+                                                                                 \vdots     \\
+                                                                                 \Delta x_n
+                                                                             \end{pmatrix}+\circ(|\Delta x|)
+\end{align*}
+
+Chain Rule (in terms of partial derivatives)
+$$J_x(g\circ f)=J_{y=f(x)}(g)\cdot J_x(f)$$
+More concretely, $\left.\frac{\partial g_a}{\partial x_b}\right|_x=\sum_{c=1}^m\left.\frac{\partial g_a}{\partial y_c}\right|_{y=f(x)}\cdot\left.\frac{\partial f_c}{\partial x_b}\right|_x$ or $\boxed{\frac{\partial z_a}{\partial x_b}=\sum_{c=1}^m\frac{\partial z_a}{\partial y_c}\frac{\partial y_c}{\partial x_b}}$
+
+$n=m$, $\det J_x(f)=\left.\frac{\partial(y_1\dots y_n)}{\partial(x_1\dots x_n)}\right|_x\dots$ Jacobian determinant
+
+$\left.\frac{\partial(y_1\dots y_n)}{\partial(x_1\dots x_n)}\right|_x=\lim_{\Delta x\to0}\frac{\operatorname{Vol}(\Delta S)}{\operatorname{Vol}(\Delta x)}$
+
+$n=2,m=3$, $(u,v)\to r(u,v)=(x(u,v),y(u,v),z(u,v))$
+
+$(u,v)\to r(u,v)=(x(u,v),y(u,v),z(u,v))$ differentiable
+
+Jacobian matrix $=\begin{pmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \\
+        \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v}
+    \end{pmatrix}$\quad$\begin{pmatrix}
+        \frac{\partial x}{\partial u} \\
+        \frac{\partial y}{\partial u} \\
+        \frac{\partial z}{\partial u}
+    \end{pmatrix}$, $\begin{pmatrix}
+        \frac{\partial x}{\partial v} \\
+        \frac{\partial y}{\partial v} \\
+        \frac{\partial z}{\partial v}
+    \end{pmatrix}$
+
+Jacobian matrix has rank $2\iff r_u$ and $r_v$ are independent.
+
+\begin{example}
+    Suppose $u=f(x,y,z)$, $y=\varphi(x,r)$, $z=\psi(x,y,r)$. Find $\frac{\partial u}{\partial x},\frac{\partial u}{\partial r}$
+
+    $\begin{cases}
+            \frac{\partial u}{\partial x}=\frac{\partial f}{\partial x}+\frac{\partial f}{\partial y}\frac{\partial \varphi}{\partial x}+\frac{\partial f}{\partial z}\left(\frac{\partial \psi}{\partial x}+\frac{\partial \psi}{\partial y}\frac{\partial \varphi}{\partial x}\right) \\
+            \frac{\partial u}{\partial r}=\frac{\partial f}{\partial y}\frac{\partial\varphi}{\partial r}+\frac{\partial f}{\partial z}\left(\frac{\partial\psi}{\partial y}\frac{\partial\varphi}{\partial r}+\frac{\partial\psi}{\partial r}\right)
+        \end{cases}$
+\end{example}
+
+\begin{example}
+    $\xi=\xi(u,v)$, $\zeta=\zeta(u,v)$, $u=u(x,y)$, $v=v(x,y)$
+
+    $\begin{cases}
+            \frac{\partial\xi}{\partial x}=\frac{\partial\xi}{\partial u}\frac{\partial u}{\partial x}+\frac{\partial\xi}{\partial v}\frac{\partial v}{\partial x}       \\
+            \frac{\partial\xi}{\partial y}=\frac{\partial\xi}{\partial u}\frac{\partial u}{\partial y}+\frac{\partial\xi}{\partial v}\frac{\partial v}{\partial y}       \\
+            \frac{\partial\zeta}{\partial x}=\frac{\partial\zeta}{\partial u}\frac{\partial u}{\partial x}+\frac{\partial\zeta}{\partial v}\frac{\partial v}{\partial x} \\
+            \frac{\partial\zeta}{\partial y}=\frac{\partial\zeta}{\partial u}\frac{\partial u}{\partial y}+\frac{\partial\zeta}{\partial v}\frac{\partial v}{\partial y}
+        \end{cases}\rightarrow\begin{pmatrix}
+            \frac{\partial\xi}{\partial x}   & \frac{\partial\xi}{\partial y}   \\
+            \frac{\partial\zeta}{\partial x} & \frac{\partial\zeta}{\partial y}
+        \end{pmatrix}=\begin{pmatrix}
+            \frac{\partial\xi}{\partial u}   & \frac{\partial\xi}{\partial v}   \\
+            \frac{\partial\zeta}{\partial u} & \frac{\partial\zeta}{\partial v}
+        \end{pmatrix}\begin{pmatrix}
+            \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
+            \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+        \end{pmatrix}$
+
+    \begin{align*}
+        d\xi & =\frac{\partial\xi}{\partial u}du+\frac{\partial\xi}{\partial v}dv                                                                                                                                                     \\
+             & =\frac{\partial\xi}{\partial u}\left(\frac{\partial u}{\partial x}dx+\frac{\partial u}{\partial y}dy\right)+\frac{\partial\xi}{\partial v}\left(\frac{\partial v}{\partial x}dx+\frac{\partial v}{\partial y}dy\right) \\
+             & =\frac{\partial\xi}{\partial x}dx+\frac{\partial\xi}{\partial y}dy\quad\text{一阶微分形式的不变性（协变性）}
+    \end{align*}
+
+    Regard $\xi$ as function of $u$ and $v$, $\operatorname{grad}\xi=\left(\frac{\partial\xi}{\partial u},\frac{\partial\xi}{\partial v}\right)$
+
+    Regard $\xi$ as function of $x$ and $y$, $\operatorname{grad}\xi=\left(\frac{\partial\xi}{\partial x},\frac{\partial\xi}{\partial y}\right)=\begin{pmatrix}
+            \frac{\partial\xi}{\partial u} & \frac{\partial\xi}{\partial v}
+        \end{pmatrix}\begin{pmatrix}
+            \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
+            \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+        \end{pmatrix}$
+\end{example}
+
