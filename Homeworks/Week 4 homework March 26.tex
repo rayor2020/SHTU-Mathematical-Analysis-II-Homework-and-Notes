@@ -123,36 +123,17 @@
 
 22. 试求函数 $z = \arctan \frac{y}{x}$ 在圆 $x^2 + y^2 - 2x = 0$ 上一点 $P\left( \frac{1}{2}, \frac{\sqrt{3}}{2} \right)$ 处沿该圆周逆时针方向上的方向微商.
 \begin{sol}
-    圆的标准方程为
-    $$
-        (x-1)^2 + y^2 = 1.
-    $$
+    圆的标准方程：$(x-1)^2 + y^2 = 1$
 
-    因此当 $t = \frac{2\pi}{3}$ 时，对应点 $P\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$.
+    所以当$t=\frac{2\pi}{3}$，$P(\frac{1}{2}, \frac{\sqrt{3}}{2})$
 
-    首先计算偏导数：
-    $$
-        \frac{\partial z}{\partial x} = -\frac{y}{x^2+y^2}, \quad
-        \frac{\partial z}{\partial y} = \frac{x}{x^2+y^2}.
-    $$
+    计算$\frac{\partial z}{\partial x}=-\frac{y}{x^2+y^2}$, $\frac{\partial z}{\partial y}=\frac{x}{x^2+y^2}$
 
-    在点 $P$ 处，$x^2+y^2 = 1$，因此梯度为
-    $$
-        \nabla z|_P = \left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right).
-    $$
+    $x^2+y^2=1$，所以$\nabla z|_P=(-\frac{\sqrt{3}}{2},\frac{1}{2})$
 
-    圆的法向量为 $\overrightarrow{n} = (x-1, y)$，因此逆时针切向向量为
-    $$
-        \overrightarrow{\tau} = (-y, x-1) = \left(-\frac{\sqrt{3}}{2}, -\frac{1}{2}\right).
-    $$
+    圆法向量$\overrightarrow{n}=(x-1,y)$，所以切向向量$\overrightarrow{\tau}=(-y,x-1)=(-\frac{\sqrt{3}}{2},-\frac{1}{2})$
 
-    因此方向微商为
-    $$
-        \frac{\partial z}{\partial \tau}
-        = \nabla z \cdot \overrightarrow{\tau}
-        = \frac{3}{4} - \frac{1}{4}
-        = \frac{1}{2}.
-    $$
+    所以方向微商$\frac{\partial z}{\partial\tau}=\nabla z\cdot\overrightarrow{\tau}=\frac{3}{4}-\frac{1}{4}=\frac{1}{2}$
 \end{sol}
 
 
@@ -243,24 +224,7 @@ $$
     a_j\frac{\partial f}{\partial x_i} = a_i\frac{\partial f}{\partial x_j},\quad i,j = 1,2,\dots,n.
 $$
 \begin{pf}
-    令$s=a_1x_1 + a_2x_2 + \dots + a_nx_n$
-    \begin{itemize}
-        \item 必要性
 
-              因为存在 $\mathbb{R}$ 上一元可微函数 $F(s)$ 使得 $f(x_1,x_2,\dots,x_n) = F(a_1x_1 + a_2x_2 + \dots + a_nx_n)$，对二者求微分，得$\frac{\partial f}{\partial x_i}=a_iF'(s)$
-
-              所以$a_j\frac{\partial f}{\partial x_i}=a_ja_iF'(s)=a_ia_jF'(s)=a_i\frac{\partial f}{\partial x_j}$
-
-        \item 充分性
-
-              因为$a_j\frac{\partial f}{\partial x_i} = a_i\frac{\partial f}{\partial x_j},\quad i,j = 1,2,\dots,n$，可以得到$\frac{1}{a_i}\frac{\partial f}{\partial x_i}$与$i$无关
-
-              令$\varphi(x_1,\dots,x_n)=\frac{1}{a_i}\frac{\partial f}{\partial x_i}$
-
-              所以$\frac{\partial f}{\partial x_i}=a_i\varphi$
-
-              所以$df=\sum_{i=1}^na_i\varphi dx_i=\varphi ds$
-    \end{itemize}
 \end{pf}
 
 \end{document}
