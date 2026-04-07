@@ -1,0 +1,428 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\newtheorem*{pf}{证}
+\newtheorem*{sol}{解}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{Mathematical Analysis II\\Week 5 Homework (April 2)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 9.3}
+
+4. 试求由下列方程所确定的隐函数的微分.
+
+(1) $\cos^2 x + \cos^2 y + \cos^2 z = 1$, 求 $\mathrm{d}z$;
+\begin{sol}
+    两边求微分，得
+    $$-2\sin x\cos x\,\mathrm{d}x - 2\sin y\cos y\,\mathrm{d}y - 2\sin z\cos z\,\mathrm{d}z = 0$$
+
+    因为$\sin\alpha\cos\alpha = \sin(2\alpha)$，因此$-\sin 2x\,\mathrm{d}x - \sin 2y\,\mathrm{d}y = \sin 2z\,\mathrm{d}z$
+
+    从而
+    $$\mathrm{d}z = -\frac{\sin 2x}{\sin 2z}\,\mathrm{d}x - \frac{\sin 2y}{\sin 2z}\,\mathrm{d}y$$
+\end{sol}
+
+(2) $xyz = x + y + z$, 求 $\mathrm{d}z$;
+\begin{sol}
+    两边求微分，得
+    $$xy\,\mathrm{d}z + xz\,\mathrm{d}y + yz\,\mathrm{d}x = \mathrm{d}x + \mathrm{d}y + \mathrm{d}z$$
+
+    因此$(xz - 1)\,\mathrm{d}y + (yz - 1)\,\mathrm{d}x = (1 - xy)\,\mathrm{d}z$
+
+    从而
+    $$\mathrm{d}z = \frac{yz - 1}{1 - xy}\,\mathrm{d}x + \frac{xz - 1}{1 - xy}\,\mathrm{d}y$$
+\end{sol}
+
+(3) $u^3 - 3(x+y)u^2 + z^3 = 0$, 求 $\mathrm{d}u$;
+\begin{sol}
+    左边$= u^3 - 3xu^2 - 3yu^2 + z^3$
+
+    两边求微分，得
+    $$3u^2\,\mathrm{d}u - 3u^2\,\mathrm{d}x - 3u^2\,\mathrm{d}y - 6xu\,\mathrm{d}u - 6yu\,\mathrm{d}u + 3z^2\,\mathrm{d}z = 0$$
+
+    因此$3u(u - 2x - 2y)\,\mathrm{d}u = 3u^2(\mathrm{d}x + \mathrm{d}y) - 3z^2\,\mathrm{d}z$
+
+    从而
+    $$\mathrm{d}u = \frac{u}{u - 2x - 2y}\,\mathrm{d}x + \frac{u}{u - 2x - 2y}\,\mathrm{d}y - \frac{z^2}{u^2 - 2ux - 2uy}\,\mathrm{d}z$$
+\end{sol}
+
+(4) $F(x-y, y-z, z-x) = 0$, 求 $\mathrm{d}z$.
+\begin{sol}
+    两边求微分，得
+    $$F_1(\mathrm{d}x - \mathrm{d}y) + F_2(\mathrm{d}y - \mathrm{d}z) + F_3(\mathrm{d}z - \mathrm{d}x) = 0$$
+
+    因此$(F_3 - F_2)\,\mathrm{d}z = (F_3 - F_1)\,\mathrm{d}x + (F_1 - F_2)\,\mathrm{d}y$
+
+    从而
+    $$\mathrm{d}z = \frac{F_3 - F_1}{F_3 - F_2}\,\mathrm{d}x + \frac{F_1 - F_2}{F_3 - F_2}\,\mathrm{d}y$$
+\end{sol}
+
+
+7. 设 $z = z(x,y)$ 是由方程 $\varphi(cx - az, cy - bz) = 0$ 所确定的隐函数，试证：不论 $\varphi$ 为怎样的可微函数，都有
+$$
+    a\frac{\partial z}{\partial x} + b\frac{\partial z}{\partial y} = c.
+$$
+\begin{pf}
+    对$x$求偏导，得
+    $$\varphi_1\left(c - a\frac{\partial z}{\partial x}\right) + \varphi_2\left(-b\frac{\partial z}{\partial x}\right) = 0$$
+
+    因此$c\varphi_1 = (a\varphi_1 + b\varphi_2)\frac{\partial z}{\partial x}$
+
+    对$y$求偏导，得
+    $$\varphi_1\left(-a\frac{\partial z}{\partial y}\right) + \varphi_2\left(c - b\frac{\partial z}{\partial y}\right) = 0$$
+
+    因此$c\varphi_2 = (a\varphi_1 + b\varphi_2)\frac{\partial z}{\partial y}$
+
+    从而$a\varphi_1 c + b\varphi_2 c = \left(a\frac{\partial z}{\partial x} + b\frac{\partial z}{\partial y}\right)(a\varphi_1 + b\varphi_2)$
+
+    因此
+    $$a\frac{\partial z}{\partial x} + b\frac{\partial z}{\partial y} = c$$
+
+    Q.E.D.
+\end{pf}
+
+
+10. 设 $x = x(z)$, $y = y(z)$ 是方程组
+$$
+    \begin{cases}
+        x + y + z = 0, \\
+        x^2 + y^2 + z^2 = 1
+    \end{cases}
+$$
+所确定的隐函数组，求 $\dfrac{\mathrm{d}x}{\mathrm{d}z}$, $\dfrac{\mathrm{d}y}{\mathrm{d}z}$;
+\begin{sol}
+    求微分，得
+    $$\begin{cases}
+            \mathrm{d}x + \mathrm{d}y + \mathrm{d}z = 0 \\
+            2x\,\mathrm{d}x + 2y\,\mathrm{d}y + 2z\,\mathrm{d}z = 0
+        \end{cases}$$
+
+    因此$\mathrm{d}y = -\mathrm{d}x - \mathrm{d}z$，代入得$(x - y)\,\mathrm{d}x + (z - y)\,\mathrm{d}z = 0$，从而
+    $$\frac{\mathrm{d}x}{\mathrm{d}z} = -\frac{z - y}{x - y}$$
+
+    同理可得
+    $$\frac{\mathrm{d}y}{\mathrm{d}z} = -\frac{z - x}{y - x}$$
+\end{sol}
+
+
+11. 设 $u = u(x,y)$, $v = v(x,y)$ 是由下列方程组所确定的隐函数组，求 $\dfrac{\partial(u,v)}{\partial(x,y)}$.
+
+(1)
+$$
+    \begin{cases}
+        u^2 + v^2 + x^2 + y^2 = 1, \\
+        u + v + x + y = 0;
+    \end{cases}
+$$
+\begin{sol}
+    对$x$求偏导，得
+    $$\begin{cases}
+            2u\frac{\partial u}{\partial x} + 2v\frac{\partial v}{\partial x} + 2x = 0 \\
+            \frac{\partial u}{\partial x} + \frac{\partial v}{\partial x} + 1 = 0
+        \end{cases}$$
+
+    解得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial x} = \dfrac{v - x}{u - v} \\[10pt]
+            \dfrac{\partial v}{\partial x} = \dfrac{u - x}{v - u}
+        \end{cases}$$
+
+    同理可得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial y} = \dfrac{v - y}{u - v} \\[10pt]
+            \dfrac{\partial v}{\partial y} = \dfrac{u - y}{v - u}
+        \end{cases}$$
+
+    因此
+    $$\frac{\partial(u,v)}{\partial(x,y)} = \begin{pmatrix}
+            \dfrac{v - x}{u - v} & \dfrac{v - y}{u - v} \\[10pt]
+            \dfrac{u - x}{v - u} & \dfrac{u - y}{v - u}
+        \end{pmatrix}$$
+\end{sol}
+
+(2)
+$$
+    \begin{cases}
+        xu - yv = 0, \\
+        yu + xv = 1;
+    \end{cases}
+$$
+\begin{sol}
+    对$x$求偏导，得
+    $$\begin{cases}
+            u + x\frac{\partial u}{\partial x} - y\frac{\partial v}{\partial x} = 0 \\
+            y\frac{\partial u}{\partial x} + v + x\frac{\partial v}{\partial x} = 0
+        \end{cases}$$
+
+    解得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial x} = -\dfrac{ux + vy}{x^2 + y^2} \\[10pt]
+            \dfrac{\partial v}{\partial x} = \dfrac{uy - vx}{x^2 + y^2}
+        \end{cases}$$
+
+    对$y$求偏导，得
+    $$\begin{cases}
+            x\frac{\partial u}{\partial y} - v - y\frac{\partial v}{\partial y} = 0 \\
+            u + y\frac{\partial u}{\partial y} + x\frac{\partial v}{\partial y} = 0
+        \end{cases}$$
+
+    解得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial y} = \dfrac{vx - uy}{x^2 + y^2} \\[10pt]
+            \dfrac{\partial v}{\partial y} = -\dfrac{ux + vy}{x^2 + y^2}
+        \end{cases}$$
+
+    因此
+    $$\frac{\partial(u,v)}{\partial(x,y)} = \begin{pmatrix}
+            -\dfrac{ux + vy}{x^2 + y^2} & \dfrac{vx - uy}{x^2 + y^2}  \\[10pt]
+            \dfrac{uy - vx}{x^2 + y^2}  & -\dfrac{ux + vy}{x^2 + y^2}
+        \end{pmatrix}$$
+\end{sol}
+
+(3)
+$$
+    \begin{cases}
+        u = f(ux, v + y), \\
+        v = g(u - x, v^2 y).
+    \end{cases}
+$$
+\begin{sol}
+    对$x$求偏导，得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial x} = f_1\left(x\frac{\partial u}{\partial x} + u\right) + f_2\frac{\partial v}{\partial x} \\[10pt]
+            \dfrac{\partial v}{\partial x} = g_1\left(\frac{\partial u}{\partial x} - 1\right) + g_2\left(2vy\frac{\partial v}{\partial x}\right)
+        \end{cases}$$
+
+    整理得
+    $$\begin{cases}
+            (1 - f_1 x)\frac{\partial u}{\partial x} - f_2\frac{\partial v}{\partial x} = f_1 u \\
+            -g_1\frac{\partial u}{\partial x} + (1 - 2g_2 vy)\frac{\partial v}{\partial x} = -g_1
+        \end{cases}$$
+
+    记$J = (1 - f_1 x)(1 - 2g_2 vy) - f_2 g_1$，则
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial x} = \dfrac{\begin{vmatrix}
+                                                            uf_1 & -f_2        \\
+                                                            -g_1 & 1 - 2g_2 vy
+                                                        \end{vmatrix}}{J} \\[15pt]
+            \dfrac{\partial v}{\partial x} = \dfrac{\begin{vmatrix}
+                                                            1 - f_1 x & uf_1 \\
+                                                            -g_1      & -g_1
+                                                        \end{vmatrix}}{J}
+        \end{cases}$$
+
+    对$y$求偏导，得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial y} = f_1 x\frac{\partial u}{\partial y} + f_2\left(\frac{\partial v}{\partial y} + 1\right) \\[10pt]
+            \dfrac{\partial v}{\partial y} = g_1\frac{\partial u}{\partial y} + g_2\left(2vy\frac{\partial v}{\partial y} + v^2\right)
+        \end{cases}$$
+
+    整理得
+    $$\begin{cases}
+            (f_1 x - 1)\frac{\partial u}{\partial y} + f_2\frac{\partial v}{\partial y} = -f_2 \\
+            g_1\frac{\partial u}{\partial y} + (2vy g_2 - 1)\frac{\partial v}{\partial y} = -v^2 g_2
+        \end{cases}$$
+
+    因此
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial y} = \dfrac{\begin{vmatrix}
+                                                            -f_2     & f_2         \\
+                                                            -v^2 g_2 & 2vy g_2 - 1
+                                                        \end{vmatrix}}{J} \\[15pt]
+            \dfrac{\partial v}{\partial y} = \dfrac{\begin{vmatrix}
+                                                            f_1 x - 1 & -f_2     \\
+                                                            g_1       & -v^2 g_2
+                                                        \end{vmatrix}}{J}
+        \end{cases}$$
+
+    从而
+    $$\frac{\partial(u,v)}{\partial(x,y)} = \begin{pmatrix}
+            \dfrac{\begin{vmatrix}
+                           uf_1 & -f_2        \\
+                           -g_1 & 1 - 2g_2 vy
+                       \end{vmatrix}}{(1 - f_1 x)(1 - 2g_2 vy) - f_2 g_1} & \dfrac{\begin{vmatrix}
+                                                                                       -f_2     & f_2         \\
+                                                                                       -v^2 g_2 & 2vy g_2 - 1
+                                                                                   \end{vmatrix}}{(1 - f_1 x)(1 - 2g_2 vy) - f_2 g_1} \\[20pt]
+            \dfrac{\begin{vmatrix}
+                           1 - f_1 x & uf_1 \\
+                           -g_1      & -g_1
+                       \end{vmatrix}}{(1 - f_1 x)(1 - 2g_2 vy) - f_2 g_1} & \dfrac{\begin{vmatrix}
+                                                                                       f_1 x - 1 & -f_2     \\
+                                                                                       g_1       & -v^2 g_2
+                                                                                   \end{vmatrix}}{(1 - f_1 x)(1 - 2g_2 vy) - f_2 g_1}
+        \end{pmatrix}$$
+\end{sol}
+
+
+15. 设 $u = u(x,y)$, $v = v(x,y)$ 是由方程 $F(x,y,u,v) = 0$ 和 $G(x,y,u,v) = 0$ 所确定的隐函数，其中 $F$ 和 $G$ 都具有一阶连续偏导数。求 $\mathrm{d}u$, $\mathrm{d}v$.
+\begin{sol}
+    两边求微分，得
+    $$\begin{cases}
+            F_3\,\mathrm{d}u + F_4\,\mathrm{d}v = -F_1\,\mathrm{d}x - F_2\,\mathrm{d}y \\
+            G_3\,\mathrm{d}u + G_4\,\mathrm{d}v = -G_1\,\mathrm{d}x - G_2\,\mathrm{d}y
+        \end{cases}$$
+
+    解得
+    $$\begin{cases}
+            \mathrm{d}u = \dfrac{\begin{vmatrix}
+                                         -F_1\,\mathrm{d}x - F_2\,\mathrm{d}y & F_4 \\
+                                         -G_1\,\mathrm{d}x - G_2\,\mathrm{d}y & G_4
+                                     \end{vmatrix}}{\begin{vmatrix}
+                                                        F_3 & F_4 \\
+                                                        G_3 & G_4
+                                                    \end{vmatrix}} \\[20pt]
+            \mathrm{d}v = \dfrac{\begin{vmatrix}
+                                         F_3 & -F_1\,\mathrm{d}x - F_2\,\mathrm{d}y \\
+                                         G_3 & -G_1\,\mathrm{d}x - G_2\,\mathrm{d}y
+                                     \end{vmatrix}}{\begin{vmatrix}
+                                                        F_3 & F_4 \\
+                                                        G_3 & G_4
+                                                    \end{vmatrix}}
+        \end{cases}$$
+\end{sol}
+
+
+16. 函数 $u = u(x,y)$ 由方程组 $u = f(x,y,z,t)$, $g(y,z,t) = 0$, $h(z,t) = 0$ 定义，求 $\dfrac{\partial u}{\partial x}$, $\dfrac{\partial u}{\partial y}$.
+\begin{sol}
+    对$x$求偏导，得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial x} = \dfrac{\partial f}{\partial x} + \dfrac{\partial f}{\partial z}\dfrac{\partial z}{\partial x} + \dfrac{\partial f}{\partial t}\dfrac{\partial t}{\partial x} \\
+            \dfrac{\partial g}{\partial z}\dfrac{\partial z}{\partial x} + \dfrac{\partial g}{\partial t}\dfrac{\partial t}{\partial x} = 0                                                               \\
+            \dfrac{\partial h}{\partial z}\dfrac{\partial z}{\partial x} + \dfrac{\partial h}{\partial t}\dfrac{\partial t}{\partial x} = 0
+        \end{cases}$$
+
+    因此
+    $$\begin{cases}
+            \dfrac{\partial z}{\partial x} = 0 \\
+            \dfrac{\partial t}{\partial x} = 0
+        \end{cases}$$
+
+    从而
+    $$\dfrac{\partial u}{\partial x} = \dfrac{\partial f}{\partial x}$$
+
+    对$y$求偏导，得
+    $$\begin{cases}
+            \dfrac{\partial u}{\partial y} = \dfrac{\partial f}{\partial y} + \dfrac{\partial f}{\partial z}\dfrac{\partial z}{\partial y} + \dfrac{\partial f}{\partial t}\dfrac{\partial t}{\partial y} \\
+            \dfrac{\partial g}{\partial y} + \dfrac{\partial g}{\partial z}\dfrac{\partial z}{\partial y} + \dfrac{\partial g}{\partial t}\dfrac{\partial t}{\partial y} = 0                              \\
+            \dfrac{\partial h}{\partial z}\dfrac{\partial z}{\partial y} + \dfrac{\partial h}{\partial t}\dfrac{\partial t}{\partial y} = 0
+        \end{cases}$$
+
+    整理得
+    $$\begin{cases}
+            \dfrac{\partial g}{\partial z}\dfrac{\partial z}{\partial y} + \dfrac{\partial g}{\partial t}\dfrac{\partial t}{\partial y} = -\dfrac{\partial g}{\partial y} \\
+            \dfrac{\partial h}{\partial z}\dfrac{\partial z}{\partial y} + \dfrac{\partial h}{\partial t}\dfrac{\partial t}{\partial y} = 0
+        \end{cases}$$
+
+    解得
+    $$\begin{cases}
+            \dfrac{\partial z}{\partial y} = -\dfrac{\dfrac{\partial g}{\partial y}\dfrac{\partial h}{\partial t}}{\begin{vmatrix}
+                                                                                                                           \dfrac{\partial g}{\partial z} & \dfrac{\partial g}{\partial t} \\
+                                                                                                                           \dfrac{\partial h}{\partial z} & \dfrac{\partial h}{\partial t}
+                                                                                                                       \end{vmatrix}} \\[25pt]
+            \dfrac{\partial t}{\partial y} = \dfrac{\dfrac{\partial g}{\partial y}\dfrac{\partial h}{\partial z}}{\begin{vmatrix}
+                                                                                                                          \dfrac{\partial g}{\partial z} & \dfrac{\partial g}{\partial t} \\
+                                                                                                                          \dfrac{\partial h}{\partial z} & \dfrac{\partial h}{\partial t}
+                                                                                                                      \end{vmatrix}}
+        \end{cases}$$
+
+    因此
+    $$\dfrac{\partial u}{\partial y} = \dfrac{\partial f}{\partial y} + \dfrac{\dfrac{\partial g}{\partial y}\left(\dfrac{\partial f}{\partial t}\dfrac{\partial h}{\partial z} - \dfrac{\partial f}{\partial z}\dfrac{\partial h}{\partial t}\right)}{\dfrac{\partial g}{\partial z}\dfrac{\partial h}{\partial t} - \dfrac{\partial g}{\partial t}\dfrac{\partial h}{\partial z}}$$
+\end{sol}
+
+
+\section*{2}
+
+Let $\operatorname{GL}(n,\mathbb{R}) \subset \mathbb{R}^{n^2}$ be the set of $n \times n$ invertible matrices (by identifying $A = (x_{ij})$ with the vector $(x_{11}, \dots, x_{1n}, x_{21}, \dots, x_{nn})^T$).
+
+(a) Using the map $\det : \mathbb{R}^{n^2} \to \mathbb{R}$ to prove $\operatorname{GL}(n,\mathbb{R})$ is open. As a consequence, the small perturbation of an invertible matrix is also invertible.
+\begin{pf}
+    由于$A$可逆，因此$\det(A) \neq 0$。
+    
+    从而$\operatorname{GL}(n,\mathbb{R}) = \det^{-1}(\mathbb{R} \setminus \{0\})$。显然$\mathbb{R} \setminus \{0\}$是开集。
+    
+    由于$\det: \mathbb{R}^{n^2} \to \mathbb{R}$连续，因此$\operatorname{GL}(n,\mathbb{R})$是开集。
+    
+    从而可逆矩阵的任意充分小扰动仍可逆。
+    
+    Q.E.D.
+\end{pf}
+
+(b) Show the map $\varphi : \operatorname{GL}(n,\mathbb{R}) \to \operatorname{GL}(n,\mathbb{R})$ sending $A$ to $A^{-1}$ is continuous.
+\begin{pf}
+    $$A^{-1} = \frac{\operatorname{adj}(A)}{\det(A)}$$
+    
+    由于$A$的伴随矩阵$\operatorname{adj}(A)$中的每个元素均是关于$x_{ij}$的多项式函数，因此$\operatorname{adj}$是连续函数。
+    
+    又由于$\det(A) \neq 0$且连续，从而$\varphi$是连续函数。
+    
+    Q.E.D.
+\end{pf}
+
+(c) Show that $\varphi$ is differentiable, and find $\left. \mathrm{d}\varphi \right|_A$.
+\begin{pf}
+    定义映射
+    \begin{align*}
+        F: \operatorname{GL}(n,\mathbb{R}) \times \mathbb{R}^{n^2} &\to \mathbb{R}^{n^2} \\
+        F(A, B) &\mapsto AB - I
+    \end{align*}
+    
+    由于矩阵乘法、加法连续，因此$F \in C^1$。
+    
+    取$B = A^{-1}$，则$F(A, B) = AB - I = 0$。
+    
+    固定$A$，将$B \mapsto AB - I$视为关于$B$的线性映射，则对任意$H \in \mathbb{R}^{n^2}$，有
+    $$\left.\frac{\partial F}{\partial B}\right|_{(A,B)}(H) = AH$$
+    
+    由于$A$可逆，因此线性映射$H \mapsto AH$可逆。
+    
+    由隐函数定理，存在$A$的邻域使得方程$F(A,B) = 0$唯一确定隐函数$B = \varphi(A) = A^{-1}$，且$\varphi$在该邻域上可微。
+    
+    对$A\varphi(A) \equiv I$两边取微分，得
+    $$\mathrm{d}A \cdot \varphi(A) + A\mathrm{d}\varphi(A) = 0$$
+    
+    记$\mathrm{d}A = H$，$\varphi(A) = B = A^{-1}$，代入得
+    $$HA^{-1} + A\left.\mathrm{d}\varphi\right|_A(H) = 0$$
+    
+    从而
+    $$\left.\mathrm{d}\varphi\right|_A(H) = -A^{-1}HA^{-1}, \quad H \in \mathbb{R}^{n^2}$$
+\end{pf}
+
+\end{document}
