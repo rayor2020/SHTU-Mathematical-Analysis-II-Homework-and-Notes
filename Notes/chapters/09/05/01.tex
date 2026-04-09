@@ -1,0 +1,115 @@
+\subsection[多变量函数的 Taylor 公式与极值]{Taylor Expansion and Extremel Values}
+
+\begin{itemize}
+    \item Peano remainder: If \emph{$f^{(k)}(x_0)$ exists for $0\leq k\leq m$}, then $f(x)=\sum_{k=0}^m\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+\circ\left((x-x_0)^m\right)$, $x\to x_0$
+
+          ($0,1,\dots,m-1$ exists in neighborhood of $x_0$, but $f^{(m)}$ only assumed to exist at $x_0$)
+    \item Lagrange remainder: If $f^{(k)}$ exist in $[a,b]$ for $1\leq k\leq m+1$, then $\forall x_0\in(a,b)$, $x\in[a,b]$, $\exists\theta\in(0,1)$, s.t. $f(x)=\sum_{k=0}^m\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+\frac{f^{(m+1)}(x_0+\theta(x-x_0))}{(m+1)!}(x-x_0)^{m+1}$
+    \item $f:\,\mathbb{R}^n\to\mathbb{R}$
+
+          If $f$ is differentiable at 0, then $f(x)=f(0)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(0)x_i+\circ(|x|)$, $x\to 0$
+\end{itemize}
+
+\begin{thm}[Taylor Expansion with Peano Remainder]
+    Assume $f$ is defined in a neighborhood of $0\in\mathbb{R}^n$, and $f$ is second order differentiable at 0, i.e. $\frac{\partial f}{\partial x_i}$ differentiable at 0 for $1\leq i\leq n$, then
+    $$f(x)=\boxed{f(0)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(0)x_i+\frac{1}{2}\sum_{i=1}^n\frac{\partial^2 f}{\partial x_i^2}(0)x_i^2+\sum_{1\leq i<j\leq n}\frac{\partial^2 f}{\partial x_i\partial x_j}(0)x_ix_j}+R(x)$$
+    where $R(x)=\circ(|x|^2)$ as $x\to 0$
+\end{thm}
+
+\begin{corollary}
+    Under the same assumption as the theorem, $\frac{\partial^2f}{\partial x_i\partial x_j}(0)=\frac{\partial^2f}{\partial x_j\partial x_i}(0)$ and $f(x)=f(0)+\frac{1}{1!}\sum_{i=1}^{n}\frac{\partial f}{\partial x_i}(0)x_i+\frac{1}{2!}\sum_{i,j=1}^n\frac{\partial^2f}{\partial x_i\partial x_j}(0)x_ix_j+R(|x|)$ where $R(|x|)=\circ(|x|^2)$
+\end{corollary}
+
+Given $x^0=(x_1^0,\dots,x_n^0)$. Consider $\begin{cases}
+        \varphi(t)=f(tx^0)=f(tx_1^0,\dots,tx_n^0)\quad t\in[0,1]                                \\
+        \varphi'(t)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(tx^0)x_i^0                      \\
+        \varphi''(t)=\sum_{i,j=1}^n\frac{\partial^2f}{\partial x_j\partial x_i}(tx^0)x_i^0x_j^0 \\
+        \vdots                                                                                  \\
+        \varphi^{(k)}(t)=\sum_{i_1,\dots,i_k=1}^n\frac{\partial^kf}{\partial x_{i_1}\cdots\partial x_{i_k}}(tx^0)x_{i_1}^0\cdots x_{i_k}^0
+    \end{cases}$
+
+\begin{align*}
+    \implies\varphi(t) & =\sum_{k=1}^m\frac{\varphi^{(k)}(0)}{k!}t^k+R(t)                                                                                               \\
+                       & =\sum_{k=0}^m\frac{t^k}{k!}\sum_{i_1,\dots,i_k=1}^n\frac{\partial^kf}{\partial x_{i_1}\cdots\partial x_{i_k}}(0)x_{i_1}^0\cdots x_{i_k}^0+R(t)
+\end{align*}
+
+$\leadsto f(x^0)=\sum_{k=0}^m\frac{1}{k!}\sum_{i_1,\dots,i_k=1}^n\frac{\partial^kf}{\partial x_{i_1}\cdots\partial x_{i_k}}(0)x_{i_1}^0\cdots x_{i_k}^0+\,?$
+
+\begin{thm}[Taylor Expansion with Lagrange Remainder]
+    Assume $f$ is defined in a neighborhood of $0\in\mathbb{R}^n$, and $f$ is $(m+1)$-th differentiable in a neighborhood $B(0,\delta)$ of 0, i.e. $\frac{\partial^mf}{\partial x_{i_1}\cdots\partial x_{i_m}}$ are all differentiable in this neighborhood, then $\forall x\in B(0,\delta)$, $\exists\theta\in(0,1)$, s.t.
+    \begin{align*}
+        f(x) & =\sum_{k=0}^m\frac{1}{k!}\sum_{i_1,\dots,i_k=1}^n\frac{\partial^kf}{\partial x_{i_1}\cdots\partial x_{i_k}}(0)x_{i_1}\cdots x_{i_k}                     \\
+             & \quad+\frac{1}{(m+1)!}\sum_{i_1,\dots,i_{m+1}=1}^n\frac{\partial^{m+1}f}{\partial x_{i_1}\cdots\partial x_{i_{m+1}}}(\theta x)x_{i_1}\cdots x_{i_{m+1}}
+    \end{align*}
+
+    \begin{pf}
+        $\varphi(t)=\sum_{k=0}^m\frac{\varphi^{(k)}(0)}{k!}t^k+\frac{1}{(m+1)!}\varphi^{(m+1)}(\theta t)t^{m+1}$, $\theta\in(0,1)$, $t\in(0,1)$
+
+        Plug in $t=1$, get the Lagrange remainder Taylor expansion.
+    \end{pf}
+\end{thm}
+
+\begin{define}[Local Maximum]
+    Suppose $f$ is defined on an open neighborhood $D\subseteq\mathbb{R}^n$, $x^0\in D$. If $\exists B(x^0,\delta)\subseteq D$ s.t. $f(x)\leq f(x^0)$, $\forall x\in B(x^0,\delta)$, then $x^0$ is called a local maximal point of $f$, $f(x^0)$ is called a local maximum.
+\end{define}
+
+\begin{define}[Critical Point]
+    If $f$ is differentiable at $x^0$, and $df|_{x^0}=0$, then $x^0$ is called a \emph{critical point} 驻点 of $f$
+\end{define}
+
+Fact: If $x^0$ is a local maximal point of $f$, and $f$ is differentiable at $x^0$, then $x^0$ is critical, i.e. $df|_{x^0}=0$ or $\nabla f|_{x^0}=0$
+
+\begin{pf}
+    $\forall v\in\mathbb{R}^n$, $t=0$ is a local maximal point for $f(x^0+tv)\triangle\varphi(t)$, and $\varphi(t)$ is differentiable at $t=0$, then $\varphi'(0)=0$, i.e. $df|_{x^0}(v)=\frac{\partial f}{\partial v}|_{x^0}=\langle\nabla f|_{x^0}, v\rangle=0$. Since $v$ is arbitrary, $df|_{x^0}=0$.
+\end{pf}
+
+\begin{example}
+    $f(x,y)=x^2+y^2$, $g(x,y)=x^2-y^2$, $(0,0)$ is critical, but $(0,0)$ is local minimum for $f$ but not for $g$
+\end{example}
+
+$$\left.\begin{pmatrix}
+        f_{xx} & f_{xy} \\
+        f_{yx} & f_{yy}
+    \end{pmatrix}\right|_{(0,0)}=\begin{pmatrix}
+        2 & 0 \\
+        0 & 2
+    \end{pmatrix}\quad\left.\begin{pmatrix}
+        g_{xx} & g_{xy} \\
+        g_{yx} & g_{yy}
+    \end{pmatrix}\right|_{(0,0)}=\begin{pmatrix}
+        2 & 0  \\
+        0 & -2
+    \end{pmatrix}
+$$
+
+Consider $f$ is 2nd differentiable at $0\in\mathbb{R}^n$, and 0 is critical, $f(x)=f(0)+\frac{1}{2}Q(x)+R(x)$, where $Q(x)=\sum_{i,j=1}^n\frac{\partial^2f}{\partial x_i\partial x_j}(0)x_ix_j$ $\left|\frac{R(x)}{|x|^2}\right|\to 0$ as $x\to 0$
+
+The matrix $\operatorname{Hess}(f)|_0=\left(\frac{\partial^2f}{\partial x_i\partial x_j}(0)\right)_{1\leq i,j\leq n}$ is called the Hessian (matrix) of $f$ at 0.
+
+\begin{thm}
+    Suppose $\frac{\partial f}{\partial x_i}$ is differentiable at $x^0$ for $1\leq i\leq n$, and $\left.\frac{\partial f}{\partial x_i}\right|_{x^0}=0$ for $i=1,2,\dots,n$
+    \begin{enumerate}
+        \item If $\operatorname{Hess}(f)|_{x^0}$ is positive (negative) definite, then $x^0$ is a local minimal (maximal) point of $f$;
+        \item If $\operatorname{Hess}(f)|_{x^0}$ has rank $n$ (sometimes called non-degenerate 非退化), but is not definite, i.e. it has both positive and negative eigenvalues, then $x^0$ is a \emph{saddle point} 鞍点
+    \end{enumerate}
+\end{thm}
+
+\begin{pf}
+    $f(x)=f(x^0)+\frac{1}{2}(x-x_0)^T\operatorname{Hess}(f)|_{x^0}(x-x_0)+R(x-x^0)$ where $\frac{R(x-x^0)}{|x-x^0|^2}\to 0$ as $x\to x^0$
+
+    $\implies\frac{f(x)-f(x^0)}{|x-x^0|^2}=\frac{1}{2}\frac{(x-x_0)^T\operatorname{Hess}(f)|_{x^0}(x-x^0)}{|x-x_0|^2}+\frac{R(x-x^0)}{|x-x^0|^2}$
+
+    Assume $x^0=0$, consider the behavior of $\frac{x^THx}{|x|^2}$. Since it is homogeneous of deg 0
+\end{pf}
+
+\subsubsection{二元函数的微分中值定理}
+
+\subsubsection{二元函数的 Taylor 公式}
+
+
+
+\subsubsection{二元函数的极值}
+
+
+
+\subsubsection{条件极值}

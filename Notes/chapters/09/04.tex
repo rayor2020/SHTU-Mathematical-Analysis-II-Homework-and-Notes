@@ -1,0 +1,86 @@
+\subsection{空间曲线与曲面}
+\subsubsection[隐式曲线和隐式曲面]{Implicit Form for Curve and Surface in $\mathbb{R}^3$}
+
+\begin{itemize}
+    \item $\begin{cases}
+                  F(x,y,z)=0 \\
+                  G(x,y,z)=0
+              \end{cases}$ $(\nabla F\times \nabla G\neq 0)\rightarrow$ tangential direction
+    \item $F(x,y,z)=0$ $(\nabla F\neq 0)\leadsto$ normal direction
+\end{itemize}
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/09/04/0101}
+\end{center}
+
+\subsubsection{参数曲线}
+\subsubsection{参数曲面}
+
+\paragraph*{Explicit Form (Parameterized Form) for Curve and Surface in $\mathbb{R}^3$}
+
+\begin{itemize}
+    \item Curve:\begin{align*}
+              r:\,[a,b] & \to\mathbb{R}^3\quad C^1      \\
+              t         & \mapsto r(t)=(x(t),y(t),z(t))
+          \end{align*}
+
+          \begin{center}
+              \includegraphics[height=3cm]{chapters/09/04/0102}
+          \end{center}
+
+          $r'(t)=(x'(t),y'(t),z'(t))$: tangential vector of the parameterized curve
+    \item Surface:\begin{align*}
+              r:\,D(\subseteq\mathbb{R}^2)                                                        & \to\mathbb{R}^3\quad C^1              \\
+              \raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/09/04/0103}}\quad(u,v) & \mapsto r(u,v)=(x(u,v),y(u,v),z(u,v))
+          \end{align*}
+
+          $$\raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/09/04/0104}}\quad r_u=\begin{pmatrix}
+                  \frac{\partial x}{\partial u} \\\frac{\partial y}{\partial u}\\\frac{\partial z}{\partial u}
+              \end{pmatrix}\quad r_v=\begin{pmatrix}
+                  \frac{\partial x}{\partial v} \\\frac{\partial y}{\partial v}\\\frac{\partial z}{\partial v}
+              \end{pmatrix}$$
+
+          If $r_u\times r_v|_p\neq 0$, $p$ is called regular $\implies r_u\times r_v=\begin{pmatrix}
+                  \frac{\partial(y,z)}{\partial(u,v)} \\
+                  \frac{\partial(z,x)}{\partial(u,v)} \\
+                  \frac{\partial(x,y)}{\partial(u,v)}
+              \end{pmatrix}$ \allbold{normal vector}
+\end{itemize}
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/09/04/0105}
+\end{center}
+
+Construct \begin{align*}
+    \lambda:\,D\times K & \to\mathbb{R}^3     \\
+    ((u,v),t)           & \mapsto r(u,v)+tn_p
+\end{align*}
+
+$$
+    \boxed{d\lambda|_{((u_0,v_0),0)}((\dot{u},\dot{v}),\dot{t})=dr|_{(u_0,v_0)}(\dot{u},\dot{v})+\underset{\substack{\Downarrow\\\begin{cases}
+                (\dot{u},\dot{v})=0 \\
+                \dot{t}=0
+            \end{cases}}}{\dot{t}n_p}=0}\implies d\lambda|_{((u_0,v_0),0)}\text{ rank }3
+$$
+
+\subparagraph*{$\implies$ Inverse Function Thm for $\lambda$}
+
+$\exists\lambda:\,B(p,\delta)\to D\times K$ inverse of $\lambda$.
+
+Then: $pr\circ\eta:\,B(p,\delta)\to K\cong\mathbb{R}$ is $C^1$
+
+$\begin{matrix}
+        pr\circ\eta(q)=0        & \iff & q\in(I_mr)\cap B(p,\delta)                  \\
+        \Updownarrow            &      & \Updownarrow                                \\
+        \eta(q)\in D\times\{0\} & \iff & \lambda\circ\underset{=q}{\eta(q)}\in(I_mr)
+    \end{matrix}\implies(I_mr)\cap B(p,\delta)=(pr\circ\eta)^{-1}(0)$
+
+Moreover, $d(pr\circ\eta)=pr\circ d\eta$ rank 1
+
+\begin{example}
+    $(\theta,\varphi)\mapsto r(\theta,\varphi)=(\underset{x}{\sin\theta\cos\varphi},\underset{y}{\sin\theta\sin\varphi},\underset{z}{\cos\theta})\implies x^2+y^2+z^2-1=0$
+\end{example}
+
+$F(x,y,z)$\\
+$\nabla F=(F_x,F_y,F_z)\implies \operatorname{rank}(dF)=1$\\
+$df=F_xdx+F_ydy+F_zdz\iff\nabla F\ntrianglelefteq$

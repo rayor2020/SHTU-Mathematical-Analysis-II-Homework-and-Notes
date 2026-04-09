@@ -1,0 +1,305 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\newtheorem*{pf}{证}
+\newtheorem*{sol}{解}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{Mathematical Analysis II\\Week 6 Homework (April 7)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 9.4}
+
+1. 设 $\boldsymbol{r}=(a\sin t, -a\cos t, bt^2)$，$a,b$ 是常数，求 $\boldsymbol{r}'(t)$ 和 $\boldsymbol{r}''(t)$。
+
+\begin{sol}
+    由题意可得：
+    $$\boldsymbol{r}'(t)=(a\cos t,a\sin t,2bt)$$
+    $$\boldsymbol{r}''(t)=(-a\sin t,a\cos t,2b)$$
+\end{sol}
+
+3. 证明曲线 $x=a\cos t,\,y=a\sin t,\,z=bt$ 的切线与 $Oz$ 轴成定角。
+
+\begin{pf}
+    记切向量为 $\boldsymbol{\tau}=(-a\sin t, a\cos t, b)$，$Oz$ 轴方向向量为 $\boldsymbol{l}=(0,0,1)$。
+
+    因此夹角的余弦值为：
+    $$\cos\theta=\frac{\boldsymbol{\tau} \cdot \boldsymbol{l}}{|\boldsymbol{\tau}||\boldsymbol{l}|}=\frac{b}{\sqrt{a^2\sin^2t+a^2\cos^2t+b^2}\cdot 1}=\frac{b}{\sqrt{a^2+b^2}}$$
+    该值与 $t$ 无关，为定值，故切线与 $Oz$ 轴夹角 $\theta$ 为定角。
+
+    Q.E.D.
+\end{pf}
+
+4. 设 $\boldsymbol{r}=\left(\dfrac{t}{1+t},\dfrac{1+t}{t},t^2\right)\ (t>0)$，判断它是不是简单曲线，是不是光滑曲线，并求出它在 $t=1$ 时的切线方程和法平面方程。
+
+\begin{sol}
+    由于 $\dfrac{t}{1+t}$ 在 $t>0$ 时严格单调递增，$\dfrac{1+t}{t}$ 在 $t>0$ 时严格单调递减，$t^2$ 在 $t>0$ 时严格单调递增，因此 $\boldsymbol{r}$ 与 $t$ 一一对应，故为简单曲线。
+
+    对各分量求导可得方向向量：
+    $$\begin{cases}
+            x'(t)=\dfrac{1+t-t}{(1+t)^2}=\dfrac{1}{(1+t)^2} \\
+            y'(t)=\dfrac{t-1-t}{t^2}=-\dfrac{1}{t^2}        \\
+            z'(t)=2t
+        \end{cases}$$
+    三者在 $t>0$ 时均连续且不同时为 $0$，因此该曲线为光滑曲线。
+
+    当 $t=1$ 时，$\boldsymbol{r}(1)=\left(\dfrac{1}{2},2,1\right)$，$\boldsymbol{r}'(1)=\left(\dfrac{1}{4},-1,2\right)$。
+
+    因此切线方程为：
+    $$\frac{x-\frac{1}{2}}{\frac{1}{4}}=\frac{y-2}{-1}=\frac{z-1}{2}$$
+    即 $4\left(x-\dfrac{1}{2}\right)=-(y-2)=\dfrac{z-1}{2}$。
+
+    法平面方程为：
+    $$\frac{1}{4}\left(x-\frac{1}{2}\right)-(y-2)+2(z-1)=0$$
+    整理可得 $2x-8y+16z-1=0$。
+\end{sol}
+
+6. 求下列曲面在所示点处的切平面与法线方程。
+
+(1) $x=u\cos v,\,y=u\sin v,\,z=av$，在 $(u_0,v_0)$；
+
+\begin{sol}
+    对 $u$ 求偏导可得：$\boldsymbol{r}_u'=(\cos v,\sin v,0)$
+
+    对 $v$ 求偏导可得：$\boldsymbol{r}_v'=(-u\sin v,u\cos v,a)$
+
+    因此法向量为：
+    $$\boldsymbol{n}=\boldsymbol{r}_u'\times \boldsymbol{r}_v'=(a\sin v,-a\cos v,u)$$
+
+    代入点 $(u_0,v_0)$，可得 $\boldsymbol{r}(u_0,v_0)=(u_0\cos v_0,u_0\sin v_0,av_0)$，\\法向量 $\boldsymbol{n}=(a\sin v_0,-a\cos v_0,u_0)$。
+
+    因此切平面方程为：
+    $$a\sin v_0(x-u_0\cos v_0)-a\cos v_0(y-u_0\sin v_0)+u_0(z-av_0)=0$$
+
+    法线方程为：
+    $$\frac{x-u_0\cos v_0}{a\sin v_0}=\frac{y-u_0\sin v_0}{-a\cos v_0}=\frac{z-av_0}{u_0}$$
+\end{sol}
+
+(2) $x=a\sin\theta\cos\varphi,\,y=b\sin\theta\sin\varphi,\,z=c\cos\theta$，在 $(\theta_0,\varphi_0)$。
+
+\begin{sol}
+    对 $\theta$ 求偏导可得：$\boldsymbol{r}_\theta'=(a\cos\theta\cos\varphi,b\cos\theta\sin\varphi,-c\sin\theta)$
+
+    对 $\varphi$ 求偏导可得：$\boldsymbol{r}_\varphi'=(-a\sin\theta\sin\varphi,b\sin\theta\cos\varphi,0)$
+
+    因此法向量为：
+    $$\boldsymbol{n}=\boldsymbol{r}_\theta'\times \boldsymbol{r}_\varphi'=(bc\sin^2\theta\cos\varphi,ac\sin^2\theta\sin\varphi,ab\sin\theta\cos\theta)$$
+
+    代入点 $(\theta_0,\varphi_0)$，可得 $\boldsymbol{r}(\theta_0,\varphi_0)=(a\sin\theta_0\cos\varphi_0,b\sin\theta_0\sin\varphi_0,c\cos\theta_0)$，\\法向量 $\boldsymbol{n}=(bc\sin^2\theta_0\cos\varphi_0,ac\sin^2\theta_0\sin\varphi_0,ab\sin\theta_0\cos\theta_0)$。
+
+    因此切平面方程为：
+    \begin{align*}
+          & bc\sin^2\theta_0\cos\varphi_0(x-a\sin\theta_0\cos\varphi_0) \\
+        + & ac\sin^2\theta_0\sin\varphi_0(y-b\sin\theta_0\sin\varphi_0) \\
+        + & ab\sin\theta_0\cos\theta_0(z-c\cos\theta_0)=0
+    \end{align*}
+
+    化简可得：
+    $$bc\sin\theta_0\cos\varphi_0x+ac\sin\theta_0\sin\varphi_0y+ab\cos\theta_0z=abc$$
+
+    法线方程为：
+    $$\frac{x-a\sin\theta_0\cos\varphi_0}{bc\sin^2\theta_0\cos\varphi_0}=\frac{y-b\sin\theta_0\sin\varphi_0}{ac\sin^2\theta_0\sin\varphi_0}=\frac{z-c\cos\theta_0}{ab\sin\theta_0\cos\theta_0}$$
+\end{sol}
+
+8. 求下列曲面在指定点的切平面和法线方程。
+
+(2) $z=\arctan\dfrac{y}{x}$，在点 $\left(1,1,\dfrac{\pi}{4}\right)$；
+
+\begin{sol}
+    记 $F=z-\arctan\dfrac{y}{x}=0$，求偏导可得：
+    $$\frac{\partial F}{\partial x}=\frac{1}{1+\frac{y^2}{x^2}}\cdot\frac{y}{x^2}=\frac{y}{x^2+y^2}$$
+    $$\frac{\partial F}{\partial y}=-\frac{1}{1+\frac{y^2}{x^2}}\cdot\frac{1}{x}=-\frac{x}{x^2+y^2}$$
+    $$\frac{\partial F}{\partial z}=1$$
+
+    代入点 $\left(1,1,\dfrac{\pi}{4}\right)$，可得法向量 $\boldsymbol{n}=\left(\dfrac{1}{2},-\dfrac{1}{2},1\right)$。
+
+    因此切平面方程为：
+    $$\frac{1}{2}(x-1)-\frac{1}{2}(y-1)+\left(z-\frac{\pi}{4}\right)=0$$
+    整理可得 $x-y+2z-\dfrac{\pi}{2}=0$。
+
+    法线方程为：
+    $$\frac{x-1}{\frac{1}{2}}=\frac{y-1}{-\frac{1}{2}}=\frac{z-\frac{\pi}{4}}{1}$$
+    即 $2(x-1)=-2(y-1)=z-\dfrac{\pi}{4}$。
+\end{sol}
+
+(4) $4+\sqrt{x^2+y^2+z^2}=x+y+z$，在点 $(2,3,6)$。
+
+\begin{sol}
+    记 $F=4+\sqrt{x^2+y^2+z^2}-x-y-z=0$，求偏导可得：
+    $$\frac{\partial F}{\partial x}=\frac{x}{\sqrt{x^2+y^2+z^2}}-1$$
+    $$\frac{\partial F}{\partial y}=\frac{y}{\sqrt{x^2+y^2+z^2}}-1$$
+    $$\frac{\partial F}{\partial z}=\frac{z}{\sqrt{x^2+y^2+z^2}}-1$$
+
+    代入点 $(2,3,6)$，注意到 $\sqrt{2^2+3^2+6^2}=7$，可得法向量 $\boldsymbol{n}=\left(-\dfrac{5}{7},-\dfrac{4}{7},-\dfrac{1}{7}\right)$。
+
+    因此切平面方程为：
+    $$-\frac{5}{7}(x-2)-\frac{4}{7}(y-3)-\frac{1}{7}(z-6)=0$$
+    整理可得 $5x+4y+z=28$。
+
+    法线方程为：
+    $$\frac{x-2}{5}=\frac{y-3}{4}=\frac{z-6}{1}$$
+\end{sol}
+
+11. 求椭球面 $x^2+2y^2+3z^2=21$ 上某点 $M$ 处的切平面 $\pi$ 的方程，使 $\pi$ 过已知直线
+$$
+    L:\ \frac{x-6}{2}=\frac{y-3}{1}=\frac{2z-1}{-2}.
+$$
+
+\begin{sol}
+    设切点为 $M(x_0,y_0,z_0)$，则切平面方程为 $xx_0+2yy_0+3zz_0=21$。
+
+    直线 $L$ 的方向向量为 $(2,1,-1)$，且过点 $\left(6,3,\dfrac{1}{2}\right)$。
+
+    由于直线在切平面上，因此直线的方向向量与切平面的法向量垂直，且直线上的点在切平面上，可得方程组：
+    $$\begin{cases}
+            x_0^2+2y_0^2+3z_0^2=21,       \\
+            6x_0+6y_0+\dfrac{3}{2}z_0=21, \\
+            2x_0+2y_0-3z_0=0
+        \end{cases}$$
+
+    解得：
+    $$\begin{cases}
+            x_0=1 \\
+            y_0=2 \\
+            z_0=2
+        \end{cases}\quad\text{或}\quad\begin{cases}
+            x_0=3 \\
+            y_0=0 \\
+            z_0=2
+        \end{cases}$$
+
+    因此切平面方程为 $\pi_1:x+4y+6z=21$ 或 $\pi_2:x+2z=7$。
+\end{sol}
+
+13. 试证曲面 $x^2+y^2+z^2=ax$ 与曲面 $x^2+y^2+z^2=by$ 互相正交。
+
+\begin{pf}
+    将两曲面方程分别配方可得：
+    $$\left(x-\frac{a}{2}\right)^2+y^2+z^2=\frac{a^2}{4},\quad x^2+\left(y-\frac{b}{2}\right)^2+z^2=\frac{b^2}{4}$$
+
+    因此两曲面的法向量分别为 $\boldsymbol{n}_1=\left(x-\dfrac{a}{2},y,z\right)$ 和 $\boldsymbol{n}_2=\left(x,y-\dfrac{b}{2},z\right)$。
+
+    计算两法向量的点积：
+    $$\boldsymbol{n}_1\cdot\boldsymbol{n}_2=x\left(x-\frac{a}{2}\right)+y\left(y-\frac{b}{2}\right)+z^2=x^2-\frac{ax}{2}+y^2-\frac{by}{2}+z^2$$
+
+    由两曲面方程可知 $x^2+y^2+z^2=ax=by$，代入上式可得：
+    $$\boldsymbol{n}_1\cdot\boldsymbol{n}_2=ax-\frac{ax}{2}-\frac{by}{2}=ax-\frac{ax}{2}-\frac{ax}{2}=0$$
+
+    因此在交点处两曲面的法向量正交，故两曲面正交。
+
+    Q.E.D.
+\end{pf}
+
+17. 求下列曲线在给定点的切线和法平面方程
+
+(1) $\begin{cases} y^2+z^2=25, \\ x^2+y^2=10 \end{cases}$ 在点 $(1,3,4)$；
+
+\begin{sol}
+    记曲面 $F:y^2+z^2-25=0$，$G:x^2+y^2-10=0$，则在点 $(1,3,4)$ 处的法向量分别为 $\boldsymbol{n}_1=(0,6,8)$，$\boldsymbol{n}_2=(2,6,0)$。
+
+    因此曲线的切向量为：
+    $$\boldsymbol{\tau}=\boldsymbol{n}_1\times \boldsymbol{n}_2=(-48,16,-12)=-4(12,-4,3)$$
+
+    故切线方程为：
+    $$\frac{x-1}{12}=\frac{y-3}{-4}=\frac{z-4}{3}$$
+
+    法平面方程为：
+    $$12(x-1)-4(y-3)+3(z-4)=0$$
+    整理可得 $12x-4y+3z=12$。
+\end{sol}
+
+(2) $\begin{cases} 2x^2+3y^2+z^2=47, \\ x^2+2y^2=z \end{cases}$ 在点 $(-2,1,6)$。
+
+\begin{sol}
+    记曲面 $F:2x^2+3y^2+z^2-47=0$，$G:x^2+2y^2-z=0$，则在点 $(-2,1,6)$ 处的法向量分别为 $\boldsymbol{n}_1=(-8,6,12)$，$\boldsymbol{n}_2=(-4,4,-1)$。
+
+    因此曲线的切向量为：
+    $$\boldsymbol{\tau}=\boldsymbol{n}_1\times \boldsymbol{n}_2=(-54,-56,-8)=-2(27,28,4)$$
+
+    故切线方程为：
+    $$\frac{x+2}{27}=\frac{y-1}{28}=\frac{z-6}{4}$$
+
+    法平面方程为：
+    $$27(x+2)+28(y-1)+4(z-6)=0$$
+    整理可得 $27x+28y+4z=-2$。
+\end{sol}
+
+18. 设方程组 $\begin{cases}
+        pu+qv-t^2=0, \\
+        qu+pv-s^2=0
+    \end{cases} (p^2-q^2\neq 0)$ 确定了隐函数 $\begin{cases}
+        u=u(s,t), \\
+        v=v(s,t)
+    \end{cases}$ 以及反函数 $\begin{cases}
+        s=s(u,v), \\
+        t=t(u,v).
+    \end{cases}$ 求证:
+$$
+    \frac{\partial t}{\partial u}\cdot\frac{\partial u}{\partial t} = \frac{\partial s}{\partial v}\cdot\frac{\partial v}{\partial s} = \frac{p^2}{p^2-q^2}.
+$$
+
+\begin{pf}
+    将方程组视为关于 $u,v$ 的线性方程组，解得：
+    $$\begin{cases}
+            u=\dfrac{pt^2-qs^2}{p^2-q^2} \\
+            v=\dfrac{ps^2-qt^2}{p^2-q^2}
+        \end{cases}$$
+    同时可得：
+    $$\begin{cases}
+            s^2=qu+pv \\
+            t^2=pu+qv
+        \end{cases}$$
+
+    因此可得：
+    $$\frac{\partial u}{\partial t}=\frac{2pt}{p^2-q^2},\quad \frac{\partial v}{\partial s}=\frac{2ps}{p^2-q^2}$$
+
+    对 $s^2=qu+pv$ 两边关于 $v$ 求偏导可得 $2s\dfrac{\partial s}{\partial v}=p$，即 $\dfrac{\partial s}{\partial v}=\dfrac{p}{2s}$。
+
+    对 $t^2=pu+qv$ 两边关于 $u$ 求偏导可得 $2t\dfrac{\partial t}{\partial u}=p$，即 $\dfrac{\partial t}{\partial u}=\dfrac{p}{2t}$。
+
+    因此：
+    $$\frac{\partial t}{\partial u}\cdot\frac{\partial u}{\partial t}=\frac{p}{2t}\cdot\frac{2pt}{p^2-q^2}=\frac{p^2}{p^2-q^2}$$
+    $$\frac{\partial s}{\partial v}\cdot\frac{\partial v}{\partial s}=\frac{p}{2s}\cdot\frac{2ps}{p^2-q^2}=\frac{p^2}{p^2-q^2}$$
+
+    故原命题得证。
+
+    Q.E.D.
+\end{pf}
+
+\end{document}
