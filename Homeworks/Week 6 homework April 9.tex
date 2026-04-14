@@ -1,0 +1,449 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\newtheorem*{pf}{证}
+\newtheorem*{sol}{解}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{Mathematical Analysis II\\Week 6 Homework (April 9)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 9.5}
+
+2. 求下列函数由点 $(x_0,y_0)$ 变到 $(x_0+h,y_0+k)$ 时函数的增量.
+
+(1) $f(x,y) = x^3 + y^2 - 6xy - 39x + 18y + 4$, $(x_0,y_0) = (5,6)$;
+\begin{sol}
+    计算 $f(5+h,6+k)$：
+    \begin{align*}
+        f(5+h,6+k) & =(5+h)^3+(6+k)^2-6(5+h)(6+k)-39(5+h)+18(6+k)+4 \\
+                   & =h^3+15h^2+k^2-6hk-102
+    \end{align*}
+
+    又 $f(5,6)=125+36-180-195+108+4=-102$
+
+    因此 $f(5+h,6+k)-f(5,6)=h^3+15h^2+k^2-6hk$
+\end{sol}
+
+(2) $f(x,y) = x^2y + xy^2 - 2xy$, $(x_0,y_0) = (1,-1)$.
+\begin{sol}
+    计算 $f(1+h,k-1)$：
+    \begin{align*}
+        f(1+h,k-1) & =(1+h)^2(k-1)+(1+h)(k-1)^2-2(1+h)(k-1) \\
+                   & =kh^2-h^2+k^2-3k+hk^2+h+2-2hk
+    \end{align*}
+
+    又 $f(1,-1)=-1+1+2=2$
+
+    因此 $f(1+h,k-1)-f(1,-1)=kh^2-h^2+k^2-3k+hk^2+h-2hk$
+\end{sol}
+
+3. 对于函数 $f(x,y) = \sin \pi x + \cos \pi y$, 用中值定理证明, 存在一个数 $\theta$, $0 < \theta < 1$ 使得
+$$
+    \frac{4}{\pi} = \cos \frac{\pi \theta}{2} + \sin\left[\frac{\pi}{2}(1-\theta)\right]
+$$
+\begin{pf}
+    即证 $2 = \dfrac{\pi}{2} \left[ \cos \dfrac{\pi \theta}{2} + \sin\left[\dfrac{\pi}{2}(1-\theta)\right] \right]$
+
+    由二元函数中值定理，存在 $0 < \theta < 1$ 使得
+    $$
+        f(x,y) - f(x_0,y_0) = f_x(x_0 + \theta(x-x_0), y_0 + \theta(y-y_0))(x-x_0) + f_y(x_0 + \theta(x-x_0), y_0 + \theta(y-y_0))(y-y_0)
+    $$
+
+    对 $f$ 求偏导，得到
+    $$
+        \begin{cases}
+            f_x=\pi\cos\pi x \\
+            f_y=-\pi\sin\pi y
+        \end{cases}
+    $$
+
+    取 $(x_0,y_0)=\left(0,\dfrac{1}{2}\right)$, $(x,y)=\left(\dfrac{1}{2},0\right)$，则 $(x-x_0,y-y_0)=\left(\dfrac{1}{2},-\dfrac{1}{2}\right)$
+
+    从而
+    $$
+        \begin{cases}
+            x_0 + \theta(x-x_0)=\dfrac{\theta}{2}   \\
+            y_0 + \theta(y-y_0)=\dfrac{1-\theta}{2} \\
+            f\left(\dfrac{1}{2},0\right)=2          \\
+            f\left(0,\dfrac{1}{2}\right)=0
+        \end{cases}
+    $$
+
+    代入中值定理公式，得到
+    \begin{align*}
+        2 & =\dfrac{1}{2}\pi\cos\dfrac{\pi\theta}{2}+\dfrac{1}{2}\pi\sin\dfrac{\pi(1-\theta)}{2}                  \\
+          & =\dfrac{\pi}{2} \left[ \cos \dfrac{\pi \theta}{2} + \sin\left[\dfrac{\pi}{2}(1-\theta)\right] \right]
+    \end{align*}
+
+    两边同时乘以 $\dfrac{2}{\pi}$，可得 $\dfrac{4}{\pi} = \cos \dfrac{\pi \theta}{2} + \sin\left[\dfrac{\pi}{2}(1-\theta)\right]$
+
+    Q.E.D.
+\end{pf}
+
+4. 求下列函数的 Taylor 公式, 并指出展开式成立的区域.
+
+(2) $f(x,y) = \sqrt{1-x^2-y^2}$ 在点 $(0,0)$, 直到四阶为止;
+\begin{sol}
+    记 $u=x^2+y^2$，则 $f=\sqrt{1-u}=1-\dfrac{1}{2}u-\dfrac{1}{8}u^2+\circ(u^2)$
+
+    回代得到 $f=1-\dfrac{x^2+y^2}{2}-\dfrac{x^4+2x^2y^2+y^4}{8}+\circ(\rho^4)$
+
+    整理得 $f(x,y)=1-\dfrac{x^2+y^2}{2}-\dfrac{x^4+y^4}{8}-\dfrac{x^2y^2}{4}+\circ(\rho^4)$
+
+    成立区域：$x^2+y^2\leq 1$
+\end{sol}
+
+(4) $\arctan \dfrac{1+x+y}{1-x+y}$ 在点 $(0,0)$, 直到二阶为止;
+\begin{sol}
+    $f=\arctan\dfrac{1+\dfrac{x}{1+y}}{1-\dfrac{x}{1+y}}$
+
+    记 $u=1,v=\dfrac{x}{1+y}$，则 $f=\arctan\dfrac{u+v}{1-uv}=\arctan u+\arctan v=\dfrac{\pi}{4}+\arctan\dfrac{x}{1+y}$，其中 $|uv|=\left|\dfrac{x}{1+y}\right|<1$
+
+    记 $g=\arctan\dfrac{x}{1+y}$，则
+    $$
+        g=g(0,0)+g_x(0,0)x+g_y(0,0)y+\dfrac{1}{2}\left(g_{xx}(0,0)x^2+2g_{xy}(0,0)xy+g_{yy}(0,0)y^2\right)+\circ(\rho^2)
+    $$
+
+    其中
+    $$
+        \begin{cases}
+            g_x=\dfrac{1+y}{(1+y)^2+x^2} & g_x(0,0)=1 \\
+            g_y=-\dfrac{x}{(1+y)^2+x^2}  & g_y(0,0)=0
+        \end{cases}
+    $$
+
+    从而
+    $$
+        \begin{cases}
+            g_{xx}=-\dfrac{2x(1+y)}{((1+y)^2+x^2)^2}     & g_{xx}(0,0)=0  \\
+            g_{xy}=-\dfrac{(1+y)^2-x^2}{((1+y)^2+x^2)^2} & g_{xy}(0,0)=-1 \\
+            g_{yy}=\dfrac{2x(y+1)}{((1+y)^2+x^2)^2}      & g_{yy}(0,0)=0
+        \end{cases}
+    $$
+
+    又 $g(0,0)=0$
+
+    因此 $g=x-xy+\circ(\rho^2)$
+
+    故 $f=\dfrac{\pi}{4}+x-xy+\circ(\rho^2)$
+\end{sol}
+
+(6) $\dfrac{\cos x}{\cos y}$ 在点 $(0,0)$ 展开到二阶为止;
+\begin{sol}
+    $\cos x=1-\dfrac{1}{2}x^2+\circ(x^2)$, $\cos y=1-\dfrac{1}{2}y^2+\circ(y^2)$
+
+    记 $u=\dfrac{1}{2}y^2$，由于 $\dfrac{1}{1-u}=1+u+\circ(u^2)$，因此
+    $$
+        \dfrac{1}{\cos y}=\dfrac{1}{1-\dfrac{1}{2}y^2+\circ(y^2)}=1+u=1+\dfrac{1}{2}y^2+\circ(y^2)
+    $$
+
+    从而
+    $$
+        \dfrac{\cos x}{\cos y}=\left(1-\dfrac{1}{2}x^2\right)\left(1+\dfrac{1}{2}y^2\right)+\circ(\rho^2)=1-\dfrac{1}{2}x^2+\dfrac{1}{2}y^2+\circ(\rho^2)
+    $$
+    （只保留二阶项）
+\end{sol}
+
+5. 设 $z = z(x,y)$ 是由方程 $z^3 - 2xz + y = 0$ 所确定的隐函数, 当 $x=1,y=1$ 时 $z=1$, 试按 $(x-1)$ 和 $(y-1)$ 的乘幂展开函数 $z$ 至二次项为止.
+\begin{sol}
+    对方程两边关于 $x$ 求偏导：$3z_xz^2-2z-2xz_x=0$，因此 $z_x=\dfrac{2z}{3z^2-2x}$，代入 $(1,1,1)$ 得到 $z_x(1)=2$
+
+    对方程两边关于 $y$ 求偏导：$3z_yz^2-2xz_y+1=0$，因此 $z_y=-\dfrac{1}{3z^2-2x}$，代入 $(1,1,1)$ 得到 $z_y(1)=-1$
+
+    求 $z_{xx}$：对 $3z_xz^2-2z-2xz_x=0$ 两边关于 $x$ 求偏导：$3z_{xx}z^2+6z_x^2z-2z_x-2z_x-2xz_{xx}=0$，整理得 $(3z^2-2x)z_{xx}=2z_x+2z_x-6z_x^2z=8-24z$，因此 $z_{xx}=\dfrac{8-24z}{3z^2-2x}$，代入 $(1,1,1)$ 得到 $z_{xx}(1)=-16$
+
+    求 $z_{xy}$：对 $3z_xz^2-2z-2xz_x=0$ 两边关于 $y$ 求偏导：$3z_{xy}z^2+6z_xz_yz-2z_y-2xz_{xy}=0$，整理得 $(3z^2-2x)z_{xy}=2z_y-6z_xz_yz=-2+12z$，因此 $z_{xy}=\dfrac{-2+12z}{3z^2-2x}$，代入 $(1,1,1)$ 得到 $z_{xy}(1)=10$
+
+    求 $z_{yy}$：对 $3z_yz^2-2xz_y+1=0$ 两边关于 $y$ 求偏导：$3z_{yy}z^2+6z_y^2z-2xz_{yy}=0$，整理得 $(3z^2-2x)z_{yy}=-6z_y^2z=-6z$，因此 $z_{yy}=-\dfrac{6z}{3z^2-2x}$，代入 $(1,1,1)$ 得到 $z_{yy}(1)=-6$
+
+    因此
+    \begin{align*}
+        z(x,y) & =z(1,1)+z_x(x-1)+z_y(y-1)                                                                  \\
+               & \quad+\dfrac{1}{2}\left(z_{xx}(x-1)^2+2z_{xy}(x-1)(y-1)+z_{yy}(y-1)^2\right)+\circ(\rho^2) \\
+               & =1+2(x-1)-(y-1)-8(x-1)^2+10(x-1)(y-1)-3(y-1)^2+\circ(\rho^2)
+    \end{align*}
+\end{sol}
+
+6. 证明, 球面三角学中的余弦定理
+$$
+    \cos z = \cos x \cos y + \sin x \sin y \cos \theta
+$$
+在原点的邻域内转化为欧几里得几何中的余弦定理
+$$
+    z^2 = x^2 + y^2 - 2xy \cos \theta
+$$
+\begin{pf}
+    将 $\cos x$, $\cos y$, $\cos z$, $\sin x$, $\sin y$ 展开至二阶，可得
+    $$
+        \begin{cases}
+            \cos x\approx1-\dfrac{x^2}{2} \\
+            \cos y\approx1-\dfrac{y^2}{2} \\
+            \cos z\approx1-\dfrac{z^2}{2} \\
+            \sin x\approx x               \\
+            \sin y\approx y
+        \end{cases}
+    $$
+
+    代入原式，得到 $1-\dfrac{z^2}{2}=\left(1-\dfrac{x^2}{2}\right)\left(1-\dfrac{y^2}{2}\right)+xy\cos\theta$
+
+    忽略高阶无穷小项，整理可得 $z^2 = x^2 + y^2 - 2xy \cos \theta$
+
+    Q.E.D.
+\end{pf}
+
+7. 求下列函数的极值.
+
+(1) $f(x,y) = xy + \dfrac{50}{x} + \dfrac{20}{y}\ (x>0,y>0)$;
+\begin{sol}
+    由极值的必要条件得 $f_x=f_y=0$
+
+    求得 $f_x = y - \dfrac{50}{x^2} = 0$，即 $y = \dfrac{50}{x^2}$
+
+    $f_y = x - \dfrac{20}{y^2} = 0$，即 $x = \dfrac{20}{y^2}$
+
+    联立方程组，解得
+    $$
+        \begin{cases}
+            x=5 \\
+            y=2
+        \end{cases}
+    $$
+
+    计算二阶偏导数：$A=f_{xx}=\dfrac{100}{x^3}=\dfrac{4}{5}>0$
+
+    $B = f_{xy} = 1$
+
+    $C = f_{yy} = \dfrac{40}{y^3}=5$
+
+    因此 $\Delta = AC - B^2 = 3 > 0$
+
+    由于 $A>0$ 且 $\Delta>0$，因此该点为极小值点，极小值为 $f(5,2)=30$
+\end{sol}
+
+(3) $f(x,y) = \mathrm{e}^{2x}\left(x + 2y + y^2\right)$;
+\begin{sol}
+    求得 $f_x = 2\mathrm{e}^{2x}(x + 2y + y^2) + \mathrm{e}^{2x} = \mathrm{e}^{2x}(2x + 4y + 2y^2 + 1)=0$
+
+    $f_y = \mathrm{e}^{2x}(2 + 2y)=0$
+
+    由于 $\mathrm{e}^{2x}>0$，联立方程组，解得
+    $$
+        \begin{cases}
+            x=\dfrac{1}{2} \\
+            y=-1
+        \end{cases}
+    $$
+
+    计算二阶偏导数：$A = f_{xx} = 4\mathrm{e}^{2x}(x + 2y + y^2) + 4\mathrm{e}^{2x} = 4\mathrm{e}^{2x}(x + 2y + y^2 + 1)=2\mathrm{e}>0$
+
+    $B = f_{xy} = \mathrm{e}^{2x}(4 + 4y)=\mathrm{e}(4 - 4) = 0$
+
+    $C = f_{yy} = 2\mathrm{e}^{2x}= 2\mathrm{e}$
+
+    因此 $\Delta = AC - B^2 = 4\mathrm{e}^2 > 0$
+
+    由于 $A>0$ 且 $\Delta>0$，因此该点为极小值点，极小值为 $f\left(\dfrac{1}{2}, -1\right) = \mathrm{e}\left(\dfrac{1}{2} - 2 + 1\right) = -\dfrac{\mathrm{e}}{2}$
+\end{sol}
+
+(5) $x^2 + y^2 + z^2 - 2x + 2y - 4z - 10 = 0$, 求隐函数 $z = z(x,y)$ 的极值.
+\begin{sol}
+    记 $F(x,y,z)=x^2 + y^2 + z^2 - 2x + 2y - 4z - 10 = 0$
+
+    由极值的必要条件得 $z_x=-\dfrac{F_x}{F_z}=z_y=-\dfrac{F_y}{F_z}=0$，即 $F_x=F_y=0$ 且 $F_z\neq 0$
+
+    求得 $F_x = 2x - 2 = 0$，即 $x = 1$
+
+    $F_y = 2y + 2 = 0$，即 $y = -1$
+
+    代入原方程，得到 $1 + 1 + z^2 - 2 - 2 - 4z - 10 = 0$，即 $z^2 - 4z - 12 = 0$
+
+    解得 $(z-6)(z+2) = 0$，因此 $z=6$ 或 $z=-2$
+
+    计算二阶偏导数：对方程两边关于 $x$ 求偏导，得到 $z_{xx}(z-2) + (z_x)^2 = -1$；关于 $y$ 求偏导：$z_{yy}(z-2) + (z_y)^2 = -1$；混合偏导：$z_{xy}(z-2) + z_x z_y = 0$
+
+    由于 $z_x=z_y=0$，因此
+    $$
+        \begin{cases}
+            z_{xx} = \dfrac{-1}{z-2} \\
+            z_{yy} = \dfrac{-1}{z-2} \\
+            z_{xy} = 0
+        \end{cases}
+    $$
+
+    \begin{itemize}
+        \item 当 $z=6$ 时，
+              $$
+                  \begin{cases}
+                      A = z_{xx} = -\dfrac{1}{4}<0 \\
+                      B = z_{xy} = 0               \\
+                      C = z_{yy} = -\dfrac{1}{4}
+                  \end{cases}
+              $$
+
+              因此 $\Delta = AC - B^2 = \dfrac{1}{16} > 0$
+
+              由于 $A<0$ 且 $\Delta>0$，因此该点为极大值点，极大值为 $z=6$
+
+        \item 当 $z=-2$ 时，
+              $$
+                  \begin{cases}
+                      A = z_{xx} = \dfrac{1}{4}>0 \\
+                      B = z_{xy} = 0              \\
+                      C = z_{yy} = \dfrac{1}{4}
+                  \end{cases}
+              $$
+
+              因此 $\Delta = AC - B^2 = \dfrac{1}{16} > 0$
+
+              由于 $A>0$ 且 $\Delta>0$，因此该点为极小值点，极小值为 $z=-2$
+    \end{itemize}
+\end{sol}
+
+\section*{第9章综合习题}
+
+4. 设 $f(x,y,z)$ 是 $n$ 次齐次的可微函数. 若方程 $f(x,y,z)=0$ 隐含函数 $z=\varphi(x,y)$（即 $\dfrac{\partial f}{\partial z} \neq 0$），则 $\varphi(x,y)$ 是一次齐次函数.
+\begin{pf}
+    由隐函数定义得 $f(x,y,\varphi(x,y))=0$
+
+    由于 $f$ 是 $n$ 次齐次可微函数，因此
+    $$
+        f(tx,ty,t\varphi(x,y))=t^nf(x,y,\varphi(x,y))=0
+    $$
+
+    从而 $z=t\varphi(x,y)$ 是方程 $f(tx,ty,z)=0$ 的一个解
+
+    又方程 $f(tx,ty,z)=0$ 隐含函数 $z=\varphi(tx,ty)$。由于 $\dfrac{\partial f}{\partial z}\neq 0$，因此 $\varphi(tx,ty)=t\varphi(x,y)$
+
+    故 $\varphi(x,y)$ 是一次齐次函数
+
+    Q.E.D.
+\end{pf}
+
+5. 设 $f(x,y)$ 在 $\mathbb{R}^2$ 上有连续二阶偏导数，且对任意实数 $x,y,z$ 满足 $f(x,y)=f(y,x)$ 和
+$$
+    f(x,y)+f(y,z)+f(z,x)=3f\left(\frac{x+y+z}{3},\frac{x+y+z}{3}\right).
+$$
+试求 $f(x,y)$.
+\begin{sol}
+    记 $g(u)=f(u,u)$
+
+    因此 $f(x,y)+f(y,z)+f(z,x)=3g\left(\dfrac{x+y+z}{3}\right)$
+
+    关于 $x$ 求偏导：$\dfrac{\partial f}{\partial x}(x,y)+\dfrac{\partial f}{\partial y}(z,x)=g'\left(\dfrac{x+y+z}{3}\right)$
+
+    关于 $z$ 求偏导：$\dfrac{\partial f}{\partial y}(y,z)+\dfrac{\partial f}{\partial x}(z,x)=g'\left(\dfrac{x+y+z}{3}\right)$
+
+    又由于 $f(x,y)=f(y,x)$，因此 $\dfrac{\partial f}{\partial x}(x,y)=\dfrac{\partial f}{\partial x}(y,x)$，从而
+    $$
+        \dfrac{\partial f}{\partial x}(x,y)+\dfrac{\partial f}{\partial x}(x,z)=\dfrac{\partial f}{\partial x}(z,y)+\dfrac{\partial f}{\partial x}(z,x)
+    $$
+
+    关于 $y$ 求偏导：$\dfrac{\partial^2 f}{\partial x \partial y}(x,y)=\dfrac{\partial^2 f}{\partial x \partial y}(z,y)$
+
+    因此 $\dfrac{\partial^2 f}{\partial x \partial y}$ 与第一个变量无关，由对称性同理可得与第二个变量无关。\\
+    不妨设 $\dfrac{\partial^2 f}{\partial x \partial y}=A$ 为常数
+
+    因此 $f(x,y)=Axy+B(x)+B(y)$
+
+    代入原方程得
+    $$
+        Axy+Ayz+Azx+2B(x)+2B(y)+2B(z)=\dfrac{A}{3}(x+y+z)^2+6B\left(\dfrac{x+y+z}{3}\right)
+    $$
+
+    整理得
+    $$
+        \dfrac{Axy+Ayz+Azx}{3}+2B(x)+2B(y)+2B(z)=\dfrac{A}{3}(x^2+y^2+z^2)+6B\left(\dfrac{x+y+z}{3}\right)
+    $$
+
+    由轮换对称性，可得
+    $$
+        \dfrac{Axy}{3}+B(x)+B(y)=\dfrac{A}{9}(x^2+y^2+z^2)+2B\left(\dfrac{x+y+z}{3}\right)
+    $$
+
+    因此 $B(x)=\dfrac{A}{4}x^2+bx+c$，记 $a=\dfrac{A}{4}$
+
+    故 $f(x,y)=a(x^2+4xy+y^2)+b(x+y)+c$
+\end{sol}
+
+6. 证明不等式 $\dfrac{x^2+y^2}{4} \le \mathrm{e}^{x+y-2}\ (x \ge 0,y \ge 0)$.
+\begin{pf}
+    由于 $\mathrm{e}^{t-1}\geq t$，取 $t=\dfrac{x+y}{2}$，可得 $\mathrm{e}^{\frac{x+y}{2}-1}\geq \dfrac{x+y}{2}\geq 0$
+
+    因此
+    $$
+        \mathrm{e}^{x+y-2}=\left(\mathrm{e}^{\frac{x+y}{2}-1}\right)^2\geq\left(\dfrac{x+y}{2}\right)^2=\dfrac{x^2+2xy+y^2}{4}\geq\dfrac{x^2+y^2}{4}
+    $$
+
+    Q.E.D.
+\end{pf}
+
+7. 设在 $\mathbb{R}^3$ 上定义的 $u=f(x,y,z)$ 是 $z$ 的连续函数，且 $\dfrac{\partial f}{\partial x},\dfrac{\partial f}{\partial y}$ 在 $\mathbb{R}^3$ 上连续. 证明 $u$ 在 $\mathbb{R}^3$ 上连续.
+\begin{pf}
+    对任意点 $P_0(x_0, y_0, z_0)$，需证明：\\
+    对任意 $\varepsilon > 0$，\\
+    存在 $\delta > 0$，\\
+    当 $\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2} < \delta$ 时，\\
+    有 $|f(x,y,z) - f(x_0,y_0,z_0)| < \varepsilon$。
+
+    由三角不等式得
+    $$
+        |f(x,y,z) - f(x_0,y_0,z_0)| \leq |f(x,y,z) - f(x_0,y_0,z)| + |f(x_0,y_0,z) - f(x_0,y_0,z_0)|
+    $$
+
+    固定 $z$，在 $xy$ 平面上存在 $\xi,\eta$ 使得
+    $$
+        f(x,y,z) - f(x_0,y_0,z) = \dfrac{\partial f}{\partial x}(\xi, \eta, z)(x-x_0) + \dfrac{\partial f}{\partial y}(\xi, \eta, z)(y-y_0)
+    $$
+
+    由于 $\dfrac{\partial f}{\partial x}, \dfrac{\partial f}{\partial y}$ 在 $\mathbb{R}^3$ 上连续，$f$ 在 $P_0$ 的某个闭邻域内必定是有界的。设界为 $M$，则
+    $$
+        |f(x,y,z) - f(x_0,y_0,z)| \le M|x-x_0| + M|y-y_0|
+    $$
+
+    当 $|x-x_0| < \dfrac{\varepsilon}{4M}$，$|y-y_0| < \dfrac{\varepsilon}{4M}$ 时，$|f(x,y,z) - f(x_0,y_0,z)|<\dfrac{\varepsilon}{2}$。
+
+    由于 $f$ 关于 $z$ 连续，固定 $(x_0, y_0)$，当 $z \to z_0$ 时，$|f(x_0,y_0,z) - f(x_0,y_0,z_0)| \to 0$。即存在 $\delta_1 > 0$，当 $|z-z_0| < \delta_1$ 时，$|f(x_0,y_0,z) - f(x_0,y_0,z_0)|< \dfrac{\varepsilon}{2}$。
+
+    因此，对任意 $\varepsilon > 0$，存在 $\delta = \min\left(1, \dfrac{\varepsilon}{4M}, \delta_1\right) > 0$，当 $\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2} < \delta$ 时，有 $|f(x,y,z) - f(x_0,y_0,z_0)| < \varepsilon$，故 $u$ 在 $\mathbb{R}^3$ 上全局连续。
+
+    Q.E.D.
+\end{pf}
+
+\end{document}

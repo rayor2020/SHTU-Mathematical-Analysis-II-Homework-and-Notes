@@ -1,0 +1,216 @@
+% 20260414
+
+\begin{enumerate}
+    \item $f(r)=\sum_{i=1}^3|r-r_i|$, $r\in\mathbb{R}^2$. Find its extremal value.
+    \item $g(r)=\sum_{i=1}^3|r-r_i|^2$
+    \item $\nabla g|_r=2\sum_{i=1}^3(r-r_i)=0$
+
+          ($g(r)=g(x,y)=\sum_{i=1}^3\bigl((x-x_i)^2+(y-y_i)^2\bigr)$, $\frac{\partial g}{\partial x}=2\sum_{i=1}^3(x-x_i)$, $\frac{\partial g}{\partial y}=2\sum_{i=1}^3(y-y_i)$)
+
+          $r=\frac{1}{3}\sum_{i=1}^3r_i\leadsto$ center of gravity.
+\end{enumerate}
+
+\begin{align*}
+    \operatorname{Hess}(g)=\left(\frac{\partial^2 g}{\partial x_i\partial x_j}\right)_{1\leq i,j\leq 2}=\begin{pmatrix}
+                                                                                                            6 & 0 \\
+                                                                                                            0 & 6
+                                                                                                        \end{pmatrix} & \implies\overline{r}\text{ is a local minimum} \\
+                                                                                                                        & \implies\text{a global minimum}
+\end{align*}
+
+\subsubsection[条件极值]{Constrained Extremal Problem}
+
+$C\triangleq\{(x,y,z)\in\mathbb{R}^3\mid G(x,y,z)=0\}$ is a surface
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/09/05/0101}
+\end{center}
+
+Consider the extremal problem of $F:\,\mathbb{R}^3\to\mathbb{R}$ restricted to $C$
+
+Assume $\operatorname{grad}G\neq 0$ on $C\implies C$ is a $C^1$ surface that is locally a graph.
+
+$\implies$ We need to look for critical points of $F(x,y,z(x,y))$.
+
+\begin{align*}
+    \begin{cases}
+        \frac{\partial}{\partial x}(F(x,y,z(x,y)))=F_x+F_z\frac{\partial z}{\partial x}=0 \\
+        \frac{\partial}{\partial y}(F(x,y,z(x,y)))=F_y+F_z\frac{\partial z}{\partial y}=0
+    \end{cases} & \implies\begin{cases}
+                              F_x-F_z\frac{G_x}{G_z}=0 \\
+                              F_y-F_z\frac{G_y}{G_z}=0
+                          \end{cases}                                                                                     \\
+                                                                                         & \iff\begin{cases}
+                                                                                                   \nabla F-\lambda\nabla G|_{(x,y,z)}=0\text{ for some }\lambda\in\mathbb{R} \\
+                                                                                                   G|_{(x,y,z)}=0
+                                                                                               \end{cases}
+\end{align*}
+
+$G(x,y,z(x,y))\equiv0\implies\begin{cases}
+        G_x+G_z\frac{\partial z}{\partial x}=0 \\
+        G_y+G_z\frac{\partial z}{\partial y}=0
+    \end{cases}$
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/09/05/0102}
+\end{center}
+
+$\left.\frac{d}{dt}\right|_{t=0}F(\gamma(t))=\left\langle\nabla F|_x,\gamma'(0)\right\rangle$
+
+If $\nabla F|_x\not\perp C\implies\exists v$ tangent to $C$ at $x$, and $\left\langle\nabla F|_x,v\right\rangle>0$.
+
+Find $\gamma$ with $\gamma'(0)=v\implies\left.\frac{d}{dt}\right|_{t=0}F(\gamma(t))>0\implies x$ is not a critical point, let alone an extremal point.
+
+Define $L(x,y,z,\lambda)=F(x,y,z)+\lambda G(x,y,z)$, then the constraint critical point equations are translated to
+$$\nabla L|_{(x,y,z,\lambda)}=0$$
+
+\emph{i.e. $\begin{cases}
+            \frac{\partial L}{\partial x}=\frac{\partial F}{\partial x}+\lambda\frac{\partial G}{\partial x}=0 \\
+            \frac{\partial L}{\partial y}=\frac{\partial F}{\partial y}+\lambda\frac{\partial G}{\partial y}=0 \\
+            \frac{\partial L}{\partial z}=\frac{\partial F}{\partial z}+\lambda\frac{\partial G}{\partial z}=0 \\
+            \frac{\partial L}{\partial\lambda}=G=0
+        \end{cases}$}
+
+\emph{\allbold{Lagrange Multiplier Method}}
+
+\emph{Question: How to test if the critical point is local extremal?}
+
+\subparagraph*{Method 1}
+
+Hessian of $F(x,y,z(x,y))$:
+
+$$\begin{pmatrix}
+        \frac{\partial^2}{\partial x^2}(F(x,y,z(x,y)))         & \frac{\partial^2}{\partial x\partial y}(F(x,y,z(x,y))) \\
+        \frac{\partial^2}{\partial y\partial x}(F(x,y,z(x,y))) & \frac{\partial^2}{\partial y^2}(F(x,y,z(x,y)))
+    \end{pmatrix}$$
+
+\begin{align*}
+    \frac{\partial^2}{\partial x^2}(F(x,y,z(x,y))) & =\frac{\partial}{\partial x}(F_x(x,y,z(x,y))+F_z(x,y,z(x,y))\cdot\frac{\partial z}{\partial x})                                                                      \\
+                                                   & =F_{xx}+F_{xz}\frac{\partial z}{\partial x}+(F_{zx}+F_{zz}\cdot\frac{\partial z}{\partial x})\frac{\partial z}{\partial x}+F_z\cdot\frac{\partial^2 z}{\partial x^2}
+\end{align*}
+
+\subparagraph*{Method 2}
+
+$\frac{d}{dt}F(\gamma(t))=\sum_{i=1}^n\frac{\partial F}{\partial x_i}(\gamma(t))\gamma_i'(t)$
+
+If we specialize to $t=0$, $\frac{d}{dt}|_{t=0}F(\gamma(t))=\left\langle\nabla F|_x,\gamma'(0)\right\rangle=0$, $\forall \gamma'(0)\in T_xC=\operatorname{Span}\{\nabla G|_x\}^\perp$\\
+$\implies DF|_x\in\operatorname{Span}\{\nabla G|_x\}$.
+
+\emph{$x$ is a constrained extremal point $\implies\nabla F|_x+\lambda\nabla G|_x=0$ for some $\lambda\in\mathbb{R}$.}
+
+\emph{$G(\gamma(t))\equiv0\implies\left.\frac{d^2}{dt^2}\right|_{t=0}G(\gamma(t))=0$, i.e.}
+\emph{$\sum_{i,j}G_{ij}(x)\gamma_i'(0)\gamma_j'(0)+\sum_{i}G_i(x)\gamma_i''(0)=0$.}
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/09/05/0103}
+\end{center}
+
+\begin{align*}
+    \left.\frac{d^2}{dt^2}\right|_{t=0}F(\gamma(t))
+     & =\sum_{i=1}^n\sum_{j=1}^n\frac{\partial^2F}{\partial x_i\partial x_j}(\gamma(t))\gamma_i'(t)\gamma_j'(t)+\sum_{i=1}^n\frac{\partial F}{\partial x_i}(\gamma(t))\gamma_i''(t)|_{t=0} \\
+     & =\sum_{i,j=1}^n\frac{\partial^2F}{\partial x_i\partial x_j}(x)\gamma_i'(0)\gamma_j'(0)+\sum_{i=1}^n\frac{\partial F}{\partial x_i}(x)\gamma_i''(0)                                  \\
+     & =\sum_{i,j}F_{ij}(x)\gamma_i'(0)\gamma_j'(0)-\lambda\sum_{i}G_i(x)\gamma_i''(0)                                                                                                     \\
+     & =\sum_{i,j}(F_{ij}(x)+\lambda G_{ij}(x))\gamma_i'(0)\gamma_j'(0)
+\end{align*}
+
+At the critical point $(x^0,\lambda^0)$ of $L(x,\lambda)$, we can check whether
+$$(F_{ij}+\lambda^0G_{ij})|_{x^0}v_iv_j>0,\quad \forall v\in T_{x^0}C=\left\langle\nabla G|_{x^0}\right\rangle^\perp.$$
+
+\subparagraph*{Quadratic Form}
+
+$Q:\,V\times V\to\mathbb{R}$
+
+$W\underset{\text{subspace}}{\subseteq}V$, $Q|_W:\,W\times W\to\mathbb{R}\implies$ restricted quadratic form $\implies(Q(w_i,w_j))_{1\leq i,j\leq k}$, where $w_1,\dots,w_k$ is a basis of $W$.
+
+\begin{example}
+    Given a plane $\Pi:\,l(x,y,z)=ax+by+cz+d=0$ and $n$ points $P_i=(x_i,y_i,z_i)$, find $P\in\Pi$ such that $\sum_{i=1}^n|P-P_i|^2$ is minimal.
+
+    Consider $L(x,y,z,\lambda)=\sum_{i=1}^n((x-x_i)^2+(y-y_i)^2+(z-z_i)^2)+\lambda l(x,y,z)$
+
+    $$\begin{cases}
+            \frac{\partial L}{\partial x}=2\sum_{i=1}^n(x-x_i)+a\lambda=0 \\
+            \frac{\partial L}{\partial y}=2\sum_{i=1}^n(y-y_i)+b\lambda=0 \\
+            \frac{\partial L}{\partial z}=2\sum_{i=1}^n(z-z_i)+c\lambda=0 \\
+            \frac{\partial L}{\partial\lambda}=l(x,y,z)=0
+        \end{cases}$$
+
+    $$\implies 2nl(x,y,z)-2\sum_{i=1}^nl(x_i,y_i,z_i)+(a^2+b^2+c^2)\lambda=0$$
+
+    $x=\frac{1}{n}\sum_{i=1}^n x_i-\frac{a}{2n}\lambda=\overline{x}-\frac{a}{2n}\lambda$
+
+    $l(x,y,z)=l(\overline{x},\overline{y},\overline{z})-\frac{a^2+b^2+c^2}{2n}\lambda=0$
+
+    $\implies\lambda=\frac{2n}{a^2+b^2+c^2}l(\overline{x},\overline{y},\overline{z})$
+
+    $(x,y,z)=(\overline{x},\overline{y},\overline{z})-\frac{l(\overline{x},\overline{y},\overline{z})}{a^2+b^2+c^2}(a,b,c)=\operatorname{pr}_\Pi(\overline{x},\overline{y},\overline{z})$
+
+    $\left(F_{ij}+\lambda^0l_{ij}\right)_{3\times 3}=\begin{pmatrix}
+            2 &   &   \\
+              & 2 &   \\
+              &   & 2
+        \end{pmatrix}>0\implies(x^0,y^0,z^0)$ is a local minimum point. Similar to before, we can argue that it is a global minimum.
+\end{example}
+
+\begin{example}
+    Find the constrained local extremals (maximum and minimum) of $z=xy$ under the condition $(x-1)^2+y^2=1$.
+
+    $f(x,y)\triangleq xy$, $G(x,y)\triangleq(x-1)^2+y^2-1$
+
+    Define $L(x,y,\lambda)=f(x,y)+\lambda G(x,y)$
+
+    The critical point equation is $$\begin{cases}
+            \frac{\partial L}{\partial x}=y+\lambda\cdot2(x-1)=0 \\
+            \frac{\partial L}{\partial y}=x+\lambda\cdot2y=0     \\
+            \frac{\partial L}{\partial\lambda}=(x-1)^2+y^2-1=0
+        \end{cases}$$
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/09/05/0104}}
+
+    \begin{enumerate}
+        \item $x=0$, $y=0$, $\lambda=0$
+        \item $(x,y,\lambda)=\begin{cases}
+                      (\frac{3}{2},\frac{\sqrt{2}}{2},\dots) \\
+                      (\frac{3}{2},-\frac{\sqrt{2}}{2},\dots)
+                  \end{cases}$
+              $\rightarrow\begin{pmatrix}
+                        & 1 \\
+                      1 &
+                  \end{pmatrix}+\lambda\begin{pmatrix}
+                      2 &   \\
+                        & 2
+                  \end{pmatrix}=\begin{pmatrix}
+                      2\lambda & 1        \\
+                      1        & 2\lambda
+                  \end{pmatrix}$
+    \end{enumerate}
+
+    $\nabla L(x,\lambda)=0\implies\begin{cases}
+            x_2x_3\cdots x_n+\lambda=0     \\
+            x_1x_3\cdots x_n+\lambda=0     \\
+            \vdots                         \\
+            x_1x_2\cdots x_{n-1}+\lambda=0 \\
+            x_1+\dots+x_n=a
+        \end{cases}$
+
+    $nx_1\cdots x_n+\lambda a=0$
+
+    $(x_2-x_1)x_3\cdots x_n=0\implies$
+    \begin{enumerate}
+        \item $x_1,\dots,x_n\neq0$
+
+              $\implies x_1=\dots=x_n=\frac{a}{n}$
+        \item $x_1=x_2=0$, $\lambda=0$, $x_3+\dots+x_n=a$ or \dots
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    Prove the Arithmetic-Geometric Mean Inequality.
+    $$\frac{x_1+\dots+x_n}{n}\geq\sqrt[n]{x_1x_2\cdots x_n}\text{, }(x_1,\dots,x_n>0)$$
+
+    Consider the constrained extremal problem $f(x_1,\dots,x_n)=x_1\cdots x_n$, subject to the constraint $x_1+\dots+x_n=a>0$, $x_1,\dots,x_n\geq0$.
+
+    $L(x,\lambda)=x_1\cdots x_n+\lambda(x_1+\dots+x_n-a)$
+
+    \begin{center}
+        \includegraphics[width=\columnwidth]{chapters/09/05/0105}
+    \end{center}
+\end{example}
