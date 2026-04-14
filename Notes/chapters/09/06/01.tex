@@ -1,4 +1,67 @@
-\subsection[向量场的微商]{Differential of Vector Fields on $\mathbb{R}^3$}
+\subsection[向量场的微商]{Differential of Vector Fields in $\mathbb{R}^3$}
+
 \subsubsection{向量场}
+
+\begin{align*}
+    \raisebox{-0.5\height}{\includegraphics[height=4cm]{chapters/09/06/0101}}
+            & \overset{\overrightarrow{v}}{\longrightarrow}\mathbb{R}^3 \\
+    (x,y,z) & \longmapsto(P(x,y,z),Q(x,y,z),R(x,y,z))
+\end{align*}
+
+$$d\overrightarrow{v}=\begin{pmatrix}
+        dP \\dQ\\dR
+    \end{pmatrix}=\begin{pmatrix}
+        P_x & P_y & P_z \\
+        Q_x & Q_y & Q_z \\
+        R_x & R_y & R_z
+    \end{pmatrix}\begin{pmatrix}
+        dx \\dy\\dz
+    \end{pmatrix}$$
+
 \subsubsection{梯度、散度与旋度}
+
+\begin{itemize}
+    \item $\underset{=\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}}{P_x+Q_y+R_z}\triangleq\overset{\substack{\text{nabla}\\\uparrow}}{\nabla}\cdot\overrightarrow{v}$\allbold{$\rightarrow$ called the divergence of $\overrightarrow{v}$}
+
+          $(\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z})\cdot(P,Q,R)$
+
+          $\left\langle\overrightarrow{i}\frac{\partial}{\partial x}+\overrightarrow{j}\frac{\partial}{\partial y}+\overrightarrow{k}\frac{\partial}{\partial z},P\overrightarrow{i}+Q\overrightarrow{j}+R\overrightarrow{k}\right\rangle$
+
+          $$\boxed{\begin{pmatrix}
+                      \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+                      \partial_x & \partial_y & \partial_z \\
+                      P          & Q          & R
+                  \end{pmatrix}}$$
+    \item $$(\partial_yR-\partial_zQ)\overrightarrow{i}+(\partial_zP-\partial_xR)\overrightarrow{j}+(\partial_xQ-\partial_yP)\overrightarrow{k}\triangleq\underset{\text{\allbold{curl 旋度 of $\overrightarrow{v}$}}}{\underline{\nabla\times\overrightarrow{v}}}$$
+    \item Given a scalar function $f$, $\leadsto\nabla f=\overrightarrow{i}\frac{\partial f}{\partial x}+\overrightarrow{j}\frac{\partial f}{\partial y}+\overrightarrow{k}\frac{\partial f}{\partial z}$.
+          $$
+              \{\text{function}\}\overset{\nabla}{\underset{\nabla\cdot}{\rightleftharpoons}}\{\text{vector field}\}\overset{\nabla\times}{\rightarrow}\{\text{vector field}\}
+          $$
+    \item $$\nabla\cdot\nabla f=\nabla\cdot\left(\overrightarrow{i}\frac{\partial f}{\partial x}+\overrightarrow{j}\frac{\partial f}{\partial y}+\overrightarrow{k}\frac{\partial f}{\partial z}\right)=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}+\frac{\partial^2 f}{\partial z^2}=\Delta f$$
+          \allbold{($\nabla\cdot\nabla=\Delta$)}
+    \item $$\nabla\times\nabla f=(\partial_y(\partial_zf)-\partial_z(\partial_yf),\partial_z(\partial_xf)-\partial_x(\partial_zf),\partial_x(\partial_yf)-\partial_y(\partial_xf))=0$$
+          (if $f\in C^2$)
+\end{itemize}
+
+\begin{example}
+    $$\overrightarrow{v}(x,y,z)=\left(\frac{x}{(x^2+y^2+z^2)^{3/2}},\frac{y}{(x^2+y^2+z^2)^{3/2}},\frac{z}{(x^2+y^2+z^2)^{3/2}}\right)=\frac{\overrightarrow{r}}{|\overrightarrow{r}|^3}=\frac{1}{|\overrightarrow{r}|^2}\frac{\overrightarrow{r}}{|\overrightarrow{r}|}$$
+
+    $\implies\overrightarrow{v}=-\nabla\overset{\textbf{electric potential}}{|\overrightarrow{r}|^{-1}}$
+
+    $\implies\begin{cases}
+            \nabla\cdot\overrightarrow{v}=\Delta(|\overrightarrow{r}|^{-1})=0\text{ on }\mathbb{R}^3\setminus\{0\} \\
+            \nabla\cdot\overrightarrow{v}|_0=?\quad``4\pi\delta_0''\quad\textbf{generalized function}
+        \end{cases}$
+
+    $\implies\nabla\times\overrightarrow{v}=\nabla\times\nabla|\overrightarrow{r}|^{-1}=0$ \allbold{on $\mathbb{R}^3\setminus\{0\}$.}
+\end{example}
+
+\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/09/06/0102}}\quad$\overrightarrow{v}(x,y)=(-y,x)$
+
+\raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/09/06/0103}}\quad$(-y,x,0)\overset{\nabla\times}{\leadsto}\begin{vmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        \partial_x & \partial_y & \partial_z \\
+        -y         & x          & 0
+    \end{vmatrix}=(0,0,2)=2\overrightarrow{k}\quad\boldsymbol{A\leadsto QR}$
+
 \subsubsection{Hamilton 算子在柱面坐标系和球面坐标系中的表示}
