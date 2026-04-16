@@ -1,14 +1,14 @@
 \subsubsection{方向导数与梯度}
 
-\begin{define}[Directional Derivative 方向导数]
+\begin{definition}[Directional Derivative 方向导数]
     $$\lim_{t\to0}\frac{f(x+tv)-f(x)}{t}=\left.\frac{\partial f}{\partial v}\right|_x$$
 
     (if the limit exists)
-\end{define}
+\end{definition}
 
 \emph{$\gamma_v(t)=x+tv$ special case $v=e_i$, $\frac{\partial f}{\partial e_i}=\frac{\partial f}{\partial x_i}$}
 
-\begin{prop}
+\begin{proposition}
     If $f$ is differentiable at $x$, then all derectional derivatives exist at $x$ and $\left.\frac{\partial f}{\partial v}\right|_x$ is linear in $v$, more precisely, $\left.\frac{\partial f}{\partial v}\right|_x = df|_x(v)$
     \begin{pf}
         $f(x+h)=f(x)+df|_x(h)+\circ(|h|)$, $h\to0$
@@ -17,7 +17,7 @@
 
         $\implies\left.\frac{\partial f}{\partial v}\right|_x$ exists, and equal to $df|_x(v)$
     \end{pf}
-\end{prop}
+\end{proposition}
 
 Recall: $df|_x=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(x)dx_i|_x$, i.e. $df|_x(v)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(x)v_i=\left<\nabla f|_x,v\right>$, $v=\sum_{i=1}^nv_ie_i$
 

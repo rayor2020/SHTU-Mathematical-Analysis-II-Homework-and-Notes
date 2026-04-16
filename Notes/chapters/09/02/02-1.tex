@@ -4,7 +4,7 @@ Recall: $f$ is differentiable at $x_0$ iff $f(x_0+\Delta x)-f(x_0)=a\Delta x+\ci
 
 ($\iff f$ has derivative at $x_0$ and $a=f'(x_0)$, $\lim\limits_{\Delta x\to 0}\dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$ exist)
 
-\begin{define}
+\begin{definition}
     Let $f:\,D(\subseteq\mathbb{R}^n)\to\mathbb{R}$, $x$ is an interior point of $D$ if
     $$
         f(x+h)=f(x)+A(h)+\circ\l(\lvert h\rvert\r),\ h\to0
@@ -13,15 +13,15 @@ Recall: $f$ is differentiable at $x_0$ iff $f(x_0+\Delta x)-f(x_0)=a\Delta x+\ci
     When $A:\,\mathbb{R}^n\to\mathbb{R}$ which is a linear function, then we say $f$ is \emph{defferentiable} at $x$, the map $A$ is called the differential of $f$ at $x$, denoted by $df|_x$
 
     If $f$ is differentiable at any $x\in D$, then we say $f$ is differentiable on $D$ and $\{df|_x\mid x\in D\}=df$ is called the differential of $f$ on $D$.
-\end{define}
+\end{definition}
 
-\begin{rmk}
+\begin{remark}
     For $n=1$, $\{f'(x)\mid x\in D\}=f'$ is called the derivative function of $f$ on $D$. We also have $df=f'(x)dx$, called the differential of $f$ on $D$.
-\end{rmk}
+\end{remark}
 
-\begin{thm}
+\begin{theorem}
     If $f$ is differentiable at $x$, then it is continuous at $x$.
-\end{thm}
+\end{theorem}
 
 Assume $f$ is differentiable at $x$, then $f(x+h)=f(x)+A(h)+\circ\l(\lvert h\rvert\r),\ h\to0$
 
@@ -29,13 +29,13 @@ $\implies f(x+te_i)=f(x)+A(te_i)+\circ\l(\lvert t\rvert\r)=f(x)+tA(e_i)+\circ\l(
 
 $\implies \dfrac{\partial f}{\partial x_i}(x)$ exists (since $\dfrac{\partial f}{\partial x_i}(x)=\lim\limits_{t\to 0}\dfrac{f(x+te_i)-f(x)}{t}$), and $\dfrac{\partial f}{\partial x_i}(x)=A(e_i)$
 
-\begin{thm}
+\begin{theorem}
     If $f$ is differentiable at $x$, then $\dfrac{\partial f}{\partial x_1}(x),\dots,\dfrac{\partial f}{\partial x_n}(x)$ all exist, and
     $$
         \dfrac{\partial f}{\partial x_i}(x)=df|_x(e_i)
     $$
     \textbf{The converse is not true.}
-\end{thm}
+\end{theorem}
 
 Look at some special functions: $\boxed{X_i:\,\mathbb{R}^n\to\mathbb{R},\,i=1,\dots,n}$ (The $n$ Cartesian coordinates function)
 

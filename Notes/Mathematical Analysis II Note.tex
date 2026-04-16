@@ -21,14 +21,20 @@
 
 
 % 定理环境定义
-\newtheorem*{thm}{Thm}
-\newtheorem*{define}{Def}
+\theoremstyle{plain}
+\newtheorem*{theorem}{Thm}
 % \newtheorem{lemma}{引理}
+\newtheorem*{proposition}{Prop}
 \newtheorem*{corollary}{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Def}
 \newtheorem*{example}{Eg}
-\newtheorem*{rmk}{Rmk}
-\newtheorem*{prop}{Prop}
-\newtheorem*{pf}{Pf}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{pf}{Proof}
 
 % 图形支持
 \usepackage{graphicx}
@@ -110,25 +116,15 @@
 
 \include{chapters/09/06/01}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{微分形式}
+
 \subsubsection{微分形式的空间}
 \subsubsection{微分形式的外积}
 \subsubsection{微分形式的外微分}
 \subsubsection{微分形式在高维空间的推广}
+
 % 10
+\include{chapters/10/01/01}
 \newpage
 \include{chapters/CH10.tex}
 
@@ -143,13 +139,13 @@
 
 % 在此处记录课堂笔记内容
 
-\begin{define}[定义标题]
+\begin{definition}[定义标题]
     定义内容...
-\end{define}
+\end{definition}
 
-\begin{thm}[定理标题]
+\begin{theorem}[定理标题]
     定理内容...
-\end{thm}
+\end{theorem}
 
 \begin{proof}
     证明过程...
@@ -159,9 +155,9 @@
     例题内容...
 \end{example}
 
-\begin{rmk}
+\begin{remark}
     备注说明...
-\end{rmk}
+\end{remark}
 
 \subsection{重要公式}
 

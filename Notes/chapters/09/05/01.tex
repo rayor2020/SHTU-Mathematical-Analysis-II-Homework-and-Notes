@@ -23,11 +23,11 @@
 
 \subsubsection{二元函数的 Taylor 公式}
 
-\begin{thm}[Taylor Expansion with Peano Remainder]
+\begin{theorem}[Taylor Expansion with Peano Remainder]
     Assume $f$ is defined in a neighborhood of $0\in\mathbb{R}^n$, and $f$ is twice differentiable at $0$, that is, $\frac{\partial f}{\partial x_i}$ is differentiable at $0$ for $1\leq i\leq n$. Then
     $$f(x)=\boxed{f(0)+\sum_{i=1}^n\frac{\partial f}{\partial x_i}(0)x_i+\frac{1}{2}\sum_{i=1}^n\frac{\partial^2 f}{\partial x_i^2}(0)x_i^2+\sum_{1\leq i<j\leq n}\frac{\partial^2 f}{\partial x_i\partial x_j}(0)x_ix_j}+R(x)$$
     where $R(x)=\circ(|x|^2)$ as $x\to 0$.
-\end{thm}
+\end{theorem}
 
 \begin{corollary}
     Under the same assumptions as the theorem, $\frac{\partial^2f}{\partial x_i\partial x_j}(0)=\frac{\partial^2f}{\partial x_j\partial x_i}(0)$, and
@@ -57,7 +57,7 @@ $$
     \leadsto\quad f(x^0)=\sum_{k=0}^m\frac{1}{k!}\sum_{i_1,\dots,i_k=1}^n\frac{\partial^kf}{\partial x_{i_1}\cdots\partial x_{i_k}}(0)x_{i_1}^0\cdots x_{i_k}^0+\,?
 $$
 
-\begin{thm}[Taylor Expansion with Lagrange Remainder]
+\begin{theorem}[Taylor Expansion with Lagrange Remainder]
     Assume $f$ is defined in a neighborhood of $0\in\mathbb{R}^n$, and $f$ is $(m+1)$-times differentiable in a neighborhood $B(0,\delta)$ of $0$, that is, all $m$th-order partial derivatives $\frac{\partial^mf}{\partial x_{i_1}\cdots\partial x_{i_m}}$ are differentiable in this neighborhood. Then, for every $x\in B(0,\delta)$, there exists $\theta\in(0,1)$ such that
     \begin{align*}
         f(x) & =\sum_{k=0}^m\frac{1}{k!}\sum_{i_1,\dots,i_k=1}^n\frac{\partial^kf}{\partial x_{i_1}\cdots\partial x_{i_k}}(0)x_{i_1}\cdots x_{i_k}                     \\
@@ -69,4 +69,4 @@ $$
 
         Plug in $t=1$ to obtain the Taylor expansion with Lagrange remainder.
     \end{pf}
-\end{thm}
+\end{theorem}

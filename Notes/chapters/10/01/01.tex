@@ -1,0 +1,206 @@
+\section[多变量函数的重积分]{Integration of Multivariable Functions}
+
+\paragraph*{$\mathbb{R}^3$: Curve, Surface}\quad\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/01/0101}}
+
+\subparagraph*{Curve}
+
+\begin{align*}
+    \gamma:\,[0,1] & \to\mathbb{R}^3               \\
+    t              & \mapsto r(t)=(x(t),y(t),z(t))
+\end{align*}
+
+\begin{align*}
+    \gamma'(t)=\frac{dr}{dt}
+     & \implies t\quad t+\Delta t                                                                                      \\
+     & \implies r(t+\Delta t)-r(t)=\gamma'(t)\Delta t+\circ(\Delta t)                                                  \\
+     & \implies \left|r(t+\Delta t)-r(t)\right|=|\gamma'(t)|\Delta t                                                   \\
+     & \implies S(t)=\int_0^t|\gamma'(\tau)|\,d\tau\leftarrow\text{represents the length of the curve }\gamma|_{[0,t]}
+\end{align*}
+
+$\implies S:\,[0,1]\to[0,L]$, $\frac{dS}{dt}=|\gamma'(t)|$ (we assume $\gamma'(t)\neq 0$ for all $t\in[0,1]$).
+
+$S$ is invertible in $t$, with inverse $t=t(s)$, and
+$$\frac{dt}{ds}=\left.\frac{1}{|\gamma'(t)|}\right|_{t=t(s)}.$$
+
+$$\rightarrow\tilde{\gamma}(s)\triangleq\gamma(t(s))\rightarrow\text{new parameterization of the curve}.$$
+$$\tilde{r}:\,[0,L]\to\mathbb{R}^3$$
+
+$$\frac{d\tilde{r}}{ds}=\frac{dr}{dt}\cdot\frac{dt}{ds}=\left.\frac{\gamma'(t)}{|\gamma'(t)|}\right|_{t=t(s)}\implies\left|\frac{d\tilde{r}}{ds}\right|\equiv1\rightarrow\text{arc-length parameterization (essentially unique).}$$
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/10/01/0102}
+\end{center}
+
+$$\left\langle\tilde{\gamma}'(s),\tilde{\gamma}'(s)\right\rangle\equiv 1\implies\begin{cases}
+        \tilde{r}'(s_0+\Delta s)-\tilde{r}'(s_0)=\overset{\substack{\text{normal to }\tilde{r}'(s_0) \\\uparrow}}{\overrightarrow{\kappa}(s_0)}\Delta s+\circ(\Delta s),\\
+        \left\langle\tilde{r}''(s),\tilde{r}'(s)\right\rangle\equiv 0.
+    \end{cases}$$
+$|\overrightarrow{\kappa}(s_0)|=\kappa(s_0)$ is called the curvature of the curve at $s_0$, $\overrightarrow{\kappa}(s_0)$ is the curvature vector of the curve at $s_0$.
+
+\begin{example}
+    $r_1(s)=(\cos s,\sin s,0)$
+
+    $r_2(s)=(\cos s,\sin s,s)$
+
+    $r_1'(s)=(-\sin s,\cos s,0)\implies|r_1'(s)|=1$
+
+    $r_2'(s)=(-\sin s,\cos s,1)\implies|r_2'(s)|=\sqrt{2}$
+
+    $r_1''(s)=(-\cos s,-\sin s,0)\implies|r_1''(s)|\equiv 1$
+
+    $r_2''(s)=(-\cos s,-\sin s,0)\implies|r_2''(s)|\equiv 1$
+
+    挠率
+\end{example}
+
+$ds=|r'(t)|\,dt$
+
+\begin{align*}
+    \rightarrow(ds)^2 & =|r'(t)|^2(dt)^2                 \\
+                      & =(x'(t)^2+y'(t)^2+z'(t)^2)(dt)^2 \\
+                      & =(dx)^2+(dy)^2+(dz)^2
+\end{align*}
+
+$\rightarrow ds^2=dx^2+dy^2+dz^2$
+
+$ds\otimes ds=dx\otimes dx+dy\otimes dy+dz\otimes dz\quad(u,v)$
+
+$ds=\sqrt{dx^2+dy^2+dz^2}$
+
+弧长微元。
+
+\subparagraph*{Surface}
+
+\begin{align*}
+    r:\,\Omega & \to\mathbb{R}^3                \\
+    (u,v)      & \mapsto (x(u,v),y(u,v),z(u,v))
+\end{align*}
+
+$\implies dr=\frac{\partial r}{\partial u}du+\frac{\partial r}{\partial v}dv=\begin{pmatrix}
+        x_u \\y_u\\z_u
+    \end{pmatrix}du+\begin{pmatrix}
+        x_v \\y_v\\z_v
+    \end{pmatrix}dv$
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/10/01/0103}
+\end{center}
+
+$\left\langle r_u,r_u\right\rangle=E,\quad\left\langle r_u,r_v\right\rangle=F,\quad\left\langle r_v,r_v\right\rangle=G$.
+
+\begin{align*}
+    |ar_u+br_v|^2 & =Ea^2+2Fab+Gb^2                                  \\
+                  & =\begin{pmatrix}a & b\end{pmatrix}
+    \begin{pmatrix}
+        E & F \\
+        F & G
+    \end{pmatrix}
+    \begin{pmatrix}a \\ b\end{pmatrix}                               \\
+    (\Delta s)^2=|r_u\Delta u+r_v\Delta v|^2
+                  & =\begin{pmatrix}\Delta u & \Delta v\end{pmatrix}
+    \begin{pmatrix}
+        E & F \\
+        F & G
+    \end{pmatrix}
+    \begin{pmatrix}\Delta u \\ \Delta v\end{pmatrix}                 \\
+                  & =E(\Delta u)^2+2F\Delta u\Delta v+G(\Delta v)^2.
+\end{align*}
+
+$\implies(ds)^2=E(du)^2+2F(du)(dv)+G(dv)^2$
+
+曲面的弧长微元，度量张量 (metric tensor)。
+
+\allbold{\begin{align*}
+        ds^2 & =\left\langle r_u,r_u\right\rangle du^2+2\left\langle r_u,r_v\right\rangle du\,dv+\left\langle r_v,r_v\right\rangle dv^2 \\
+             & =\left\langle dr,dr\right\rangle                                                                                         \\
+             & =\left\langle r_u\,du+r_v\,dv,r_u\,du+r_v\,dv\right\rangle
+    \end{align*}}
+
+\begin{center}
+    \includegraphics[width=0.5\columnwidth]{chapters/10/01/0104}
+\end{center}
+
+$\implies\sqrt{\underset{\substack{\downarrow\\E(r(u(t),v(t)))}}{E}u'(t)^2+2\underset{\substack{\downarrow\\F(r(u(t),v(t)))}}{F}u'(t)v'(t)+\underset{\substack{\downarrow\\G(r(u(t),v(t)))}}{G}v'(t)^2}\,\Delta t$
+
+$\implies\text{Length}=\int_a^b\sqrt{\cdots}\,dt$
+
+\begin{center}
+    \includegraphics[width=\columnwidth]{chapters/10/01/0105}
+\end{center}
+
+\subsection{二重积分}
+\subsubsection{平面区域的面积}
+
+Domain: $(x,y)\in D\subseteq\mathbb{R}^2$.
+
+If $\lim_{\|T\|\to 0}\sigma_T^+(D)=\lim_{\|T\|\to 0}\sigma_T^-(D)$, then $D$ is called \emph{Jordan measurable} (约当可测). The common limit is called the area of $D$, denoted by $\sigma(D)$.
+
+\begin{remark}
+    $0\leq\sigma_T^+(D)-\sigma_T^-(D)\leq\sigma_T^+(\partial D)\overset{?}{\implies}$ if $\partial D$ is Jordan measurable, then $D$ is Jordan measurable.
+\end{remark}
+
+Let $D\subseteq\mathbb{R}^2$ be a bounded subset, i.e. $D\subseteq[a,b]\times[c,d]$.
+
+Let $T:\,a=x_0<x_1<\dots<x_m=b$, $c=y_0<y_1<\dots<y_n=d$ be a rectangular partition of $[a,b]\times[c,d]$. Define
+\begin{align*}
+    \sigma_T^+(D) & =\sum_{R_{ij}\cap D\neq\emptyset}\sigma(R_{ij})\rightarrow\text{ Outer area w.r.t. }T \\
+    \sigma_T^-(D) & =\sum_{R_{ij}\subseteq D}\sigma(R_{ij})\rightarrow\text{ Inner area w.r.t. }T
+\end{align*}
+
+Let $\|T\|=\max_{\substack{1\leq i\leq m\\1\leq j\leq n}}\{\Delta x_i,\Delta y_j\}$ be the modulus of $T$.
+
+\begin{example}
+    Let $D=\left\{(x,f(x))\mid x\in[a,b]\right\}$ be the graph of a continuous function $f$. Then $D$ is Jordan measurable, and it has \emph{zero Jordan measure}.
+
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/01/0106}}\quad\allbold{$\sigma_T^+(D)\leq\epsilon(b-a)$}
+\end{example}
+
+\begin{example}
+    $D=\left\{(x,y)\mid a\leq x\leq b,0\leq y\leq f(x)\right\}$, $f$ continuous, $f\geq 0$, \allbold{Jordan measurable}.
+
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/01/0107}}\quad$\sigma(D)=\int_a^b f(x)\,dx$
+\end{example}
+
+\begin{example}
+    We can define Jordan measurability for $D\subseteq\mathbb{R}$ in a similar way.
+
+    $[0,1]\cap\mathbb{Q}$ \allbold{is not Jordan measurable}
+
+    $([0,1]\times[0,1])\cap\mathbb{Q}^2$ is not Jordan measurable.
+
+    \allbold{$\mathbb{Q}\cap[0,1]=\{r_1,r_2,\dots\}$, $f_n(x)=X_{\{r_1,\dots,r_n\}}^{(x)}\rightarrow f(x)=X_{Q\cap[0,1)}^{(x)}$}
+\end{example}
+
+\subsubsection{二重积分的基本概念与性质}
+
+Let $D\subseteq\mathbb{R}^2$ be Jordan measurable. A partition $T$ of $D$ means a division of $D$ into $n$ Jordan measurable subsets $D_i$ ($i=1,\dots,n$) that are
+$$\underset{(\mathring{D}_i\cap\mathring{D}_j=\emptyset),\ \forall 1\leq i<j\leq n}{\underline{non\text{-}overlapping}}.$$
+
+$f:\,D\to\mathbb{R}$
+
+Consider the Riemann sum
+$$S(T,\{\underset{\boldsymbol{\in D_i}}{\xi_i,\eta_i}\}_{1\leq i\leq n};f)=\sum_{i=1}^n f(\xi_i,\eta_i)\sigma(D_i).$$
+
+\begin{definition}
+    If there exists $A$ such that for every $\varepsilon>0$, there exists $\delta>0$ such that for every partition $T$ of $D$ with
+    $$\|T\|\triangleq\max_{1\leq i\leq n}\operatorname{diam}(D_i)<\delta,$$
+    we have
+    $$\left|S(T,\{(\xi_i,\eta_i)\}_{1\leq i\leq n};f)-A\right|<\varepsilon$$
+    for any choice of points $(\xi_i,\eta_i)\in D_i$, $1\leq i\leq n$, then we say $f$ is Riemann integrable on $D$, and denote by
+    $$A=\int\int_D f(x,y)\underset{\substack{\uparrow\\\boldsymbol{dxdy}\text{ \emph{area element} 面积}}}{d\sigma},$$
+    called the Riemann integral of $f$ on $D$.
+\end{definition}
+
+Geometrically, $\int\int_D f\,d\sigma$ represents the volume of
+$$\{(x,y,z)\in\mathbb{R}^3\mid (x,y)\in D,\ 0\leq z\leq f(x,y)\}$$
+for $f:\,D\to\mathbb{R}$ when $f\geq 0$.
+
+\raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/10/01/0108}}\quad$\int_a^b f(x)\,dx=\int\int_D 1\,d\sigma$
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/10/01/0109}
+\end{center}
+
+
+
+\subsubsection{二重积分的计算}

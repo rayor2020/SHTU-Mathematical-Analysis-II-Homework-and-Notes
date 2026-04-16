@@ -31,7 +31,7 @@ Similarly, we can define
     \boldsymbol{\left.\frac{\partial^2f}{\partial x\partial y}\right|_{\left(x_0,y_0\right)}} & \boldsymbol{=\lim_{\Delta x\to 0}\lim_{\Delta y\to 0}\frac{\mathrm{II}(\Delta x,\Delta y)}{\Delta x\Delta y}}
 \end{align*}
 
-\begin{thm}
+\begin{theorem}
     If $\frac{\partial^2f}{\partial x\partial y},\frac{\partial^2f}{\partial y\partial x}$ exist in an open neighborhood of $(x_0,y_0)$ and are both continuous at $\left(x_0,y_0\right)$, then $\left.\frac{\partial^2f}{\partial y\partial x}\right|_{\left(x_0,y_0\right)}=\left.\frac{\partial^2f}{\partial x\partial y}\right|_{\left(x_0,y_0\right)}$
     \begin{pf}
         \begin{align*}
@@ -44,14 +44,14 @@ Similarly, we can define
         Similarly, $\mathrm{II}(h,k)=\frac{\partial^2 f}{\partial x\partial y}(x_0+\theta h,y_0+\eta k)hk=\frac{\partial^2 f}{\partial y\partial x}(x_0+\theta h,y_0+\eta k)hk$\\
         $\overset{\text{\allbold{Take limit $h,k\to 0$}}}{\implies}\boldsymbol{\left.\frac{\partial^2 f}{\partial x\partial y}\right|_{(x_0,y_0)}=\left.\frac{\partial^2 f}{\partial y\partial x}\right|_{(x_0,y_0)}}$
     \end{pf}
-\end{thm}
+\end{theorem}
 
-\begin{thm}
+\begin{theorem}
     If $f_{yx}''=\frac{\partial^2f}{\partial x\partial y}=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)$ and $\frac{\partial^2f}{\partial y\partial x}$ are both \emph{continuous} at $M_0=(x_0,y_0)$, then
     $$
         \frac{\partial^2f}{\partial x\partial y}(x_0,y_0)=\frac{\partial^2f}{\partial y\partial x}(x_0,y_0)
     $$
-\end{thm}
+\end{theorem}
 \begin{example}
     \boxed{$$f(x)=x^2\sin\frac{1}{x}\quad f'(x)=2x\sin\frac{1}{x}-\cos\frac{1}{x}\quad\lim_{x\to0}\frac{f(x)-f(0)}{x}=0$$}
 
@@ -125,7 +125,7 @@ Similarly, we can define
     \end{enumerate}
 \end{example}
 
-\begin{rmk}
+\begin{remark}
     \begin{align*}
         \mathrm{II}(h,k) & =(f(h,k)-f(h,0))-(f(0,k)-f(0,0))                                                                   \\
                          & =\left.(f(x,k)-f(x,0))\right|_0^h                                                                  \\
@@ -133,7 +133,7 @@ Similarly, we can define
                          & =\left(\frac{\partial f}{\partial y}(h,\eta k)-\frac{\partial f}{\partial y}(0,\eta k)\right)h
     \end{align*}
     \includegraphics[width=\columnwidth]{chapters/09/02/0101}
-\end{rmk}
+\end{remark}
 
 \begin{example}
     $f(x,y)=F(x)+G(y)$ where $F\in C^1$, $G$ is arbitrary.
@@ -154,7 +154,7 @@ In contrast, look at
               \end{itemize}
               $a+by+(c+dy)x=a+by+cx+dxy,\ a,b,c,d\in\mathbb{R}$ Solution.
     \end{itemize}
-    \begin{rmk}
+    \begin{remark}
         $\Delta f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}=0\implies f$ has some good property.
-    \end{rmk}
+    \end{remark}
 \end{example}

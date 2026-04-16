@@ -23,11 +23,11 @@ differentiable at $x$ iff $f(x+\Delta x)=f(x)+df|_x(\Delta x)+\circ(|\Delta x|)$
     \emph{$\frac{\partial r}{\partial x}=\frac{x}{r},\frac{\partial r}{\partial y}=\frac{y}{r}$ are continuous on $\mathbb{R}^2\setminus\{(0,0)\}\implies r$ is differentiable on $\mathbb{R}^2\setminus\{(0,0)\}$.}
 \end{example}
 
-\begin{prop}[Criteria for differentiability]
+\begin{proposition}[Criteria for differentiability]
     Suppose $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ $\underset{\text{\emph{exist in an open neighborhood and continuous at $(x_0,y_0)$}}}{\text{are continuous in an \emph{open neighborhood}}}$ of $(x_0,y_0)$, then $f$ is differentiable at $(x_0,y_0)$.
-    \begin{rmk}
+    \begin{remark}
         The converse is obviously wrong.
-    \end{rmk}
+    \end{remark}
     \begin{pf}
         \begin{align*}
             f(x_0+h,y_0+k) & =f(x_0,y_0)=\overbrace{f(x_0+h,y_0+k)-f(x_0+h,y_0)}-\overbrace{f(x_0+h,y_0)-f(x_0,y_0)}                                                                                                                                        \\
@@ -39,9 +39,9 @@ differentiable at $x$ iff $f(x+\Delta x)=f(x)+df|_x(\Delta x)+\circ(|\Delta x|)$
 
         $\to0$, $(h,k)\to(0,0)$ by the continuity of $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ in the neighborhood of $(x_0,y_0)$
     \end{pf}
-\end{prop}
+\end{proposition}
 
-\begin{prop}
+\begin{proposition}
     Suppose $\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$ are locally bounded near $(x_0,y_0)$, then $f$ is continuous at $(x_0,y_0)$.
     \begin{pf}
         $$\left|f(x_0+h,y_0+k)-f(x_0,y_0)\right|\leq C(|h|+|k|)$$
@@ -50,7 +50,7 @@ differentiable at $x$ iff $f(x+\Delta x)=f(x)+df|_x(\Delta x)+\circ(|\Delta x|)$
 
         $\implies f(x_0+h,y_0+k)\to f(x_0,y_0)$, $h,k\to0$ \emph{(Actually, $f$ is locally Lipschitz.)}
     \end{pf}
-\end{prop}
+\end{proposition}
 
 Recall\begin{itemize}
     \item $\frac{\partial}{\partial x}(\lambda f+\mu g)=\lambda\frac{\partial f}{\partial x}+\mu\frac{\partial g}{\partial x}$, $\lambda,\mu$ are constant
@@ -70,7 +70,7 @@ $\implies\begin{cases}
         \text{单变量正确，多变量不能直接推广}
     \end{cases}$
 
-\begin{prop}
+\begin{proposition}
     Suppose $f$ and $g$ are both differentiable at $x\in D$, then\begin{enumerate}
         \item $\forall\lambda,\mu\in\mathbb{R}$, $\lambda f+\mu g$ is differentiable at $x$, $d(\lambda f+\mu g)|_x=\lambda df|_x+\mu dg|_x$
         \item $fg$ is differentiable at $x$, $d(fg)|_x=df|_xg(x)+f(x)dg|_x$, $d(\frac{f}{g})|_x=\frac{df|_xg(x)-f(x)dg|_x}{g^2(x)}$
@@ -96,5 +96,5 @@ $\implies\begin{cases}
 
         Consequently, $d(fg)|_x=df|_xg(x)+f(x)dg|_x$
     \end{pf}
-\end{prop}
+\end{proposition}
 

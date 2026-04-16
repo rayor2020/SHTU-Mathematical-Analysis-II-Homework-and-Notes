@@ -15,14 +15,14 @@
     $\frac{\partial F}{\partial x}(0,1)=0\quad\frac{\partial F}{\partial x}(0,-1)=0\quad\frac{\partial F}{\partial y}(1,0)=0\quad\frac{\partial F}{\partial y}(-1,0)=0$
 \end{example}
 
-\begin{thm}[Implicit Function Theorem]
+\begin{theorem}[Implicit Function Theorem]
     Let $D\subseteq\mathbb{R}^2$ be an open set, $M_0=(x_0,y_0)\in D$. Let $F$ be defined on $D$ and satisfy\begin{enumerate}
         \item $F\in C^1(D)$ \allbold{连续可微 ($\frac{\partial F}{\partial x},\frac{\partial F}{\partial y}$ are continuous)}
         \item $F(x_0,y_0)=0$
         \item $\frac{\partial F}{\partial y}(x_0,y_0)\neq 0$
     \end{enumerate}
     $\implies$ rectangular neighborhood $I\times J$ of $(x_0,y_0)$ s.t. $F(x,y)=0$ determines \allbold{an \emph{implicit function} $y=y(x)$ in $I\times J$}. In other words, $\forall x\in I$, $\exists!y\in J$, s.t. $F(x,y)=0$. Moreover, \allbold{$y=y(x)$ is continuously differentiable} and \allbold{$\left.\frac{dy}{dx}\right|_x=-\left.\frac{\frac{\partial F}{\partial x}(x,y)}{\frac{\partial F}{\partial y}(x,y)}\right|_{y=y(x)}$}.
-\end{thm}
+\end{theorem}
 
 \begin{example}
     Use Implicit Function Theorem to understand $x^2+y^2-1=0$
@@ -146,9 +146,9 @@ Suppose $\frac{\partial F}{\partial y}(x_0,y_0)>0$\quad\raisebox{-0.5\height}{\i
     \end{center}
 
     Consequently, $\forall x\in[x_0-a,x_0+a]$, $\exists!y\in[y_0-b,y_0+b]$ s.t. $F(x,y)=0$.
-    \begin{rmk}
+    \begin{remark}
         \emph{The arguments go through if $x$ is replaced by a vector in $\mathbb{R}^n$ while keeping $y$ in $\mathbb{R}$}
-    \end{rmk}
+    \end{remark}
 
     Step 3. If $\{x_n\}\subseteq[x_0-a,x_0+a]$, $x_n\to x'\,(n\to+\infty)$, then $y(x_n)\to y(x')\,(n\to+\infty)$.
 
@@ -180,10 +180,10 @@ Suppose $\frac{\partial F}{\partial y}(x_0,y_0)>0$\quad\raisebox{-0.5\height}{\i
     \emph{$\left.\frac{dy}{dx}\right|_x=-\left.\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}}\right|_{y=y(x)}$ In particular, $y\in C^1[x_0-a,x_0+a]$}
 \end{pf}
 
-\begin{rmk}
+\begin{remark}
     If you have already $y=y(x)$ exists, and differentiable, then we can differentiate
     $$F(x,y(x))=0\quad(\substack{x\mapsto(x,y(x))\\(x,y)\mapsto F(x,y)})$$
 
     $\frac{\partial F}{\partial x}dx+\frac{\partial F}{\partial y}dy=0\implies\frac{dy}{dx}=-\left.\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}}\right|_{y=y(x)}$
-\end{rmk}
+\end{remark}
 

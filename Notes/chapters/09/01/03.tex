@@ -1,7 +1,7 @@
 \subsubsection[多变量函数的极限]{Limit}
-\begin{define}[Limit]
+\begin{definition}[Limit]
     Let $f:\,D\left(\subseteq\mathbb{R}^2\right)\to\mathbb{R}$, $M_0$ is an accumulation point of $D$. If for some $a\in\mathbb{R},\,\forall\varepsilon>0,\,\exists\delta=\delta(\varepsilon)>0$ s.t. $\forall M\in D\cap B^-\left(M_0,\delta\right),\,\left|f(M)-a\right|<\varepsilon$, then we say $f$ converges to $a$ as $M$ converges to $M_0$, simply denote it by $\lim_{M\to M_0}f(M)=a$.
-\end{define}
+\end{definition}
 
 $\forall\varepsilon>0,\,\exists\delta=\delta(\varepsilon)>0$, s.t. $\forall(x,y)\in D,\,(x,y)\neq M_0=\left(x_0,y_0\right),\,\left|x-x_0\right|<\delta,\,\left|y-y_0\right|<\delta,\,\left|f(x,y)-a\right|<\varepsilon$
 
@@ -39,7 +39,7 @@ Similarly, we can define $\lim_{\substack{x\to\infty\\y\to\infty}}f(x,y),\,\lim_
     \end{enumerate}
 \end{example}
 
-\begin{thm}
+\begin{theorem}
     Suppose $f$ is defined on $B^-\left(M_0,r\right)$, then $\lim_{M\to M_0}f(M)=a\iff$ for any continuous curve $\gamma:\,(0,\delta)\to B^-\left(M_0,r\right)$ with $\lim_{t\to 0^+}\gamma(t)=M_0$, we have $\lim_{t\to 0}f\left(\gamma(t)\right)=a$
     \begin{pf}
         ``$\implies$'' $\forall \varepsilon>0,\,\exists\delta>0$ s.t. $\forall M\in B^-\left(M_0,\delta\right),\,\left|f(M)-a\right|<\varepsilon$. Then for any $\gamma:\,(0,\delta)\to B^-\left(M_0,r\right)$ with $\gamma(t)\to M_0\,(t\to 0)$. $\exists\eta>0$ s.t. $\forall 0<t<\eta,\,\gamma(t)\in B^-(M_0,\delta)$, then $\left|f\left(\gamma(t)\right)\right|<\varepsilon$
@@ -48,15 +48,15 @@ Similarly, we can define $\lim_{\substack{x\to\infty\\y\to\infty}}f(x,y),\,\lim_
 
         \allbold{Construct a $\gamma:\,(0,1)\to B^-\left(M_0,r\right),\,\gamma\left(\frac{1}{2^n}\right)$ and $\gamma(t)\to M_0\,(t\to 0)$, but $f\left(\gamma\left(\frac{1}{2^n}\right)\right)=f\left(M_n\right)\not\to a$. Contradiction.}
     \end{pf}
-\end{thm}
+\end{theorem}
 
-\begin{prop}[Algebraic Rules]
+\begin{proposition}[Algebraic Rules]
     If $\lim_{M\to M_0}f(M),\,\lim_{M\to M_0}g(M)$ both exists, then $\lim_{M\to M_0}(f\pm g)(M),\,\lim_{M\to M_0}(f\cdot g)(M)$ exists and $\lim_{M\to M_0}(\frac{f}{g})(M)$ exists provided $\lim_{M\to M_0}g(M)\neq0$.
-\end{prop}
+\end{proposition}
 
-\begin{prop}[Heine Principle]
+\begin{proposition}[Heine Principle]
     Suppose $M_0$ is an accumulation point of $D$, then $\lim_{M\to M_0}f(M)=a$ iff for any point sequence $\left\{M_n\right\}\subseteq D\setminus\left\{M_0\right\}$, such that $M_n\to M_0\,(n\to+\infty)$, we have $f\left(M_n\right)\to a\,(n\to+\infty)$
-\end{prop}
+\end{proposition}
 
 $\lim_{M\to M_0}f(M)$ exists $\iff\lim_{\delta\to 0}\sup_{B^-\left(M_0,\delta\right)}\left|f(M)-f\left(M'\right)\right|=0\iff$ In particular, $\lim_{\delta\to 0}\sup_{\partial B\left(M_0,\delta\right)}\left|f(M)-f\left(M'\right)\right|=0$
 

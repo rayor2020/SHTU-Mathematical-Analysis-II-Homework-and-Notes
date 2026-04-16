@@ -214,3 +214,47 @@ $W\underset{\text{subspace}}{\subseteq}V$, $Q|_W:\,W\times W\to\mathbb{R}\implie
         \includegraphics[width=\columnwidth]{chapters/09/05/0105}
     \end{center}
 \end{example}
+
+% 20260416
+
+Given constraints $G_1(x_1,\dots,x_n)=0$, $\dots$, $G_m(x_1,\dots,x_n)=0$, find the constrained extremal values of $F(x_1,\dots,x_n)$.
+
+\subparagraph*{Method 1}
+
+$$\overrightarrow{G}(x)=(G_1(x_1,\dots,x_n),\dots,G_m(x_1,\dots,x_n)):\,\mathbb{R}^n\to\mathbb{R}^m$$
+
+$\mathcal{S}=\overrightarrow{G}^{-1}(0)$ locally looks like the graph of $\varphi:\,\mathbb{R}^{n-m}\to\mathbb{R}^m$.
+
+Then consider
+$$F\left(\underset{\substack{\uparrow\\n-m\text{ free variables}}}{x},\varphi(x)\right),\quad J_x\bigl(F(x,\underset{y}{\underline{\varphi(x)}})\bigr)=(J_xF)+(J_yF)\cdot J_x\varphi.$$
+
+Recall that $G(x,\varphi(x))=0$, so
+$$(J_xG)+(J_yG)J_x\varphi=0.$$
+
+$$J_x(F(x,\varphi(x)))=J_{\underset{\substack{\uparrow\\(x_1,\dots,x_{n-m})}}{x}}F-(J_yF)(J_yG)^{-1}\cdot J_xG=0.$$
+
+$$\implies\nabla F+\lambda_1\nabla G_1+\dots+\lambda_m\nabla G_m=0,$$
+where $\lambda_1,\dots,\lambda_m\in\mathbb{R}$ are constants.
+
+$$JG=\begin{pmatrix}
+        \partial_1G_1 & \cdots & \partial_nG_1 \\
+        \vdots        &        &               \\
+        \partial_1G_m & \cdots & \partial_nG_m
+    \end{pmatrix}=\begin{pmatrix}\nabla G_1\\\vdots\\\nabla G_m\end{pmatrix}.$$
+
+\subparagraph*{Method 2}
+
+\quad\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/09/05/0401}}
+\quad$\left.\frac{d}{dt}\right|_{t=0}F(\gamma(t))=\left\langle\nabla F|_x,\gamma'(0)\right\rangle=0$, for every curve $\gamma(t)$ in $\mathcal{S}$ passing through $x$ at $t=0$, i.e.
+$$G_1(\gamma(t))\equiv\dots\equiv G_m(\gamma(t))=0.$$
+
+$$\implies\nabla F|_x\in\operatorname{Span}\left\{\nabla G_1|_x,\dots,\nabla G_m|_x\right\},\quad
+    \gamma'(0)\perp\operatorname{Span}\left\{\nabla G_1|_x,\dots,\nabla G_m|_x\right\}.$$
+
+$$\left.\frac{d^2}{dt^2}\right|_{t=0}F(\gamma(t))=\sum_{i,j=1}^n\left(\frac{\partial^2F}{\partial x_i\partial x_j}-\sum_{k=1}^m\lambda_k\frac{\partial^2G_k}{\partial x_i\partial x_j}\right)\gamma_i'(0)\gamma_j'(0),$$
+where $\nabla F+\sum_{k=1}^m\lambda_k\nabla G_k=0$.
+
+$$(\nabla F)^{\parallel_{\mathcal{S}}}=\nabla F-\sum_{k=1}^m\frac{\left\langle\nabla F,\nabla G_k\right\rangle}{\left\langle\nabla G_k,\nabla G_k\right\rangle}\nabla G_k.$$
+
+\allbold{$\forall Y\in T_x\mathcal{S}$, $\left\langle\underset{\text{内蕴梯度}}{(\nabla F)^{\parallel_{\mathcal{S}}}},Y\right\rangle=\left\langle\nabla F,Y\right\rangle=dF(Y)$.}
+

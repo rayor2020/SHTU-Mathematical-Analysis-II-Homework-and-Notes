@@ -1,8 +1,8 @@
 \subsubsection[多变量函数的连续性]{Continuity}
 
-\begin{define}
+\begin{definition}
     Let $f:\,D\left(\subseteq\mathbb{R}^2\right)\to\mathbb{R}$ and $M_0\in D$, we say $f$ is continuous at $M_0$ if $\lim_{M\to M_0}f(M)=f(M_0)$, i.e. $\forall\varepsilon>0$, $\exists\delta=\delta(\varepsilon)>0$ s.t. $\forall M\in D\cap B\left(M_0,\delta\right)$, $\left|f(M)-f\left(M_0\right)\right|<\varepsilon$
-\end{define}
+\end{definition}
 
 \begin{example}
     $D=\left\{(x,y)\in\mathbb{R}^2\mid xy>-1\right\}$, $f(x,y)=\begin{cases}
@@ -55,11 +55,11 @@
     \end{enumerate}
 \end{example}
 
-\begin{define}[Uniform Continuity]
+\begin{definition}[Uniform Continuity]
     Let $f$ be defined on $D\subseteq\mathbb{R}^2$, $f$ is said to be uniformly continuous if $\forall\varepsilon>0$, $\exists\delta=\delta(\varepsilon)>0$, s.t. $\forall M',M''\in D$, $d\left(M',M''\right)<\delta$, $\left|f\left(M'\right)-f\left(M''\right)\right|<\varepsilon$
-\end{define}
+\end{definition}
 
-\begin{thm}
+\begin{theorem}
     \begin{enumerate}
         \item The continuity of function is preserved under $+,-,\times$ and $\div$ (provided the denominator function is nonzero at the point of interest)
         \item The composition of continuous vector-valued functions is continuous.
@@ -98,4 +98,4 @@
               \end{pf}
         \item \emph{(Cantor Thm)} Continuous function on a bounded closed set is uniformly continuous.
     \end{enumerate}
-\end{thm}
+\end{theorem}
