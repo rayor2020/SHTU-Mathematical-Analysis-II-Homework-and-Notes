@@ -1,0 +1,503 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\theoremstyle{definition}
+\newtheorem*{pf}{证}
+\newtheorem*{sol}{解}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{Mathematical Analysis II\\Week 7 Homework (April 16)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 9.6}
+
+8. 设 $\phi, \psi$ 是数量场, $\boldsymbol{a}, \boldsymbol{b}$ 为向量场, 证明
+
+\begin{align*}
+    \nabla(\phi+\psi)
+     & =\nabla\phi+\nabla\psi,                                                                       \\
+    \nabla\cdot(\boldsymbol{a}+\boldsymbol{b})
+     & =\nabla\cdot\boldsymbol{a}+\nabla\cdot\boldsymbol{b},                                         \\
+    \nabla\times(\boldsymbol{a}+\boldsymbol{b})
+     & =\nabla\times\boldsymbol{a}+\nabla\times\boldsymbol{b},                                       \\
+    \nabla(\phi\psi)
+     & =\phi\nabla\psi+\psi\nabla\phi,                                                               \\
+    \nabla\cdot(\phi\boldsymbol{a})
+     & =\phi\nabla\cdot\boldsymbol{a}+\boldsymbol{a}\cdot\nabla\phi,                                 \\
+    \nabla\cdot(\boldsymbol{a}\times\boldsymbol{b})
+     & =\boldsymbol{b}\cdot\nabla\times\boldsymbol{a}-\boldsymbol{a}\cdot\nabla\times\boldsymbol{b}, \\
+    \nabla\times(\phi\boldsymbol{a})
+     & =\nabla\phi\times\boldsymbol{a}+\phi\nabla\times\boldsymbol{a}.
+\end{align*}
+\begin{pf}
+    \begin{enumerate}
+        \item $\nabla(\phi+\psi)=(\partial_x(\phi+\psi), \partial_y(\phi+\psi), \partial_z(\phi+\psi))=(\partial_x,\partial_y,\partial_z)(\phi+\psi)=\nabla\phi+\nabla\psi$
+        \item $\nabla\cdot(a+b)=\partial_x(a_1+b_1)+\partial_y(a_2+b_2)+\partial_z(a_3+b_3)=\nabla\cdot a+\nabla\cdot b$
+        \item $\nabla\times(a+b)=\begin{vmatrix}
+                      \boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+                      \partial_x     & \partial_y     & \partial_z     \\
+                      a_1+b_1        & a_2+b_2        & a_3+b_3
+                  \end{vmatrix}=\begin{vmatrix}
+                      \boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+                      \partial_x     & \partial_y     & \partial_z     \\
+                      a_1            & a_2            & a_3
+                  \end{vmatrix}+\begin{vmatrix}
+                      \boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+                      \partial_x     & \partial_y     & \partial_z     \\
+                      b_1            & b_2            & b_3
+                  \end{vmatrix}=\nabla\times a+\nabla\times b$
+        \item $\nabla(\phi\psi)=\partial_x(\phi\psi)+\partial_y(\phi\psi)+\partial_z(\phi\psi)$
+
+              其中$\partial_x(\phi\psi)=\phi\partial_x\psi+\psi\partial_x\phi$, $\partial_y,\partial_z$同理
+
+              所以$\nabla(\phi\psi)=\phi(\partial_x+\partial_y+\partial_z)\psi+\psi(\partial_x+\partial_y+\partial_z)\phi=\phi\nabla\psi+\psi\nabla\phi$
+        \item $\nabla\cdot(\phi a)=\partial_x(\phi a)+\partial_y(\phi a)+\partial_z(\phi a)$
+
+              其中$\partial_x(\phi a)=\phi\partial_x a+ a\partial_x\phi$, $\partial_y,\partial_z$同理
+
+              所以$\nabla\cdot(\phi a)=\phi(\partial_x+\partial_y+\partial_z) a+ a(\partial_x+\partial_y+\partial_z)\phi=\phi\nabla a+ a\nabla\phi$
+        \item $a\times b=(a_2b_3-a_3b_2, a_3b_1-a_1b_3, a_1b_2-a_2b_1)$
+
+              所以
+              \begin{align*}
+                  \text{LHS}
+                   & =\nabla(a\times b)                                                                                                                                                                 \\
+                   & =\partial_x(a_2b_3-a_3b_2)+\partial_y(a_3b_1-a_1b_3)+\partial_z(a_1b_2-a_2b_1)                                                                                                     \\
+                   & =b_3\partial_xa_2+a_2\partial_xb_3-a_3\partial_xb_2-b_2\partial_xa_3                                                                                                               \\
+                   & \quad+b_1\partial_ya_3+a_3\partial_yb_1-a_1\partial_yb_3-b_3\partial_ya_1                                                                                                          \\
+                   & \quad+b_2\partial_za_1+a_1\partial_zb_2-a_2\partial_zb_1-b_1\partial_za_2                                                                                                          \\
+                   & =b_1(\partial_ya_3-\partial_za_2)+b_2(\partial_za_1-\partial_xa_3)+b_3(\partial_xa_2-\partial_ya_1)                                                                                \\
+                   & \quad-a_1(\partial_yb_3-\partial_zb_2)-a_2(\partial_zb_1-\partial_xb_3)-a_3(\partial_xb_2-\partial_yb_1)                                                                           \\
+                   & =b(\partial_ya_3-\partial_za_2, \partial_za_1-\partial_xa_3, \partial_xa_2-\partial_ya_1)-a(\partial_yb_3-\partial_zb_2, \partial_zb_1-\partial_xb_3, \partial_xb_2-\partial_yb_1) \\
+                   & =b\cdot\nabla\times a-a\cdot\nabla\times b                                                                                                                                         \\
+                   & =\text{RHS}
+              \end{align*}
+        \item \begin{align*}
+                  \text{LHS}
+                   & =\nabla\times(\phi a)                                                                                                                                     \\
+                   & =\begin{vmatrix}
+                          \boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+                          \partial_x     & \partial_y     & \partial_z     \\
+                          \phi a_1       & \phi a_2       & \phi a_3
+                      \end{vmatrix}                                                                                                         \\
+                   & =(\partial_y\phi a_3-\partial_z\phi a_2, \partial_z\phi a_1-\partial_x\phi a_3, \partial_x\phi a_2-\partial_y\phi a_1)                                    \\
+                   & =(\phi\partial_ya_3+a_3\partial_y\phi-\phi\partial_za_2-a_2\partial_z\phi,                                                                                \\
+                   & \quad\phi\partial_za_1+a_1\partial_z\phi-\phi\partial_xa_3-a_3\partial_x\phi,                                                                             \\
+                   & \quad\phi\partial_xa_2+a_2\partial_x\phi-\phi\partial_ya_1-a_1\partial_y\phi)                                                                             \\
+                   & =\phi(\partial_ya_3-\partial_za_2, \partial_za_1-\partial_xa_3, \partial_xa_2-\partial_ya_1)                                                              \\
+                   & \quad+(\partial_y\phi\cdot a_3-\partial_z\phi\cdot a_2, \partial_z\phi\cdot a_1-\partial_x\phi\cdot a_3, \partial_x\phi\cdot a_2-\partial_y\phi\cdot a_1) \\
+                   & =\phi\nabla\times a+\nabla\phi\times a                                                                                                                    \\
+                   & =\text{RHS}
+              \end{align*}
+    \end{enumerate}
+
+    Q.E.D.
+\end{pf}
+
+9. 证明
+\begin{align*}
+    \operatorname{rot}\operatorname{grad}\phi
+     & =\nabla\times\nabla\phi=\boldsymbol{0},     \\
+    \operatorname{div}\operatorname{rot}\boldsymbol{a}
+     & =\nabla\cdot(\nabla\times\boldsymbol{a})=0.
+\end{align*}
+\begin{pf}
+    \begin{enumerate}
+        \item $\nabla\times\nabla\phi=\begin{vmatrix}
+                      \boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+                      \partial_x     & \partial_y     & \partial_z     \\
+                      \partial_x\phi & \partial_y\phi & \partial_z\phi
+                  \end{vmatrix}=((\partial_{yz}-\partial_{zy})\phi, (\partial_{zx}-\partial_{xz})\phi, (\partial_{xy}-\partial_{yx})\phi)=(0,0,0)=0$
+        \item \begin{align*}
+                  \nabla\cdot(\nabla\times a)
+                   & =(\partial_x,\partial_y,\partial_z)\cdot(\partial_y a_3 - \partial_z a_2, \partial_z a_1 - \partial_x a_3, \partial_x a_2 - \partial_y a_1) \\
+                   & =(\partial_{yz}-\partial_{zy})a_1+(\partial_{zx}-\partial_{xz})a_2+(\partial_{xy}-\partial_{yx})a_3                                         \\
+                   & =0+0+0=0
+              \end{align*}
+    \end{enumerate}
+
+    Q.E.D.
+\end{pf}
+
+10. 证明
+$$
+    \nabla\times(\nabla\times\boldsymbol{v})=\nabla(\nabla\cdot\boldsymbol{v})-\nabla^2\boldsymbol{v}.
+$$
+\begin{pf}
+    \begin{align*}
+        \nabla\times(\nabla\times v)
+         & =\begin{vmatrix}
+                \boldsymbol{i}                  & \boldsymbol{j}                  & \boldsymbol{k}                  \\
+                \partial_x                      & \partial_y                      & \partial_z                      \\
+                \partial_y v_3 - \partial_z v_2 & \partial_z v_1 - \partial_x v_3 & \partial_x v_2 - \partial_y v_1
+            \end{vmatrix} \\
+         & =(\partial_{yx}v_2-\partial_{yy}v_1-\partial_{zz}v_1+\partial_{zx}v_3,                               \\
+         & \quad\partial_{zy}v_3-\partial_{zz}v_2-\partial_{xx}v_2+\partial_{xy}v_1,                            \\
+         & \quad\partial_{xz}v_1-\partial_{xx}v_3-\partial_{yy}v_3+\partial_{yz}v_2)                            \\
+        \nabla(\nabla\cdot v)
+         & =\nabla(\partial_x v_1 + \partial_y v_2 + \partial_z v_3)                                            \\
+         & =(\partial_{xx}v_1 + \partial_{xy}v_2 + \partial_{xz}v_3,                                            \\
+         & \quad\partial_{yx}v_1 + \partial_{yy}v_2 + \partial_{yz}v_3,                                         \\
+         & \quad\partial_{zx}v_1 + \partial_{zy}v_2 + \partial_{zz}v_3)                                         \\
+        \nabla^2v
+         & =(\partial_{xx}+\partial_{yy}+\partial_{zz})v                                                        \\
+         & =((\partial_{xx}+\partial_{yy}+\partial_{zz})v_1,                                                    \\
+         & \quad(\partial_{xx}+\partial_{yy}+\partial_{zz})v_2,                                                 \\
+         & \quad(\partial_{xx}+\partial_{yy}+\partial_{zz})v_3)
+    \end{align*}
+
+    不难发现三个分量均满足$$\begin{cases}
+            (\partial_{xx}v_1 + \partial_{xy}v_2 + \partial_{xz}v_3)-((\partial_{xx}+\partial_{yy}+\partial_{zz})v_1)=\partial_{yx}v_2-\partial_{yy}v_1-\partial_{zz}v_1+\partial_{zx}v_3 \\
+            (\partial_{yx}v_1 + \partial_{yy}v_2 + \partial_{yz}v_3)-((\partial_{xx}+\partial_{yy}+\partial_{zz})v_2)=\partial_{zy}v_3-\partial_{zz}v_2-\partial_{xx}v_2+\partial_{xy}v_1 \\
+            (\partial_{zx}v_1 + \partial_{zy}v_2 + \partial_{zz}v_3)-((\partial_{xx}+\partial_{yy}+\partial_{zz})v_3)=\partial_{xz}v_1-\partial_{xx}v_3-\partial_{yy}v_3+\partial_{yz}v_2
+        \end{cases}$$
+
+    所以$\nabla\times(\nabla\times v)=\nabla(\nabla\cdot v)-\nabla^2v$
+
+    Q.E.D.
+\end{pf}
+
+\section*{第9章综合习题}
+
+10. 设 $f(x,y)$ 在 $(x_0,y_0)$ 的某个邻域 $U$ 上有定义, $\frac{\partial f}{\partial x}$ 和 $\frac{\partial f}{\partial y}$ 在 $U$ 上存在. 求证: 如果 $\frac{\partial f}{\partial x}$ 和 $\frac{\partial f}{\partial y}$ 中有一个在 $(x_0,y_0)$ 处连续, 那么 $f(x,y)$ 在 $(x_0,y_0)$ 可微.
+\begin{pf}
+    不妨设 $\frac{\partial f}{\partial x}$ 在 $(x_0,y_0)$ 处连续。
+
+    记 $\Delta f=f(x_0+\Delta x,y_0+\Delta y)-f(x_0,y_0)$，其中 $(x_0+\Delta x,y_0+\Delta y)\in U$。
+
+    因此
+    $$
+        \Delta f = (f(x_0+\Delta x, y_0+\Delta y) - f(x_0, y_0+\Delta y)) + (f(x_0, y_0+\Delta y) - f(x_0, y_0)).
+    $$
+
+    将 $f(x_0+\Delta x, y_0+\Delta y) - f(x_0, y_0+\Delta y)$ 视为关于 $x$ 的一元函数，由拉格朗日中值定理，存在 $\theta\in(0,1)$ 使得
+    $$
+        f(x_0+\Delta x, y_0+\Delta y) - f(x_0, y_0+\Delta y) = \frac{\partial f}{\partial x}(x_0+\theta\Delta x, y_0+\Delta y) \Delta x.
+    $$
+
+    由于 $\frac{\partial f}{\partial x}$ 在 $(x_0,y_0)$ 处连续，因此当 $\Delta x,\Delta y\to 0$ 时，
+    $$
+        \frac{\partial f}{\partial x}(x_0+\theta\Delta x, y_0+\Delta y)\to\frac{\partial f}{\partial x}(x_0, y_0).
+    $$
+
+    记 $\alpha=\frac{\partial f}{\partial x}(x_0+\theta\Delta x, y_0+\Delta y)-\frac{\partial f}{\partial x}(x_0, y_0)$，则当 $\rho\to 0$ 时，$\alpha\to 0$。因此
+    $$
+        f(x_0+\Delta x, y_0+\Delta y) - f(x_0, y_0+\Delta y) =\left(\frac{\partial f}{\partial x}(x_0, y_0) + \alpha\right) \Delta x.
+    $$
+
+    又由于
+    $$
+        f(x_0, y_0+\Delta y) - f(x_0, y_0) = \frac{\partial f}{\partial y}(x_0, y_0) \Delta y + \beta \Delta y,
+    $$
+    其中当 $\Delta y\to 0$ 时，$\beta\to 0$。
+
+    因此
+    $$
+        \Delta f = \frac{\partial f}{\partial x}(x_0, y_0) \Delta x + \frac{\partial f}{\partial y}(x_0, y_0) \Delta y + \alpha \Delta x + \beta \Delta y,
+    $$
+    其中 $|\alpha \Delta x + \beta \Delta y|\leq(|\alpha|+|\beta|)\rho\to 0$ ($\rho\to 0$)，故 $\alpha \Delta x + \beta \Delta y = o(\rho)$。
+
+    因此 $f(x,y)$ 在 $(x_0,y_0)$ 处可微。
+
+    Q.E.D.
+\end{pf}
+
+11. 设 $u(x,y)$ 在 $\mathbb{R}^2$ 上取正值且有二阶连续偏导数. 证明 $u$ 满足方程
+$$
+    u \frac{\partial^2 u}{\partial x \partial y} = \frac{\partial u}{\partial x} \frac{\partial u}{\partial y}
+$$
+的充分必要条件是存在一元函数 $f$ 和 $g$ 使得 $u(x,y) = f(x)g(y)$.
+\begin{pf}
+    \begin{itemize}
+        \item \textbf{充分性：} 若存在一元函数 $f$ 和 $g$ 使得 $u(x,y) = f(x)g(y)$，求偏导可得
+              $$
+                  \begin{cases}
+                      \displaystyle\frac{\partial u}{\partial x}=f'(x)g(y), \\[8pt]
+                      \displaystyle\frac{\partial u}{\partial y}=f(x)g'(y), \\[8pt]
+                      \displaystyle\frac{\partial^2 u}{\partial x \partial y}=f'(x)g'(y).
+                  \end{cases}
+              $$
+
+              因此
+              $$
+                  \text{LHS}=f(x)g(y)f'(x)g'(y),
+              $$
+              $$
+                  \text{RHS}=(f'(x)g(y))(f(x)g'(y))=f(x)g(y)f'(x)g'(y)=\text{LHS}.
+              $$
+
+        \item \textbf{必要性：} 由于 $u \frac{\partial^2 u}{\partial x \partial y} = \frac{\partial u}{\partial x} \frac{\partial u}{\partial y}$，可将其改写为
+              $$
+                  \frac{u \frac{\partial^2 u}{\partial x \partial y} - \frac{\partial u}{\partial x} \frac{\partial u}{\partial y}}{u^2}=0.
+              $$
+
+              注意到
+              $$
+                  \frac{u \frac{\partial^2 u}{\partial x \partial y} - \frac{\partial u}{\partial x} \frac{\partial u}{\partial y}}{u^2}=\frac{\partial}{\partial y}\left(\frac{\frac{\partial u}{\partial x}}{u}\right)=\frac{\partial}{\partial y}\left(\frac{\partial}{\partial x}\ln u\right),
+              $$
+              因此
+              $$
+                  \frac{\partial}{\partial y}\left(\frac{\partial}{\partial x}\ln u\right)=0.
+              $$
+
+              从而 $\frac{\partial}{\partial x}\ln u=A(x)$，积分可得
+              $$
+                  \ln u=\int A(x)\,\mathrm{d}x + B(y).
+              $$
+
+              记 $\alpha(x)=\int A(x)\,\mathrm{d}x$ 为关于 $x$ 的一元函数，则
+              $$
+                  u=\mathrm{e}^{\alpha(x)+B(y)}=\mathrm{e}^{\alpha(x)}\mathrm{e}^{B(y)}.
+              $$
+
+              令 $f(x)=\mathrm{e}^{\alpha(x)}$，$g(y)=\mathrm{e}^{B(y)}$，则存在一元函数 $f$ 和 $g$ 使得 $u(x,y) = f(x)g(y)$。
+    \end{itemize}
+
+    Q.E.D.
+\end{pf}
+
+12. 设 $\boldsymbol{r}(t) = x(t)\boldsymbol{i} + y(t)\boldsymbol{j}$, $t \in [a,b]$ 有连续的导数, 证明: 存在 $\theta \in (a,b)$, 使得
+$$
+    |\boldsymbol{r}(b) - \boldsymbol{r}(a)| \leq |\boldsymbol{r}'(\theta)|(b - a).
+$$
+提示: 令 $\varphi(t) = (x(b) - x(a))x(t) + (y(b) - y(a))y(t)$, 对函数 $\varphi(t)$ 使用微分中值定理, 并利用 Cauchy-Schwarz 不等式: $(a_1b_1 + a_2b_2)^2 \leq (a_1^2 + a_2^2)(b_1^2 + b_2^2)$.
+\begin{pf}
+    令 $\varphi(t) = (x(b) - x(a))x(t) + (y(b) - y(a))y(t)$。由于 $x(t),y(t)$ 在 $[a,b]$ 上导数连续，因此 $\varphi(t)$ 在 $[a,b]$ 上连续，在 $(a,b)$ 上可导。
+
+    由拉格朗日中值定理，存在 $\theta\in(a,b)$ 使得
+    $$
+        \varphi(b) - \varphi(a) = \varphi'(\theta)(b - a).
+    $$
+
+    其中
+    \begin{align*}
+        \varphi(b) - \varphi(a)
+         & =(x(b) - x(a))x(b) + (y(b) - y(a))y(b)-(x(b) - x(a))x(a) - (y(b) - y(a))y(a) \\
+         & =-x(b)x(a)+x^2(a)-y(b)y(a)+y^2(a)+x^2(b)-x(a)x(b)+y^2(b)-y(a)y(b)            \\
+         & =(x(b)-x(a))^2+(y(b)-y(a))^2                                                 \\
+         & =|\boldsymbol{r}(b)-\boldsymbol{r}(a)|^2.
+    \end{align*}
+
+    又由于
+    \begin{align*}
+        (\varphi'(\theta))^2
+         & = [(x(b) - x(a))x'(\theta) + (y(b) - y(a))y'(\theta)]^2                   \\
+         & \leq [(x(b) - x(a))^2 + (y(b) - y(a))^2][(x'(\theta))^2 + (y'(\theta))^2] \\
+         & =|\boldsymbol{r}(b) - \boldsymbol{r}(a)|^2 |\boldsymbol{r}'(\theta)|^2,
+    \end{align*}
+    因此
+    $$
+        \varphi'(\theta)\leq|\boldsymbol{r}(b) - \boldsymbol{r}(a)||\boldsymbol{r}'(\theta)|.
+    $$
+
+    从而
+    $$
+        |\boldsymbol{r}(b)-\boldsymbol{r}(a)|^2=\varphi'(\theta)(b - a)\leq|\boldsymbol{r}(b) - \boldsymbol{r}(a)||\boldsymbol{r}'(\theta)|(b - a).
+    $$
+
+    若 $|\boldsymbol{r}(b)-\boldsymbol{r}(a)|=0$，则 $|\boldsymbol{r}(b)-\boldsymbol{r}(a)|\leq|\boldsymbol{r}'(\theta)|(b - a)$ 显然成立。
+
+    若 $|\boldsymbol{r}(b)-\boldsymbol{r}(a)|\neq 0$，则 $|\boldsymbol{r}(b)-\boldsymbol{r}(a)|\leq|\boldsymbol{r}'(\theta)|(b - a)$。
+
+    Q.E.D.
+\end{pf}
+
+14. 求函数 $f(x,y) = x^2 + xy^2 - x$ 在区域 $D = \{(x,y) \mid x^2 + y^2 \leq 2\}$ 上的最大值和最小值.
+\begin{sol}
+    首先计算偏导数：
+    $$
+        \begin{cases}
+            \displaystyle f_x=2x+y^2-1=0, \\[8pt]
+            \displaystyle f_y=2xy=0.
+        \end{cases}
+    $$
+
+    解得驻点
+    $$
+        \begin{cases}
+            x=0, \\
+            y=\pm1,
+        \end{cases}
+        \quad\text{或}\quad
+        \begin{cases}
+            x=\dfrac{1}{2}, \\
+            y=0,
+        \end{cases}
+    $$
+    均满足 $x^2 + y^2 \leq 2$，位于定义域内。
+
+    对应的函数值为
+    $$
+        \begin{cases}
+            f(0,\pm1)=0, \\[8pt]
+            f\left(\dfrac{1}{2},0\right)=-\dfrac{1}{4}.
+        \end{cases}
+    $$
+
+    接下来考虑边界条件，约束条件为 $x^2 + y^2 -2=0$。
+
+    构造拉格朗日函数
+    $$
+        L(x,y,\lambda)=x^2 + xy^2 - x - \lambda(x^2 + y^2 - 2).
+    $$
+
+    计算偏导数：
+    $$
+        \begin{cases}
+            \displaystyle L_x=2x+y^2-1-2\lambda x=0, \\[8pt]
+            \displaystyle L_y=2xy-2\lambda y=0,      \\[8pt]
+            \displaystyle L_\lambda=-x^2-y^2+2=0.
+        \end{cases}
+    $$
+
+    解得边界上的候选点
+    $$
+        \begin{cases}
+            x=\pm\sqrt{2}, \\
+            y=0,
+        \end{cases}
+        \quad\text{或}\quad
+        \begin{cases}
+            x=1, \\
+            y^2=1,
+        \end{cases}
+        \quad\text{或}\quad
+        \begin{cases}
+            x=-\dfrac{1}{3}, \\
+            y^2=\dfrac{17}{9}.
+        \end{cases}
+    $$
+
+    对应的函数值为
+    $$
+        \begin{cases}
+            f(\sqrt{2},0)=2-\sqrt{2},  \\[8pt]
+            f(-\sqrt{2},0)=2+\sqrt{2}, \\[8pt]
+            f(1,\pm 1)=1,              \\[8pt]
+            f\left(-\dfrac{1}{3},\pm\dfrac{\sqrt{17}}{3}\right)=-\dfrac{5}{27}.
+        \end{cases}
+    $$
+
+    比较所有候选点的函数值，显然 $2+\sqrt{2}$ 最大，$-\dfrac{1}{4}$ 最小。
+
+    因此最大值为 $f(-\sqrt{2},0)=2+\sqrt{2}$，最小值为 $f\left(\dfrac{1}{2},0\right)=-\dfrac{1}{4}$。
+\end{sol}
+
+15. 设 $x_1,x_2,\dots,x_n$ 是正数, 且 $x_1 + x_2 + \dots + x_n = n$. 用 Lagrange 乘数法证明
+$$
+    x_1x_2\cdots x_n \left( \frac{1}{x_1} + \frac{1}{x_2} + \dots + \frac{1}{x_n} \right) \leq n,
+$$
+等号当且仅当 $x_1 = x_2 = \dots = x_n = 1$ 时成立.
+\begin{pf}
+    记 $F(x_1,\dots,x_n)=\sum_{i=1}^n\prod_{j\ne i}x_j$ 即为左端表达式，约束条件为 $\sum_{i=1}^n x_i=n$。
+
+    构造拉格朗日函数
+    $$
+        L=\sum_{i=1}^n\prod_{j\ne i}x_j+\lambda\left(\sum_{i=1}^n x_i-n\right).
+    $$
+
+    计算偏导数：
+    $$
+        \begin{cases}
+            \displaystyle\frac{\partial L}{\partial x_k}=\left(\prod_{j\ne k}x_j\right)\left(\sum_{i\ne k}\frac{1}{x_i}\right)+\lambda=0, \\[12pt]
+            \displaystyle L_\lambda=\sum_{i=1}^n x_i-n=0.
+        \end{cases}
+    $$
+
+    即
+    $$
+        \left(\prod x_i\right)\left(\sum_{i\ne k}\frac{1}{x_i}\right)=-\lambda x_k.
+    $$
+
+    因此对于任意 $1\leq k,l\leq n$，有
+    $$
+        \frac{\sum_{i\ne k}\frac{1}{x_i}}{\sum_{i\ne l}\frac{1}{x_i}}=\frac{x_k}{x_l}.
+    $$
+
+    从而
+    $$
+        x_l\left(\left(\sum\frac{1}{x_i}\right)-\frac{1}{x_k}\right)=x_k\left(\left(\sum\frac{1}{x_i}\right)-\frac{1}{x_l}\right),
+    $$
+    即
+    $$
+        \left(\sum\frac{1}{x_i}\right)(x_l-x_k)=\frac{x_l^2-x_k^2}{x_kx_l}=(x_l-x_k)\left(\frac{1}{x_k}+\frac{1}{x_l}\right).
+    $$
+
+    若 $x_l\ne x_k$，记 $S=\sum\frac{1}{x_i}$，则 $\sum_{i\ne k,l}\frac{1}{x_i}=0$，这与 $x_1,x_2,\dots,x_n$ 均为正数矛盾。因此对任意 $k,l$ 均有 $x_l=x_k=\dfrac{n}{n}=1$。
+
+    当任意 $x_i\to0^+$ 时，$F\to0^+$，因此该点为最大值点。
+
+    从而
+    $$
+        x_1x_2\cdots x_n \left( \frac{1}{x_1} + \frac{1}{x_2} + \dots + \frac{1}{x_n} \right) \leq n.
+    $$
+    当 $n=2$ 时，等号恒成立；当 $n>2$ 时，等号成立当且仅当 $x_1 = x_2 = \dots = x_n = 1$。
+
+    Q.E.D.
+\end{pf}
+
+16. 设 $a_i \geq 0\ (i = 1,2,\dots,n)$, $p > 1$. 证明:
+$$
+    \frac{a_1 + \dots + a_n}{n} \leq \left( \frac{a_1^p + \dots + a_n^p}{n} \right)^{1/p},
+$$
+并讨论等号成立的条件.
+\begin{pf}
+    即证
+    $$
+        \left(\frac{a_1 + \dots + a_n}{n}\right)^p\leq\frac{a_1^p + \dots + a_n^p}{n}.
+    $$
+
+    令 $f(x)=x^p$（$x\geq 0$），则 $f'(x)=px^{p-1}$，$f''(x)=p(p-1)x^{p-2}$。由于 $p>0$，$p-1>0$，$x^{p-2}\geq0$，因此 $f''(x)\geq0$，故 $f(x)$ 为凸函数。
+
+    由于 $\frac{1}{n}$ 非负，由 Jensen 不等式可得
+    $$
+        f\left(\frac{a_1+\dots+a_n}{n}\right)\leq \frac{f(a_1)+\dots+f(a_n)}{n},
+    $$
+    等号成立当且仅当 $a_1=\dots=a_n$。
+
+    即
+    $$
+        \frac{a_1 + \dots + a_n}{n} \leq \left( \frac{a_1^p + \dots + a_n^p}{n} \right)^{1/p},
+    $$
+    等号成立当且仅当 $a_1 = \dots = a_n$。
+
+    Q.E.D.
+\end{pf}
+
+\end{document}

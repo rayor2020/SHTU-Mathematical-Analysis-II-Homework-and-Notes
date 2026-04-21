@@ -128,7 +128,7 @@ $\implies\text{Length}=\int_a^b\sqrt{\cdots}\,dt$
     \includegraphics[width=\columnwidth]{chapters/10/01/0105}
 \end{center}
 
-\subsection{二重积分}
+\subsection[二重积分]{Double Integral}
 \subsubsection{平面区域的面积}
 
 Domain: $(x,y)\in D\subseteq\mathbb{R}^2$.
@@ -171,36 +171,3 @@ Let $\|T\|=\max_{\substack{1\leq i\leq m\\1\leq j\leq n}}\{\Delta x_i,\Delta y_j
     \allbold{$\mathbb{Q}\cap[0,1]=\{r_1,r_2,\dots\}$, $f_n(x)=X_{\{r_1,\dots,r_n\}}^{(x)}\rightarrow f(x)=X_{Q\cap[0,1)}^{(x)}$}
 \end{example}
 
-\subsubsection{二重积分的基本概念与性质}
-
-Let $D\subseteq\mathbb{R}^2$ be Jordan measurable. A partition $T$ of $D$ means a division of $D$ into $n$ Jordan measurable subsets $D_i$ ($i=1,\dots,n$) that are
-$$\underset{(\mathring{D}_i\cap\mathring{D}_j=\emptyset),\ \forall 1\leq i<j\leq n}{\underline{non\text{-}overlapping}}.$$
-
-$f:\,D\to\mathbb{R}$
-
-Consider the Riemann sum
-$$S(T,\{\underset{\boldsymbol{\in D_i}}{\xi_i,\eta_i}\}_{1\leq i\leq n};f)=\sum_{i=1}^n f(\xi_i,\eta_i)\sigma(D_i).$$
-
-\begin{definition}
-    If there exists $A$ such that for every $\varepsilon>0$, there exists $\delta>0$ such that for every partition $T$ of $D$ with
-    $$\|T\|\triangleq\max_{1\leq i\leq n}\operatorname{diam}(D_i)<\delta,$$
-    we have
-    $$\left|S(T,\{(\xi_i,\eta_i)\}_{1\leq i\leq n};f)-A\right|<\varepsilon$$
-    for any choice of points $(\xi_i,\eta_i)\in D_i$, $1\leq i\leq n$, then we say $f$ is Riemann integrable on $D$, and denote by
-    $$A=\int\int_D f(x,y)\underset{\substack{\uparrow\\\boldsymbol{dxdy}\text{ \emph{area element} 面积}}}{d\sigma},$$
-    called the Riemann integral of $f$ on $D$.
-\end{definition}
-
-Geometrically, $\int\int_D f\,d\sigma$ represents the volume of
-$$\{(x,y,z)\in\mathbb{R}^3\mid (x,y)\in D,\ 0\leq z\leq f(x,y)\}$$
-for $f:\,D\to\mathbb{R}$ when $f\geq 0$.
-
-\raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/10/01/0108}}\quad$\int_a^b f(x)\,dx=\int\int_D 1\,d\sigma$
-
-\begin{center}
-    \includegraphics[height=3cm]{chapters/10/01/0109}
-\end{center}
-
-
-
-\subsubsection{二重积分的计算}

@@ -1,0 +1,79 @@
+\subsubsection{二重积分的基本概念与性质}
+
+Let $D\subseteq\mathbb{R}^2$ be Jordan measurable. A partition $T$ of $D$ means a division of $D$ into $n$ Jordan measurable subsets $D_i$ ($i=1,\dots,n$) that are
+$$\underset{(\mathring{D}_i\cap\mathring{D}_j=\emptyset),\ \forall 1\leq i<j\leq n}{\underline{non\text{-}overlapping}}.$$
+
+$f:\,D\to\mathbb{R}$
+
+Consider the Riemann sum
+$$S(T,\{\underset{\boldsymbol{\in D_i}}{\xi_i,\eta_i}\}_{1\leq i\leq n};f)=\sum_{i=1}^n f(\xi_i,\eta_i)\sigma(D_i).$$
+
+\begin{definition}
+    If there exists $A$ such that for every $\varepsilon>0$, there exists $\delta>0$ such that for every partition $T$ of $D$ with
+    $$\|T\|\triangleq\max_{1\leq i\leq n}\operatorname{diam}(D_i)<\delta,$$
+    we have
+    $$\left|S(T,\{(\xi_i,\eta_i)\}_{1\leq i\leq n};f)-A\right|<\varepsilon$$
+    for any choice of points $(\xi_i,\eta_i)\in D_i$, $1\leq i\leq n$, then we say $f$ is Riemann integrable on $D$, and denote by
+    $$A=\iint_D f(x,y)\underset{\substack{\uparrow\\\boldsymbol{dxdy}\text{ \emph{area element} 面积}}}{d\sigma},$$
+    called the Riemann integral of $f$ on $D$.
+\end{definition}
+
+Geometrically, $\iint_D f\,d\sigma$ represents the volume of
+$$\{(x,y,z)\in\mathbb{R}^3\mid (x,y)\in D,\ 0\leq z\leq f(x,y)\}$$
+for $f:\,D\to\mathbb{R}$ when $f\geq 0$.
+
+\raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/10/01/0108}}\quad$\int_a^b f(x)\,dx=\iint_D 1\,d\sigma$
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/10/01/0109}
+\end{center}
+
+% 20260421
+
+$$
+    \underset{\substack{\downarrow\\\text{\emph{Jordan measurable}}}}{\iint_D}\underset{\substack{\uparrow\\\text{\emph{Riemann integrable}}}}{f(x,y)}\,\boxed{\mathrm{d}x\mathrm{d}y}\quad\iint_Df(x,y)\,\boxed{\mathrm{d}\sigma}
+$$
+
+$\displaystyle\sum_if(\xi_i,\eta_i)\sigma(\Omega_i)$
+
+\begin{theorem}
+    Integrable function must be bounded (away from a subset of Jordan measure zero).
+\end{theorem}
+
+\begin{align*}
+    \overline{S}(T,f)                                                                                            & =\sum_iM_i\sigma(\Omega_i) \\
+    \underline{S}(T,f)                                                                                           & =\sum_im_i\sigma(\Omega_i) \\
+    \underset{\text{Darboux upper integral}}{\overline{I}(f)=\underset{T}{\operatorname{inf}}\overline{S}(T,f)}, & \quad
+    \underset{\text{Darboux lower integral}}{\underline{I}(f)=\underset{T}{\operatorname{sup}}\underline{S}(T,f)}
+\end{align*}
+
+\begin{theorem}
+    Let $f$ be a bounded function on a measurable set $D$ (with extra assumption of being bounded)
+    \begin{enumerate}
+        \item $f$ is Riemann integrable $\iff\overline{I}(f)=\underline{I}(f)\iff\displaystyle\lim_{\|T\|\to 0}\sum_i\omega_i(T,f)\sigma(\Omega_i)=0$
+        \item If $f$ is continuous, then $f$ is integrable.\\
+              If the discontinuity of $f$ lies in a subset of Jordan measure zero, then $f$ is integrable.
+        \item If $f$ and $g$ only differs on a subset of Jordan measure zero, then $f$ is integrable $\iff g$ is integrable, and when integrable, we have $\iint_Df\,\mathrm{d}\sigma=\iint_Dg\,\mathrm{d}\sigma$
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    For Dirichlet function $f$, $\overline{I}(f)=1$, $\underline{I}(f)=0$. $\implies$ Not integrable.
+\end{example}
+
+\begin{theorem}
+    Let $D$ be a bounded measurable set, $f,g$ are integrable functions, then
+    \begin{enumerate}
+        \item $\forall c_1,c_2\in\mathbb{R}$, $c_1f+c_2g$ is integrable, and $\iint_D(c_1f+c_2g)\,\mathrm{d}\sigma=c_1\iint_Df\,\mathrm{d}\sigma+c_2\iint_Dg\,\mathrm{d}\sigma$
+        \item Suppose $D=D_1\cup D_2$, where $D_1,D_2$ are measurable, and $\mathring{D}_1\cap\mathring{D}_2=\emptyset$, then $f$ is integrable on $D_1$ and $D_2$, and $\iint_Df\,\mathrm{d}\sigma=\iint_{D_1}f\,\mathrm{d}\sigma+\iint_{D_2}f\,\mathrm{d}\sigma$
+        \item $\overset{\substack{t\mapsto\iint_D(f+tg)^2\,\mathrm{d}\sigma=\iint f^2\,\mathrm{d}\sigma+2\iint fg\,\mathrm{d}\sigma\cdot t+t^2\iint g^2\,\mathrm{d}\sigma\\\downarrow}}{fg\text{ is integrable}}$, and $\left|\iint_Dfg\,\mathrm{d}\sigma\right|^2\leq\iint_Df^2\,\mathrm{d}\sigma\cdot\iint_Dg^2\,\mathrm{d}\sigma$.\\
+              \emph{(Cauchy-Schwarz Inequality)}
+        \item If $f\geq g$ on $D$, then $\iint_Df\,\mathrm{d}\sigma\geq\iint_Dg\,\mathrm{d}\sigma$.
+
+              In particular, if $m\leq f\leq M$ on $D$, then $m\sigma(D)\leq\iint_Df\,\mathrm{d}\sigma\leq M\sigma(D)$
+        \item $|f|$ is also integrable, and $\left|\iint_Df\,\mathrm{d}\sigma\right|\leq\iint_D|f|\,\mathrm{d}\sigma$
+        \item If $D$ is a connected closed set, $f$ is continuous on $D$, then $\exists P\in D$, s.t.\\
+              $\iint_Df\,\mathrm{d}\sigma=f(P)\sigma(D)$
+    \end{enumerate}
+\end{theorem}
+
