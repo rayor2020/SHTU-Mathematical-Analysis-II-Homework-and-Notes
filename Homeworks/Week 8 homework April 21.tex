@@ -1,0 +1,241 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\theoremstyle{definition}
+\newtheorem*{pf}{证}
+\newtheorem*{sol}{解}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{Mathematical Analysis II\\Week 8 Homework (April 21)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 10.1}
+
+1. 改变下列积分的顺序.
+
+(2) $\displaystyle\int_{0}^{2}\,\mathrm{d}x \int_{2x}^{6-x} f(x,y) \mathrm{d}y$;
+\begin{sol}
+    $2x\leq y\leq 6-x$，所以$x\leq\min\{6-y,\frac{y}{2}\}$
+
+    所以原式=$\int_0^4\,\mathrm{d}y\int_0^{\min\{6-y,\frac{y}{2}\}}f(x,y)\,\mathrm{d}x$
+\end{sol}
+(4) $\displaystyle\int_{a}^{b}\,\mathrm{d}y \int_{y}^{b} f(x,y) \mathrm{d}x$;
+\begin{sol}
+    $y\leq x\leq b$, 所以$y\leq x$，所以原式$=\int_a^b\,\mathrm{d}x\int_a^x f(x,y)\,\mathrm{d}y$
+\end{sol}
+
+
+2. 计算下列积分.
+
+(2) $\displaystyle\iint_{D} \sin(x+y)\,\mathrm{d}x\mathrm{d}y$, $\displaystyle D=[0,\pi]^2$;
+\begin{sol}
+    \begin{align*}
+        \text{原式}
+         & =\int_0^{\pi}\,\mathrm{d}x\int_0^{\pi}\sin(x+y)\,\mathrm{d}y \\
+         & =\int_0^{\pi}\left.\cos(x+y)\right|_0^{\pi}\,\mathrm{d}x     \\
+         & =\int_0^{\pi}(\cos(x+\pi)-\cos(x))\,\mathrm{d}x              \\
+         & =-2\int_0^{\pi}\cos x\,\mathrm{d}x                           \\
+         & =2\left.(\sin x)\right|_0^{\pi}                              \\
+         & =0
+    \end{align*}
+\end{sol}
+(4) $\displaystyle\iint_{D} (x+y)\,\mathrm{d}x\mathrm{d}y$, $\displaystyle D$: 由 $\displaystyle x^2+y^2=a^2$ 围成的圆在第一象限部分;
+\begin{sol}
+    令$\begin{cases}
+            x=r\cos\theta \\
+            y=r\sin\theta
+        \end{cases}$, $0\leq r\leq a$, $0\leq\theta\leq\frac{\pi}{2}$, 所以 $\mathrm{d}x\mathrm{d}y=r\,\mathrm{d}r\mathrm{d}\theta$
+
+    \begin{align*}
+        \text{原式}
+         & =\int_0^{\frac{\pi}{2}}\,\mathrm{d}\theta\int_0^a r(\sin\theta+\cos\theta)r\,\mathrm{d}r       \\
+         & =\int_0^{\frac{\pi}{2}}\left.(\frac{\sin\theta+\cos\theta}{3}r^3)\right|_0^a\,\mathrm{d}\theta \\
+         & =\int_0^{\frac{\pi}{2}}\frac{a^3}{3}(\sin\theta+\cos\theta)\,\mathrm{d}\theta                  \\
+         & =\frac{a^3}{3}\left.(-\cos\theta+\sin\theta)\right|_0^{\frac{\pi}{2}}                          \\
+         & =\frac{2a^3}{3}
+    \end{align*}
+\end{sol}
+(6) $\displaystyle \iint_{D} \frac{\sin y}{y}\,\mathrm{d}x\mathrm{d}y$, $\displaystyle D$: 由 $\displaystyle y=x$ 和 $\displaystyle x=y^2$ 围成;
+\begin{sol}
+    交点：$y=x=y^2$ 解得 $y=0$ 或$y=1$
+
+    所以$0\leq y\leq 1$, $y^2\leq x\leq y$
+
+    所以
+
+    \begin{align*}
+        \iint_{D} \frac{\sin y}{y}\,\mathrm{d}x\mathrm{d}y
+         & =\int_0^1\,\mathrm{d}y\int_{y^2}^y\frac{\sin y}{y}\,\mathrm{d}x \\
+         & =\int_0^1 (1-y)\sin y\,\mathrm{d}y
+    \end{align*}
+
+    令$u=1-y$, $\mathrm{d}v=\sin y\,\mathrm{d}y$, 所以$\mathrm{d}u=-1\,\mathrm{d}y$, $v=-\cos y$
+
+    所以
+
+    \begin{align*}
+        \int (1-y)\sin y\,\mathrm{d}y
+         & =\int u\,\mathrm{d}v=uv-\int v\,\mathrm{du} \\
+         & =y\cos y-\cos y-\int\cos y\,\mathrm{d}y     \\
+         & =y\cos y-\cos y-\sin y+C
+    \end{align*}
+
+    所以原式$=\int_0^1 (1-y)\sin y\,\mathrm{d}y=\left.(y\cos y-\cos y-\sin y)\right|_0^1=1-\sin1$
+\end{sol}
+(8) $\displaystyle \iint_{D} \left|\cos(x+y)\right|\,\mathrm{d}x\mathrm{d}y$, 其中 $D$ 是由直线 $\displaystyle y=x,y=0,x=\frac{\pi}{2}$ 所围成;
+\begin{sol}
+    顶点：$(0,0)$, $(\frac{\pi}{2},0)$, $(\frac{\pi}{2},\frac{\pi}{2})$, 所以$0\leq x\leq\frac{\pi}{2}$, $0\leq y\leq x$, 所以
+    $$\iint_{D} \left|\cos(x+y)\right|\,\mathrm{d}x\mathrm{d}y=\int_0^{\frac{\pi}{2}}\,\mathrm{d}x\int_0^x \left|\cos(x+y)\right|\,\mathrm{d}y$$
+
+    其中$\int_0^x\left|\cos(x+y)\right|\,\mathrm{d}y=\begin{cases}
+            \int_0^{\frac{\pi}{2}-x}\cos(x+y)\,\mathrm{d}y-\int_{\frac{\pi}{2}-x}^x\cos(x+y)\,\mathrm{d}y & \frac{\pi}{4}\leq x\leq\frac{\pi}{2} \\
+            \int_0^x\cos(x+y)\,\mathrm{d}y                                                                & 0\leq x<\frac{\pi}{4}
+        \end{cases}$
+
+    所以
+
+    \begin{align*}
+          & \iint_{D} \left|\cos(x+y)\right|\,\mathrm{d}x\mathrm{d}y                                     \\
+        = & \int_0^{\frac{\pi}{4}}\,\mathrm{d}x\int_0^x \cos(x+y)\,\mathrm{d}y
+        +\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}\,\mathrm{d}x\int_0^{\frac{\pi}{2}-x}\cos(x+y)\,\mathrm{d}y
+        -\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}\,\mathrm{d}x\int_{\frac{\pi}{2}-x}^x\cos(x+y)\,\mathrm{d}y \\
+        = & \int_0^{\frac{\pi}{4}}(\sin 2x-\sin x)\,\mathrm{d}x
+        +\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}(1-\sin x)\,\mathrm{d}x
+        -\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}(\sin 2x-1)\,\mathrm{d}x                                    \\
+        = & \left.(-\frac{\cos 2x}{2}+\cos x)\right|_0^{\frac{\pi}{4}}
+        +\left.(x+\cos x)\right|_{\frac{\pi}{4}}^{\frac{\pi}{2}}
+        +\left.(\frac{\cos 2x}{2}+x)\right|_{\frac{\pi}{4}}^{\frac{\pi}{2}}                              \\
+          & =\frac{\pi}{2}-1
+    \end{align*}
+\end{sol}
+
+
+3. 利用函数的奇偶性计算下列积分:
+
+(1) $\displaystyle \iint_{D} (x^2+y^2)\,\mathrm{d}x\mathrm{d}y$, $\displaystyle D: -1 \leq x \leq 1, -1 \leq y \leq 1$;
+\begin{sol}
+    $x^2+y^2$关于x,y均是偶函数，所以
+
+    \begin{align*}
+        \iint_{D} (x^2+y^2)\,\mathrm{d}x\mathrm{d}y
+         & =4\int_0^1\,\mathrm{d}x\int_0^1 (x^2+y^2)\,\mathrm{d}y \\
+         & =4\int_0^1(x^2+\frac{1}{3})\,\mathrm{d}x               \\
+         & =4(\frac{1}{3}+\frac{1}{3})=\frac{8}{3}
+    \end{align*}
+\end{sol}
+(2) $\displaystyle \iint_{D} \sin x \sin y\,\mathrm{d}x\mathrm{d}y$, $\displaystyle D$: $\displaystyle x^2-y^2=1, x^2+y^2=9$ 围成含原点的部分;
+\begin{sol}
+    $\sin x \sin y$关于$x,y$均是奇函数，且双曲线$x^2-y^2=1$, 圆$x^2+y^2=9$围成含原点的部分是关于关于原点中心对称的。
+
+    所以$\iint_{D} \sin x \sin y\,\mathrm{d}x\mathrm{d}y=0$
+\end{sol}
+
+
+4. 设函数 $\varphi$ 和 $\psi$ 分别在区间 $[a,b]$ 和 $[c,d]$ 上可积, 求证 $f(x,y)=\varphi(x)\psi(y)$ 在 $D=[a,b]\times[c,d]$ 上可积, 且有
+$$\iint_{D} f(x,y)\,\mathrm{d}x\mathrm{d}y = \int_{a}^{b} \varphi(x)\,\mathrm{d}x \int_{c}^{d} \psi(y)\,\mathrm{d}y.$$
+\begin{pf}
+    因为$\varphi$ 和 $\psi$ 分别在区间 $[a,b]$ 和 $[c,d]$ 上可积, 所以任意$a\leq x\leq b$, $f(x,\cdot)=\varphi(x)\psi$在$[c,d]$上可积；任意$c\leq y\leq d$, $f(\cdot,y)=\varphi\psi(y)$在$[c,d]$上可积。所以$f=\varphi\psi$在$[a,b]\times[c,d]=D$上可积
+
+    所以
+    \begin{align*}
+        \iint_D f(x,y)\,\mathrm{d}x\mathrm{d}y
+         & =\iint_D \varphi(x)\psi(y)\,\mathrm{d}x\mathrm{d}y                      \\
+         & =\int_a^b(\int_c^d \varphi(x)\psi(y)\,\mathrm{d}y)\mathrm{d}x           \\
+         & =\int_a^b\varphi(x)(\int_c^d \psi(y)\,\mathrm{d}y)\mathrm{d}x           \\
+         & =\int_{a}^{b} \varphi(x)\,\mathrm{d}x \int_{c}^{d} \psi(y)\,\mathrm{d}y
+    \end{align*}
+
+    Q.E.D.
+\end{pf}
+
+
+5. 设函数 $f(x)$ 在 $[0,a]$ 上连续, 证明
+$$\int_{0}^{a}\,\mathrm{d}x \int_{0}^{x} f(x)f(y)\,\mathrm{d}y = \frac{1}{2}\left( \int_{0}^{a} f(x)\,\mathrm{d}x \right)^2,$$
+$$\int_{0}^{a} \,\mathrm{d}x \int_{0}^{x} f(y) \,\mathrm{d}y = \int_{0}^{a} (a-x)f(x) \,\mathrm{d}x.$$
+\begin{pf}
+    \begin{enumerate}
+        \item 因为$0\leq x\leq a$, $0\leq y\leq x$，所以$0\leq y\leq a$, $y\leq x\leq a$
+
+              所以$\int_{0}^{a}\,\mathrm{d}x \int_{0}^{x} f(x)f(y)\,\mathrm{d}y=\int_{0}^{a}\,\mathrm{d}y \int_{y}^{a} f(x)f(y)\,\mathrm{d}x=\int_{0}^{a}\,\mathrm{d}x \int_{x}^{a} f(x)f(y)\,\mathrm{d}y$
+
+              所以\begin{align*}
+                  2\int_{0}^{a}\,\mathrm{d}x \int_{0}^{x} f(x)f(y)\,\mathrm{d}y
+                   & =\int_{0}^{a}\,\mathrm{d}x \int_{0}^{x} f(x)f(y)\,\mathrm{d}y+\int_{0}^{a}\,\mathrm{d}x \int_{x}^{a} f(x)f(y)\,\mathrm{d}y \\
+                   & =\int_{0}^{a}\,\mathrm{d}x \int_{0}^{a} f(x)f(y)\,\mathrm{d}y                                                              \\
+                   & =\int_{0}^{a}f(x)\,\mathrm{d}x \int_{0}^{a} f(y)\,\mathrm{d}y                                                              \\
+                   & =(\int_{0}^{a} f(x)\,\mathrm{d}x)^2
+              \end{align*}
+
+              所以$\int_{0}^{a}\,\mathrm{d}x \int_{0}^{x} f(x)f(y)\,\mathrm{d}y = \frac{1}{2}\left( \int_{0}^{a} f(x)\,\mathrm{d}x \right)^2$
+        \item \begin{align*}
+                  \int_{0}^{a} \,\mathrm{d}x \int_{0}^{x} f(y) \,\mathrm{d}y
+                   & =\int_{0}^{a} \,\mathrm{d}y \int_{y}^{a} f(y) \,\mathrm{d}x \\
+                   & =\int_0^a f(y)(a-y)\,\mathrm{d}y                            \\
+                   & =\int_{0}^{a} (a-x)f(x) \,\mathrm{d}x
+              \end{align*}
+    \end{enumerate}
+
+    Q.E.D.
+\end{pf}
+
+
+6. 设函数 $f(x,y)$ 有连续的二阶偏导数, 在 $D=[a,b]\times[c,d]$ 上, 求积分
+$$\iint_{D} \frac{\partial^2 f(x,y)}{\partial x \partial y}\,\mathrm{d}x\mathrm{d}y.$$
+\begin{sol}
+    \begin{align*}
+        \iint_{D} \frac{\partial^2 f(x,y)}{\partial x \partial y}\,\mathrm{d}x\mathrm{d}y
+         & =\int_a^b\,\mathrm{d}x\int_c^d\frac{\partial}{\partial y}(\frac{\partial f}{\partial x}(x,y))\,\mathrm{d}y \\
+         & =\int_a^b(\frac{\partial f}{\partial x}(x,d)-\frac{\partial f}{\partial x}(x,c))\,\mathrm{d}x              \\
+         & =f(b,d)-f(a,d)-f(b,c)+f(a,c)
+    \end{align*}
+\end{sol}
+
+
+7. 设函数 $f(x,y)$ 连续, 求极限
+$$\lim_{r \to 0} \frac{1}{\pi r^2} \iint_{x^2+y^2 \leq r^2} f(x,y)\,\mathrm{d}x\mathrm{d}y.$$
+\begin{sol}
+    $D=\{(x,y): x^2+y^2 \leq r^2\}$, $\sigma(D)=\pi r^2$
+
+    所以存在$P_r(x_r,y_r)\in D$ s.t. $f(P_r)\sigma(D)=\iint_D f(x,y)\,\mathrm{d}x\mathrm{d}y$
+
+    所以$\frac{1}{\pi r^2} \iint_D f(x,y)\,\mathrm{d}x\mathrm{d}y=f(P_r)$
+
+    当$r\to 0$, $P_r\to(0,0)$, 所以$\frac{1}{\pi r^2} \iint_D f(x,y)\,\mathrm{d}x\mathrm{d}y\to f(0,0)$
+\end{sol}
+\end{document}

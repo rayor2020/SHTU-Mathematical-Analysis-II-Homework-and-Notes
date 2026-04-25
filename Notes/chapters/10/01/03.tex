@@ -125,3 +125,54 @@ $$\int_c^d\,\mathrm{d}y\int_{x_1(y)}^{x_2(y)}f(x,y)\,\mathrm{d}x=\iint_Df(x,y)\,
     $$\frac{\int_2^{1+\delta}\frac{\sin x}{x^2-1}\,\mathrm{d}x}{\frac{1}{2\delta+\delta^2}}\frac{\frac{\sin(1+\delta)}{(1+\delta)^2-1}}{-\frac{2}{(2\delta+\delta^2)^2}}=\frac{\sin(1+\delta)}{2\delta+\delta^2}(2\delta+\delta^2)^2\to0$$
 \end{example}
 
+% 20260423
+
+\begin{example}
+    Find the volume of the body enclosed by two cylinders
+    $$x^2+y^2=a^2,\quad x^2+z^2=a^2$$
+
+    $$\raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/10/01/0309}}\quad
+        \Omega:\begin{cases}
+            x^2+y^2\leq a^2, \\
+            x^2+z^2\leq a^2
+        \end{cases}$$
+
+    \raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/10/01/0310}}\quad
+    \allbold{$(a\sin t,a\cos t,a\sin t)$, $0\leq t\leq\frac{\pi}{2}$}
+
+    Volume of $\Omega=$ The volume of the region under the graph of the function $z=\sqrt{a^2-x^2}$ with domain: $x^2+y^2\leq a^2$, $x\geq 0$, $y\geq 0$.
+
+    \begin{align*}
+        \text{The volume of }\Omega
+         & =8\cdot\iint_{x^2+y^2\leq a^2,\geq 0,y\geq 0}\sqrt{a^2-x^2}\,\mathrm{d}x\mathrm{d}y
+        \quad\raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/10/01/0312}}                 \\
+         & =8\int_0^a\,\mathrm{d}x\int_0^{\sqrt{a^2-x^2}}\sqrt{a^2-x^2}\,\mathrm{d}y                   \\
+         & \quad\left(=8\int_0^a\,\mathrm{d}y\int_0^{\sqrt{a^2-y^2}}\sqrt{a^2-x^2}\,\mathrm{d}x\right) \\
+         & =8\int_0^a\left(a^2-x^2\right)\,\mathrm{d}x                                                 \\
+         & =8\left(a^3-\frac{a^3}{3}\right)=\frac{16}{3}a^3
+        \quad\raisebox{-0.5\height}{\includegraphics[height=1.5cm]{chapters/10/01/0313}}
+    \end{align*}
+
+    \raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/10/01/0311}}\quad
+    祖暅原理 $\implies\frac{\operatorname{Vol}(\Omega)}{\operatorname{Vol}(B_a)}=\frac{4}{\pi}$
+\end{example}
+
+\begin{example}
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/01/0314}}
+
+    \begin{align*}
+        \iint_{x^2+y^2\leq 1}\sqrt{x^2+y^2}\,\mathrm{d}x\mathrm{d}y
+         & =\int_{-1}^1\,\mathrm{d}x\underset{y=x\sinh}{\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\sqrt{x^2+y^2}\,\mathrm{d}y} \\
+         & =\int_{-1}^1\frac{1}{2}\left(\sqrt{1-x^2}+x^2\log\frac{1+\sqrt{1-x^2}}{x}\right)\,\mathrm{d}x                \\
+         & =\int_{-1}^1\,\mathrm{d}y\int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}}\sqrt{x^2+y^2}\,\mathrm{d}x
+    \end{align*}
+
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/01/0315}}\quad$\sum f(M_i)\sigma(D_i)$
+
+    \begin{align*}
+         & \sum_{i,j}r_i\left(\frac{1}{2}(r_i+\Delta r_i)^2\Delta\theta_j-\frac{1}{2}r_i^2\cdot\Delta\theta_j\right) \\
+         & =\sum_{i,j}\left(r_i^2\Delta r_i\Delta\theta_j+\frac{1}{2}(\Delta r_i)^2\Delta\theta_j\right)             \\
+         & \overset{\|T\|\to 0}{\rightarrow}\iint_{\substack{0\leq r\leq 1                                           \\0\leq\theta\leq 2\pi}}r^2\,\mathrm{d}r\mathrm{d}\theta\\
+         & =\int_0^{2\pi}\,\mathrm{d}\theta\int_0^1r^2\,\mathrm{d}r=\frac{2\pi}{3}
+    \end{align*}
+\end{example}

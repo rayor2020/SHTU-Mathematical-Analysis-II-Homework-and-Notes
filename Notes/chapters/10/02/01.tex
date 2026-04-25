@@ -1,0 +1,141 @@
+\subsection[二重积分的换元]{Substitution}
+\subsubsection{坐标曲线和面积元素}
+
+\begin{theorem}
+    Let $D$ and $D'$ be two bounded open set on $\mathbb{R}^2$, whose boundaries consist of piecewisely $C^1$ curves. Suppose $x=x(u,v)$, $y=y(u,v)$ is a $C^1$ map from $D'$ to $D$ which is one-to-one and $f(x,y)$ is continuous on $D$, moreover assume $\frac{\partial(x,y)}{\partial(u,v)}\neq 0$ on $D'$, then
+
+    $$\iint_Df(x,y)\,\mathrm{d}x\mathrm{d}y=\iint_{D'}f\left(x(u,v),y(u,v)\right)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\,\mathrm{d}u\mathrm{d}v$$
+\end{theorem}
+
+$$
+    \raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/10/02/0101}}\quad
+    \begin{matrix}
+        \overset{r:\,\begin{cases}\substack{x=x(u,v)\\y=y(u,v)}\end{cases}}{\underset{\substack{1:1 \\C^1\text{ map}\\\boxed{\scriptstyle\frac{\partial (x,y)}{\partial(u,v)}\neq 0}}}{\longrightarrow}}
+        \quad\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/02/0102}}\quad
+        \overset{f}{\longrightarrow}                                                                \\
+        \overset{\tilde{f}=f\circ r}{\longrightarrow}
+    \end{matrix}\quad\mathbb{R}
+$$
+
+Take limit about the partition $T'$ (rectangular), then we obtain
+$$
+    \iint_Df(x,y)\,\mathrm{d}x\mathrm{d}y=\iint_{D'}f\left(x(u,v),y(u,v)\right)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\,\mathrm{d}u\mathrm{d}v
+$$
+
+\begin{center}
+    $\Uparrow$
+\end{center}
+
+$$\sum f(M_i)\Delta x_i\Delta y_i\quad\sum f(M_i)\sigma(\Delta_i)\approx\sum\tilde{f}(M_i')\left|\frac{\partial(x,y)}{\partial(u,v)}\right|(M_i')\Delta u_i\Delta v_i$$
+
+where $\Delta_i'$ is the image of $\Delta_i'$ under the map $(u,v)\to(x,y)$
+
+\begin{center}
+    Key: $\displaystyle\mathrm{d}x\mathrm{d}y=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\,\mathrm{d}u\mathrm{d}v$
+\end{center}
+
+\begin{example}
+    Find the volume of the ellipsoid $\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\leq 1$
+
+    \begin{align*}
+        \text{Vol}
+         & =2\iint_{\frac{x^2}{a^2}+\frac{y^2}{b^2}\leq 1}c\sqrt{1-\frac{x^2}{a^2}-\frac{y^2}{b^2}}\,\mathrm{d}x\mathrm{d}y                                   \\
+         & \overset{x=ar\cos\theta}{\underset{y=br\sin\theta}{=}}2\iint_{(r,\theta)\in[0,1]\times[0,2\pi]}c\sqrt{1-r^2}\cdot abr\,\mathrm{d}r\mathrm{d}\theta \\
+         & =2abc\int_0^1\,\mathrm{d}r\int_0^{2\pi}r\sqrt{1-r^2}\,\mathrm{d}\theta                                                                             \\
+         & =abc\cdot2\pi\cdot\left.(1-r^2)^{\frac{3}{2}}\cdot\frac{2}{3}\right|_1^0                                                                           \\
+         & =\frac{4\pi}{3}abc
+    \end{align*}
+
+    $(r,\theta)\in[0,1]\times[0,2\pi]$, $\frac{\partial(x,y)}{\partial(r,\theta)}=\begin{bmatrix}
+            a\cos\theta & -ar\sin\theta \\
+            b\sin\theta & br\cos\theta
+        \end{bmatrix}=abr$
+
+    \begin{center}
+        \includegraphics[height=3cm]{chapters/10/02/0103}
+    \end{center}
+\end{example}
+
+\raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/10/02/0104}}\quad$\delta\to0$. It works.
+
+\begin{example}
+    Find the volume of the part of the ball $x^2+y^2+z^2\leq a^2$, cut by the cylinder $x^2+y^2=ay$ $\left(\left(y-\frac{a}{2}\right)^2+x^2=\left(\frac{a}{2}\right)^2\right)$
+
+    $$
+        \raisebox{-0.5\height}{\includegraphics[height=2.5cm]{chapters/10/02/0105}}\quad
+        2\iint_{x^2+y^2\leq ay}\sqrt{a^2-x^2-y^2}\,\mathrm{d}x\mathrm{d}y\overset{x=r\cos\theta}{\underset{y=r\sin\theta}{=}}2\iint_{\substack{0\leq\theta\leq\pi\\0\leq r\leq a\sin\theta}}\sqrt{a^2-r^2}\cdot r\,\mathrm{d}r\mathrm{d}\theta
+    $$
+
+    $r^2\leq ar\sin\theta\iff\boxed{r\leq a\sin\theta}$, $\boldsymbol{0\leq\theta\pi}$\quad\raisebox{-0.5\height}{\includegraphics[height=1cm]{chapters/10/02/0106}}
+\end{example}
+
+\begin{example}
+    Find the area enclosed by the leminiscate $(x^2+y^2)^2=2a^2(x^2-y^2)$
+
+    \begin{center}
+        \raisebox{-0.5\height}{\includegraphics[height=2.5cm]{chapters/10/02/0107}}\quad$\begin{cases}
+                x=r\cos\theta \\
+                y=r\sin\theta
+            \end{cases}$
+    \end{center}
+
+    $r^4=2a^2r^2\cos2\theta$
+
+    $r^2=2a^2\cos2\theta$
+
+    \begin{align*}
+        \text{Area}
+         & =\iint_D1\,\mathrm{d}x\mathrm{d}y
+        =2\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}\frac{1}{2}r^2(\theta)\,\mathrm{d}\theta                    \\
+         & =2\iint_{\substack{-\frac{\pi}{4}\leq\theta\leq\frac{\pi}{4}                                    \\0\leq r\leq\sqrt{2a^2\cos2\theta}}}r\,\mathrm{d}r\mathrm{d}\theta\\
+         & =\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}\,\mathrm{d}\theta\int_0^{2a^2\cos2\theta}2r\,\mathrm{d}r \\
+         & =\int_{-\frac{\pi}{4}}^{\frac{\pi}{4}}2a^2\cos2\theta\,\mathrm{d}\theta                         \\
+         & =2a^2
+    \end{align*}
+
+    $$\begin{cases}
+            \frac{\partial f}{\partial x}=2(x^2+y^2)\cdot2x-2a^2\cdot 2x=4x(x^2+y^2-a^2) \\
+            \frac{\partial f}{\partial y}=4y(x^2+y^2+a^2)
+        \end{cases}$$
+
+    $\implies (0,0)$ is the only possible singularity of the curve.
+\end{example}
+
+\begin{example}
+    $\iint_D\left(\sqrt{x}+\sqrt{y}\right)\,\mathrm{d}x\mathrm{d}y$, where $D$ is enclosed by $x=0$, $y=0$, $\sqrt{x}+\sqrt{y}=1$
+
+    \subparagraph*{Method 1}
+
+    Iterative integral.
+
+    \subparagraph*{Method 2}
+
+    Substitution $\overrightarrow{r}:\,\begin{cases}
+            x=u^2 \\
+            y=v^2
+        \end{cases}$
+
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/02/0108}}\quad This integral is $\iint_{\substack{u,v\geq 0\\u+v\leq 1}}(u+v)\cdot 4uv\,\mathrm{d}u\mathrm{d}v$
+
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/02/0109}}\quad$\left|\frac{\partial(x,y)}{\partial(u,v)}\right|=\begin{vmatrix}
+            2u & 0  \\
+            0  & 2v
+        \end{vmatrix}=4uv$. Consider $\mathrm{d}\overrightarrow{r}|_{(1,0)}$
+\end{example}
+
+\begin{example}
+    $\displaystyle\int_{-\infty}^{+\infty}\mathrm{e}^{-x^2}\,\mathrm{d}x=\overset{\boldsymbol{\sqrt{x}}}{?}$
+
+    $\displaystyle\int_{-\infty}^{+\infty}\mathrm{e}^{-x^2}\,\mathrm{d}x=\lim_{R\to+\infty}\int_{-R}^R\mathrm{e}^{-x^2}\,\mathrm{d}x$
+
+    $\displaystyle\left(\int_{-R}^R\mathrm{e}^{-x^2}\,\mathrm{d}x\right)^2=\int_{-R}^R\mathrm{e}^{-2x^2}\,\mathrm{d}x\cdot\int_{-R}^R\mathrm{e}^{-2y^2}\,\mathrm{d}y=\underset{\boldsymbol{I_R}}{\iint_{\substack{-R\leq x\leq R\\-R\leq y\leq R}}\mathrm{e}^{-(x^2+y^2)}\,\mathrm{d}x\mathrm{d}y}\quad\raisebox{-0.5\height}{\includegraphics[height=1.5cm]{chapters/10/02/0110}}$
+
+    \allbold{\begin{align*}
+            \iint_{x^2+y^2\leq R^2}\mathrm{e}^{-(x^2+y^2)}\,\mathrm{d}x\mathrm{d}y
+             & \overset{x=r\cos\theta}{\underset{y=r\sin\theta}{=}}\int_0^R\int_0^{2\pi}\mathrm{e}^{-r^2}r\,\mathrm{d}r\mathrm{d}\theta=\pi\left(1-e^{-R^2}\right) \\
+             & \leq I_R                                                                                                                                            \\
+             & \leq\iint_{x^2+y^2\leq 2R^2}\mathrm{e}^{-(x^2+y^2)}\,\mathrm{d}x\mathrm{d}y                                                                         \\
+             & =\int_0^{\sqrt{2}R}\int_0^{2\pi}\mathrm{e}^{-r^2}r\,\mathrm{d}r\mathrm{d}\theta                                                                     \\
+             & =\pi\left(1-e^{-2R^2}\right)
+        \end{align*}}
+\end{example}
