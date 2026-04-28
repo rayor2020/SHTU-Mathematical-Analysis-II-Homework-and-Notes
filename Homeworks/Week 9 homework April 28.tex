@@ -1,0 +1,182 @@
+\documentclass[a4paper,12pt]{article}
+
+% 页面设置
+\usepackage[top=2.54cm, bottom=2.54cm, left=1.91cm, right=1.91cm]{geometry}
+
+% 中文支持
+\usepackage[UTF8]{ctex}
+\usepackage{fontspec}
+
+% 数学公式支持
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{enumitem}
+
+% 定理环境定义
+\theoremstyle{definition}
+\newtheorem*{pf}{证}
+\newtheorem*{sol}{解}
+
+% 图形支持
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% 超链接支持
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% 行距设置
+\linespread{1.25}
+
+% 标题信息
+\title{Mathematical Analysis II\\Week 9 Homework (April 28)}
+\author{袁子强\hspace{1cm} 2025533009}
+% \date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Section 10.3}
+
+1. 计算下列三重积分.
+
+(2) $\displaystyle\iiint_V xy^2 z^3 \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: 由 $z=xy$, $y=x$, $x=1$, $z=0$ 围成;
+\begin{sol}
+
+\end{sol}
+(4) $\displaystyle\iiint_V (a-y) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: 由 $y=0$, $z=0$, $2x+y=a$, $x+y=a$, $y+z=a$ 围成.
+\begin{sol}
+
+\end{sol}
+
+
+2. 计算下列积分值.
+
+(2) $\displaystyle\int_{-R}^{R}\,\mathrm{d}x \int_{-\sqrt{R^2-x^2}}^{\sqrt{R^2-x^2}}\,\mathrm{d}y \int_{0}^{\sqrt{R^2-x^2-y^2}} (x^2+y^2) \, \mathrm{d}z$;
+\begin{sol}
+
+\end{sol}
+(4) $\displaystyle\int_{0}^{1}\,\mathrm{d}x \int_{0}^{\sqrt{1-x^2}}\,\mathrm{d}y \int_{\sqrt{x^2+y^2}}^{\sqrt{2-x^2-y^2}} z^2 \, \mathrm{d}z$.
+\begin{sol}
+
+\end{sol}
+
+
+3. 计算下列三重积分.
+
+(2) $\displaystyle\iiint_V \sqrt{x^2+y^2} \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: 由 $x^2+y^2=z^2$, $z=1$ 围成;
+\begin{sol}
+
+\end{sol}
+(4) $\displaystyle\iiint_V xyz \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: 是 $x^2+y^2+z^2 \leq 1$ 的第一卦限部分;
+\begin{sol}
+
+\end{sol}
+(6) $\displaystyle\iiint_V |x^2+y^2+z^2-1| \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: $x^2+y^2+z^2 \leq 4$;
+\begin{sol}
+
+\end{sol}
+(8) $\displaystyle\iiint_V (|x|+z) \mathrm{e}^{-(x^2+y^2+z^2)} \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: $1 \leq x^2+y^2+z^2 \leq 4$.
+\begin{sol}
+
+\end{sol}
+
+
+4. 利用对称性求下列三重积分.
+
+(2) $\displaystyle\iiint_V x \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: 由 $x^2+y^2=z^2$, $x^2+y^2=1$ 围成;
+\begin{sol}
+
+\end{sol}
+(4) $\displaystyle\iiint_V (x^2+y^2) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: $r \leq x^2+y^2+z^2 \leq R^2$, $z \geq 0$;
+\begin{sol}
+
+\end{sol}
+(6) $\displaystyle\iiint_V \frac{z \ln(x^2+y^2+z^2+1)}{x^2+y^2+z^2+1} \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, $V$: $x^2+y^2+z^2 \leq 1$;
+\begin{sol}
+
+\end{sol}
+(8) 书上没这道题目.
+
+
+
+5. 计算下列曲面围成的立体体积.
+
+(1) $y=0$, $z=0$, $3x+y=6$, $3x+2y=12$, $x+y+z=6$;
+\begin{sol}
+
+\end{sol}
+(3) $z^2+x^2=1$ 和 $x+y+z=3$, $y=0$;
+\begin{sol}
+
+\end{sol}
+(5) $\frac{x^2}{9} + \frac{y^2}{4} = 1$, $z=xy$ (在第一卦限部分);
+\begin{sol}
+
+\end{sol}
+(7) $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$, $\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z^2}{c^2}$ (含 $z$ 轴部分).
+\begin{sol}
+
+\end{sol}
+
+
+7. 设$\displaystyle F(t) = \iiint\limits_{x^2+y^2+z^2 \leq t^2} f(x^2+y^2+z^2) \, \mathrm{d}x\mathrm{d}y\mathrm{d}z$, 其中 $f$ 为可微分函数, 求 $F'(t)$.
+\begin{sol}
+
+\end{sol}
+
+
+8. 证明: $\displaystyle\iiint\limits_{x^2+y^2+z^2 \leq 1} f(z) \, \mathrm{d}v = \pi \int_{-1}^{1} f(z)(1-z^2) \, \mathrm{d}z$.
+\begin{pf}
+
+\end{pf}
+
+
+12. 一个物体是由两个半径各为 $R$ 和 $r$ $(R>r)$ 的同心球所围成, 已知材料的密度和到球心的距离成反比, 且在距离等于 $1$ 处的密度等于 $k$, 求物体的总质量.
+\begin{sol}
+
+\end{sol}
+
+13. 半径为 $a$ 的圆盘, 其各点的密度和到圆心的距离成正比 (比例系数为 $1$), 今内切于圆盘截去半径为 $\frac{a}{2}$ 之小圆, 求余下部分的重心坐标.
+\begin{sol}
+
+\end{sol}
+
+\section*{第10章综合习题}
+
+2. 计算三重积分
+$$
+    I = \iiint_{[0,1]^3} \frac{\mathrm{d}u\mathrm{d}v\mathrm{d}w}{(1 + u^2 + v^2 + w^2)^2}.
+$$
+\begin{sol}
+
+\end{sol}
+
+
+3. 设 $a>0,b>0$. 试求下面的积分:
+
+(1) $\displaystyle I_1 = \int_{0}^{1} \sin\left(\ln\frac{1}{x}\right) \cdot \frac{x^b - x^a}{\ln x} \, \mathrm{d}x$;
+\begin{sol}
+
+\end{sol}
+(2) $\displaystyle I_2 = \int_{0}^{1} \cos\left(\ln\frac{1}{x}\right) \cdot \frac{x^b - x^a}{\ln x} \, \mathrm{d}x$.
+\begin{sol}
+
+\end{sol}
+
+
+4. 设 $D = \{(x,y) \mid x^2 + y^2 \leq 1\}$. 求 $\displaystyle I = \iint\limits_{D} \left| \frac{x + y}{\sqrt{2}} - x^2 - y^2 \right| \, \mathrm{d}x\mathrm{d}y$.
+\begin{sol}
+
+\end{sol}
+
+\end{document}
