@@ -1,0 +1,27 @@
+\section{曲线积分和曲面积分}
+
+\subsection[数量场在曲线上的积分]{Line Integral}
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/11/01/0101}
+\end{center}
+
+line density $\rho\implies$ Total mass $=\displaystyle\lim_{\|T\|\to 0}\sum_i\rho\left(\overrightarrow{r_i}\right)\Delta s_i=\int_L\rho\left(\overrightarrow{r}\right)\,\underset{\substack{\downarrow\\\text{arc length element}}}{\mathrm{d}s}$
+
+\begin{definition}
+    Let $L$ be a curve in $\mathbb{R}^3$, $\rho:\,L\to\mathbb{R}$, $T=\left\{P_0,P_1,\dots,P_N\right\}\subseteq L$ is called a partition of $L$, $\|T\|=\max_{1\leq i\leq N}\left|\overrightarrow{P_{i-1}P_i}\right|$. If
+    $$\lim_{\|T\|\to 0}\sum_{i=1}^N\left|\overrightarrow{P_{i-1}P_i}\right|$$
+    exists, we say $L$ is rectifiable (可求长). If further
+    $$\lim_{\|T\|\to 0}\sum_{i=1}^N\rho(r_i)\left|\overrightarrow{P_{i-1}P_i}\right|$$
+    exists, we say $\rho$ is integrable along $L$, the limit is denoted by
+    $$\int_L\rho\,\mathrm{d}s.$$
+\end{definition}
+
+\begin{example}
+    \begin{center}
+        \raisebox{-0.5\height}{\includegraphics[width=0.75\columnwidth]{chapters/11/01/0102}}
+    \end{center}
+\end{example}
+
+\subsubsection{基本概念}
+\subsubsection{数量场在曲线上的积分的计算}

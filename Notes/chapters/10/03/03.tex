@@ -1,0 +1,126 @@
+\subsubsection[来自物理学中的几个例子]{Application: Some Physical Quantities}
+
+\paragraph*{Mass}
+
+$$\rho:\,V\left(\subseteq\mathbb{R}^3\right)\to\mathbb{R}\quad\text{density function,}$$
+
+then $\displaystyle\iiint\limits_V \rho\,\mathrm{d}V$ represents the total mass.
+
+\paragraph*{Center of \emph{Gravity}}
+
+\begin{align*}
+    \iiint\limits_V\overrightarrow{r}\boxed{\frac{\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}{\iiint\limits_V\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}}
+     & \triangleq\overrightarrow{r_G}=\left(x_G,y_G,z_G\right)                                                                                                                                                   \\
+     & =\frac{\iiint\limits_V\overrightarrow{r}\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}{\iiint\limits_V\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}                                                \\
+     & =\frac{\left(\iiint x\rho(x,y,z)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z,\iiint y\rho(x,y,z)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z,\dots\right)}{\iiint\limits_V\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}
+\end{align*}
+
+\paragraph*{Moment of Inertia of Rigid Body}
+
+Given a point $\overrightarrow{r_0}$, and $(V,\rho)$, define
+
+$$\iiint\left|\overrightarrow{r}-\overrightarrow{r_0}\right|^2\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V$$
+
+``moment of inertia relative to $\overrightarrow{r_0}$''.
+
+\subparagraph*{Fact}
+
+\begin{align*}
+    \iiint\limits_V\left|\overrightarrow{r}-\overrightarrow{r_0}\right|^2\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V
+     & =\iiint\limits_V\left|\overrightarrow{r}-\overrightarrow{r_G}+\overrightarrow{r_G}-\overrightarrow{r_0}\right|^2\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V                             \\
+     & =\iiint\limits_V\left|\overrightarrow{r}-\overrightarrow{r_G}\right|^2\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V                                                                       \\
+     & \quad+\iiint\limits_V\left|\overrightarrow{r_G}-\overrightarrow{r_0}\right|^2\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V                                                                \\
+     & \quad+2\underset{=0?}{\boxed{\iiint\limits_V\left<\overrightarrow{r}-\overrightarrow{r_G},\overrightarrow{r_G}-\overrightarrow{r_0}\right>\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}}
+\end{align*}
+
+$\iiint\frac{\rho\left(\overrightarrow{r}\right)}{\iiint\limits_V\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V}\,\mathrm{d}V=1$
+
+\begin{align*}
+    \iiint\limits_V\left<\overrightarrow{r}-\overrightarrow{r_G},\overrightarrow{r_G}-\overrightarrow{r_0}\right>\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V
+     & =\iiint\left(\substack{(x-x_G)(x_G-x_0)                                                                                \\+(y-y_G)(y_G-y_0)\\+(z-z_G)(z_G-z_0)}\right)\rho(x,y,z)\,\mathrm{d}V                         \\
+     & =(x_G-x_0)\iiint(x-x_G)\rho(x,y,z)\,\mathrm{d}V                                                                        \\
+     & \quad+(y_G-y_0)\iiint(y-y_G)\rho(x,y,z)\,\mathrm{d}V                                                                   \\
+     & \quad+(z_G-z_0)\iiint(z-z_G)\rho(x,y,z)\,\mathrm{d}V                                                                   \\
+    \iiint(x-x_G)\rho(x,y,z)\,\mathrm{d}V
+     & =\iiint\left(x-\frac{\iiint x\rho(x,y,z)\,\mathrm{d}V}{\iiint \rho(x,y,z)\,\mathrm{d}V}\right)\rho(x,y,z)\,\mathrm{d}V \\
+     & =\iiint x\cdot\rho(x,y,z)\,\mathrm{d}V-\iiint x\rho(x,y,z)\,\mathrm{d}V                                                \\
+     & =0
+\end{align*}
+
+\paragraph*{Moment of Inertia Relation to an Axis}
+
+$$\begin{cases}
+        I_z=\iiint_V\left(x^2+y^2\right)\rho(x,y,z)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z \\
+        I_x=\iiint_V\left(y^2+z^2\right)\rho(x,y,z)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z \\
+        I_y=\iiint_V\left(z^2+x^2\right)\rho(x,y,z)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
+    \end{cases}$$
+
+Relative to a general line $l$
+
+$$I_l\triangleq\iiint_V\operatorname{d}^2\left(\overrightarrow{r},l\right)\rho\left(\overrightarrow{r}\right)\,\mathrm{d}V$$
+
+\begin{example}
+    \raisebox{-0.5\height}{\includegraphics[height=3cm]{chapters/10/03/0301}}
+
+
+    $\displaystyle V=\left\{(x,y,z)\middle|x^2+y^2\leq R^2,\ 0\leq z\leq l\right\}$
+
+    \begin{align*}
+        I_z
+         & =\iiint_{\substack{x^2+y^2\leq R^2                                                                                 \\0\leq z\leq l}}(x^2+y^2)\rho\,\mathrm{d}x\mathrm{d}y\mathrm{d}z                                                                                     \\
+         & =\rho\int_0^l\,\mathrm{d}z\iint_{x^2+y^2\leq R^2}(x^2+y^2)\,\mathrm{d}x\mathrm{d}y                                 \\
+         & \xlongequal[y=r\sin\theta]{x=r\cos\theta}\rho l\cdot\int_0^R\,\mathrm{d}r\int_0^{2\pi}r^2\cdot r\,\mathrm{d}\theta \\
+         & =\rho l\cdot2\pi\cdot\frac{R^4}{4}                                                                                 \\
+         & =\frac{\pi}{2}\rho l R^4                                                                                           \\
+         & =\boxed{\frac{1}{2}MR^2}
+    \end{align*}
+
+    Total mass $\displaystyle M=\iiint_{\substack{x^2+y^2\leq R^2\\0\leq z\leq l}}\rho\,\mathrm{d}x\mathrm{d}y\mathrm{d}z=\pi R^2l\rho$
+\end{example}
+
+\paragraph*{Gravity}
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/10/03/0302}
+\end{center}
+
+\begin{align*}
+     & \quad\lim_{\Delta V_1,\Delta V_2\to0}\sum_{\Delta V_1}\sum_{\Delta V_2}\frac{G\rho_1\left(\overrightarrow{r_1}\right)\Delta V_1\cdot \rho_2\left(\overrightarrow{r_2}\right)\Delta V_2}{\left|\overrightarrow{r_1}-\overrightarrow{r_2}\right|^3}\left(\overrightarrow{r_1}-\overrightarrow{r_2}\right)                       \\
+     & =\iiint_{V_1}\iiint_{V_2}\frac{G\rho_1\left(\overrightarrow{r_1}\right)\rho_2\left(\overrightarrow{r_2}\right)\left(\overrightarrow{r_1}-\overrightarrow{r_2}\right)}{\left|\overrightarrow{r_1}-\overrightarrow{r_2}\right|^3}\,\mathrm{d}V_1\left(\overrightarrow{r_1}\right)\mathrm{d}V_2\left(\overrightarrow{r_2}\right) \\
+     & =\iiint\limits_{(x_1,y_1,z_1)\in V_1}\ \iiint\limits_{(x_2,y_2,z_2)\in V_2}\frac{(x_1-x_2,y_1-y_2,z_1-z_2)G\rho_1(x_1,y_1,z_1)\rho_2(x_2,y_2,z_2)}{\sqrt{(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2}}\,\mathrm{d}x_1\mathrm{d}y_1\mathrm{d}z_1\mathrm{d}x_2\mathrm{d}y_2\mathrm{d}z_2
+\end{align*}
+
+\begin{example}
+    \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/10/03/0303}}
+
+    \begin{align*}
+        \overrightarrow{F}
+         & =\iiint_{x^2+y^2+z^2\leq R^2}\frac{Gmp(x,y,z-l)}{\left(x^2+y^2+(z-l)^2\right)^{\frac{3}{2}}}\,\mathrm{d}x\mathrm{d}y\mathrm{d}z                              \\
+         & =Gmp\cdot\left(\begin{matrix}
+                                  \iiint_{x^2+y^2+z^2\leq R^2}\frac{x}{\left(x^2+y^2+(z-l)^2\right)^{\frac{3}{2}}}\,\mathrm{d}x\mathrm{d}y\mathrm{d}z, \\
+                                  \iiint_{x^2+y^2+z^2\leq R^2}\frac{y}{\left(x^2+y^2+(z-l)^2\right)^{\frac{3}{2}}}\,\mathrm{d}x\mathrm{d}y\mathrm{d}z, \\
+                                  \iiint_{x^2+y^2+z^2\leq R^2}\frac{z-l}{\left(x^2+y^2+(z-l)^2\right)^{\frac{3}{2}}}\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
+                              \end{matrix}\right)
+    \end{align*}
+
+    Consider the first integral, $\begin{cases}
+            x=-\tilde{x} \\
+            y=\tilde{y}  \\
+            z=\tilde{z}
+        \end{cases}$, $\frac{\partial(x,y,z)}{\partial\left(\tilde{x},\tilde{y},\tilde{z}\right)}=-1$,
+
+    \begin{align*}
+        \iiint_{x^2+y^2+z^2\leq R^2}\frac{x}{\left(x^2+y^2+(z-l)^2\right)^{\frac{3}{2}}}\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
+         & =\iiint_{\tilde{x}^2+\tilde{y}^2+\tilde{z}^2\leq R^2}\frac{-\tilde{x}}{\left(\tilde{x}^2+\tilde{y}^2+\left(\tilde{z}-l\right)^2\right)^{\frac{3}{2}}}\,\mathrm{d}\tilde{x}\mathrm{d}\tilde{y}\mathrm{d}\tilde{z} \\
+         & =-\iiint_{x^2+y^2+z^2\leq R^2}\frac{x}{\left(x^2+y^2+(z-l)^2\right)^{\frac{3}{2}}}\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
+    \end{align*}
+
+    $\implies$ equals to $0$
+
+    \begin{center}
+        \includegraphics[width=\columnwidth]{chapters/10/03/0304}
+        \includegraphics[width=\columnwidth]{chapters/10/03/0305}
+    \end{center}
+
+    正确推导过程自己看书。
+\end{example}
