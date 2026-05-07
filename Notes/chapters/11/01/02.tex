@@ -1,0 +1,107 @@
+\subsubsection[数量场在曲线上的积分的计算]{Computation}
+
+For any $C^1$-parametrization of $L:$ $\overrightarrow{r}\,:[a,b]\to\mathbb{R}^3$ \allbold{(regular,\\
+    i.e. $\overrightarrow{r}'(t)\neq 0$, $\forall t\in[a,b]$)}
+
+then $\boxed{\int_L f\,\mathrm{d}s=\int_a^b f\left(\overrightarrow{r}(t)\right)\left|\overrightarrow{r}'(t)\right|\,\mathrm{d}t}$ $\left(=\substack{\textstyle\sum_{i=1}^n f\left(\overrightarrow{r}(t_i)\right)\sqrt{x'(\xi_i)^2+y'(\eta_i)^2+z'(\lambda_i)^2}\Delta t_i\\
+            \textstyle\sum_{i=1}^n f\left(\overrightarrow{r}(t_i)\right)\sqrt{x'(t_i)^2+y'(t_i)^2+z'(t_i)^2}\Delta t_i}\right)$
+
+$\left|\overrightarrow{r}(t_i)-\overrightarrow{r}(t_{i-1})\right|=\sqrt{\left(x(t_i)-x(t_{i-1})\right)^2+\dots}\xlongequal{\text{Lagrange MVT}}\sqrt{x'(\xi_i)^2+y'(\eta_i)^2+z'(\lambda_i)^2}\Delta t_i$ where $\xi_i,\eta_i,\lambda_i\in\left[t_{i-1},t_i\right]$, $i=1,2,\dots,n$.
+
+If $\overrightarrow{\tilde{r}}:\,\left[\tilde{a},\tilde{b}\right]\to\mathbb{R}^3$ is another $C^1$ parametrization. \allbold{(regular)}
+
+\begin{itemize}
+    \item $\tilde{t}=\tilde{t}(t)$ \allbold{is $C^1$ bijection}
+    \item $\overrightarrow{r}(t)=\overrightarrow{\tilde{r}}\left(\tilde{t}(t)\right)$
+\end{itemize}
+
+$\implies\overrightarrow{r}'(t)=\overrightarrow{\tilde{r}}'\left(\tilde{t}(t)\right)\cdot\tilde{t}'(t)$
+
+$\implies\int_{a'}^{b'}f\left(\tilde{r}\left(\tilde{t}\right)\right)\underset{\boldsymbol{=\left|\overrightarrow{\tilde{r}}'\left(\tilde{t}(t)\right)\right|}}{\underline{\left|\overrightarrow{\tilde{r}}'\left(\tilde{t}\right)\right|}}\,\mathrm{d}\tilde{t}\xlongequal[\tilde{t}=\tilde{t}(t)]{\text{Substitution}}\int_{\boldsymbol{\tilde{t}^{-1}(a')}}^{\boldsymbol{\tilde{t}^{-1}(b')}}f\left(\overrightarrow{\tilde{r}}\left(\tilde{t}(t)\right)\right)\frac{\left|\overrightarrow{r}'(t)\right|}{\left|\tilde{t}'(t)\right|}\cdot\tilde{t}'(t)\,\mathrm{d}t$
+
+\begin{itemize}
+    \item Case 1: $\tilde{t}'(t)>0$ on $[a,b]$, the integral becomes $\int_a^b f\left(\overrightarrow{r}(t)\right)\left|\overrightarrow{r}'(t)\right|\,\mathrm{d}t$
+    \item Case 2: $\tilde{t}'(t)<0$ on $[a,b]$, the integral becomes $\underset{=\int_a^b f\left(\overrightarrow{r}(t)\right)\left|\overrightarrow{r}'(t)\right|\,\mathrm{d}t}{\int_b^a f\left(\overrightarrow{r}(t)\right)\left(-\left|\overrightarrow{r}'(t)\right|\right)\,\mathrm{d}t}$
+\end{itemize}
+
+\subparagraph*{Conclusion}
+
+$\int_L f\,\mathrm{d}s$ dose not depend on the particular choice of regular $C^1$ parametrization.
+
+\begin{enumerate}
+    \item Graph of $C^1$ function $f$ on $[a,b]$
+
+          \begin{center}
+              \includegraphics[height=2cm]{chapters/11/01/0201}
+          \end{center}
+
+          Then $L$ has a natural parametrization $\overrightarrow{r}:\,[a,b]\to\mathbb{R}^2$, $x\mapsto(x,f(x))$, $\overrightarrow{r}'(x)=(1,f'(x))$
+
+          $$\int_L g(x,y)\,\mathrm{d}s=\int_a^b g(x,f(x))\sqrt{1+(f'(x))^2}\,\mathrm{d}x$$
+
+          In particular, take $g\equiv 1$, then $\int_L\,\mathrm{d}s=\int_a^b\sqrt{1+f'(x)^2}\,\mathrm{d}x$ represents the arc length of $L$.
+
+    \item $L$ is given by $r=r(\theta)$, $\theta\in[\alpha,\beta]$ in polar coordinates. (e.g. $r=\mathrm{e}^\theta$)
+
+          Then
+          \begin{align*}
+              \overrightarrow{r}:\,[\alpha,\beta] & \to\mathbb{R}^2                                                                       \\
+              \theta                              & \mapsto(r\cos\theta,r\sin\theta)=\left(r(\theta)\cos\theta,r(\theta)\sin\theta\right)
+          \end{align*}
+          gives the parametrization in Cartesian coordinates.
+
+          $\overrightarrow{r}'(\theta)=\left(r'(\theta)\cos\theta-r(\theta)\sin\theta,r'(\theta)\sin\theta+r(\theta)\cos\theta\right)$
+
+          $\left|\overrightarrow{r}'(\theta)\right|=\sqrt{r'(\theta)^2+r(\theta)^2}$
+          \allbold{\begin{align*}
+                  \implies\mathrm{d}s^2
+                   & =\left|\overrightarrow{r}'(\theta)\right|^2\mathrm{d}\theta^2                            \\
+                   & =\left(r'(\theta)^2+r(\theta)^2\right)\,\mathrm{d}\theta^2                               \\
+                   & =\mathrm{d}r^2+r^2\mathrm{d}\theta^2\rightarrow\text{ line element in polar coordinates}
+              \end{align*}}
+          $\implies\int_L f\,\mathrm{d}s=\int_\alpha^\beta f\left(r(\theta)\cos\theta,r(\theta)\sin\theta\right)\sqrt{r'(\theta)^2+r(\theta)^2}\,\mathrm{d}\theta$.
+\end{enumerate}
+
+\begin{example}
+    Let $L$ be the arc of ellipse $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ in the first quadrant, calculate $\int_L xy\,\mathrm{d}s$
+
+    If we use $x\mapsto(x,b\sqrt{1-\frac{x^2}{a^2}})$, then
+    \begin{align*}
+        \int_L xy\,\mathrm{d}s
+         & =\int_0^a x\cdot b\sqrt{1-\frac{x^2}{a^2}}\sqrt{1+\frac{(\frac{b}{a^2}x)^2}{1-\frac{x^2}{a^2}}}\,\mathrm{d}x \\
+         & =b\int_0^a x\sqrt{1-\frac{x^2}{a^2}+\frac{b^2}{a^4}x^2}\,\mathrm{d}x                                         \\
+         & =b\int_0^a x\sqrt{1+\frac{b^2-a^2}{a^4}x^2}\,\mathrm{d}x                                                     \\
+         & =\left.b\cdot\left(1+\frac{b^2-a^2}{a^4}x^2\right)^{\frac{3}{2}}\frac{a^4}{3(b^2-a^2)}\right|_0^a            \\
+         & =\frac{a^4b}{3(b^2-a^2)}\left(\frac{b^3}{a^3}-1\right)                                                       \\
+         & =\frac{ab(b^2+ab+a^2)}{3(b+a)}
+    \end{align*}
+
+    If we use the parametrization $\begin{cases}
+            x(\theta)=a\cos\theta \\
+            y(\theta)=b\sin\theta
+        \end{cases}$, $\theta\in\left[0,\frac{\pi}{2}\right]$,\\
+    $(x'(\theta),y'(\theta))=(-a\sin\theta,b\cos\theta)$, then
+    \begin{align*}
+        \int_L xy\,\mathrm{d}s
+         & =\int_0^{\frac{\pi}{2}}a\cos\theta\cdot b\sin\theta\sqrt{a^2\sin^2\theta+b^2\cos^2\theta}\,\mathrm{d}\theta \\
+         & =\int_0^{\frac{\pi}{2}}ab\sin\theta\cos\theta\sqrt{(a^2-b^2)\sin^2\theta+b^2}\,\mathrm{d}\theta             \\
+         & =\left.ab\cdot((a^2-b^2)\sin^2\theta+b^2)^{\frac{3}{2}}\frac{1}{3(a^2-b^2)}\right|_0^{\frac{\pi}{2}}        \\
+         & =\frac{ab}{3(a^2-b^2)}\left(a^3-b^3\right)                                                                  \\
+         & =\frac{ab(b^2+ab+a^2)}{3(b+a)}
+    \end{align*}
+\end{example}
+
+\allbold{Arc length of ellipse $4\int_0^{\frac{\pi}{2}}\sqrt{a^2\sin^2\theta+b^2\cos^2\theta}\,\mathrm{d}\theta$}
+
+\begin{example}
+    Let $L$ be the triangle connecting $O(0,0)$, $A(1,0)$ and $B(0,1)$. Find the ;ine integral $\int_L x\,\mathrm{d}s$
+
+    \begin{align*}
+        \int_L x\,\mathrm{d}s
+         & =\int_{OA} x\,\mathrm{d}s+\int_{AB} x\,\mathrm{d}s+\int_{BO} x\,\mathrm{d}s           \\
+         & =\int_0^1 x\,\mathrm{d}x+\int_0^1 x\cdot\sqrt{2}\,\mathrm{d}x+\int_0^1 0\,\mathrm{d}y \\
+         & =\frac{1}{2}+\frac{\sqrt{2}}{2}                                                       \\
+         & =\frac{1+\sqrt{2}}{2}
+    \end{align*}
+\end{example}
+

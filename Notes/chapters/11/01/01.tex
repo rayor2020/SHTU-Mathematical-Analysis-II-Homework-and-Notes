@@ -2,6 +2,8 @@
 
 \subsection[数量场在曲线上的积分]{Line Integral}
 
+\subsubsection{基本概念}
+
 \begin{center}
     \includegraphics[height=2cm]{chapters/11/01/0101}
 \end{center}
@@ -23,5 +25,25 @@ line density $\rho\implies$ Total mass $=\displaystyle\lim_{\|T\|\to 0}\sum_i\rh
     \end{center}
 \end{example}
 
-\subsubsection{基本概念}
-\subsubsection{数量场在曲线上的积分的计算}
+% 20260507
+
+$L\subseteq\mathbb{R}^3$
+
+\begin{center}
+    \includegraphics[height=2cm]{chapters/11/01/0103}
+\end{center}
+
+$C^1$ curve $\implies$ Rectifiable $\mathrm{d}s^2=\mathrm{d}x^2+\mathrm{d}y^2+\mathrm{d}z^2$
+
+\begin{align*}
+    \overrightarrow{r}:\,[a,b]\to & \mathbb{R}^3                               \\
+    t\mapsto                      & \overrightarrow{r}(t)=(x(t),y(t),z(t))     \\
+                                  & \overrightarrow{r}'(t)=(x'(t),y'(t),z'(t))
+\end{align*}
+
+$\implies\mathrm{d}s=\left|\overrightarrow{r}'(t)\right|\,\mathrm{d}t$
+
+$f:\,L\to\mathbb{R}$ continuous $\implies\int_L f\,\mathrm{d}s\triangleq\lim_{\|T\|\to 0}\sum f(M_i)\left|\Delta\overrightarrow{r_i}\right|$ exists.
+
+It's called the line integral of the scalar function along $L$.
+

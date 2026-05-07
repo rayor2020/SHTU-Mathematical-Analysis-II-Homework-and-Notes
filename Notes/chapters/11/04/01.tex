@@ -1,0 +1,38 @@
+\subsection{向量场在曲面上的积分}
+\subsubsection[双侧曲面及其定向]{An Orientation of a Surface $S$ in $\mathbb{R}^3$}
+
+is a choice of continuous unit normal vector field on $S$
+
+If it exists, $S$ is called orientable, and \emph{non-orientable} 不可定向 otherwise. (e.g. $S^2\subseteq\mathbb{R}^3$ is orientable, Möbius band is non-orientable)
+
+\begin{center}
+    \includegraphics[height=6cm]{chapters/11/04/0101}
+\end{center}
+
+\subparagraph*{Another More Intrinsic Definition}
+
+$S=\bigcup_{\alpha\in\Lambda}U_\alpha$, $U_\alpha$ is an open piece of $S$, and $\overrightarrow{r_\alpha}:\,\Omega_\alpha\to S$, $(u_\alpha,v_\alpha)\mapsto\overrightarrow{r_\alpha}(u_\alpha,v_\alpha)$ is a local parametrization. If $U_\alpha\cap U_\beta\neq\emptyset$, we have $r_\beta^{-1}\cdot r_\alpha:\,r_\alpha^{-1}(U_\alpha\cap U_\beta)\to r_\beta^{-1}(U_\alpha\cap U_\beta)$, $(u_\alpha,v_\alpha)\mapsto(u_\beta,v_\beta)$, called transition map. If $\frac{\partial(u_\beta,v_\beta)}{\partial(u_\alpha,v_\alpha)}>0$, we call $U_\alpha$ and $U_\beta$ are compatible.
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/11/04/0102}
+\end{center}
+
+In $\mathbb{R}^3$,\quad\raisebox{-0.5\height}{\includegraphics[height=4cm]{chapters/11/04/0103}}\quad$S\subseteq\mathbb{R}^3$,
+
+\begin{align*}
+    r_\alpha:\,\Omega_\alpha & \to \mathbb{R}^3                                                        \\
+    (u_\alpha,v_\alpha)      & \mapsto(x(u_\alpha,v_\alpha),y(u_\alpha,v_\alpha),z(u_\alpha,v_\alpha))
+\end{align*}
+
+$\implies$ Tangent vectors $\frac{\partial r_\alpha}{\partial u_\alpha}$, $\frac{\partial r_\alpha}{\partial v_\alpha}$ on $S$, and a normal vector $\frac{\partial r_\alpha}{\partial u_\alpha}\times\frac{\partial r_\alpha}{\partial v_\alpha}$
+
+On $U_\alpha\cap U_\beta$, $\begin{cases}
+        \frac{\partial r_\alpha}{\partial u_\alpha}=\frac{\partial r_\beta}{\partial u_\beta}\cdot\frac{\partial u_\beta}{\partial u_\alpha}+\frac{\partial r_\beta}{\partial v_\beta}\cdot\frac{\partial v_\beta}{\partial u_\alpha} \\
+        \frac{\partial r_\alpha}{\partial v_\alpha}=\frac{\partial r_\beta}{\partial u_\beta}\cdot\frac{\partial u_\beta}{\partial v_\alpha}+\frac{\partial r_\beta}{\partial v_\beta}\cdot\frac{\partial v_\beta}{\partial v_\alpha}
+    \end{cases}\implies\frac{\partial r_\alpha}{\partial u_\alpha}\times\frac{\partial r_\alpha}{\partial v_\alpha}=\frac{\partial r_\beta}{\partial u_\beta}\times\frac{\partial r_\beta}{\partial v_\beta}\cdot\frac{\partial(u_\beta,v_\beta)}{\partial(u_\alpha,v_\alpha)}$
+
+If $(U_\alpha,r_\alpha)$ and $(U_\beta,r_\beta)$ are compatible, i.e. $\frac{\partial(u_\beta,v_\beta)}{\partial(u_\alpha,v_\alpha)}>0$, then
+$$\frac{\frac{\partial r_\alpha}{\partial u_\alpha}\times\frac{\partial r_\alpha}{\partial v_\alpha}}{\left|\frac{\partial r_\alpha}{\partial u_\alpha}\times\frac{\partial r_\alpha}{\partial v_\alpha}\right|}=\frac{\frac{\partial r_\beta}{\partial u_\beta}\times\frac{\partial r_\beta}{\partial v_\beta}}{\left|\frac{\partial r_\beta}{\partial u_\beta}\times\frac{\partial r_\beta}{\partial v_\beta}\right|}$$
+$\implies$ A continuous unit normal vector field.
+
+\subsubsection{向量场在曲面上的积分的定义和计算}
