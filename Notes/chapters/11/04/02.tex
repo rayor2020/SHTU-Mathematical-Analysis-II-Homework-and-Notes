@@ -1,0 +1,83 @@
+%20260514
+
+\subsubsection[向量场在曲面上的积分的定义和计算]{Surface Integral of Vector Field}
+
+\begin{enumerate}[label=\Roman*]
+    \item flux 通量\quad``一侧'' orientation\quad vector field $\overrightarrow{v}$
+
+          $\Delta V=\overrightarrow{v}\Delta t\cdot\overrightarrow{n}\Delta S$
+
+          $\implies\Delta\Phi=\frac{\Delta V}{\Delta t}=\overrightarrow{v}\cdot\overrightarrow{n}\Delta S$
+
+          $\implies$ Total flux of $\overrightarrow{v}$ along the surface $S$ is $\Phi(S)=\iint\limits_S\overrightarrow{v}\cdot\overrightarrow{n}\,\mathrm{d}S$, is the surface integral of the scalar function $\overrightarrow{v}\cdot\overrightarrow{n}$ along $S$.
+
+          $\iint\limits_S\overrightarrow{v}\cdot\overrightarrow{n}\,\mathrm{d}S$ is called the surface integral of the vector field $\overrightarrow{v}$ along the oriented surface $\left(S,\overrightarrow{n}\right)$.
+
+    \item We denote $\overrightarrow{n}\,\mathrm{d}S=\mathrm{d}\overrightarrow{S}$ is called the ``oriented area element'' 有向面积元, then
+          $$\iint\limits_S\overrightarrow{v}\cdot\overrightarrow{n}\,\mathrm{d}S=\iint\limits_{\left(S,O_{\overrightarrow{n}}\right)}\overrightarrow{v}\,\mathrm{d}\overrightarrow{S}$$
+          \emph{where $O_{\overrightarrow{n}}$ is the orientation represented by $\overrightarrow{n}$.}
+\end{enumerate}
+
+\paragraph*{Computation}
+
+Given oriented surface $\left(S,O_{\overrightarrow{n}}\right)$, we choose local \emph{oriented compatible} parametrization
+\begin{align*}
+    \overrightarrow{r}:\,\Omega & \to S                          \\
+    (u,v)                       & \mapsto\overrightarrow{r}(u,v)
+\end{align*}
+(meaning: $\overrightarrow{r_u}\times\overrightarrow{r_v}\cdot\overrightarrow{n}>0$)
+
+$\overrightarrow{n}=\frac{\overrightarrow{r_u}\times\overrightarrow{r_v}}{\left|\overrightarrow{r_u}\times\overrightarrow{r_v}\right|}$
+
+Suppose $\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}+R\overrightarrow{k}$ is a $C^1$ vector field along $S$,
+
+\begin{align*}
+    \iint\limits_{\left(S,O_{\overrightarrow{n}}\right)}\overrightarrow{F}\,\mathrm{d}\overrightarrow{S}
+     & =\iint\limits_S\overrightarrow{F}\cdot\overrightarrow{n}\,\mathrm{d}S                                                                                                 \\
+     & =\iint\limits_S\overrightarrow{F}\cdot\frac{\overrightarrow{r_u}\times\overrightarrow{r_v}}{\left|\overrightarrow{r_u}\times\overrightarrow{r_v}\right|}\,\mathrm{d}S \\
+     & =\iint\limits_\Omega\overrightarrow{F}\cdot\overrightarrow{r_u}\times\overrightarrow{r_v}\,\mathrm{d}u\mathrm{d}v                                                     \\
+\end{align*}
+
+$\overrightarrow{r_u}\times\overrightarrow{r_v}=\frac{\partial(y,z)}{\partial(u,v)}\overrightarrow{i}+\frac{\partial(z,x)}{\partial(u,v)}\overrightarrow{j}+\frac{\partial(x,y)}{\partial(u,v)}\overrightarrow{k}$
+
+\begin{align*}
+    \implies\iint\limits_{\left(S,O_{\overrightarrow{n}}\right)}\overrightarrow{F}\,\mathrm{d}\overrightarrow{S}
+     & =\iint\limits_\Omega\left(P\frac{\partial(y,z)}{\partial(u,v)}+Q\frac{\partial(z,x)}{\partial(u,v)}+R\frac{\partial(x,y)}{\partial(u,v)}\right)\,\mathrm{d}u\mathrm{d}v \\
+     & =\iint\limits_\Omega \left[P\left(y_uz_v-y_vz_u\right)+Q\left(z_ux_v-z_vx_u\right)+R\left(x_uy_v-x_vy_u\right)\right]\,\mathrm{d}u\mathrm{d}v                           \\
+     & =\iint\limits_{\left(S,O_{\overrightarrow{n}}\right)}P\,\mathrm{d}y\wedge\mathrm{d}z+Q\,\mathrm{d}z\wedge\mathrm{d}x+R\,\mathrm{d}x\wedge\mathrm{d}y
+\end{align*}
+
+``$\wedge$'' wedge 外积
+
+$\begin{cases}
+        \mathrm{d}x=x_u\,\mathrm{d}u+x_v\,\mathrm{d}v \\
+        \mathrm{d}y=y_u\,\mathrm{d}u+y_v\,\mathrm{d}v \\
+        \mathrm{d}z=z_u\,\mathrm{d}u+z_v\,\mathrm{d}v
+    \end{cases}\implies$ Define ``$\wedge$'' on 1-forms. E.Cartan
+\begin{align*}
+    \mathrm{d}y\wedge\mathrm{d}z
+     & \triangleq(y_u\,\mathrm{d}u+y_v\,\mathrm{d}v)\wedge(z_u\,\mathrm{d}u+z_v\,\mathrm{d}v)                                                                                          \\
+     & \xlongequal{\text{bilinear}}y_uz_u\,\mathrm{d}u\wedge\mathrm{d}u+y_uz_v\,\mathrm{d}u\wedge\mathrm{d}v+y_vz_u\,\mathrm{d}v\wedge\mathrm{d}u+y_vz_v\,\mathrm{d}v\wedge\mathrm{d}v \\
+     & \xlongequal{\text{anti-symmetric}}(y_uz_v-y_vz_u)\,\mathrm{d}u\wedge\mathrm{d}v
+     & \vdots
+\end{align*}
+
+$V\to V^*$
+
+\begin{align*}
+    \alpha,\beta
+     & \implies\begin{cases}
+                   \alpha\wedge\beta(u,v)=\alpha(u)\beta(v)-\alpha(v)\beta(u) \\
+                   \alpha\odot\beta(u,v)=\alpha(u)\beta(v)+\alpha(v)\beta(u)
+               \end{cases}                                                                                                                     \\
+     & \leadsto\mathbb{R}^3\,\ \mathrm{d}y\wedge\mathrm{d}z\left(\overrightarrow{W_1},\overrightarrow{W_2}\right)                                                                             \\
+     & =\mathrm{d}y\left(\overrightarrow{W_1}\right)\,\mathrm{d}z\left(\overrightarrow{W_2}\right)-\mathrm{d}z\left(\overrightarrow{W_1}\right)\,\mathrm{d}y\left(\overrightarrow{W_2}\right) \\
+     & =y_1z_2-y_2z_1                                                                                                                                                                         \\
+     & =\operatorname{Area}\left(\operatorname{proj}_{y\circ z}\left(P\left<\overrightarrow{W_1},\overrightarrow{W_2}\right>\right)\right)
+\end{align*}
+
+\begin{center}
+    \includegraphics[width=\columnwidth]{chapters/11/04/0201}
+\end{center}
+
+Integral of differential 2-form

@@ -1,0 +1,74 @@
+%20260514
+
+\subsection[数量场在曲面上的积分]{Surface Integral of Scalar Function}
+
+\subsubsection{曲面的面积}
+
+$S\subseteq\mathbb{R}^3$ $\begin{cases}
+        \text{Implicit form }F(x,y,z)=0 \\
+        \text{Explicit form (parametrized form)}
+    \end{cases}$
+
+Area element $\mathrm{d}S$
+
+If
+\begin{align*}
+    \overrightarrow{r}:\,\Omega & \to S                                                 \\
+    (u,v)                       & \mapsto\overrightarrow{r}(u,v)=(x(u,v),y(u,v),z(u,v))
+\end{align*}
+is a parametrization, then
+\begin{align*}
+    \mathrm{d}S
+     & =\left|\overrightarrow{r_u}\times\overrightarrow{r_v}\right|\,\mathrm{d}u\mathrm{d}v                                                                                                     \\
+     & =\sqrt{EG-F^2}\,\mathrm{d}u\mathrm{d}v                                                                                                                                                   \\
+     & =\sqrt{\left(\frac{\partial(y,z)}{\partial(u,v)}\right)^2+\left(\frac{\partial(z,x)}{\partial(u,v)}\right)^2+\left(\frac{\partial(x,y)}{\partial(u,v)}\right)^2}\,\mathrm{d}u\mathrm{d}v
+\end{align*}\
+(where $\overrightarrow{r_u}=\mathrm{d}\overrightarrow{r}\left(\frac{\partial}{\partial u}\right)=\mathrm{d}\overrightarrow{r}\left(\overrightarrow{e_1}\right)$, $\overrightarrow{r_v}=\mathrm{d}\overrightarrow{r}\left(\overrightarrow{e_2}\right)$. In components, $\overrightarrow{r_u}=\left(\frac{\partial x}{\partial u},\frac{\partial y}{\partial u},\frac{\partial z}{\partial u}\right)^T$, $\overrightarrow{r_v}=\left(\frac{\partial x}{\partial v},\frac{\partial y}{\partial v},\frac{\partial z}{\partial v}\right)^T$, $E=\left|\overrightarrow{r_u}\right|^2$, $F=\overrightarrow{r_u}\cdot\overrightarrow{r_v}$, $G=\left|\overrightarrow{r_v}\right|^2$.)
+
+
+
+$f:\,S\to\mathbb{R}$
+
+$$\iint\limits_S f\,\mathrm{d}S\triangleq\lim_{\|T\|\to 0}\sum f(M_i)\sigma(S_i)$$
+where $T=\{S_i\}$ is a partition of $S$, $M_i\in S_i$, $\sigma(S_i)$ is the ``area'' of $S_i$.
+
+\subsubsection[数量场在曲面上的积分的计算]{Computation}
+
+Assume $f$ is $C^1$.
+
+\begin{enumerate}
+    \item If $S$ admits a global $C^1$ parametrization:
+          \begin{align*}
+              \overrightarrow{r}:\,\Omega & \to S,                         \\
+              (u,v)                       & \mapsto\overrightarrow{r}(u,v)
+          \end{align*}
+          \begin{align*}
+              \iint\limits_S f\,\mathrm{d}S
+               & =\iint\limits_\Omega f\left(\overrightarrow{r}(u,v)\right)\left|\overrightarrow{r_u}\times\overrightarrow{r_v}\right|\,\mathrm{d}u\mathrm{d}v\quad\text{(Double Integral)}                                                          \\
+               & =\iint\limits_\Omega f(x(u,v),y(u,v),z(u,v))\sqrt{\left(\frac{\partial(y,z)}{\partial(u,v)}\right)^2+\left(\frac{\partial(z,x)}{\partial(u,v)}\right)^2+\left(\frac{\partial(x,y)}{\partial(u,v)}\right)^2}\,\mathrm{d}u\mathrm{d}v
+          \end{align*}
+    \item $\begin{cases}
+                  \overrightarrow{\tilde{r_{\tilde{u}}}}=\frac{\partial\overrightarrow{\tilde{r}}}{\partial\tilde{u}}=\frac{\partial\overrightarrow{\tilde{r}}}{\partial u}\cdot\frac{\partial u}{\partial\tilde{u}}+\frac{\partial\overrightarrow{\tilde{r}}}{\partial v}\cdot\frac{\partial v}{\partial\tilde{u}} \\
+                  \overrightarrow{\tilde{r_{\tilde{v}}}}=\frac{\partial\overrightarrow{\tilde{r}}}{\partial\tilde{v}}=\frac{\partial\overrightarrow{\tilde{r}}}{\partial u}\cdot\frac{\partial u}{\partial\tilde{v}}+\frac{\partial\overrightarrow{\tilde{r}}}{\partial v}\cdot\frac{\partial v}{\partial\tilde{v}}
+              \end{cases}$
+
+          \begin{center}
+              \includegraphics[height=5cm]{chapters/11/02/0201}
+          \end{center}
+
+          $\overrightarrow{\tilde{r_{\tilde{u}}}}\times\overrightarrow{\tilde{r_{\tilde{v}}}}=\overrightarrow{r_u}\times\overrightarrow{r_v}\cdot\frac{\partial(u,v)}{\partial\left(\tilde{u},\tilde{v}\right)}$
+
+          \begin{align*}
+              \iint\limits_Y f\,\mathrm{d}S
+               & =\iint\limits_W f\left(\overrightarrow{r}(u,v)\right)\left|\overrightarrow{r_u}\times\overrightarrow{r_v}\right|\,\mathrm{d}u\mathrm{d}v                                                                                  \\
+              \text{Substitution }\tilde{W}\to W
+               & \xlongequal[\mathrm{d}u\mathrm{d}v=\left|\frac{\partial(u,v)}{\partial\left(\tilde{u},\tilde{v}\right)}\right|\,\mathrm{d}\tilde{u}\mathrm{d}\tilde{v}]{\substack{u=u\left(\tilde{u},\tilde{v}\right)                     \\v=v\left(\tilde{u},\tilde{v}\right)}}                                                                                                                                                                                                               \\
+              \iint\limits_Y f\,\mathrm{d}S
+               & =\iint\limits_{\tilde{W}} f\left(\overrightarrow{\tilde{r}}\left(\tilde{u},\tilde{v}\right)\right)\left|\overrightarrow{r_{\tilde{u}}}\times\overrightarrow{r_{\tilde{v}}}\right|\,\mathrm{d}\tilde{u}\mathrm{d}\tilde{v} \\
+          \end{align*}
+
+          \begin{remark}
+              $$\iint\limits_S f\,\mathrm{d}S=\sum\iint_{S_i} f\,\mathrm{d}S_i$$
+              where $S=\sqcup S_i$, $\mathring{S_i}\cap\mathring{S_j}=\emptyset$ and each $S_i$ has a global parametrization.
+          \end{remark}
+\end{enumerate}
