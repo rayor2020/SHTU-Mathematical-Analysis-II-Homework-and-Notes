@@ -1,0 +1,66 @@
+\subsection[Gauss 定理和 Stokes 定理]{Green's Theorem, Stokes' Theorem and Gauss' Theorem}
+
+\subparagraph*{Newton-Leibniz}
+
+$\int_a^b\,\mathrm{d}F=F|_a^b$, $0\leftrightarrow 1$
+
+\subparagraph*{Green's Theorem}
+
+Specialized Stokes' to plane, line integral $\leftrightarrow$ double integral
+
+\subparagraph*{Stokes' Theorem}
+
+line integral $\leftrightarrow$ surface integral, $1\leftrightarrow 2$
+
+\subparagraph*{Gauss' Theorem}
+
+surface integral $\leftrightarrow$ triple integral, $2\leftrightarrow 3$
+
+Green's Theorem, Stokes' Theorem and Gauss' Theorem: Generalized Stokes' Theorem
+
+\subsubsection*{Green's Theorem}
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/11/05/0001}
+\end{center}
+
+$$\oint\limits_{\left(L,O_{\text{Anti}}\right)}\underset{\leadsto\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}}{P\,\mathrm{d}x+Q\,\mathrm{d}y}=\iint\limits_{\underset{\substack{\downarrow\\\text{the domain enclosed by }L}}{\Omega}}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\,\mathrm{d}x\mathrm{d}y$$
+
+\paragraph*{Case 1}
+
+$\Omega=[a,b]\times[c,d]$, $L=\partial\Omega$, $\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}$\quad\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/11/05/0002}}
+
+\begin{align*}
+    \oint_{\left(L,O_{\text{Anti}}\right)}P\,\mathrm{d}x+Q\,\mathrm{d}y
+     & =\int_a^b P(x,c)\,\mathrm{d}x+\int_c^d Q(b,y)\,\mathrm{d}y-\int_a^b P(x,d)\,\mathrm{d}x-\int_c^d Q(a,y)\,\mathrm{d}y                                                                                                     \\
+     & =\int_c^d\left(Q(b,y)-Q(a,y)\right)\,\mathrm{d}y-\int_a^b\left(P(x,d)-P(x,c)\right)\,\mathrm{d}x                                                                                                                         \\
+     & \xlongequal[\text{formula horizontally}]{\text{Newton-Leibniz}}\int_c^d\,\mathrm{d}y\int_a^b\frac{\partial Q}{\partial x}(x,y)\,\mathrm{d}x-\int_a^b\,\mathrm{d}x\int_c^d\frac{\partial P}{\partial y}(x,y)\,\mathrm{d}y \\
+     & =\iint_{\Omega=[a,b]\times[c,d]}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\,\mathrm{d}x\mathrm{d}y
+\end{align*}
+
+Assumption: $\frac{\partial Q}{\partial x}$, $\frac{\partial P}{\partial y}$ are continuous on $Omega$; $P,Q$ are continuous on $\Omega$.
+
+\paragraph*{Case 2}
+
+$\int(P,Q)\cdot\frac{(1,\phi'(x))}{\sqrt{1+\phi'(x)^2}}\,\mathrm{d}s=\int_a^b(P+Q\phi'(x))\,\mathrm{d}x$
+
+\begin{center}
+    \includegraphics[height=3cm]{chapters/11/05/0003}
+\end{center}
+
+\begin{align*}
+    \oint_L P\,\mathrm{d}x+Q\,\mathrm{d}y
+     & =\int_a^b\left(P(x,\phi(x))+Q(x,\phi(x))\phi'(x)\right)\,\mathrm{d}x                                                                                                        \\
+     & \quad+\int_{\phi(b)}^d Q(b,y)\,\mathrm{d}y-\int_a^b P(x,d)\,\mathrm{d}x-\int_{\phi(a)}^d Q(a,y)\,\mathrm{d}y                                                                \\
+     & =-\int_a^b\,\mathrm{d}x\int_{\phi(x)}^d\frac{\partial P}{\partial y}(x,y)\,\mathrm{d}y+\int_{\phi(a)}^d\,\mathrm{d}y\int_a^b\frac{\partial Q}{\partial x}(x,y)\,\mathrm{d}x \\
+     & \quad+\int_{\phi(b)}^{\phi(a)}Q(b,y)\,\mathrm{d}y+\int_a^b Q(x,\phi(x))\phi'(x)\,\mathrm{d}x                                                                                \\
+     & =\iint_{\Omega}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\,\mathrm{d}x\mathrm{d}y
+\end{align*}
+
+\begin{align*}
+    \int_{\phi(b)}^{\phi(a)}Q(b,y)\,\mathrm{d}y+\int_a^b Q(x,\phi(x))\phi'(x)\,\mathrm{d}x
+     & \xlongequal{y=\phi(x)}\int_{\phi(b)}^{\phi(a)}Q(b,y)\,\mathrm{d}y+\int_{\phi(a)}^{\phi(b)}Q(\phi^{-1}(y),y)\,\mathrm{d}y \\
+     & =\int_{\phi(b)}^{\phi(a)}\left(Q(b,y)-Q(\phi^{-1}(y),y)\right)\,\mathrm{d}y                                              \\
+     & =\int_{\phi(b)}^{\phi(a)}\,\mathrm{d}y\int_{\phi^{-1}(y)}^b\frac{\partial Q}{\partial x}(x,y)\,\mathrm{d}x               \\
+     & =\iint_{\Omega'}\frac{\partial Q}{\partial x}(x,y)\,\mathrm{d}x\mathrm{d}y
+\end{align*}
