@@ -1,2 +1,80 @@
-\subsubsection{Gauss 定理}
 \subsubsection{Stokes 定理}
+
+\begin{theorem}[Stokes' Theorem]
+    Let $\overrightarrow{F}=P(x,y,z)\overrightarrow{i}+Q(x,y,z)\overrightarrow{j}+R(x,y,z)\overrightarrow{k}$ be a $C^1$ vector field on a open set $V\subseteq\mathbb{R}^3$, and $S$ be an oriented piecewise $C^2$ surface in $V$, then
+    $$
+        \oint_{(\partial S,O_{\partial S})}\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}=\iint\limits_{(S,O_S)}\nabla\times\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{S}
+    $$
+    where $O_{\partial S}$ is compatible with $O_S$, in the sense that $\left\{\overrightarrow{n},\overrightarrow{\tau},\overrightarrow{n_s}\right\}$ is a Right Hand System ($\overrightarrow{n}$ is the unit outer narmal of $S$ on $\partial S$, $\overrightarrow{\tau}$ represents $O_{\partial S}$, $\overrightarrow{n_S}$ represents $O_S$)
+\end{theorem}
+
+$\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}+R\overrightarrow{k}$
+
+\begin{align*}
+    \nabla\times\overrightarrow{F}
+     & =\begin{vmatrix}
+            \overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
+            \partial_x         & \partial_y         & \partial_z         \\
+            P                  & Q                  & R
+        \end{vmatrix}                        \\
+     & =(R_y-Q_z)\overrightarrow{i}+(P_z-R_x)\overrightarrow{j}+(Q_x-P_y)\overrightarrow{k}
+\end{align*}
+
+\begin{remark}
+    Green's Theorem is a special case of Stokes' Theorem.
+
+    \begin{center}
+        \includegraphics[height=3cm]{chapters/11/05/0101}
+    \end{center}
+
+    \begin{align*}
+        \overset{\text{Stokes}}{\leadsto}\oint\limits_{(\partial\Omega,O_{\partial\Omega})}
+         & =\oint\limits_{(\partial\Omega,O_{\partial\Omega})}\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r} \\
+         & =\iint\limits_{\Omega}\nabla\times\overrightarrow{F}\cdot\overrightarrow{n_{\Omega}}\,\mathrm{d}S      \\
+         & =\iint\limits_{\Omega}(Q_x-P_y)\,\mathrm{d}S\quad\text{Surface integral}                               \\
+         & \xlongequal[(x,y)\text{ par}]{\text{natural}}\iint\limits_{\Omega}(Q_x-P_y)\,\mathrm{d}x\mathrm{d}y.
+    \end{align*}
+\end{remark}
+
+Another format.
+
+$$
+    \oint\limits_{(\partial S,O_{\partial S})}P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z=\iint\limits_{(S,O_S)}(R_y-Q_z)\,\mathrm{d}y\wedge\mathrm{d}z+(P_z-R_x)\,\mathrm{d}z\wedge\mathrm{d}x+(Q_x-P_y)\,\mathrm{d}x\wedge\mathrm{d}y
+$$
+
+\paragraph*{Proof}
+
+\subparagraph*{Step 1}
+
+Assume $S$ admits a global orientation compatible ($O_S$) parametrization
+\begin{align*}
+    \overrightarrow{r}:\,\Omega & \to S                                                 \\
+    (u,v)                       & \mapsto\overrightarrow{r}(u,v)=(x(u,v),y(u,v),z(u,v))
+\end{align*}
+and
+\begin{align*}
+    \overrightarrow{\varphi}:\,[a,b] & \to\partial\Omega\subseteq\mathbb{R}^2 \\
+    t                                & \mapsto(u(t),v(t))
+\end{align*}
+is an orientation compatible parametrization ($O_{\partial\Omega}$)
+
+$\implies\overrightarrow{r}\circ\overrightarrow{\varphi}:\,t\mapsto\overrightarrow{r}(u(t),v(t))$ gives a parametrization of $\partial S$
+
+Then
+
+\begin{align*}
+     & \quad\oint\limits_{\partial S}P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z                                                                                                                                                                                                                             \\
+     & =\int_a^b\left\{P(x_uu'(t)+x_vv'(t))+Q(y_uu'(t)+y_vv'(t))+R(z_uu'(t)+z_vv'(t))\right\}\mathrm{d}t                                                                                                                                                                                                      \\
+     & =\int_a^b\left\{(P x_u+Q y_u+R z_u)u'(t)+(P x_v+Q y_v+R z_v)v'(t)\right\}\mathrm{d}t                                                                                                                                                                                                                   \\
+     & =\int_{\partial\Omega}(P x_u+Q y_u+R z_u)\,\mathrm{d}u+\int_{\partial\Omega}(P x_v+Q y_v+R z_v)\,\mathrm{d}v                                                                                                                                                                                           \\
+     & \xlongequal[Theorem]{Green's}\iint\limits_{\Omega}\left\{(P x_v+Q y_v+R z_v)_u-(P x_u+Q y_u+R z_u)_v\right\}\,\mathrm{d}u\mathrm{d}v                                                                                                                                                                   \\
+     & =\iint\limits_{\Omega}\left\{(P_u x_v+Q_u y_v+R_u z_v)-(P_v x_u+Q_v y_u+R_v z_u)\right\}\,\mathrm{d}u\mathrm{d}v                                                                                                                                                                                       \\
+     & =\iint\limits_{\Omega}(P_xx_u+P_yy_u+P_zz_u)x_v+(Q_xx_u+Q_yy_u+Q_zz_u)y_v                                                                                                                                                                                                                              \\
+     & \quad+(R_xx_u+R_yy_u+R_zz_u)z_v-(P_xx_v+P_yy_v+P_zz_v)x_u                                                                                                                                                                                                                                              \\
+     & \quad-(Q_xx_v+Q_yy_v+Q_zz_v)y_u-(R_xx_v+R_yy_v+R_zz_v)z_u\,\mathrm{d}u\mathrm{d}v                                                                                                                                                                                                                      \\
+     & =\iint\limits_{\Omega}\left\{P_y\frac{\partial(y,x)}{\partial(u,v)}+P_z\frac{\partial(z,x)}{\partial(u,v)}+Q_x\frac{\partial(x,y)}{\partial(u,v)}+Q_z\frac{\partial(z,y)}{\partial(u,v)}+R_x\frac{\partial(x,z)}{\partial(u,v)}+R_y\frac{\partial(y,z)}{\partial(u,v)}\right\}\,\mathrm{d}u\mathrm{d}v \\
+     & =\iint_{\Omega}\left\{(R_y-Q_z)\frac{\partial(y,z)}{\partial(u,v)}+(P_z-R_x)\frac{\partial(z,x)}{\partial(u,v)}+(Q_x-P_y)\frac{\partial(x,y)}{\partial(u,v)}\right\}                                                                                                                                   \\
+     & =\iint\limits_S(R_y-Q_z)\,\mathrm{d}y\wedge\mathrm{d}z+\dots
+\end{align*}
+
+\subparagraph*{Step 2}
