@@ -1,0 +1,21 @@
+\subsubsection[无源场与向量势]{Divergence free vector field 无源场}
+
+A $C^1$ vector field $\overrightarrow{F}$ is called divergence free if $\nabla\cdot\overrightarrow{F}=0$.
+
+If $\exists C^2$ vector field $\overrightarrow{G}=A\overrightarrow{i}+B\overrightarrow{j}+C\overrightarrow{k}$ s.t. $\nabla\times\overrightarrow{G}=\overrightarrow{F}$, then we say $\overrightarrow{F}$ admits vector potential. Any such $\overrightarrow{G}$ is called a vector potential 向量势, 矢势 of $\overrightarrow{F}$.
+
+If $\overrightarrow{F}$ has a vector potential, then $\nabla\cdot\overrightarrow{F}=\begin{vmatrix}
+        \partial_x & \partial_y & \partial_z \\
+        \partial_x & \partial_y & \partial_z \\
+        A          & B          & C
+    \end{vmatrix}=0$ (Necessary condition)
+
+Find $A,B,C$ s.t. $\begin{cases}
+        \partial_y C-\partial_z B=P \\
+        \partial_z A-\partial_x C=Q \\
+        \partial_x B-\partial_y A=R
+    \end{cases}$ (1st order \emph{linear} PDE system)
+
+\begin{center}
+    \includegraphics[width=\columnwidth]{chapters/11/07/0201}
+\end{center}

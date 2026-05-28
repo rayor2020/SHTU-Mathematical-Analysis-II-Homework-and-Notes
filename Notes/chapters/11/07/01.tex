@@ -1,0 +1,90 @@
+\subsection{保守场}
+\subsubsection{保守场与势函数}
+
+\begin{definition}[Conservative vector field 保守场]
+    Let $\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}+R\overrightarrow{k}$ be a continuous vector field on the open set $\Omega$ ($\subseteq\mathbb{R}^3$). if $\oint_L\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}=0$ for any closed piecewise $C^1$ curve in $\Omega$, then $\overrightarrow{F}$ is called conservative.
+\end{definition}
+
+\begin{remark}
+    The condition is equivalent to ``$\int_L\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}=\int_{L'}\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}$ for any $L,L'\subseteq\Omega$ with the same starting and endpoints''.
+\end{remark}
+
+(path independence)
+
+\begin{theorem}
+    Suppose $\Omega\subseteq\mathbb{R}^3$ is aimply connected open set, and $\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}+R\overrightarrow{k}$ is a $C^1$ vector field in $\Omega$, then the following are equivalent:
+    \begin{enumerate}
+        \item $\overrightarrow{F}$ is conservative.
+        \item $\exists\varphi:\,\Omega\to\mathbb{R}$ $C^2$ function s.t. $\overrightarrow{F}=\nabla\varphi$, $\varphi$ is called the potential of $\overrightarrow{F}$ ($P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z=\mathrm{d}\varphi$) ``有势场''
+        \item $\nabla\times\overrightarrow{F}=0$ ``curl free''
+    \end{enumerate}
+\end{theorem}
+
+Proof: (1) $\implies$ (2): Find $\varphi$ s.t. $\begin{cases}
+        \frac{\partial\varphi}{\partial x}=P \\
+        \frac{\partial\varphi}{\partial y}=Q \\
+        \frac{\partial\varphi}{\partial z}=R
+    \end{cases}$ (1st order PDE system)
+
+Pick any $A_0\in\Omega$,
+\begin{align*}
+    \varphi(A) & =\int_{A_0}^A\,\mathrm{d}\varphi=\int_{L_{A_0A}}\,\mathrm{d}\varphi \\
+               & \triangleq\int_{A_0}^A P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z
+\end{align*}
+where $L_{A_0A}$ is any $C^1$-curve in $\Omega$ with starting point $A_0$ and endpoint $A$.
+
+$\rightarrow\begin{cases}
+        \text{Well-defined }\impliedby\text{ Conservative} \\
+        \text{Verify that }\mathrm{d}\varphi=P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z
+    \end{cases}$
+
+Verifying:
+
+\begin{align*}
+    \frac{\partial\varphi}{\partial x} & =\lim_{\Delta x\to 0}\frac{1}{\Delta x}\int_{(x,y,z)}^{(x+\Delta x,y,z)}P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z \\
+    \text{RHS}                         & =\lim_{\Delta x\to 0}\frac{1}{\Delta x}\int_x^{x+\Delta x}P(t,y,z)\,\mathrm{d}t                                      \\
+                                       & =P(x,y,z)
+\end{align*}
+
+Similarly, $\frac{\partial\varphi}{\partial y}=Q$, $\frac{\partial\varphi}{\partial z}=R$. (Moreover, $\varphi\in C^2(\Omega)$)
+
+(2) $\implies$ (3): $\nabla\times\overrightarrow{F}=\nabla\times(\nabla\varphi)=\begin{vmatrix}
+        \overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
+        \partial_x         & \partial_y         & \partial_z         \\
+        \partial_x\varphi  & \partial_y\varphi  & \partial_z\varphi
+    \end{vmatrix}\xlongequal{\varphi\in C^2}0$
+
+(3) $\implies$ (1): For any closed piecewise $C^1$ curve $L$ in $\Omega$,
+$$\oint_L\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}\xlongequal{\text{Stokes'}}\iint_S\nabla\times\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{S}=0$$
+$\Omega$ is simply connected $\implies$ if $S\subseteq\Omega$ is an oriented surface s.t. $\partial S=L$
+
+\begin{remark}
+    If $\varphi_1$ and $\varphi_2$ are both potentials for the vector field $\overrightarrow{F}$, i.e. $\nabla\varphi_1=\nabla\varphi_2=\overrightarrow{F}$, then $\nabla(\varphi_1-\varphi_2)=0\xLongrightarrow{\Omega\text{ is connected}}\varphi_1=\varphi_2+\underset{\substack{\downarrow//\text{``Ambiguity'' / gauge}}}{C}$ for some $C\in\mathbb{R}$
+\end{remark}
+
+\begin{example}
+    Prove that $\overrightarrow{v}=(x^2-yz)\overrightarrow{i}+(y^2-zx)\overrightarrow{j}+(z^2-xy)\overrightarrow{k}$ has a potential function, and find one potential.
+
+    $\overrightarrow{v}$ is $C^1$ on $\mathbb{R}^3$, and $\nabla\times\overrightarrow{v}=\begin{vmatrix}
+            \overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
+            \partial_x         & \partial_y         & \partial_z         \\
+            x^2-yz             & y^2-zx             & z^2-xy
+        \end{vmatrix}=0$. And since $\mathbb{R}^3$ is simply connected, thus $\overrightarrow{v}$ has potential
+    \begin{align*}
+        \varphi(x_0,y_0,z_0)
+         & =\int_{(0,0,0)}^{(x_0,y_0,z_0)}(x^2-yz)\,\mathrm{d}x+(y^2-zx)\,\mathrm{d}y+(z^2-xy)\,\mathrm{d}z                                   \\
+         & =\int_0^1\left[x_0\left(x_0^2-y_0z_0\right)t^2+y_0\left(y_0^2-z_0x_0\right)t^2+z_0\left(z_0^2-x_0y_0\right)t^2\right]\,\mathrm{d}t \\
+         & =\frac{1}{3}\left(x_0^3+y_0^3+z_0^3-3x_0y_0z_0\right)
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Calculate $\int_{(1,1,1)}^{(2,2,2)}\left(1-\frac{1}{y}+\frac{y}{z}\right)\,\mathrm{d}x+\left(\frac{x}{z}+\frac{x}{y^2}\right)\,\mathrm{d}y-\frac{xy}{z^2}\,\mathrm{d}z$.
+
+    $\begin{vmatrix}
+            i                         & j                         & k               \\
+            \partial_x                & \partial_y                & \partial_z      \\
+            1-\frac{1}{y}+\frac{y}{z} & \frac{x}{z}+\frac{x}{y^2} & -\frac{xy}{z^2}
+        \end{vmatrix}=0$ on $\Omega$, which is simply connected, thus the integral is well-defined, and computes as
+    $$\int_1^2\,\mathrm{d}x+\int_1^2\left(\frac{2}{1}+\frac{2}{y^2}\right)\,\mathrm{d}y+\int_1^2-\frac{4}{z^2}\,\mathrm{d}z=\left.1+2(2-1)+\frac{2}{y}\right|_1^2=2$$
+\end{example}

@@ -1,0 +1,70 @@
+%20260528
+
+$\mathbb{R}^3$: $f\leadsto\nabla f=\frac{\partial f}{\partial x}\overrightarrow{i}+\frac{\partial f}{\partial y}\overrightarrow{j}+\frac{\partial f}{\partial z}\overrightarrow{k}$
+
+$\overrightarrow{F}=P\overrightarrow{i}+Q\overrightarrow{j}+R\overrightarrow{k}\leadsto\begin{cases}
+        \nabla\times\overrightarrow{F}=\begin{vmatrix}
+                                           \overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
+                                           \partial_x         & \partial_y         & \partial_z         \\
+                                           P                  & Q                  & R
+                                       \end{vmatrix} \\
+        \nabla\cdot\overrightarrow{F}=\partial_xP+\partial_yQ+\partial_zR
+    \end{cases}$
+
+$f\leadsto\mathrm{d}f=\frac{\partial f}{\partial x}\,\mathrm{d}x+\frac{\partial f}{\partial y}\,\mathrm{d}y+\frac{\partial f}{\partial z}\,\mathrm{d}z$
+
+$\omega^{(1)}=P\,\mathrm{d}x+Q\,\mathrm{d}y+R\,\mathrm{d}z\rightarrow(R_y-Q_z)\,\mathrm{d}y\wedge\mathrm{d}z+(P_z-R_x)\,\mathrm{d}z\wedge\mathrm{d}x+(Q_x-P_y)\,\mathrm{d}x\wedge\mathrm{d}y=(\mathrm{d}\omega)^{(2)}$
+
+$\omega^{(2)}=P\,\mathrm{d}y\wedge\mathrm{d}z+Q\,\mathrm{d}z\wedge\mathrm{d}x+R\,\mathrm{d}x\wedge\mathrm{d}y\rightarrow(P_x+Q_y+R_z)\,\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z=(\mathrm{d}\omega)^{(3)}$
+
+\begin{enumerate}[label=\Roman*]
+    \item \raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/11/06/02}}
+
+          \begin{align*}
+              \int_{L_{AB}}\,\mathrm{d}f
+               & =\int_{\underset{+[B]-[A]}{\partial L_{AB}}}f\quad \text{Newton-Leibniz Thm}                                                                                                                                                                                  \\
+               & =\int_{L_{AB}}f_x\,\mathrm{d}x+f_y\,\mathrm{d}y+f_z\,\mathrm{d}z                                                                                                                                                                                              \\
+               & \xlongequal[{t\in[a,b]\to\overrightarrow{r}(t)\in L}]{\text{Orientation Compatible Para}}\int_a^b\left\{f_x\left(\overrightarrow{r}(t)\right)x'(t)+f_y\left(\overrightarrow{r}(t)\right)y'(t)+f_z\left(\overrightarrow{r}(t)\right)z'(t)\right\}\,\mathrm{d}t \\
+               & =\int_a^b\frac{\mathrm{d}}{\mathrm{d}t}\left(f\left(\overrightarrow{r}(t)\right)\right)\,\mathrm{d}t                                                                                                                                                          \\
+               & =f(B)-f(A)
+          \end{align*}
+    \item $$\iint\limits_S(\mathrm{d}\omega)^{(2)}=\oint\limits_{\partial S}\omega^{(1)}$$
+          (Stokes' Theorem)
+    \item $$\iiint\limits_V(\mathrm{d}\omega)^{(3)}=\oiint_{\partial V}\omega^{(2)}$$
+          (Gauss Divergence Thm)
+\end{enumerate}
+
+$\mathbb{R}^n$:
+
+\begin{align*}
+    \omega
+     & =\omega_a\,\mathrm{d}x^1+\dots+\omega_n\,\mathrm{d}x^n                                                                                                           \\
+    \mathrm{d}\omega
+     & =\mathrm{d}\omega_1\wedge\mathrm{d}x^1+\dots+\mathrm{d}\omega_n\wedge\mathrm{d}x^n+\omega_1\,\mathrm{d}(\mathrm{d}x^1)+\dots+\omega_n\,\mathrm{d}(\mathrm{d}x^n) \\
+     & =\left(\partial_{i_1}\omega_1\,\mathrm{d}x^{i_1}\right)\wedge\mathrm{d}x^1+\dots                                                                                 \\
+     & =(\partial_1\omega_2-\partial_2\omega_1)\,\mathrm{d}x^1\wedge\mathrm{d}x^2+\dots
+\end{align*}
+\begin{align*}
+    \omega           & =\alpha\wedge\beta                                                      \\
+    \mathrm{d}\omega & =\mathrm{d}\alpha\wedge\beta+(-1)^{|\alpha|}\alpha\wedge\mathrm{d}\beta
+\end{align*}
+
+\paragraph*{Physical meaning of $\nabla f$, $\nabla\times\overrightarrow{F}$, $\nabla\cdot\overrightarrow{F}$}
+
+\begin{itemize}
+    \item $\left<\left.\nabla f\right|_A,\overrightarrow{v}\right>=\lim_{L_{\overrightarrow{v}}\to A}\frac{1}{\left|L_{\overrightarrow{v}}\right|}\int_{L_{\overrightarrow{v}}}\,\mathrm{d}F$
+    \item $\left<\left.\nabla\times\overrightarrow{F}\right|_A,\overrightarrow{n}\right>=\lim_{S\to A}\frac{1}{\left|\operatorname{Area}(S)\right|}\iint_{S_{\overrightarrow{n}}}\nabla\times\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{S}=\lim_{S\to A}\frac{1}{\left|\operatorname{Area}(S_n)\right|}\oint_{\partial S_n}\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}$\
+    \item $\left.\nabla\cdot\overrightarrow{F}\right|_A=\lim_{V\to A}\frac{1}{\left|\operatorname{Vol}(V)\right|}\iiint_V\nabla\cdot\overrightarrow{F}\mathrm{d}V=\lim_{V\to A}\frac{1}{\left|\operatorname{Vol}(\Omega)\right|}\oiint_{\partial\Omega}\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{S}$
+\end{itemize}
+
+\paragraph*{``Inverse'' operation of $\nabla$, $\nabla\cdot$, $\nabla\times$}
+
+If $\overrightarrow{F}=\nabla f$, then
+$$\oint_L\overrightarrow{F}\cdot\mathrm{d}\overrightarrow{r}=\oint_L\nabla f\cdot\mathrm{d}\overrightarrow{r}=0$$
+
+Solve $\begin{cases}
+        \nabla\times B=\mu_0\overrightarrow{j} \\
+        \nabla\cdot\overrightarrow{E}=\frac{\rho}{\varepsilon_0}
+    \end{cases}$
+
+$f\leadsto$ Antiderivative $F$, s.t. $F'=f$, i.e. $\mathrm{d}F=f(x)\,\mathrm{d}x$
