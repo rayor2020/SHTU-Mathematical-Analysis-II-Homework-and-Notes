@@ -231,3 +231,24 @@ $\frac{a}{2}=\frac{1}{2}\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\,\mathrm{d}x=\frac{1}
             & =\frac{(-1)^{n+1}}{n}
     \end{align*}
 \end{example}
+
+\begin{example}
+    Let $a\notin\mathbb{Z}$, find the Fourier series of $f(x)=\cos ax$ on $[-\pi,\pi]$
+
+    By translation, extends $f$ to a function $\tilde{f}$ on $\mathbb{R}$ with period $2\pi$
+
+    \begin{align*}
+        a_n
+         & =\frac{1}{\pi}\int_{-\pi}^{\pi}\tilde{f}(x)\cos nx\,\mathrm{d}x                               \\
+         & =\frac{2}{\pi}\int_0^{\pi}\cos ax\cdot\cos nx\,\mathrm{d}x                                    \\
+         & =\frac{1}{\pi}\int_0^{\pi}\cos(a-n)x+\cos(a+n)x\,\mathrm{d}x                                  \\
+         & =\frac{1}{\pi}\left.\left(\frac{\sin(a-n)x}{a-n}+\frac{\sin(a+n)x}{a+n}\right)\right|_0^{\pi} \\
+         & =\frac{1}{\pi}\left(\frac{\sin(a-n)\pi}{a-n}+\frac{\sin(a+n)\pi}{a+n}\right)                  \\
+         & =\frac{2a}{\pi}\frac{(-1)^n\sin a\pi}{a^2-n^2}                                                \\
+        b_n
+         & =0
+    \end{align*}
+
+    The Fourier series is
+    $$\frac{a}{\pi}\frac{\sin a\pi}{a^2}+\sum_{n=1}^{\infty}\frac{2a}{\pi}\frac{(-1)^n\sin a\pi}{a^2-n^2}\cos nx\xlongequal{\text{Dirichlet Convergence Thm}}\cos ax,\quad x\in[-\pi,\pi]$$
+\end{example}
