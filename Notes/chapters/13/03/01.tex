@@ -1,0 +1,151 @@
+\subsection[含参变量的积分]{Integral with Parameter}
+
+$\hat{f}(\xi)=\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-ix\xi}\,\mathrm{d}x$, $\xi\in\mathbb{R}$
+
+\subsubsection{含参变量的积分及其性质}
+
+$\varphi(u)=\int_a^bf(x,u)\,\mathrm{d}x\leadsto$ Regularity of $\varphi$? Continuity, differentiability, $\frac{\mathrm{d}\varphi}{\mathrm{d}u}$
+
+\begin{theorem}
+    If $f$ is countinuous on $[a,b]\times[\alpha,\beta]$, then $\varphi(u)$ is continuous on $[\alpha,\beta]$\\
+    (i.e. $\lim_{u\to u_0}\int_a^bf(x,u)\,\mathrm{d}x=\int_a^b\lim_{u\to u_0}f(x,u)\,\mathrm{d}x$)
+\end{theorem}
+
+Proof:
+
+\begin{align*}
+    \left|\varphi(u)-\varphi(u_0)\right|= & \left|\int_a^b\left(f(x,u)-f(x,u_0)\right)\,\mathrm{d}x\right| \\
+    \leq                                  & \int_a^b\left|f(x,u)-f(x,u_0)\right|\,\mathrm{d}x
+\end{align*}
+
+Since $f\in C([a,b]\times[\alpha,\beta])$, it is uniformly continuous. $\forall\varepsilon>0$, $\exists\delta=\delta(\varepsilon)>0$, s.t. $\forall(x_1,u_1),(x_2,u_2)\in[a,b]\times[\alpha,\beta]$, s.t. $\left|(x_1,u_2)-(x_2,u_2)\right|<\delta$, we have $\left|f(x_1,u_1)-f(x_2,u_2)\right|<\varepsilon$
+
+$\implies$ For this $\delta$, if $\left|u-u_0\right|<\delta$, $\left|\varphi(u)-\varphi(u_0)\right|\leq\int_a^b\varepsilon\,\mathrm{d}x=(b-a)\varepsilon\implies\varphi\in C[\alpha,\beta]$
+
+\begin{align*}
+    \frac{\varphi(u_0+\Delta u)-\varphi(u_0)}{\Delta u}=                                  & \int_a^b\frac{f(x,u_0+\Delta u)-f(x,u_0)}{\Delta u}\,\mathrm{d}x\quad\overset{?}{\to}\int_a^b\frac{\partial f}{\partial u}(x,u_0)\,\mathrm{d}x \\
+    \xlongequal{\frac{\partial f}{\partial u}\in C\left([a,b]\times[\alpha,\beta]\right)} & \int_a^b\,\mathrm{d}x\cdot\frac{1}{\Delta u}\int_0^1\frac{\mathrm{d}}{\mathrm{d}t}\left(f(x,u_0+t\Delta u)\right)\,\mathrm{d}t                 \\
+    =                                                                                     & \int_a^b\,\mathrm{d}x\int_0^1\frac{\partial f}{\partial u}(x,u_0+t\Delta u)\,\mathrm{d}t
+\end{align*}
+\begin{align*}
+    \left|\frac{\varphi(u_0+\Delta u)-\varphi(u_0)}{\Delta u}-\int_0^1\frac{\partial f}{\partial u}(x,u_0)\,\mathrm{d}t\right|= & \left|\int_a^b\,\mathrm{d}x\int_0^1\left(\frac{\partial f}{\partial u}(x,u_0+t\Delta u)-\frac{\partial f}{\partial u}(x,u_0)\right)\,\mathrm{d}t\right| \\
+    \leq                                                                                                                        & \int_a^b\,\mathrm{d}x\int_0^1\left|\frac{\partial f}{\partial u}(x,u_0+t\Delta u)-\frac{\partial f}{\partial u}(x,u_0)\right|\,\mathrm{d}t
+\end{align*}
+Since $\frac{\partial f}{\partial u}\in C\left([a,b]\times[\alpha,\beta]\right)$, $\forall \varepsilon>0$, $\exists\delta=\delta(\varepsilon)>0$, s.t. $|\Delta u|<\delta$, $\left|\frac{\partial f}{\partial u}(x,u_0+t\Delta u)-\frac{\partial f}{\partial u}(x,u_0)\right|<\varepsilon$, $\forall u_0\in[\alpha,\beta]$, $\forall x\in[a,b]$, $\forall t\in[0,1]$
+
+$\implies\left|\frac{\varphi(u_0+\Delta u)-\varphi(u_0)}{\Delta u}-\int\frac{\partial f}{\partial u}(x,u_0)\,\mathrm{d}x\right|<\varepsilon(b-a)$
+
+\begin{theorem}
+    If $f$ and $\frac{\partial f}{\partial u}$ are continuous on $[a,b]\times[\alpha,\beta]$, let $\varphi(u)=\int_a^b f(x,u)\,\mathrm{d}x$, then $\varphi'(u)=\int_a^b\frac{\partial f}{\partial u}(x,u_0)\,\mathrm{d}x$, $\forall u_0\in[\alpha,\beta]$
+\end{theorem}
+
+2nd Proof:
+\begin{align*}
+    \int_{\alpha}^v\,\mathrm{d}u\int_a^b\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x\xlongequal{\text{iterative integral}} & \int_a^b\,\mathrm{d}x\int_{\alpha}^v\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}u \\
+    \xlongequal{\text{Newton-Leibniz Formula about }u}                                                                        & \int_a^b\left(f(x,v)-f(x,\alpha)\right)\,\mathrm{d}x                                \\
+    =                                                                                                                         & \varphi(v)-\varphi(\alpha),\quad\forall v\in[\alpha,\beta]
+\end{align*}
+$\implies\varphi$ is differentiable, and $\varphi'(v)=\int_a^b\frac{\partial f}{\partial u}(x,v)\,\mathrm{d}x$
+
+$f\in C\left([a,b]\times(\alpha,\beta)\right)$
+
+$\varphi(u)=\int_a^b f(x,u)\,\mathrm{d}x$, $u\in(\alpha,\beta)$
+
+For any $u_0\in(\alpha,\beta)$, $\exists\alpha<\alpha_1<\beta_1<\beta$, s.t. $u_0\in[\alpha_1,\beta_1]$, then $f\in C\left([a,b]\times[\alpha_1,\beta_1]\right)$, then the previous theorem about $\varphi$ apply, $\varphi\in C(\alpha,\beta)$, and if further $\frac{\partial f}{\partial u}\in C\left([a,b]\times[\alpha,\beta]\right)$, then $\varphi$ is differentiable on $(\alpha,\beta)$ and $\varphi'(u)=\int_a^b\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x$
+
+\begin{example}
+    Compute $\int_0^1\frac{\log(1+x)}{1+x^2}\,\mathrm{d}x$
+
+    Define $\varphi(u)=\int_0^1\frac{\log(1+ux)}{1+x^2}\,\mathrm{d}x$, then $\varphi'(u)=\int_0^1\frac{x}{(1+ux)(1+x^2)}\,\mathrm{d}x$ (since $\frac{\partial}{\partial u}\left(\frac{\log(1+ux)}{1+x^2}\right)$ is continuous on $[0,1]\times[0,1]$)
+
+    By FTC,
+    \begin{align*}
+        \varphi(1)= & \int_0^1\varphi'(u)\,\mathrm{d}u                                                                                             \\
+        =           & \int_0^1\,\mathrm{d}u\int_0^1\frac{x}{(1+ux)(1+x^2)}\,\mathrm{d}x                                                            \\
+        =           & \int_0^1\,\mathrm{d}u\int_0^1\frac{1}{1+u^2}\left(\frac{-u}{1+ux}+\frac{u+x}{1+x^2}\right)\,\mathrm{d}x                      \\
+        =           & \int_0^1\,\mathrm{d}u\cdot\left(-\frac{1}{1+u^2}\log(1+u)+\frac{\pi}{4}\frac{u}{1+u^2}+\frac{\ln 2}{2}\frac{1}{1+u^2}\right) \\
+        =           & -\varphi(1)+\frac{\pi}{8}\ln 2+\frac{\pi}{8}\ln 2
+    \end{align*}
+    $\implies\varphi(1)=\frac{\pi}{8}\ln 2$
+\end{example}
+
+$\frac{a}{1+ux}+\frac{b+cx}{1+x^2}=\frac{(a+b)+(bu+c)x+(a+cu)x^2}{(1+ux)(1+x^2)}$
+
+$\begin{cases}
+        a+b=0  \\
+        bu+c=1 \\
+        a+cu=0
+    \end{cases}\implies\begin{cases}
+        -au+c=1 \\
+        au+cu^2=0
+    \end{cases}\implies\begin{cases}
+        a=-\frac{u}{1+u^2} \\
+        b=\frac{u}{1+u^2}  \\
+        c=\frac{1}{1+u^2}
+    \end{cases}$
+
+Consider $\psi(u)=\int_{a(u)}^{b(u)}f(x,u)\,\mathrm{d}x$
+
+\begin{theorem}
+    \begin{enumerate}
+        \item If $f\in C\left([a,b]\times[\alpha,\beta]\right)$, $a(u),b(u)$ are continuous on $[\alpha,\beta]$ and $a\leq a(u)$, $b(u)\leq b$, then $\psi\in C[\alpha,\beta]$, and
+              $$\psi'(u)=\int_{a(u)}^{b(u)}\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x+f(b(u),u)b'(u)-f(a(u),u)a'(u)$$
+        \item If $f,\frac{\partial f}{\partial u}\in C\left([a,b]\times[\alpha,\beta]\right)$, $a(u),b(u)$ are both differentiable on $[\alpha,\beta]$, then $\psi$ is differentiable on $[\alpha,\beta]$.
+    \end{enumerate}
+\end{theorem}
+
+Proof:
+\begin{enumerate}
+    \item \begin{align*}
+              \left|\psi(u)-\psi(u_0)\right|= & \left|\int_{a(u)}^{b(u)}f(x,u)\,\mathrm{d}x=\int_{a(u_0)}^{b(u_0)}f(x,u_0)\,\mathrm{d}x\right|                                                               \\
+              =                               & \left|\int_{a(u)}^{a(u_0)}f(x,u)\,\mathrm{d}x+\int_{a(u_0)}^{b(u_0)}\left(f(x,u)-f(x,u_0)\right)\,\mathrm{d}x+\int_{b(u_0)}^{b(u)}f(x,u)\,\mathrm{d}x\right| \\
+              \leq                            & \sup_{[a,b]\times[\alpha,\beta]}|f|\left(\left|a(u)-a(u_0)\right|+\left|b(u)-b(u_0)\right|\right)                                                            \\
+                                              & +\left|\int_{a(u_0)}^{b(u_0)}\left|f(x,u)-f(x,u_0)\right|\,\mathrm{d}x\right|
+          \end{align*}
+          $\implies\forall\varepsilon>0$, $\exists\delta=\delta(\varepsilon)>0$ s.t. if $\left|u-u_0\right|<\delta$, then $\left|\psi(u)-\psi(u_0)\right|<\varepsilon$
+    \item Define $F(u,y,z)=\int_y^z f(x,u)\,\mathrm{d}x$, $(u,y,z)\in[\alpha,\beta]^3$, then $\psi(u)=F(u,a(u),b(u))$
+
+          $\begin{cases}
+                  \frac{\partial F}{\partial u}(u,y,z)=\int_y^z\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x \\
+                  \frac{\partial F}{\partial z}(u,y,z)=f(z,u)                                                  \\
+                  \frac{\partial F}{\partial y}(u,y,z)=-f(y,u)
+              \end{cases}\implies\frac{\partial F}{\partial u},\frac{\partial F}{\partial z},\frac{\partial F}{\partial y}$ are all continuous on $[\alpha,\beta]^3$
+
+          Proof:
+          \begin{align*}
+              \left|\frac{\partial F}{\partial u}(u,y,z)-\frac{\partial F}{\partial u}(u_0,y_0,z_0)\right|\leq & \left|\int_{y_0}^y\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x\right|+\left|\int_{z_0}^z\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x\right| \\
+                                                                                                               & +\left|\int_{y_0}^{z_0}\left|\frac{\partial f}{\partial u}(x,u)-\frac{\partial f}{\partial u}(x,u_0)\right|\,\mathrm{d}x\right|
+          \end{align*}
+\end{enumerate}
+
+So $F\in C^1\left([\alpha,\beta]^4\right)$
+
+thus $\psi(u)=F(u,a(u),b(u))$ is also differentiable as the composition of $u\mapsto(u,a(u),b(u))$ and $(u,y,z)\mapsto F(u,y,z)$
+
+and
+\begin{align*}
+    \psi'(u)= & \frac{\partial F}{\partial u}(u,a(u),b(u))+\frac{\partial F}{\partial y}(u,a(u),b(u))a'(u)+\frac{\partial F}{\partial z}(u,a(u),b(u))b'(u) \\
+    =         & \int_{a(u)}^{b(u)}\frac{\partial f}{\partial u}(x,u)\,\mathrm{d}x+f(b(u),u)b'(u)-f(a(u),u)a'(u)
+\end{align*}
+
+\begin{example}
+    Let $I(u)=\int_u^{u^2}\frac{\sin ux}{x}\,\mathrm{d}x$. Find $I'(u)$
+
+    Let $f(x,u)=\begin{cases}
+            \frac{\sin ux}{x} & x\neq 0 \\
+            u                 & x=0
+        \end{cases}$, then $\frac{\partial}{\partial u}\left(\frac{\sin ux}{x}\right)=\cos ux$
+
+    $\implies f(x,u)$ is continuous on $\mathbb{R}^2$
+
+    Let $\frac{\partial f}{\partial u}(x,u)=\begin{cases}
+            \cos ux & x\neq 0 \\
+            1       & x=0
+        \end{cases}=\cos ux$
+
+    \begin{align*}
+        I'(u)= & \int_u^{u^2}\cos ux\,\mathrm{d}x+\frac{\sin u^3}{u^2}\cdot 2u-\frac{\sin u^2}{u} \\
+        =      & \frac{\sin u^3-\sin u^2}{u}+\frac{2\sin u^3}{u}-\frac{\sin u^2}{u}               \\
+        =      & \frac{3\sin u^3-2\sin u^2}{u}
+    \end{align*}
+\end{example}

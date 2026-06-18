@@ -1,0 +1,51 @@
+\subsubsection{平方平均收敛性定理的证明}
+
+\begin{theorem}[Parseval Equality / Square Mean Convergence 平方平均收敛]
+    $\forall f\in R[-\pi,\pi]$, $\frac{a_0^2}{2}+\sum_{n=1}^{\infty}\left(a_n^2+b_n^2\right)=\frac{1}{\pi}\int_{-\pi}^{\pi}f^2(x)\,\mathrm{d}x$.
+
+    This is also equivalent to say that $\lim_{n\to+\infty}\left\|S_n(f)-f\right\|_{L^2}=0$
+\end{theorem}
+
+Proof: $\forall f\in R[-\pi,\pi]$
+
+$\begin{aligned}
+        \int_{-\pi}^{\pi}|f-S|^2\,\mathrm{d}z & =\sum_{i=0}^{n-1}|f(x)-S(x)|^2\,\mathrm{d}x \\
+                                              & \leq\sum_{i=0}^{n-1}\omega_i^2\Delta x_i    \\
+                                              & \leq 2M\varepsilon
+    \end{aligned}$
+
+$\forall \varepsilon>0$, $\exists l:\,[-\pi,\pi]$ piecewise linear. $l(-\pi)=l(\pi)$ and $\left\|f-l\right\|_{L^2}<\varepsilon$
+
+By Dirichlet Convergence Thm, $\exists N$, s.t. $\forall\left|S_N(l)(x)-l(x)\right|<\varepsilon$, $\forall x\in[-\pi,\pi]$. In particular, $\left\|S_N(L)-l\right\|_{L^2}<\varepsilon\cdot 2\pi$
+
+$$\left\|f-S_N(f)\right\|_{L^2}\leq\left\|f-S_N(l)\right\|_{L^2}\leq\left\|f-l\right\|_{L^2}+\left\|l-S_N(l)\right\|_{L^2}<(2\pi+1)\varepsilon$$
+
+$\forall\varepsilon>0$, $\exists N$, $\forall n>N$, $\left\|f-S_n(f)\right\|_{L^2}<\varepsilon$
+
+\begin{corollary}
+    Let $f\in C[-\pi,\pi]$ and $f$ is orthogonal to $\operatorname{span}\left\{1,\cos x,\sin x,\dots\right\}$ (i.e. $\left<f,\cos nt\right>_{L^2}=0$, $\left<f,\sin nt\right>_{L^2}=0$), then $f\equiv 0$
+
+    In particular, two continuous function with the same Fourier coefficients must be equal.
+\end{corollary}
+
+\begin{corollary}
+    Let $f,g\in R[-\pi,\pi]$, $\left\{a_n,b_n\right\}_{n\in\mathbb{N}}$, $\left\{\tilde{a_n},\tilde{b_n}\right\}_{n\in\mathbb{N}}$ be the Fourier coefficients of $f$ and $g$ respectively, then
+
+    $$\frac{a_0\tilde{a_0}}{2}+\sum_{n=1}^{\infty}\left(a_n\tilde{a_n}+b_n\tilde{b_n}\right)=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)g(x)\,\mathrm{d}x$$
+    (``$L^2$-inner products'' preserving)
+\end{corollary}
+
+\begin{corollary}[Integration by terms]
+    Let $f\in R[-\pi,\pi]$ with Fourier series
+    $$\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right)$$
+    then for any $[a,b]\subseteq[-\pi,\pi]$,
+    $$\int_a^b f(x)\,\mathrm{d}x=\int_a^b\frac{a_0}{2}\,\mathrm{d}x+\sum_{n=1}^{\infty}\int_a^b\left(a_n\cos nx+b_n\sin nx\right)\,\mathrm{d}x$$
+\end{corollary}
+
+Proof: Take $g=x_{[a,b]}$, RHS$=\frac{1}{\pi}\int_a^b f(x)\,\mathrm{d}x$
+
+$\begin{aligned}
+        \text{LHS} & =\frac{a_0}{2}\frac{1}{\pi}\int_a^b 1\,\mathrm{d}x+\sum_{n=1}^{\infty}\left(a_n\frac{1}{\pi}\int_a^b\cos nx\,\mathrm{d}x+b_n\frac{1}{\pi}\int_a^b\sin nx\,\mathrm{d}x\right) \\
+                   & =\frac{1}{\pi}\left(\int_a^b\frac{a_0}{2}\,\mathrm{d}x+\sum_{n=1}^{\infty}\int_a^b\left(a_n\cos nx+b_n\sin nx\right)\,\mathrm{d}x\right)
+    \end{aligned}$
+

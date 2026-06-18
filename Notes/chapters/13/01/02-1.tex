@@ -1,0 +1,49 @@
+% 20260618
+
+\begin{example}
+    Show that $\int_0^1\frac{1}{\sqrt{(1-x^2)(1-k^2x^2)}}\,\mathrm{d}x$, $|k|<1$ converges.
+
+    Proof: Observe that $x=1$ is the unique singular point,
+    $$\lim_{x\to1^-}\frac{\frac{1}{\sqrt{(1-x^2)(1-k^2x^2)}}}{\frac{1}{\sqrt{1-x^2}}}=\lim_{x\to1^-}\frac{1}{\sqrt{1-k^2x^2}}=\frac{1}{\sqrt{1-k^2}}\in(0,+\infty)$$
+    And $\int_0^1\frac{1}{\sqrt{1-x^2}}\,\mathrm{d}x$ converges, so $\int_0^1\frac{1}{\sqrt{(1-x^2)(1-k^2x^2)}}\,\mathrm{d}x$ converges by the Comparison Criteria in limit form.
+\end{example}
+
+\begin{example}
+    Study the convergence of the improper integral $\int_0^1\frac{\log x}{1-x^2}\,\mathrm{d}x$
+
+    $\lim_{x\to0^+}\frac{\log x}{1-x^2}=-\infty$, $\lim_{x\to 1^-}\frac{\log x}{1-x^2}=\lim_{x\to 1^-}\frac{\frac{1}{x}}{-2x}=-\frac{1}{2}$
+
+    Thus $x=0$ is the unique singular point of $\frac{\log x}{1-x^2}$
+
+    Observe that $\lim_{x\to 0^+}\frac{\frac{\log x}{1-x^2}}{\log x}=1$
+
+    Thus $\int_0^1\frac{-\log x}{1-x^2}\,\mathrm{d}x$ and $\int_0^1-\log x\,\mathrm{d}x$ have the same convergence. Moreover,
+    \begin{align*}
+        \int_0^1-\log x\,\mathrm{d}x= & \lim_{\delta\to0}\int_{\delta}^1-\log x\,\mathrm{d}x                                        \\
+        =                             & \lim_{\delta\to0}\left(\left.-x\log x\right|_{\delta}^1+\int_{\delta}^1\,\mathrm{d}x\right) \\
+        =                             & 1
+    \end{align*}
+    $\implies\int_0^1\frac{\log x}{1-x^2}\,\mathrm{d}x$ converges
+\end{example}
+
+\begin{example}
+    Let $\beta\geq0$, discuss the convergence (absolute convergence and conditional convergence) of $\int_0^{+\infty}\frac{x^{\alpha}\arctan x}{2+x^{\beta}}\,\mathrm{d}x$ for different ranges of $\alpha\in\mathbb{R}$.
+
+    $x=0$ is a potential singular point. Moreover, $\frac{x^{\alpha}\arctan x}{2+x^{\beta}}$ is nonnegative on $(0,+\infty)$.
+
+    For it to be convergent, we need $\int_0^1\frac{x^{\alpha}\arctan x}{2+x^{\beta}}\,\mathrm{d}x$ and $\int_1^{+\infty}\frac{x^{\alpha}\arctan x}{2+x^{\beta}}\,\mathrm{d}x$ to be convergent.
+
+    \begin{align*}
+        \lim_{x\to0}\frac{\frac{x^{\alpha}\arctan x}{2+x^{\beta}}}{x^{\alpha+1}}           & =\lim_{x\to0}\frac{\arctan x}{x(2+x^{\beta})}=\frac{1}{2} \\
+        \lim_{x\to+\infty}\frac{\frac{x^{\alpha}\arctan x}{2+x^{\beta}}}{x^{\alpha-\beta}} & =\frac{\pi}{4}
+    \end{align*}
+
+    $\int_0^1x^{\alpha+1}\,\mathrm{d}x$ converges $\iff\alpha>-2$
+
+    $\int_1^{+\infty}x^{\alpha-\beta}\,\mathrm{d}x$ converges $\iff\alpha-\beta<-1$
+
+    In conclusion, $\int_0^{+\infty}\frac{x^{\alpha}\arctan x}{2+x^{\beta}}\,\mathrm{d}x$ converges $\iff\begin{cases}
+            \alpha>-2 \\
+            \alpha-\beta<-1
+        \end{cases}$
+\end{example}

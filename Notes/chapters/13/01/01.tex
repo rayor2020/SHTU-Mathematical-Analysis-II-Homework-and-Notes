@@ -1,0 +1,56 @@
+\section{反常积分和含参变量的积分}
+\subsection[反常积分]{Improper Integral 反常积分 / 广义积分}
+\subsubsection{无穷区间上积分的收敛性}
+
+\begin{enumerate}
+    \item $\int_a^{+\infty}f(x)\,\mathrm{d}x\triangleq\lim_{A\to+\infty}\int_a^Af(x)\,\mathrm{d}x$
+    \item $\int_a^bf(x)\,\mathrm{d}x\xlongequal[{\lim_{x\to a^+}f(x)=\infty}]{\triangle}\lim_{\varepsilon\to0^+}\int_{a+\varepsilon}^bf(x)\,\mathrm{d}x$
+    \item Mixed: $\begin{aligned}
+                  \int_a^{+\infty}f(x)\,\mathrm{d}x\xlongequal{\lim_{x\to a^+}f(x)=\infty} & \int_a^{a+1}f(x)\,\mathrm{d}x+\int_{a+1}^{+\infty}f(x)\,\mathrm{d}x                                                  \\
+                  =                                                                        & \lim_{\varepsilon\to 0^+}\int_{a+\varepsilon}^{a+1}f(x)\,\mathrm{d}x+\lim_{A\to+\infty}\int_{a+1}^Af(x)\,\mathrm{d}x
+              \end{aligned}$
+\end{enumerate}
+
+\begin{theorem}[Cauchy Criteria]
+    $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges / exists iff $\forall\varepsilon>0$, $\exists A_0>a$ s.t. $\forall A_1,A_2>A_0$, $\left|\int_{A_1}^{A_2}f(x)\,\mathrm{d}x\right|<\varepsilon$
+\end{theorem}
+
+Comparison with series:
+
+$\sum_{n=1}^{\infty}a_n$ converges $\implies\lim_{n\to+\infty}a_n=0$
+
+$\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges $\begin{aligned}
+         & \not\implies\lim_{x\to+\infty}f(x)=0                      \\
+         & \implies\lim_{x\to+\infty}\int_x^{x+1}f(x)\,\mathrm{d}x=0
+    \end{aligned}$
+
+\begin{definition}
+    If $\int_a^{+\infty}|f(x)|\,\mathrm{d}x$ converges (assume $f\in R[a,A]$, $\forall A>a$), we say $\int_a^{+\infty}f(x)\,\mathrm{d}x$ ``converges absolutely'' (in particular, it converges).
+
+    If $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges, but $\int_a^{+\infty}|f(x)|\,\mathrm{d}x$ does not converge, then we say $\int_a^{+\infty}f(x)\,\mathrm{d}x$ ``converges conditionally''
+\end{definition}
+
+\begin{theorem}
+    If $f$ is nonnegative on $[a,+\infty)$, then $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges iff $\exists M>0$, s.t. $\int_a^Af(x)\,\mathrm{d}x\leq M$, $\forall A>a$
+\end{theorem}
+
+\begin{theorem}[Comparison Criteria]
+    Suppose $0\leq f(x)\leq g(x)$ for $x$ sufficiently large, then
+    \begin{enumerate}
+        \item If $\int_a^{+\infty}g(x)\,\mathrm{d}x$ converges, then $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges;
+        \item If $\int_a^{+\infty}f(x)\,\mathrm{d}x$ diverges, then $\int_a^{+\infty}g(x)\,\mathrm{d}x$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Comparison Criteria in limit form]
+    Suppose $f$ and $g$ are positive on $[a,+\infty)$, suppose $\lim_{x\to+\infty}\frac{f(x)}{g(x)}=k\in[0,+\infty]$
+    \begin{enumerate}
+        \item If $k\in(0,+\infty)$, then $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges iff $\int_a^{+\infty}g(x)\,\mathrm{d}x$ converges.
+        \item If $k=0$, then $\int_a^{+\infty}g(x)\,\mathrm{d}x$ converges implies $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges.
+        \item If $k=+\infty$, then $\int_a^{+\infty}g(x)\,\mathrm{d}x$ diverges implies $\int_a^{+\infty}f(x)\,\mathrm{d}x$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{center}
+    \includegraphics[width=\columnwidth]{chapters/13/01/0101}
+\end{center}

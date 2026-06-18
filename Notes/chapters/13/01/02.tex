@@ -1,0 +1,116 @@
+\subsubsection{无穷区间上积分收敛性的一般判别法}
+
+\begin{theorem}[The 2nd Mean Value Theorem for Integration]
+    Let $f\in R[a,b]$
+    \begin{enumerate}
+        \item If $g$ is decreasing and nonnegative on $[a,b]$, then $\int_a^bf(x)g(x)\,\mathrm{d}x=g(a)\int_a^{\xi}f(x)\,\mathrm{d}x$ for some $\xi\in[a,b]$
+        \item If $g$ is increasing and nonnegative on $[a,b]$, then $\int_a^bf(x)g(x)\,\mathrm{d}x=g(b)\int_{\eta}^{b}f(x)\,\mathrm{d}x$ for some $\eta\in[a,b]$
+        \item If $g$ is monotone on $[a,b]$, then $\int_a^b f(x)g(x)\,\mathrm{d}x=g(a)\int_a^{\xi}f(x)\,\mathrm{d}x+g(b)\int_{\xi}^{b}f(x)\,\mathrm{d}x$ for some $\xi\in[a,b]$
+    \end{enumerate}
+\end{theorem}
+
+Proof (of Hem 3): Suppose $g$ is increasing, then $g(b)-g(x)$ is decreasing and nonnegative, so $\exists\xi\in[a,b]$ s.t. $\int_a^bf(x)\left(g(b)-g(x)\right)\,\mathrm{d}x=\left(g(b)-g(a)\right)\int_a^{\xi}f(x)\,\mathrm{d}x$
+
+$\implies\int_a^bf(x)g(x)\,\mathrm{d}x=g(a)\int_a^{\xi}f(x)\,\mathrm{d}x+g(b)\int_{\xi}^{b}f(x)\,\mathrm{d}x$
+
+Proof: Assume $g$ is a decreasing step function, i.e. $g(x)=\sum_{k=1}^n c_kX_{[x_{k-1},x_k)}(x)$
+
+\begin{align*}
+    \int_a^b f(x)g(x)\,\mathrm{d}x= & \sum_{k=1}^n c_k\int_{x_{k-1}}^{x_k}f(x)\,\mathrm{d}x\quad\text{where }F(x)=\int_a^xf(t)\,\mathrm{d}t \\
+    =                               & \sum_{k=1}^n c_k\left(F(x_k)-F(x_{k-1})\right)                                                        \\
+    =                               & \sum_{k=1}^n c_kF(x_k)-\sum_{k=0}^{n-1} c_{k+1}F(x_{k})                                               \\
+    =                               & c_nF(x_n)+\sum_{k=1}^{n-1}(c_k-c_{k+1})F(x_k)                                                         \\
+    =                               & g(a)F(\xi)
+\end{align*}
+where $a=x_0<x_1<\dots<x_n=b$ are fixed division point, and $c_1\geq c_2\geq\dots\geq c_n$.
+
+$F\in C[a,b]$, let $m=\min\limits_{[a,b]}F$, $M=\max\limits_{[a,b]}F$
+
+$\implies mg(a)\leq\int_a^bf(x)g(x)\,\mathrm{d}x\leq M\left(c_n+\sum_{k=1}^{n-1}(c_k-c_{k+1})\right)=Mg(a)$
+
+$\xLongrightarrow{\text{Intermediate Value Thm for continuous}}\exists\xi\in[a,b]$ s.t. $\frac{1}{g(a)}\int_a^bf(x)g(x)\,\mathrm{d}x=F(\xi)$
+
+Now, we treat general $g$
+
+Step function $g_T=\sum_{k=1}^{n-1}g(x_{k-1})X_{[x_{k-1},x_k)}+g(x_{n-1})X_{[x_{n-1},x_n]}$
+
+$$\int_a^bf(x)g(x)\,\mathrm{d}x=\int_a^bf(x)\left(g(x)-g_T(x)\right)\,\mathrm{d}x+\int_a^bf(x)g_T(x)\,\mathrm{d}x$$
+
+Since $g\in R[a,b]$, so there exist a sequence of partition $\left\{T_n\right\}_{n\in\mathbb{N}}$ s.t. $\left\|T_n\right\|\to0$,\\
+$\sum_{i=1}^n\omega_{T_n}^i(g)\Delta x_i\leq\frac{1}{n}$
+
+By the statement proved above, $\exists\xi_n\in[a,b]$ s.t. $\int_a^bf(x)g_{T_n}(x)\,\mathrm{d}x=g(a)F(\xi_n)$.
+
+And moreover
+\begin{align*}
+    \left|\int_a^bf(x)\left(g(x)-g_{T_n}(x)\right)\,\mathrm{d}x\right|= & \left|\sum_{i=1}^n\int_{x_{i-1}}^{x_i}f(x)\left(g(x)-g_{T_n}(x)\right)\,\mathrm{d}x\right| \\
+    \leq                                                                & K\sum_{i=1}^n\omega_{T_n}^i(g)\Delta x_i                                                   \\
+    \leq                                                                & K\frac{1}{n}
+\end{align*}
+
+Proof:
+$$\left|\int_a^bf(x)g(x)\,\mathrm{d}x-g(a)F(\xi_n)\right|\leq\frac{K}{n}$$
+
+$\{\xi_n\}\subseteq[a,b]\xlongequal{\text{BW Thm}}\exists$ subsequence $\xi_{n_k}\to\xi\in[a,b]$, $k\to+\infty$
+
+Since $F$ is continuous on $[a,b]$, $F(\xi_{n_k})\to F(\xi)$, $k\to+\infty$
+
+$\implies\int_a^bf(x)g(x)\,\mathrm{d}x=g(a)F(\xi)$
+
+\begin{theorem}[Dirichlet Criteria]
+    Suppose $f,g$ are defined on $[a,+\infty)$ and satisfy
+    \begin{itemize}
+        \item The function $F(A)=\int_a^Af(x)\,\mathrm{d}x$ is bounded for $A\in(a,+\infty)$
+        \item The function $g(x)$ is monotone on $(a,+\infty)$ and $\lim_{x\to+\infty}g(x)=0$
+    \end{itemize}
+    then $\int_a^{+\infty}f(x)g(x)\,\mathrm{d}x$ converges
+\end{theorem}
+
+\begin{theorem}[Abel Criteria]
+    Suppose $f$ and $g$ defined on $[a,+\infty)$ satisfy
+    \begin{itemize}
+        \item $\int_a^{+\infty}f(x)\,\mathrm{d}x$ converges
+        \item $g$ is monotone and bounded on $[a,+\infty)$
+    \end{itemize}
+    then $\int_a^{+\infty}f(x)g(x)\,\mathrm{d}x$ converges
+\end{theorem}
+
+Proof:
+\begin{align*}
+    \left|\int_{A_1}^{A_2}f(x)g(x)\,\mathrm{d}x\right|= & \left|g(A_1)\int_{A_1}^{\xi}f(x)\,\mathrm{d}x+g(A_2)\int_{\xi}^{A_2}f(x)\,\mathrm{d}x\right|                                                                                                                                                                              \\
+    \leq                                                & \overset{\text{bounded}}{\left|g(A_1)\right|}\underset{\text{small for $A_1,A_2$ sufficiently large}}{\underline{\left|\int_{A_1}^{\xi}f(x)\,\mathrm{d}x\right|}+\overset{\text{bounded}}{\left|g(A_2)\right|}\underline{\left|\int_{\xi}^{A_2}f(x)\,\mathrm{d}x\right|}}
+\end{align*}
+
+\begin{example}
+    Suppose $g:\,[a,+\infty)\to\mathbb{R}$ decreases to $0$ as $x$ goes to $+\infty$, prove $\int_a^{+\infty}g(x)\sin x\,\mathrm{d}x$, $\int_a^{+\infty}g(x)\cos x\,\mathrm{d}x$ both converges
+
+    Proof:
+
+    $F(A)=\int_a^A\sin x\,\mathrm{d}x=\cos a-\cos A$
+
+    $\implies F:\,[0,+\infty)\to\mathbb{R}$ is bounded $\xlongequal{\text{Dirichlet Criteria}}\int_a^{+\infty}g(x)\sin x\,\mathrm{d}x$ converges
+
+    \begin{example}
+        $\int_1^{\infty}\frac{\sin x}{x}\,\mathrm{d}x$, $\int_1^{\infty}\frac{\sin x}{\sqrt{x}}\,\mathrm{d}x$, $\int_1^{+\infty}\frac{\sin x}{x^2}\,\mathrm{d}x$ absolutely converges
+    \end{example}
+\end{example}
+
+\begin{example}
+    Let $a>0$, $p\in(0,1]$, prove that $\int_a^{+\infty}\frac{\sin x}{x^p}\,\mathrm{d}x$ conditionally converges
+
+    Proof:
+
+    \begin{align*}
+        \int_a^{+\infty}\frac{\left|\sin x\right|}{x^p}\,\mathrm{d}x\geq & \sum_{k=K_a}^{+\infty}\int_{\left(2k+\frac{1}{4}\right)\pi}^{\left(2k+\frac{3}{4}\right)\pi}\frac{\left|\sin x\right|}{x^p}\,\mathrm{d}x\quad\begin{matrix}
+                                                                                                                                                                                                                            \text{where }\left(2K_a-\frac{1}{4}\right)\pi\geq a \\
+                                                                                                                                                                                                                            \text{for example, }K_a=\left\lceil\frac{1}{2}\left(\frac{a}{\pi}+\frac{1}{4}\right)\right\rceil
+                                                                                                                                                                                                                        \end{matrix} \\
+        \geq                                                             & \sum_{k=K_a}^{+\infty}\frac{1}{\sqrt{2}}\frac{\frac{\pi}{2}}{\left\{\left(2k+\frac{1}{4}\right)\pi\right\}^p}                                                                                                                                \\
+        =                                                                & +\infty
+    \end{align*}
+    $\implies$ diverges
+
+    $\frac{\left|\sin x\right|}{x^p}\geq\frac{\sin^2x}{x^p}=\frac{1-\cos(2x)}{2x^p}=\frac{1}{2x^p}-\frac{\cos(2x)}{2x^p}$
+
+    $\int_a^{+\infty}\frac{\mathrm{d}x}{2x^p}=+\infty$, $\int_a^{+\infty}\frac{\cos(2x)}{2x^p}\,\mathrm{d}x$ converges by Dirichlet Criteria
+\end{example}

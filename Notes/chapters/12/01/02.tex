@@ -1,0 +1,134 @@
+
+
+
+
+\subsubsection{周期函数的 Fourier 级数}
+
+\begin{definition}[Fourier Series]
+    Let $f:\,\mathbb{R}\to\mathbb{R}$ be a Riemann integrable function and suppose it has period $2\pi$, then
+    $$\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right)$$
+    is called the Fourier series of $f$, where
+    $$\begin{cases}
+            a_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos nx\,\mathrm{d}x=\left<f,\cos nx\right>_{L^2} \\
+            b_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin nx\,\mathrm{d}x=\left<f,\sin nx\right>_{L^2}
+        \end{cases}\quad n=0,1,2,\dots$$
+    are called the Fourier coefficients of $f$
+\end{definition}
+
+\begin{remark}
+    Changing the values of $f$ at finitely many points does not change its Fourier series
+\end{remark}
+
+\subparagraph*{Fact}
+
+\begin{align*}
+    \frac{1}{\pi}\int_{-\pi}^{\pi}\cos nx\cdot\cos mx\,\underset{=\left<\cos nx,\cos mx\right>_{L^2}}{\mathrm{d}x} & =\delta_{mn} \\
+    \frac{1}{\pi}\int_{-\pi}^{\pi}\sin nx\cdot\sin mx\,\underset{=\left<\sin nx,\sin mx\right>_{L^2}}{\mathrm{d}x} & =\delta_{mn}
+\end{align*}
+
+$\implies\left\{\frac{1}{\sqrt{2}},\cos x,\sin x,\cos 2x,\sin 2x,\dots\right\}$ gives an orthonormal set of vectors in $R[-\pi,\pi]$
+
+$\implies$ If we introduce the notation:
+
+$$\left<f,g\right>_{L^2}\triangleq\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)g(x)\,\mathrm{d}x,\quad\forall f,g\in R[-\pi,\pi]$$
+
+\begin{itemize}
+    \item Bilinear
+    \item Symmetric
+    \item Positive definite? ($f\sim g$ if $f=g$ almost everywhere)
+\end{itemize}
+
+\allbold{$\implies$ Complete metric space?}
+
+The Fourier series of $f$ is actually
+$$\left<f,\frac{1}{\sqrt{2}}\right>_{L^2}\frac{1}{\sqrt{2}}+\left<f,\varphi_1\right>_{L^2}\varphi_1(x)+\left<f,\psi_1\right>_{L^2}\psi_1(x)+\left<f,\varphi_2\right>_{L^2}\varphi_2(x)+\left<f,\psi_2\right>_{L^2}\psi_2(x)+\dots$$
+where $\begin{cases}
+        \varphi_n(x)\cos nx \\
+        \psi_n(x)=\sin nx
+    \end{cases}$
+
+$\frac{a}{2}=\frac{1}{2}\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\,\mathrm{d}x=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\frac{1}{\sqrt{2}}\,\mathrm{d}x\cdot\frac{1}{\sqrt{2}}$
+
+\begin{remark}
+    If $\left(V,\left<\cdot,\cdot\right>\right)$ is a finitely dimensional inner product space, then for ant orthonormal basis $\left\{v_1,\dots,v_n\right\}$, we have $v=\left<v,v_1\right>v_1+\dots+\left<v,v_n\right>v_n$
+\end{remark}
+
+\begin{theorem}[Dirichlet Convergence Theorem]
+    Let $f$ be a piecewise $C^1$ function on $[-\pi,\pi]$, then the Fourier series of $f$ converges, and
+    $$\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right)=\begin{cases}
+            \frac{f(x+0)+f(x-0)}{2}      & x\in(-\pi,\pi) \\
+            \frac{f(-\pi+0)+f(\pi-0)}{2} & x=\pm\pi
+        \end{cases}$$
+    Here, piecewise $C^1$ means $\exists t+0=-\pi<t_1<\dots<t_n=\pi$ s.t. $f$ is $C^1$ on $(t_i,t_{i+1})$, $i=0,1,2,\dots,n-1$ and $f_+'(t_i),f_-'(t_i)$ exists for $i=0,1,2,\dots,n$ and $f(t_i+0),f(t_i-0)$ exists
+\end{theorem}
+
+\begin{remark}
+    For a function $f$ of period $2l$,
+    $$g(x)=f\left(\frac{l}{\pi}x\right)$$
+
+    $\frac{lT}{\pi}=2l\implies T=2\pi$
+
+    Fourier series for $g$ is
+    $$\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right),$$
+    and the Fourier series for $f$ is
+    $$\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi}{l}x+b_n\sin\frac{n\pi}{l}x\right)$$
+    where
+    \begin{align*}
+        a_n & =\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\cos nx\,\mathrm{d}x                                                           \\
+            & =\frac{1}{\pi}\int_{-\pi}^{\pi}f\left(\frac{l}{\pi}x\right)\cos nx\,\mathrm{d}x                                   \\
+            & \xlongequal{t=\frac{l}{\pi}x}\frac{1}{\pi}\int_{-l}^l f(t)\cdot\cos\frac{n\pi}{l}t\cdot\frac{\pi}{l}\,\mathrm{d}t \\
+            & =\frac{1}{l}\int_{-l}^l f(x)\cos\frac{n\pi}{l}x\,\mathrm{d}x,                                                     \\
+        b_n & =\frac{1}{l}\int_{-l}^l f(x)\sin\frac{n\pi}{l}x\,\mathrm{d}x
+    \end{align*}
+\end{remark}
+
+\begin{example}
+    $f(x)=x$
+
+    The Fourier series is
+    \begin{align*}
+                                                         & \frac{\pi}{4}+\sum_{n=1}^{\infty}\left(\frac{(-1)^n-1}{n^2\pi}\cos nx+\frac{(-1)^{n+1}}{n}\sin nx\right) \\
+        \xlongequal{\text{By Dirichlet Convergence Thm}} & \begin{cases}
+                                                               f(x)          & x\in(-\pi,\pi) \\
+                                                               \frac{\pi}{2} & x=\pm\pi
+                                                           \end{cases}
+    \end{align*}
+
+    \begin{align*}
+        a_0 & =\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\,\mathrm{d}x                                                                   \\
+            & =\frac{1}{\pi}\int_0^{\pi}x\,\mathrm{d}x                                                                           \\
+            & =\frac{\pi}{2}                                                                                                     \\
+        a_n & =\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos nx\,\mathrm{d}x                                                            \\
+            & =\frac{1}{\pi}\int_0^{\pi}x\cos nx\,\mathrm{d}x                                                                    \\
+            & =\frac{1}{\pi}\left(\left.x\cdot\frac{\sin nx}{n}\right|_0^{\pi}-\int_0^{\pi}\frac{\sin nx}{n}\,\mathrm{d}x\right) \\
+            & =\frac{1}{n^2\pi}\left.\cos nx\right|_0^{\pi}                                                                      \\
+            & =\frac{(-1)^n-1}{n^2\pi}                                                                                           \\
+        b_n & =\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin nx\,\mathrm{d}x                                                            \\
+            & =\frac{1}{\pi}\int_0^{\pi}x\cdot\sin nx\,\mathrm{d}x                                                               \\
+            & =\frac{1}{\pi}\left(\left.-\frac{x\cos nx}{n}\right|_0^{\pi}+\int_0^{\pi}\frac{\cos nx}{n}\,\mathrm{d}x\right)     \\
+            & =-\frac{(-1)^n}{n}                                                                                                 \\
+            & =\frac{(-1)^{n+1}}{n}
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Let $a\notin\mathbb{Z}$, find the Fourier series of $f(x)=\cos ax$ on $[-\pi,\pi]$
+
+    By translation, extends $f$ to a function $\tilde{f}$ on $\mathbb{R}$ with period $2\pi$
+
+    \begin{align*}
+        a_n
+         & =\frac{1}{\pi}\int_{-\pi}^{\pi}\tilde{f}(x)\cos nx\,\mathrm{d}x                               \\
+         & =\frac{2}{\pi}\int_0^{\pi}\cos ax\cdot\cos nx\,\mathrm{d}x                                    \\
+         & =\frac{1}{\pi}\int_0^{\pi}\cos(a-n)x+\cos(a+n)x\,\mathrm{d}x                                  \\
+         & =\frac{1}{\pi}\left.\left(\frac{\sin(a-n)x}{a-n}+\frac{\sin(a+n)x}{a+n}\right)\right|_0^{\pi} \\
+         & =\frac{1}{\pi}\left(\frac{\sin(a-n)\pi}{a-n}+\frac{\sin(a+n)\pi}{a+n}\right)                  \\
+         & =\frac{2a}{\pi}\frac{(-1)^n\sin a\pi}{a^2-n^2}                                                \\
+        b_n
+         & =0
+    \end{align*}
+
+    The Fourier series is
+    $$\frac{a}{\pi}\frac{\sin a\pi}{a^2}+\sum_{n=1}^{\infty}\frac{2a}{\pi}\frac{(-1)^n\sin a\pi}{a^2-n^2}\cos nx\xlongequal{\text{Dirichlet Convergence Thm}}\cos ax,\quad x\in[-\pi,\pi]$$
+\end{example}
+

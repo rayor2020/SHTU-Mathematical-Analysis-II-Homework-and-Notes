@@ -1,0 +1,128 @@
+\section{Fourier 分析}
+
+\subsection{函数的 Fourier 级数}
+
+Origin: Heat conduction
+
+$T$: $\mathbb{R}^3\to\mathbb{R}$ temperature
+
+For any domain $\Omega$
+
+\begin{align*}
+    \frac{\mathrm{d}}{\mathrm{d}t}\int_\Omega T\left(\overrightarrow{r},t\right)\,\mathrm{d}V\left(\overrightarrow{r}\right)
+     & =\oiint_{\partial\Omega}\nabla T\left(\overrightarrow{r},t\right)\cdot\mathrm{d}\overrightarrow{S}      \\
+     & =\int_{\Omega}\partial_t T\left(\overrightarrow{r},t\right)\,\mathrm{d}V\left(\overrightarrow{r}\right) \\
+     & =\int_\Omega\Delta T\left(\overrightarrow{r},t\right)\,\mathrm{d}V\left(\overrightarrow{r}\right)
+\end{align*}
+
+$\partial_t T=k^2\Delta T$
+
+\begin{itemize}
+    \item Assuming $k\equiv 1$, $\partial_t T=\Delta T$
+    \item $n=1$, $\begin{cases}
+                  \partial_t T=\partial_{xx}T \\
+                  T(x,0)=f(x)     & x\in[0,l] \\
+                  T(0,t)=T(l,t)=0 & \forall t
+              \end{cases}$
+    \item \allbold{boundary value problem on $[0,l]\times[0,+\infty)$}
+\end{itemize}
+
+\paragraph*{Heat equation 热(传导方程)}
+
+$k$: conducting rate
+
+Step 1: Looking for solution of separating variables, i.e. $T(x,t)=\varphi(x)\psi(t)$
+
+$\implies\varphi(x)\psi'(t)=\varphi''(x)\psi(t)$
+
+$\implies\frac{\varphi''(x)}{\varphi(x)}=\frac{\psi'(t)}{\psi(t)}\equiv\lambda$ csonstant
+
+Solution: $\psi(t)=\psi(0)\mathrm{e}^{\lambda t}$
+
+$\varphi''(x)-\lambda\varphi(x)=0\leftarrow$ 2nd-order ODE of constant coefficients
+
+$\begin{cases}
+        \varphi(x)=c_1\mathrm{e}^{\sqrt{\lambda}x}+c_2\mathrm{e}^{-\sqrt{\lambda}x} & \lambda>0 \\
+        \varphi(x)=c_1\cos\sqrt{-\lambda}x+c_2\sin\sqrt{-\lambda}x                  & \lambda<0 \\
+    \end{cases}$
+
+$x<0$, $\left(\frac{\mathrm{d}}{\mathrm{d}x}+i\sqrt{-\lambda}\right)\underset{\Phi(x)}{\left(\frac{\mathrm{d}}{\mathrm{d}x}-i\sqrt{-\lambda}\right)\varphi(x)}=0$
+
+$\left(\mathrm{e}^{i\sqrt{-\lambda}x}\Phi(x)\right)'=0$
+
+$\implies\Phi(x)=-\varphi'(x)-i\sqrt{-\lambda}\varphi(x)=c_i\mathrm{e}^{-i\sqrt{-\lambda}}x$
+
+$\left(\mathrm{e}^{-i\sqrt{-\lambda}x}\varphi(x)\right)'=\tilde{c_1}\mathrm{e}^{-2i\sqrt{-\lambda}}x+\tilde{c_2}\mathrm{e}^{-i\sqrt{-\lambda}x}$, $\tilde{c_1},\tilde{c_2}\in\mathbb{C}$
+
+$\left(\frac{\mathrm{d}}{\mathrm{d}x}-\lambda_1\right)\cdot\left(\frac{\mathrm{d}}{\mathrm{d}x}-\lambda_n\right)\varphi(x)=\varphi^{(n)}+a_1\varphi^{(n-1)}+\dots+a_n\varphi(x)=f(x)$, $a_i$ constant
+
+$\impliedby\lambda^n+a_1\lambda^{n-1}+\dots+a_n=(\lambda-\lambda_1)\cdots(\lambda-\lambda_n)$
+
+$\varphi''(x)-\lambda\varphi(x)=\left(\frac{\mathrm{d}}{\mathrm{d}x}+\sqrt{\lambda}\right)\left(\frac{\mathrm{d}}{\mathrm{d}x}-\sqrt{\lambda}\right)\varphi(x)=0$
+
+$\Phi'(x)+\sqrt{\lambda}\Phi(x)=0$
+
+$\left(\mathrm{e}^{\sqrt{\lambda}x}\Phi(x)\right)'=\mathrm{e}^{\sqrt{\lambda}x}\left(\Phi'(x)+\sqrt{\lambda}\Phi(x)\right)=0$
+
+$\implies\Phi(x)=\varphi'(x)-\sqrt{\lambda}\varphi(x)=c_1\mathrm{e}^{-\sqrt{\lambda}x}$
+
+$\mathrm{e}^{-\sqrt{\lambda}x}\left(\varphi'(x)-\sqrt{\lambda}\varphi(x)\right)=\left(\mathrm{e}^{-\sqrt{\lambda}x}\varphi(x)\right)'=c_1\mathrm{e}^{-2\sqrt{\lambda}x}$
+
+$\implies\mathrm{e}^{-\sqrt{\lambda}x}\varphi(x)=\tilde{c_1}\mathrm{e}^{-2\sqrt{\lambda}x}+c_2$
+
+Notice that the zero boundary condition rules out $\lambda>0$
+
+Take $\lambda<0$, for convenience, replace $\lambda$ by $-\lambda^2$
+
+$\varphi''(x)+\lambda^2\varphi(x)=0$
+
+$\varphi(x)=c_1\cos\lambda x+c_2\sin\lambda x$
+
+$\begin{cases}
+        \varphi(0)=c_1=0 \\
+        \varphi(l)=c_1\cos\lambda l+c_2\sin\lambda l=0
+    \end{cases}\implies\begin{cases}
+        \lambda l=n\pi\text{, for }n=1,2,\dots \\
+        \lambda-\lambda_n=\frac{n\pi}{l}
+    \end{cases}$
+
+$c_1\mathrm{e}^{\sqrt{\lambda}x}+c_2\mathrm{e}^{-\sqrt{\lambda}x}=0$, $x=0,l$
+
+$\begin{cases}
+        c_1+c_2=0 \\
+        c_1\mathrm{e}^{\sqrt{\lambda}l}+c_2\mathrm{e}^{-\sqrt{\lambda}l}=0
+    \end{cases}\implies c_1=c_2=0$
+
+$$\boxed{T_n(x,t)}=\mathrm{e}^{-\left(\frac{n\pi}{l}\right)^2}\sin\frac{n\pi}{l}x$$
+
+Since the heat is linear,
+$$\sum_{n=1}^{\infty}a_nT_n(x,t)=\sum_{n=1}^{\infty}a_n\mathrm{e}^{-\left(\frac{n\pi}{l}\right)^2t}\sin\frac{n\pi}{l}x$$
+is also linear
+
+Plug in $t=0$, $\sum_{n=1}^{\infty}a_n\sin\frac{n\pi}{l}x=f(x)$ (for any $f:\,[0,l]\to\mathbb{R}$ with $f(0)=f(l)=0$)
+
+$\sin\frac{\pi}{l}x,\sin\frac{2\pi}{l}x,\sin\frac{3\pi}{l}x,\dots$
+
+In general, $f(x)\xlongequal{?}\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right)$
+
+\subsubsection{周期函数与三角函数的正交性}
+
+\begin{definition}
+    Let $f:\,\mathbb{R}\to\mathbb{R}$, if $\exists T>0$ s.t. $f(x+T)=f(x)$ for any $x\in\mathbb{R}$, then $T$ is called ``a period'' of $f$, ($2T,3T,4T,\dots$ are all periods of $f$)
+
+    (If such $T$ exists, $f$ is called periodoc)
+
+    If there exists a minimum period, it is called the minimal period
+\end{definition}
+
+$P_f\triangleq\left\{T>0\middle|T\text{is a period of }f\right\}\implies\inf P_f\geq 0$
+
+\begin{example}
+    Given $n=1,2,\dots$, $\sin nx\leadsto$ minimal period $\frac{2\pi}{n}$
+\end{example}
+
+\begin{example}
+    $D(x)\leadsto$ It has no minimal period
+\end{example}
+
+If $l$ is a period of $f$, then $g(x)\triangleq f\left(\frac{l}{2\pi}x\right)$ has $2\pi$ as its period

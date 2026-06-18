@@ -1,0 +1,24 @@
+\subsection{Fourier 变换}
+\subsubsection{Fourier 积分}
+
+Fourier series: period $2l$
+
+$\begin{aligned}
+        f(x)       & =\frac{1}{2\pi}\sum_{n\in\mathbb{Z}}\hat{g}(n)\mathrm{e}^{i\frac{n\pi}{l}x}               \\
+        \hat{g}(n) & =\int_{-\pi}^{\pi}f\left(\overset{s}{\frac{l}{\pi}t}\right)\mathrm{e}^{-int}\,\mathrm{d}t \\
+                   & =\frac{\pi}{l}\int_{-l}^l f(s)\mathrm{e}^{-in\frac{\pi}{l}s}\,\mathrm{d}s
+    \end{aligned}$
+
+$g(y)\triangleq f\left(\underset{=x}{\frac{l}{\pi}y}\right)$, $g$ has period $2\pi$
+
+$g(y)=\frac{1}{2\pi}\sum_{n\in\mathbb{Z}}\hat{g}(n)\mathrm{e}^{iny}$ where $\begin{aligned}
+        \hat{g}(n) & =\int_{-\pi}^{\pi}g(t)\mathrm{e}^{-int}\,\mathrm{d}t,\quad n\in\mathbb{Z} \\
+                   & =\left<g,\mathrm{e}^{int}\right>_{L^2[-\pi,\pi]}
+    \end{aligned}$
+
+$$f(x)=\frac{1}{2\pi}\sum_{n\in\mathbb{Z}}\frac{\pi}{l}\int_{-l}^l f(s)\mathrm{e}^{-i\frac{n\pi}{l}s}\,\mathrm{d}s\cdot\mathrm{e}^{i\frac{n\pi}{l}x}$$
+($f\in C^0(\mathbb{R})$, period $2l$, piecewise $C^1$)
+
+$$\xlongrightarrow[\text{(heuristically)}]{l\to+\infty}\frac{1}{2\pi}\int_{-\infty}^{\infty}\underset{\triangleq\mathcal{F}[f](\lambda),\quad \hat{f}(\lambda)}{\left(\int_{-\infty}^{\infty}f(s)\mathrm{e}^{-i\lambda s}\,\mathrm{d}s\right)}\mathrm{e}^{i\lambda x}\,\mathrm{d}\lambda$$
+
+$\frac{1}{2\pi}\sum_{n\in\mathbb{Z}}\Delta\lambda_n\int_{-l}^l f(s)\mathrm{e}^{-i\lambda_n}\,\mathrm{d}s\cdot\mathrm{e}^{i\lambda_n x}$, $\lambda_n=\frac{n\pi}{l}$, $n\in\mathbb{Z}$

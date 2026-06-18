@@ -1,0 +1,151 @@
+\subsubsection[Fourier 变换]{Fourier Transform}
+
+Given $f:\,\mathbb{R}\to\mathbb{C}$, $\hat{f}:\,\mathbb{R}\to\mathbb{C}$ defined as
+$$\hat{f}(\lambda)\triangleq\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-i\lambda x}\,\mathrm{d}x$$
+is called the Fourier transform of $f$.
+
+\begin{remark}
+    In general, we require $f$ to be Riemann integrable on $[a,b]$ for any $a<b$, and we require $\int_{-\infty}^{+\infty}\left|f(x)\right|\,\mathrm{d}x<+\infty$, i.e. it is absolutely integrable.
+
+    Under these assumptions, $\hat{f}(\lambda)$ is defined for any $\lambda\in\mathbb{R}$.
+\end{remark}
+
+\begin{theorem}[Fourier Inversion Formula]
+    Suppose $f$ defined on $\mathbb{R}$ is piecewise $C^1$ (The same condition as Dirichlet Convergence Thm) on any finite interval, and absolutely integrable on $\mathbb{R}$, then for $\forall x\in\mathbb{R}$,
+    $$\frac{1}{2\pi}\int_{-\infty}^{+\infty}\hat{f}(\lambda)\mathrm{e}^{i\lambda x}\,\mathrm{d}x=\frac{f(x+0)+f(x-0)}{2}$$
+
+    In particular, if $f$ is moreover continuous, then
+    $$f(x)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\hat{f}(\lambda)\mathrm{e}^{i\lambda x}\,\mathrm{d}\lambda$$
+    superpositon of uncountably many harmonics
+\end{theorem}
+
+\begin{example}
+    $f_h(x)=\begin{cases}
+            \frac{1}{2h} & |x|<h     \\
+            0            & |x|\geq h
+        \end{cases}$
+
+    \begin{align*}
+        \hat{f_h}(\lambda) & =\int_{-\infty}^{+\infty}f_h(x)\mathrm{e}^{-i\lambda x}\,\mathrm{d}x \\
+                           & =\int_{-h}^h\frac{1}{2h}\mathrm{e}^{-i\lambda x}\,\mathrm{d}x        \\
+                           & =\frac{1}{2h}\int_{-h}^h(\cos\lambda x-i\sin\lambda x)\,\mathrm{d}x  \\
+                           & =\frac{1}{2h}\frac{2\sin\lambda h}{\lambda}                          \\
+                           & =\frac{\sin h\lambda}{h\lambda}
+    \end{align*}
+
+    $\int_{-\infty}^{+\infty}\frac{\sin\lambda}{\lambda}\,\mathrm{d}\lambda=\frac{\pi}{2}$
+
+    $\frac{1}{2\pi}\int_{-\infty}^{+\infty}\frac{\sin\lambda}{\lambda}\mathrm{e}^{i\lambda x}\,\mathrm{d}x=\begin{cases}
+            \frac{1}{2} & |x|<1 \\
+            \frac{1}{4} & |x|=1 \\
+            0           & |x|>1
+        \end{cases}$
+\end{example}
+
+\begin{example}
+    Find the Fourier transform of $f(x)=\begin{cases}
+            \mathrm{e}^{-\beta x} & x\geq 0 \\
+            0                     & x<0
+        \end{cases}$ ($\beta>0$)
+
+    \begin{align*}
+        \hat{f}(\lambda)
+         & =\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-i\lambda x}\,\mathrm{d}x          \\
+         & =\int_0^{+\infty}\mathrm{e}^{-\beta x}\mathrm{e}^{-i\lambda x}\,\mathrm{d}x \\
+         & =\int_0^{+\infty}\mathrm{e}^{-(\beta+i\lambda)x}\,\mathrm{d}x               \\
+         & =\frac{1}{\beta+i\lambda}                                                   \\
+         & =\frac{\beta-i\lambda}{\beta^2+\lambda^2}
+    \end{align*}
+
+    \begin{align*}
+        \mathrm{e}^{-\beta x}
+         & =\lim_{N\to+\infty}\int_0^N\mathrm{e}^{-(\beta+i\lambda)x}\,\mathrm{d}x                \\
+         & =\lim_{N\to+\infty}\int_0^N\underset{\substack{=(A(x)+iB(x))'                          \\=A'(x)+iB'(x)}}{\left(-\frac{1}{\beta+i\lambda}\mathrm{e}^{-(\beta+i\lambda)x}\right)}'\,\mathrm{d}x\\
+         & =\lim_{N\to+\infty}\left(\int_0^NA'(x)\,\mathrm{d}x+i\int_0^NB'(x)\,\mathrm{d}x\right) \\
+         & =\lim_{N\to+\infty}\left.\left(A+iB\right)\right|_0^N
+    \end{align*}
+
+    By Fourier inversion formula,
+    $$\frac{1}{2\pi}\int_{-\infty}^{+\infty}\frac{\beta-i\lambda}{\beta^2+\lambda^2}\mathrm{e}^{i\lambda x}\,\mathrm{d}x=\begin{cases}
+            0                     & x<0 \\
+            \frac{1}{2}           & x=0 \\
+            \mathrm{e}^{-\beta x} & x>0
+        \end{cases}$$
+\end{example}
+
+\paragraph*{Properties}
+
+\begin{enumerate}
+    \item $\alpha,\beta\in\mathbb{C}$, $\mathcal{F}[\alpha f+\beta g]=\alpha\mathcal{F}[f]+\beta\mathcal{F}[g]$ (linear map)
+    \item $\mathcal{F}\left[f(x)\mathrm{e}^{-i\lambda_0 x}\right](\lambda)=\mathcal{F}[f](\lambda+\lambda_0)$ (LHS$=\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-i\lambda_0 x}\mathrm{e}^{-i\lambda x}\,\mathrm{d}x=\hat{f}(\lambda+\lambda_0)$)
+    \item $\mathcal{F}[f'](\lambda)=i\lambda\mathcal{F}[f](\lambda)$ ($\int_{-\infty}^{+\infty}f'(x)\mathrm{e}^{-i\lambda x}\,\mathrm{d}x=\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-i\lambda x}\,\mathrm{d}x=i\lambda\hat{f}(\lambda)$)
+
+          \begin{example}
+              $f'$ absolutely integrable, then $\mathcal{F}[f](\lambda)=\circ\left(\frac{1}{\lambda}\right)$
+
+              $f''$ absolutely integrable, then $\mathcal{F}[f](\lambda)=\circ\left(\frac{1}{\lambda^2}\right)$
+
+              ($f$ absolutely integrable, then $\mathcal{F}[f](\lambda)=\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-i\lambda x}\,\mathrm{d}x=\circ(1)$, $\lambda\to+\infty$)
+          \end{example}
+
+    \item $\mathcal{F}[f]'(\lambda)=\mathcal{F}[-ixf(x)](\lambda)$
+    \item If $f,g$ are absolutely integrable on $(-\infty,+\infty)$, then $f*g$ is also, and $\mathcal{F}[f*g]=\mathcal{F}[f]\mathcal{F}[g]$.
+
+          Here $f*g(x)=\int_{-\infty}^{+\infty}f(x-t)g(t)\,\mathrm{d}t$
+
+    \item (Parseval Equality) Assume $f$ is absolutely integrable and square integrable, then
+          $$+\infty>\int_{-\infty}^{+\infty}\left|f(x)\right|^2\,\mathrm{d}x=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left|\hat{f}(x)\right|^2\,\mathrm{d}x$$
+\end{enumerate}
+
+\begin{example}
+    $\frac{\sin\lambda}{\lambda}$ not absolutely integrable, but it's square integrable, and
+    $$\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\frac{\sin\lambda}{\lambda}\right)^2\,\mathrm{d}\lambda\xlongequal{\text{Parseval}}\int_{-1}^1\left(\frac{1}{2}\right)^2\,\mathrm{d}x=\frac{1}{2}$$
+    $\implies\int_0^{\infty}\frac{\sin^2x}{x^2}\,\mathrm{d}x=\frac{\pi}{2}$
+\end{example}
+
+\begin{example}
+    Heat equation (IVP) $\begin{cases}
+            \partial_tf=\partial_{xx}f & t\geq 0,\ x\in\mathbb{R} \\
+            f(x,0)=\phi(x)
+        \end{cases}$
+
+    Take the Fourier transform to the equation w.r.t. $x$
+
+    \begin{align*}
+        \widehat{\partial_tf}(\xi,t)    & =\int_{-\infty}^{+\infty}\partial_tf(x,t)\mathrm{e}^{-i\xi x}\,\mathrm{d}x=\partial_t\int_{-\infty}^{+\infty}f(x,t)\mathrm{e}^{-i\xi x}\,\mathrm{d}x=\partial_t\hat{f}(\xi,t) \\
+        \widehat{\partial_{xx}f}(\xi,t) & =\int_{-\infty}^{+\infty}\partial_{xx}f(x,t)\mathrm{e}^{-i\xi x}\,\mathrm{d}x=(i\xi)^2\hat{f}(\xi,t)=-\xi^2\hat{f}(\xi,t)
+    \end{align*}
+
+    If $f$ satisfies the heat equation $\implies\partial_t\hat{f}(\xi,t)=-\xi^2\hat{f}(\xi,t)$
+
+    $\implies\hat{f}(\xi,t)=\underset{=\hat{\varphi}(\xi)}{\hat{f}(\xi,0)}\mathrm{e}^{-\xi^2t}$
+
+    \begin{align*}
+        \xLongrightarrow[{\psi_{\infty}\mapsto\hat{\psi}(x)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\psi(\lambda)\mathrm{e}^{i\lambda x}\,\mathrm{d}x}]{\text{Fourier inverse transform}}f(x,t)
+         & =\frac{1}{2\pi}\int_{-\infty}^{+\infty}\hat{f}(\xi,t)\mathrm{e}^{i\xi x}\,\mathrm{d}\xi                                                                           \\
+         & =\frac{1}{2\pi}\int_{-\infty}^{+\infty}\hat{\varphi}(\xi)\mathrm{e}^{-\xi^2t}\mathrm{e}^{i\xi x}\,\mathrm{d}\xi                                                   \\
+         & =\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\int_{-\infty}^{+\infty}\varphi(y)\mathrm{e}^{-i\xi y}\,\mathrm{d}y\right)\mathrm{e}^{-\xi^2t+i\xi x}\,\mathrm{d}\xi \\
+         & =\frac{1}{2\pi}\int_{-\infty}^{+\infty}\varphi(y)\,\mathrm{d}t\int_{-\infty}^{+\infty}\mathrm{e}^{-\xi^2t+i\xi (x-y)}\,\mathrm{d}\xi
+    \end{align*}
+
+    Recall $\int_{-\infty}^{+\infty}\mathrm{e}^{-x^2}\,\mathrm{d}x=\sqrt{\pi}$
+
+    \begin{align*}
+        \int_{-\infty}^{+\infty}\mathrm{e}^{-\xi^2t+i\xi(x-y)}\,\mathrm{d}\xi
+         & \xlongequal{\eta=\xi\sqrt{t}}\int_{-\infty}^{+\infty}\mathrm{e}^{-\eta^2+i\eta\frac{x-y}{\sqrt{t}}}\frac{1}{\sqrt{t}}\,\mathrm{d}\eta                 \\
+         & =\int_{-\infty}^{+\infty}\mathrm{e}^{-\left(\eta-\frac{i(x-y)}{2\sqrt{t}}\right)^2}\mathrm{e}^{-\frac{(x-y)^2}{4t}}\frac{1}{\sqrt{t}}\,\mathrm{d}\eta \\
+         & =\frac{1}{\sqrt{t}}\mathrm{e}^{-\frac{(x-y)^2}{4t}}\int_{-\infty}^{+\infty}\mathrm{e}^{-\left(\eta-\frac{i(x-y)}{2\sqrt{t}}\right)^2}\,\mathrm{d}\eta \\
+         & =\sqrt{\frac{\pi}{t}}\mathrm{e}^{-\frac{(x-y)^2}{4t}}
+    \end{align*}
+
+    Finally,
+
+    \begin{align*}
+        f(x,t)
+         & =\frac{1}{2\pi}\sqrt{\frac{\pi}{t}}\int_{-\infty}^{+\infty}\varphi(y)\mathrm{e}^{-\frac{(x-y)^2}{4t}}\,\mathrm{d}y \\
+         & =\int_{-\infty}^{+\infty}\varphi(y)\frac{1}{\sqrt{4\pi t}}\mathrm{e}^{-\frac{(x-y)^2}{4t}}\,\mathrm{d}y            \\
+         & =\int_{-\infty}^{+\infty}\varphi(y)H(x,y,t)\,\mathrm{d}y
+    \end{align*}
+
+    $H(x,y,t)=\frac{1}{\sqrt{4\pi t}}\mathrm{e}^{-\frac{(x-y)^2}{4t}}$ Heat kernel 热模
+\end{example}

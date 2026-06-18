@@ -1,0 +1,101 @@
+\subsubsection[Bessel (贝塞尔) 不等式]{Bessel's Inequality}
+
+If $f\in\mathbb{R}[-\pi,\pi]$, then
+$$\frac{a_0^2}{2}\sum_{n=1}^{\infty}\left(a_n^2+b_n^2\right)\leq\frac{1}{\pi}\int_{-\pi}^{\pi}f^2(x)\,\mathrm{d}x=\|f\|^2_{L^2}$$
+where $a_0,a_n,b_n$ are the Fourier coefficients of $f$
+
+(Parsavel, Plancheral Equality)
+
+Proof: $\underset{=\varphi_0}{\frac{1}{\sqrt{2}}},\underset{=\varphi_1}{\cos x},\underset{=\varphi_2}{\sin x},\underset{=\varphi_3}{\cos 2x},\underset{=\varphi_4}{\sin 2x},\dots$ orthonormal,
+
+$$\left<f-\sum_{k=0}^N\left<f,\varphi_k\right>_{L^2}\varphi_k,f-\sum_{k=0}^N\left<f,\varphi_k\right>_{L^2}\varphi_k\right>_{L^2}=\left\|f\right\|_{L^2}^2-2\sum_{k=0}^N\left<f,\varphi_k\right>_{L^2}^2+\sum_{k=0}^N\left<f,\varphi_k\right>_{L^2}^2\geq 0,\ \forall N$$
+
+$\implies\left\|f\right\|_{L^2}^2\geq\sum_{k=0}^N\left<f,\varphi_k\right>_{L^2}^2=\frac{a_0^2}{2}+\left(a_1^2+b_1^2+\dots\right)$
+
+$\left<f,\varphi_0\right>=\frac{1}{\pi}\int_{-\pi}^{\pi}f\cdot\frac{1}{\sqrt{2}}\,\mathrm{d}x=\frac{a_0}{\sqrt{2}}$, $\left<f,\varphi_1\right>=a_1$, $\left<f,\varphi_2\right>=b_1$
+
+% 20260609
+
+$f\in R[-\pi,\pi]\sim\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right)$
+
+\begin{align*}
+    S_n(f)(x) & =\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-t)D_n(t)\mathrm{d}t                          \\
+    D_n(t)    & =1+\cos t+\dots+\cos nt=\frac{\sin\left(n+\frac{1}{2}\right)t}{2\sin\frac{t}{2}}
+\end{align*}
+
+$\begin{cases}
+        a_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\cos nt\,\mathrm{d}t \\
+        b_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\sin nt\,\mathrm{d}t
+    \end{cases}$
+
+Assume $f\in C^0(\mathbb{R})$,
+
+\begin{align*}
+    S_n(f)(x)-f(x)
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}\frac{f(x+t)+f(x-t)-2f(x)}{2}D_n(t)\,\mathrm{d}t                                                                           \\
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}\overset{f\text{ piecewise }C^1}{\frac{f(x+t)+f(x-t)-2f(x)}{4\sin\frac{t}{2}}}\sin\left(n+\frac{1}{2}\right)t\,\mathrm{d}t \\
+     & \xlongrightarrow{Riemann-Lebesgue Lemma}0
+\end{align*}
+i.e. $S_n(f)(x)\to f(x)$, $\forall x\in\mathbb{R}$
+
+\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/12/0003.jpg}}\quad Fejér 1900'
+
+\subparagraph*{Properties of Fejér Kernel}
+
+\begin{enumerate}
+    \item $\frac{1}{2\pi}\int_{-\pi}^{\pi}F_n(t)\,\mathrm{d}t=1$, $n=0,1,2,\dots$
+    \item $F_n(t)\geq 0$, $t\in\mathbb{R}$
+    \item $\forall\delta>0$, $\int\limits_{\pi\geq|t|\geq\delta}F_n(t)\,\mathrm{d}t\to 0$, $n\to+\infty$
+\end{enumerate}
+
+\begin{align*}
+    \frac{D_0(t)+D_1(t)+\dots+D_n(t)}{n+1}
+     & =\mathcal{F}_n(t)\quad\text{Fejér Kernel}                                                                                           \\
+     & =\frac{2\sin\frac{t}{2}}{2^2(n+1)\sin^2\frac{t}{2}}\left[\sin\frac{t}{2}+\sin\frac{3}{2}t+\dots+\sin\frac{2n+1}{2}t\right]          \\
+     & =\frac{1}{4(n+1)\sin^2\frac{t}{2}}\left[\substack{\cos\left(\frac{t}{2}-\frac{t}{2}\right)-\cos\left(\frac{t}{2}+\frac{t}{2}\right) \\
+    +\cos\left(\frac{t}{2}-\frac{3}{2}t\right)-\cos\left(\frac{t}{2}+\frac{3}{2}t\right)+\dots                                             \\
+    +\cos\left(\frac{t}{2}-\frac{2n+1}{2}t\right)-\cos\left(\frac{t}{2}+\frac{2n+1}{2}t\right)}\right]                                     \\
+     & =\frac{1-\cos(n+1)t}{4(n+1)\sin^2\frac{t}{2}}                                                                                       \\
+     & =\frac{1}{2(n+1)}\left(\frac{\sin\frac{n+1}{2}t}{\sin\frac{t}{2}}\right)^2
+\end{align*}
+
+\begin{align*}
+    \sigma_n(f)(x)
+     & \triangleq\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-t)\mathcal{F}_n(t)\,\mathrm{d}t                                  \\
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-t)\frac{D_0(t)+\dots+D_n(t)}{n+1}\,\mathrm{d}t                            \\
+     & =\frac{1}{n+1}\left[S_0(f)(x)+\dots+S_n(f)(x)\right]\quad\leadsto\text{ Cesarò mean of Fourier series of $f$}
+\end{align*}
+
+\begin{align*}
+    \left|\sigma_n(f)(x)-f(x)\right|
+     & =\left|\frac{1}{2\pi}\int_{-\pi}^{\pi}\left(f(x-t)-f(x)\right)\mathcal{F}_n(t)\,\mathrm{d}t\right|                                                                                         \\
+     & \leq\frac{1}{2\pi}\int_{|t|\leq\delta}\left|f(x-t)-f(x)\right|\mathcal{F}_n(t)\,\mathrm{d}t+\frac{1}{2\pi}\int_{\delta\leq|t|\leq\pi}\left|f(x-t)-f(x)\right|\mathcal{F}_n(t)\,\mathrm{d}t
+\end{align*}
+
+$\forall\varepsilon>0$, $\exists\delta=\delta(\varepsilon)>0$, s.t. $\forall|t|<\delta$, $\left|f(x-t)-f(x)\right|<\varepsilon$
+
+$\exists N=N(\varepsilon,\delta)$, s.t. $\forall n>N$, $\left|\int_{\delta\leq|t|\leq\pi}\mathcal{F}_n(t)\,\mathrm{d}t\right|<\varepsilon$
+
+$\implies\forall\varepsilon>0$, $\exists N=N(\varepsilon)\in\mathbb{N}_+$ s.t. $\forall n>N$, $x\in\mathbb{R}$, $\left|\sigma_n(f)(x)-f(x)\right|<\varepsilon+\frac{2\sup|f|}{2\pi}\varepsilon$
+
+$\implies\sigma_n(f)\xlongrightarrow{\text{uniformly converge}}f$ on $\mathbb{R}$
+
+\begin{theorem}
+    \begin{enumerate}
+        \item \emph{(Fejér)} $f\in C^0(\mathbb{R})$, with period $2\pi$, then $\sigma_n(f)$ uniformly converges to $f$ on $\mathbb{R}$
+        \item \emph{(Dirichlet)} $f\in C^0(\mathbb{R})$ with period $2\pi$, and $f$ is piecewise $C^1$, then $S_n(f)$ uniformly converges to $f$ on $\mathbb{R}$
+    \end{enumerate}
+
+    $\leadsto$ Series $\sigma_n(f)(x)=\sigma_0(f)(x)+\left(\sigma_1(f)-\sigma_0(f)\right)(x)+\dots+\left(\sigma_n(f)-\sigma_{n-1}(f)\right)(x)$
+
+    \begin{align*}
+        \sigma_n(f)-\sigma_{n-1}(f)
+         & =\frac{S_0(f)+\dots+S_n(f)}{n+1}-\frac{S_0(f)+\dots+S_{n-1}(f)}{n} \\
+         & =\frac{nS_n(f)-\left(S_0(f)+\dots+S_{n-1}(f)\right)}{n(n+1)}       \\
+         & =\dots
+    \end{align*}
+\end{theorem}
+
+\begin{corollary}[Stone-Weierstrass]
+    Any continuous \emph{periodic} function on $\mathbb{R}$ could be approximated uniformly by \emph{trigonometric polynomials} $\left\{\sin\frac{n\pi}{l}x,\cos\frac{n\pi}{l}x\right\}_{n\in\mathbb{Z}}$
+\end{corollary}

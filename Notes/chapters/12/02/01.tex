@@ -1,0 +1,53 @@
+\subsection[平方平均收敛]{Squared mean convergence}
+\subsubsection{基本概念}
+
+$f\in R[-\pi,\pi]$, $a_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos nx\,\mathrm{d}x\substack{\rightarrow\left<f,g\right>=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)g(x)\,\mathrm{d}x\\\leftarrow\left<f,g\right>_{L^2}=\int_{-\pi}^{\pi}f(x)g(x)\,\mathrm{d}x}$
+
+$$\left\{\frac{1}{\sqrt{2\pi}},\frac{\cos x}{\sqrt{\pi}},\frac{\sin x}{\sqrt{\pi}},\frac{\cos 2x}{\sqrt{\pi}},\frac{\sin 2x}{\sqrt{\pi}},\dots\right\}$$
+forms an orthonormal set of vectors in $\left(R[-\pi,\pi],\left<\cdot,\cdot\right>_{L^2}\right)$
+
+\begin{align*}
+    S_n(f)(x) & =\left<f,\frac{1}{\sqrt{2\pi}}\right>_{L^2}\frac{1}{\sqrt{2\pi}}+\dots+\left<f,\frac{\cos nt}{\sqrt{\pi}}\right>_{L^2}\frac{\cos nx}{\sqrt{\pi}}+\left<f,\frac{\sin nt}{\sqrt{\pi}}\right>_{L^2}\frac{\sin nx}{\sqrt{\pi}} \\
+              & =\operatorname{pr}_{V_n}(f)(x)
+\end{align*}
+where $V_n=\operatorname{span}_{\mathbb{R}}\left\{\frac{1}{\sqrt{2\pi}},\frac{\cos x}{\sqrt{\pi}},\frac{\sin x}{\sqrt{\pi}},\frac{\cos 2x}{\sqrt{\pi}},\frac{\sin 2x}{\sqrt{\pi}},\dots\right\}\subseteq R[-\pi,\pi]$
+
+$\rightarrow$ geometic meaning of $S_n(f)$\quad\raisebox{-0.5\height}{\includegraphics[height=2cm]{chapters/12/0004.jpg}}
+
+\begin{theorem}
+    $\forall\psi\in V_n$,
+
+    $$\left\|f-\psi\right\|_{L^2}^2=\left\|f-S_n(f)\right\|_{L^2}^2+\left\|S_n(f)-\psi\right\|_{L^2}^2$$
+
+    \begin{enumerate}
+        \item $S_n(f)$ is the unique vector in $V_n$ which is closest to $f$ under the $L^2$-distance. i.e. $S_n(f)=\operatorname{pr}_{V_n}(f)$
+
+              ($\implies\left\|f-S_n(f)\right\|_{L^2}\leq\left\|f-\psi\right\|_{L^2}$, $\forall\psi\in V_n$)
+        \item $\frac{a_0^2}{2}+\sum_{n=1}^{\infty}\left(a_n^2+b_n^2\right)\leq\frac{1}{\pi}\int_{-\pi}^{\pi}f^2(x)\,\mathrm{d}x$ \emph{(Bessel's inequality)}
+    \end{enumerate}
+\end{theorem}
+
+Proof: $\left\|f-\psi\right\|_{L^2}^2=\left\|f-S_n(f)\right\|_{L^2}^2+\left\|S_n(f)-\psi\right\|_{L^2}^2+2\left<f-S_n(f),\underset{\in V_n=\operatorname{span}\left\{\substack{\frac{1}{\sqrt{2\pi}},\frac{\cos t}{\sqrt{\pi}},\\\frac{\cos nt}{\sqrt{\pi}},\frac{\sin nt}{\sqrt{\pi}}}\right\}}{S_n(f)-\psi}\right>_{L^2}$
+
+$k=0,1,2,\dots,n$
+\begin{align*}
+    \left<f-S_n(f),\cos kt\right>
+     & =\left<f,\cos kt\right>_{L^2}-\left<\frac{a_0}{2}+\sum_{l=1}^n\left(a_l\cos lt+b_l\sin lt\right),\cos kt\right>_{L^2} \\
+     & =\int_{-\pi}^{\pi}f(t)\cos kt\,\mathrm{d}t-a_k\left<\cos kt,\cos kt\right>_{L^2}                                      \\
+     & =0
+\end{align*}
+
+Similarly, $\left<f-S_n(f),\sin kt\right>_{L^2}=0$, $k=1,2,\dots,n$
+
+$\left\|S_n(f)\right\|_{L^2}^2\leq\left\|f\right\|_{L^2}^2$, $\forall n=0,1,2,\dots$
+
+\begin{align*}
+    \text{LHS}
+     & =\left<f,\frac{1}{\sqrt{2\pi}}\right>_{L^2}^2+\left<f,\frac{\cos t}{\sqrt{\pi}}\right>_{L^2}^2+\left<f,\frac{\sin t}{\sqrt{\pi}}\right>_{L^2}^2+\dots+\left<f,\frac{\cos nt}{\sqrt{\pi}}\right>_{L^2}^2+\left<f,\frac{\sin nt}{\sqrt{\pi}}\right>_{L^2}^2 \\
+     & =\left(\int_{-\pi}^{\pi}f(t)\frac{1}{\sqrt{2\pi}}\,\mathrm{d}t\right)^2+\left(\int_{-\pi}^{\pi}f(t)\frac{\cos t}{\sqrt{\pi}}\,\mathrm{d}t\right)^2+\dots+\left(\int_{-\pi}^{\pi}f(t)\frac{\sin nt}{\sqrt{\pi}}\,\mathrm{d}t\right)^2                      \\
+     & =\pi\left(\frac{a_0^2}{2}+\sum_{k=1}^n\left(a_k^2+b_k^2\right)\right)
+\end{align*}
+
+$\implies\frac{a_0^2}{2}+\sum_{k=1}^n\left(a_k^2+b_k^2\right)\leq\frac{1}{\pi}\int_{-\pi}^{\pi}f^2(x)\,\mathrm{d}x$, $\forall n\in\mathbb{N}$
+
+$a_k=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos kx\,\mathrm{d}x$

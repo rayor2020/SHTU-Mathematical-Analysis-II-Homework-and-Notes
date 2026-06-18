@@ -1,0 +1,54 @@
+\subsubsection{有限区间上函数的 Fourier 级数}
+
+\subsubsection[Fourier 级数的复数形式]{The Complex form of Fourier series}
+
+$\mathrm{e}^{i\theta}=\cos\theta+i\sin\theta$
+
+$f\in R[-\pi,\pi]$ with complex value, the Fourier series of $f$ is
+
+\begin{align*}
+     & \quad\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos nx+b_n\sin nx\right)                                                                                                                    \\
+     & =\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\frac{\mathrm{e}^{inx}+\mathrm{e}^{-inx}}{2}+b_n\frac{\mathrm{e}^{inx}-\mathrm{e}^{-inx}}{2i}\right)                                             \\
+     & =\underset{\hat{f}(0)}{\frac{a_0}{2}}+\sum_{n=1}^{\infty}\left(\underset{\hat{f}(n)}{\frac{a_n-ib_n}{2}}\mathrm{e}^{inx}+\underset{\hat{f}(-n)}{\frac{a_n+ib_n}{2}}\mathrm{e}^{-inx}\right) \\
+     & =\sum_{n\in\mathbb{Z}}\hat{f}(k)\mathrm{e}^{ikx}                                                                                                                                            \\
+     & \leftrightarrow\hat{f}(k)\triangleq\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\mathrm{e}^{-ikt}\,\mathrm{d}t\quad\text{Fourier coefficient in complex form}
+\end{align*}
+
+$\begin{cases}
+        \frac{a_n-ib_n}{2}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\left(\cos nt-i\sin nt\right)\,\mathrm{d}t=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\mathrm{e}^{-int}\,\mathrm{d}t \\
+        \frac{a_n+ib_n}{2}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\left(\cos nt+i\sin nt\right)\,\mathrm{d}t=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\mathrm{e}^{int}\,\mathrm{d}t  \\
+        \frac{a_0}{2}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\mathrm{e}^{-i0t}\,\mathrm{d}t
+    \end{cases}$
+
+Recast of Dirichlet Thm
+
+If $f\in C^0(\mathbb{R})$, periodic with $2\pi$, piecewise $C^1$, then $f(x)=\sum_{n\in\mathbb{Z}}\hat{f}(n)\mathrm{e}^{inx}$
+
+$f$ is piecewise $C^1$ function on $S^1=\left\{\mathrm{e}^{i\theta}\middle|\theta\in[0,2\pi]\right\}$
+
+special functions $\left\{\mathrm{e}^{in\theta}\middle|n\in\mathbb{Z}\right\}$
+
+$\left<f,g\right>_{L^2(S^1)}=\int_{S^1}f(\theta)\overline{g(\theta)}\,\mathrm{d}\theta$
+
+\paragraph*{Properties of Fourier series}
+
+\begin{theorem}
+    Let $f$ be periodic on $\mathbb{R}$ with period $2\pi$, then
+    \begin{enumerate}
+        \item If $f\in C^k$ (with $k\geq 0$), then $a_n,b_n=\circ\left(\frac{1}{n^k}\right)$
+        \item If $f\in C^1$, then $\hat{f'}(n)=in\hat{f}(n)$
+        \item If $f$ is $C^0$ and piecewise $C^1$, then $f(x)=\sum_{n\in\mathbb{Z}}\hat{f}(n)\mathrm{e}^{inx}$ \emph{(Fourier inversion formula)}
+        \item If $f_h(x)\triangleq f(x+h)$, then $\hat{f_h}(n)=\mathrm{e}^{inh}\hat{f}(n)$
+        \item $\widehat{f*g}(n)=2\pi\hat{f}(n)\hat{g}(n)$ where $\widehat{f*g}(x)=\int_{-\pi}^{\pi}f(x-t)g(t)\,\mathrm{d}t$
+    \end{enumerate}
+\end{theorem}
+
+Proof: $\hat{f'}(n)=\frac{1}{2\pi}\int_{-\pi}^{\pi}f'(t)\mathrm{e}^{-int}\,\mathrm{d}t=in\hat{f}(n)$
+
+\begin{align*}
+    \widehat{f*g}(n)
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}f*g(x)\mathrm{e}^{-inx}\,\mathrm{d}x                                                  \\
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}\mathrm{e}^{-inx}\,\mathrm{d}x\int_{-\pi}^{\pi}f(x-t)g(t)\,\mathrm{d}t                \\
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}g(t)\,\mathrm{d}t\int_{-\pi}^{\pi}f(x-t)\mathrm{e}^{-in(x-t)^{-int}}\,\mathrm{d}x     \\
+     & =\frac{1}{2\pi}\int_{-\pi}^{\pi}g(t)\mathrm{e}^{-int}\,\mathrm{d}t\int_{-\pi}^{\pi}f(x)\mathrm{e}^{-inx}\,\mathrm{d}x
+\end{align*}

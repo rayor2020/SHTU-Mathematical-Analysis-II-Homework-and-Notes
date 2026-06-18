@@ -1,0 +1,70 @@
+% 20260604
+
+\paragraph{Examples from Signal Processing}
+
+\begin{enumerate}
+    \item Half-wave Rectifier: 半波整流函数
+
+          $$f(t)=\begin{cases}
+                  0             & -\frac{\pi}{\omega}\leq t\leq 0 \\
+                  E\sin\omega t & 0\leq t\leq \frac{\pi}{\omega}
+              \end{cases}$$
+
+          \begin{align*}
+              a_n
+               & =\frac{\omega}{\pi}\int_{-\frac{\pi}{\omega}}^{\frac{\pi}{\omega}}f(t)\cos\left(n\pi\cdot\frac{\omega}{\pi}t\right)\,\mathrm{d}t                                                       \\
+               & =\frac{\omega}{\pi}\int_0^{\frac{\pi}{\omega}}E\sin\omega t\cos(n\omega t)\,\mathrm{d}t                                                                                                \\
+               & =\frac{E\omega}{2\pi}\int_0^{\frac{\pi}{\omega}}\sin\left((1+n)\omega t\right)+\sin\left((1-n)\omega t\right)\,\mathrm{d}t                                                             \\
+               & =\frac{E\omega}{2\pi}\left[\left.\frac{-\cos(n+1)\omega t}{(n+1)\omega}\right|_0^{\frac{\pi}{\omega}}+\left.\frac{\cos(n-1)\omega t}{(n-1)\omega}\right|_0^{\frac{\pi}{\omega}}\right] \\
+               & =\frac{E\omega}{2\pi}\left[\frac{(-1)^n+1}{(n+1)\omega}+\frac{(-1)^{n-1}-1}{(n-1)\omega}\right]                                                                                        \\
+               & =\frac{E}{2\pi}\left[(-1)^n+1\right]\frac{-2}{n^2-1}                                                                                                                                   \\
+               & =\frac{E}{\pi}\frac{(-1)^{n-1}-1}{n^2-1},\quad n\neq 1                                                                                                                                 \\
+              a_1
+               & =0,\quad n=1                                                                                                                                                                           \\
+              b_n
+               & =\frac{\omega}{\pi}\int_{-\frac{\pi}{\omega}}^{\frac{\pi}{\omega}}f(t)\sin\left(n\omega t\right)\,\mathrm{d}t                                                                          \\
+               & =\frac{\omega}{\pi}\int_0^{\frac{\pi}{\omega}}E\sin\omega t\sin(n\omega t)\,\mathrm{d}t                                                                                                \\
+               & =\frac{\omega E}{2\pi}\int_{0}^{\frac{\pi}{\omega}}\left[\cos\left((1+n)\omega t\right)+\cos\left((1-n)\omega t\right)\right]\,\mathrm{d}t                                             \\
+               & =\begin{cases}
+                      \frac{2 E\omega}{\pi}\left.\left(\frac{\sin(n+1)\omega t}{(n+1)\omega}+\frac{\sin(1-n)\omega t}{(1-n)\omega}\right)\right|_0^{\frac{\pi}{0}}=0 & n\neq 1 \\
+                      \frac{E}{2}                                                                                                                                    & n=1
+                  \end{cases}
+          \end{align*}
+
+          $[-l,l]$, $a_n=\frac{1}{l}\int_{-l}^l f(x)\cos\frac{n\pi}{l}x\,\mathrm{d}x$
+
+          The Fourier Series of $f(t)$ is
+          $$\underset{\text{\allbold{direct current}}}{\frac{E}{\pi}}+\frac{E}{2}\underset{\text{\allbold{fundamental waveform}}}{\sin\omega t}+\sum_{n=1}^{\infty}\underset{\text{\allbold{$n$-th harmonic}}}{\frac{E}{\pi}\frac{(-1)^{n-1}-1}{n^2-1}\underset{\boldsymbol{\sin n\omega t}}{\cos n\omega t}}$$
+          It converges to $f(t)$ pointwisely.
+    \item Rectangular Wave
+
+          Find the Fourier series of $f(x)=\begin{cases}
+                  \frac{1}{2h} & |x|\leq h   \\
+                  0            & h<|x|\leq l
+              \end{cases}$
+
+          \begin{align*}
+              a_n
+               & =\frac{1}{l}\int_{-l}^l f(x)\cos\left(\frac{n\pi}{l}x\right)\,\mathrm{d}x     \\
+               & =\frac{2}{l}\int_0^h\frac{1}{2h}\cos\left(\frac{n\pi}{l}x\right)\,\mathrm{d}x \\
+               & =\frac{1}{hl}\frac{l}{n\pi}\left.\sin\left(\frac{n\pi}{l}x\right)\right|_0^h  \\
+               & =\frac{\sin\left(\frac{n\pi h}{l}\right)}{n\pi h}                             \\
+               & \xlongequal{\text{by Dirichlet Convergence Thm}}\begin{cases}
+                                                                     \frac{1}{2h} & |x|<h       \\
+                                                                     \frac{1}{4h} & x=\pm h     \\
+                                                                     0            & h<|x|\leq l
+                                                                 \end{cases}
+          \end{align*}
+
+          The Fourier series is
+          $$\frac{1}{2}+\frac{1}{\pi}\sum_{n=1}^{\infty}\frac{\sin nh}{nh}\cos nx$$
+
+          $\frac{1}{2l}+\sum_{n=1}^{\infty}\frac{\sin\frac{n\pi h}{l}}{n\pi h}=\frac{1}{2h}$
+
+          $\implies\frac{1}{2}+\sum_{n=1}^{\infty}\frac{\sin nh}{nh}=\frac{\pi}{2h}\xLongrightarrow{h=1}\boxed{\sum_{n=1}^{\infty}\frac{\sin n}{n}=\frac{\pi-1}{2}}$
+\end{enumerate}
+
+\begin{center}
+    \includegraphics[width=\columnwidth]{chapters/12/01/0201}
+    \includegraphics[width=\columnwidth]{chapters/12/01/0202}
+\end{center}
